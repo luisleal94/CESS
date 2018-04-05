@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>sesion</servlet-name>
+        <servlet-class>servlet.sesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>resgistrar</servlet-name>
+        <servlet-class>servlet.resgistrar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>out</servlet-name>
+        <servlet-class>servlet.out</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>registrarP</servlet-name>
+        <servlet-class>servlet.registrarP</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sesion</servlet-name>
+        <url-pattern>/sesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>resgistrar</servlet-name>
+        <url-pattern>/resgistrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>out</servlet-name>
+        <url-pattern>/out</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registrarP</servlet-name>
+        <url-pattern>/registrarP</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
