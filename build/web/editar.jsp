@@ -32,7 +32,7 @@
                     <input type="text" name="edad" value="<%=rs.getString("Edad")%>">
                     <input type="text" name="tele" value="<%=rs.getString("telefono")%>">
                     <input type="submit" value="Guardar">
-                    <a href="historial.jsp">Regresar</a>
+                    <a href="pruebas.jsp">Regresar</a>
                 </form>
                 <%
             }
@@ -46,7 +46,7 @@
             if(nombre!=null){
                 pst = con.getConexion().prepareStatement("update Pacientes set Nombre='"+nombre+"',Apellido_P='"+apellidop+"',Apellido_M='" + apellidom +"',Edad='"+edad+"',telefono='"+tele+"' where idPacientes='"+id+"'");
                 pst.executeUpdate();
-                response.sendRedirect("historial.jsp");
+                response.sendRedirect("pruebas.jsp");
                
             }
         %>

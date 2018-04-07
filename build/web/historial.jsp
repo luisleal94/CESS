@@ -35,8 +35,7 @@
         <title>CESS UV</title>
     </head>
     <body >
-        <a href="#">Generar historial clínico</a>
-        <a href="buscar.jsp">Buscar historial</a>
+        <a href="pruebas.jsp">Buscar historial</a>
         <a href="inicio.jsp">Inicio</a>
         <label>Nombre del paciente</label>
         <input type="text" name="nombre">
@@ -61,6 +60,7 @@
                 <td>            
                     <a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
                     <a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
+                    <a href="generarH.jsp?id=<%=rs.getString("idPacientes")%>">Generar historial</a>
                 </td>
             </tr>
             <% } %>  

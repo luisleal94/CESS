@@ -32,7 +32,7 @@
         
         <input type="checkbox" id="activaventana" name="activaventana">
         <label for="activaventana" id="label">Registrar Paciente</label>
-        <label id="label"><a href="historial.jsp" style="text-decoration:none; color: white">Historial clinico</a></label>
+        <label id="label"><a href="pruebas.jsp" style="text-decoration:none; color: white">Historial clinico</a></label>
         <label id="label">Consulta médica</label>
         <label id="label">Odontologia</label>
         <label id="label">Nutricion</label>
