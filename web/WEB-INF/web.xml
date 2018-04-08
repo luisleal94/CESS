@@ -16,6 +16,10 @@
         <servlet-name>registrarP</servlet-name>
         <servlet-class>servlet.registrarP</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>consultah</servlet-name>
+        <servlet-class>servlet.consultah</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>registrarP</servlet-name>
         <url-pattern>/registrarP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>consultah</servlet-name>
+        <url-pattern>/consultah</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

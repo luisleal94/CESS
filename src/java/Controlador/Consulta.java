@@ -104,10 +104,53 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    
+    public boolean reg_historial(String id,String origen,String resi,String reli,String esco,String habitos,
+            String toxico,String zoo,String Rh,String Vacun){
+            PreparedStatement pst=null;
+            
+            try{
+            String consulta="insert into Pesonal_NoPat("
+                    + "Origen,Residencia,Religion,Escolaridad,Habitos,Toxiconomias,"
+                    + "Zoonosis,GrupuRh,Vacunacion,Id_Pacientes) values(?,?,?,?,?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            
+            pst.setString(1,origen);
+            pst.setString(2,resi);
+            pst.setString(3,reli);
+            pst.setString(4,esco);
+            pst.setString(5,habitos);
+            pst.setString(6,toxico);
+            pst.setString(7,zoo);
+            pst.setString(8,Rh);
+            pst.setString(9,Vacun);
+            pst.setString(10,id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }
+            
+        }catch(Exception e){
+             System.err.println("Error"+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.err.println("Error"+e);
+            }
+        }    
+        return false;
+    }
+    
+    
    /*public static void main(String[] args){
         Consulta re= new Consulta();
-        re.registro("jose luis","Rosas Leal","1234");
+        //re.registro("jose luis","Rosas Leal","1234");
         //reg_paciente("1175","eduaro","rosas","leal","78","77987");
+        
+        re.reg_historial("6", "veracruz","La loma","catolica","licenciatura",
+                "gym", "nose","perros", "A+","si");
     }*/
      
 }

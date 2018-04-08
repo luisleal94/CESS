@@ -32,7 +32,9 @@
             <input name="nombre" type="text">
             <input type="submit" value="Bucar">            
         </form>
-      <% String nombre=request.getParameter("nombre");
+      
+      <% //Busqueda por nombre del usuario a buscar
+          String nombre=request.getParameter("nombre");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
@@ -55,7 +57,8 @@
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746">       
         </form>
         
-        <a href="generarH.jsp" >Ver historial</a>
+        <!--Mando el parametro ID del paciente que encontre-->
+        <a href="generarH.jsp?id=<%=rs.getString("idPacientes")%>" >Ver historial</a>
         <a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
         <a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
             
