@@ -67,7 +67,8 @@ public class Consulta extends Conexion{
     }
     
     //Metodo para registrar pacientes
-    public boolean reg_paciente(String nombre,String apellidoP,String apellidoM,String edad,String tele){
+    public boolean reg_paciente(String nombre,String apellidoP,String apellidoM,String edad,String tele,
+        String ocupacion,String EstadoC,String domicilio,String curp,String genero){
         Calendar calender = Calendar.getInstance();
         String fecha;
         int dia=calender.get(Calendar.DAY_OF_MONTH);
@@ -79,7 +80,8 @@ public class Consulta extends Conexion{
          PreparedStatement pst=null;
          
          try{
-            String consulta="insert into Pacientes(fecha,Nombre,Apellido_P,Apellido_M,Edad,telefono) values(?,?,?,?,?,?)";
+            String consulta="insert into Pacientes(fecha,Nombre,Apellido_P,Apellido_M,Edad,telefono,"
+                    + "Ocupacion,EstadoC,Domicilio,Curp,Genero) values(?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, fecha);
             pst.setString(2, nombre);
@@ -87,6 +89,11 @@ public class Consulta extends Conexion{
             pst.setString(4, apellidoM);
             pst.setString(5, edad);
             pst.setString(6, tele);
+            pst.setString(7, domicilio);
+            pst.setString(8, ocupacion);
+            pst.setString(9, EstadoC);
+            pst.setString(10, curp.toUpperCase());
+            pst.setString(11, genero);
             if(pst.executeUpdate()==1){
                 return true;
             }
@@ -127,30 +134,66 @@ public class Consulta extends Conexion{
             pst.setString(10,id);
             if(pst.executeUpdate()==1){
                 return true;
-            }
-            
+            } 
         }catch(Exception e){
-             System.err.println("Error"+e);
+             System.out.println("Error"+e);
         }
         finally{
             try{
                 if(getConexion()!=null) getConexion().close();
                 if(pst!=null) pst.close();
             }catch(Exception e){
-                System.err.println("Error"+e);
+                System.out.println("Error"+e);
             }
-        }    
+        }   
         return false;
     }
     
     
+    public boolean historial_texto(String id,String famili,String Patolo,String SisActual,String ApaSis,
+            String EstAux,String Terapeutica){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="insert into Antecedentes("
+                    + "heredofamiliares,Perso_patologicos,Pade_actual,Aparat_sistemas,Estu_auxi,Tera_emple_result,"
+                    + "Id_Pacientes) values(?,?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            
+            pst.setString(1,famili);
+            pst.setString(2,Patolo);
+            pst.setString(3,SisActual);
+            pst.setString(4,ApaSis);
+            pst.setString(5,EstAux);
+            pst.setString(6,Terapeutica);
+            pst.setString(7,id);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+            System.out.println("Error"+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error"+e);
+            }
+        }       
+        return false;
+    }
+   
    /*public static void main(String[] args){
         Consulta re= new Consulta();
         //re.registro("jose luis","Rosas Leal","1234");
-        //reg_paciente("1175","eduaro","rosas","leal","78","77987");
+        //re.reg_paciente("Eduardo","Rosas","Leal","21","1234","Ingeniero","Soltero","Tapicer","roll940909","masculino");
         
-        re.reg_historial("6", "veracruz","La loma","catolica","licenciatura",
+        /*re.reg_historial("6", "veracruz","La loma","catolica","licenciatura",
                 "gym", "nose","perros", "A+","si");
+        
+        re.historial_texto("8", "ninguno","Alergia al tapcin", "Ninguno", "lleso en el "
+                + "brazo izquierdo", "rayos x", "Estiramiento");
     }*/
      
 }

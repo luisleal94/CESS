@@ -45,7 +45,13 @@
                     <input class="input1" type="text" name="apellido1" placeholder="Apellido Paterno" required>
                     <input class="input1" type="text" name="apellido2" placeholder="Apelllido Materno" required>
                     <input class="input1" type="number" name="edad" placeholder="Edad" required>
-                    <input type="text" name="telefono" placeholder="Telefono" required>
+                    <input class="input1"type="text" name="telefono" placeholder="Telefono" required>
+                    <input class="input1" type="text" name="domicilio" placeholder="Domicilio" required >
+                    <input class="input1" type="text" name="estado_civil" placeholder="Estado Civil" required>
+                    <input class="input1" type="text" name="ocupacion" placeholder="Ocupación" required>
+                    <input class="input1" type="text" name="curp" placeholder="CURP" required>
+                    Masculino<input  type="radio" name="genero" value="Mascuino" checked>                  
+                    Femenino<input type="radio" name="genero" value="Femenino">
                     <div class="boton">
                     <input class="enter1" type="submit" value="Registrar">
                     <label class="enter2" for="activaventana" id="cierramodal" style="text-align:center">Salir</label>

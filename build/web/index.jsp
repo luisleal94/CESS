@@ -19,7 +19,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 </head>
 <body>
-    <h1>Centro de Estudios y Servicios de Salud</h1>
     <div class="contenedor-form">
         <div class="toggle">
             <span> Crear Cuenta</span>

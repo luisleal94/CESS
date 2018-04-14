@@ -27,7 +27,6 @@
     <body>
         <h1>HISTORIA CLÍNICA GENERAL</h1><br>
         <label>Fecha</label><br><br>
-        <!--Area para fecha, se hará con java-->
         <% 
             Calendar calender = Calendar.getInstance();
             String fecha;
@@ -36,7 +35,7 @@
             int anio=calender.get(Calendar.YEAR);
             fecha=dia+" / "+mes+" / "+anio;
         %>
-        <input type="text" name="fecha" value="<%=fecha%>"><br>
+        <input type="text" name="fecha" value="<%=fecha%>" disabled><br>
         <label>FICHA DE IDENTIDICACIÓN</label><br>
          <% //Busqueda por ID del usuario a buscar
             String id=request.getParameter("id");
@@ -50,16 +49,19 @@
             <label>Nombre</label>
             <input type="text" name="nombre" disabled value=" <%=rs.getString("Nombre")%>"><br>
             <label>Estado Civil</label>
-            <input type="text" name="nombre" disabled><br>
+            <input type="text" name="nombre" disabled value="<%=rs.getString("EstadoC")%>" ><br>
             <label>Ocupación</label>
-            <input type="text" name="nombre" disabled><br>
+            <input type="text" name="nombre" disabled value="<%=rs.getString("Ocupacion")%>"><br>
             <label>Domicilio</label>
-            <input type="text" name="nombre" disabled><br>
+            <input type="text" name="nombre" disabled value="<%=rs.getString("Domicilio")%>"><br>
             <label>Telefono</label>
             <input type="text" name="nombre" disabled value="<%=rs.getString("telefono")%>" ><br>
             <% } %>            
         <form action="consultah" method="post">
             
+            <label>ANTECEDENTES HEREDOFAMILIARES (DM,HTA,TBP,Obeciddad,neoplasta,
+                    cardioplastias,alergias,malformaciones congenitas,dependencias)</label>
+            <textarea name="ant0" autofocus cols="30" rows="5"></textarea><br>
             <label>ANTECEDENTES PERSONALES NO PATOLÓGICOS</label><br>
             <input type="text" value="<%=id%>" name="id" style="visibility:hidden"><br>
             <label>Origen</label><br>
@@ -92,14 +94,14 @@
             <textarea name="ant2" autofocus cols="30" rows="5"></textarea><br>
         
             <label>Aparatos y Sistemas</label><br>
-            <textarea name="ant2" autofocus cols="30" rows="5"></textarea><br>
+            <textarea name="ant3" autofocus cols="30" rows="5"></textarea><br>
             
             <label>Equipos Auxiliares de Diagnóstico Previso
             (Laboratorio y Gabinete</label><br>
-            <textarea name="ant2" autofocus cols="30" rows="5"></textarea><br>
+            <textarea name="ant4" autofocus cols="30" rows="5"></textarea><br>
             
             <label>Terapéutica Empleada y Resultados Obtenidos</label><br>
-            <textarea name="ant2" autofocus cols="30" rows="3"></textarea>
+            <textarea name="ant5" autofocus cols="30" rows="3"></textarea>
             <input type="submit" value="Guardar" >
         </form>
     </body>

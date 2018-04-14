@@ -30,12 +30,31 @@ public class consultah extends HttpServlet {
         String grupoRg=request.getParameter("gru");
         String vacunacion=request.getParameter("esq");
         
-        Consulta con= new Consulta();
-        if(con.reg_historial(id, origen, residencia, religion,escolaridad, habitosH, toxiconomia, zoonosis,grupoRg, vacunacion)){
-            response.sendRedirect("historial.jsp");
+        String familia=request.getParameter("ant0");
+        String patologicos=request.getParameter("ant1");
+        String actual=request.getParameter("ant2");
+        String ApSistemas=request.getParameter("ant3");
+        String EstAux=request.getParameter("ant4");
+        String terapeutica=request.getParameter("ant5");
+        
+       // Consulta con= new Consulta();
+        
+        if(new Consulta ().reg_historial(id, origen, residencia, religion,escolaridad, habitosH, toxiconomia, 
+                zoonosis,grupoRg, vacunacion)&&
+                new Consulta ().historial_texto(id, familia,patologicos, actual,ApSistemas, EstAux, terapeutica)){
+                response.sendRedirect("historial.jsp");
+        }else{
+            response.sendRedirect("inicio.jsp");
+        }
+        
+        /*if(con.reg_historial(id, origen, residencia, religion,escolaridad, habitosH, toxiconomia, 
+                zoonosis,grupoRg, vacunacion)){
+            if(con.historial_texto(id, familia,patologicos, actual,ApSistemas, EstAux, terapeutica)){
+                response.sendRedirect("historial.jsp");
+            }
         }else{
             response.sendRedirect("pruebas.jsp");
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

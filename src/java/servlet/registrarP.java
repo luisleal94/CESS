@@ -23,9 +23,14 @@ public class registrarP extends HttpServlet {
         String apellidom=request.getParameter("apellido2"); 
         String edad=request.getParameter("edad");
         String tele=request.getParameter("telefono");
+        String domi=request.getParameter("domicilio");
+        String Ecivil=request.getParameter("estado_civil");
+        String ocu=request.getParameter("ocupacion");
+        String curp=request.getParameter("curp");
+        String sexo=request.getParameter("genero");
         
         Consulta con= new Consulta();
-        if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele)){
+        if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){
             response.sendRedirect("historial.jsp");
         }else{
             response.sendRedirect("inicio.jsp");
