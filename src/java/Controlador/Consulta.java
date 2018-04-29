@@ -89,10 +89,10 @@ public class Consulta extends Conexion{
             pst.setString(4, apellidoM);
             pst.setString(5, edad);
             pst.setString(6, tele);
-            pst.setString(7, domicilio);
-            pst.setString(8, ocupacion);
-            pst.setString(9, EstadoC);
-            pst.setString(10, curp.toUpperCase());
+            pst.setString(7, ocupacion);
+            pst.setString(8, EstadoC);
+            pst.setString(9, domicilio);
+            pst.setString(10, curp.toUpperCase()); //La covierto a mayuscula
             pst.setString(11, genero);
             if(pst.executeUpdate()==1){
                 return true;

@@ -1,0 +1,177 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+#encabezado{
+	background-color: rgba(192,192,192,0.4);
+	margin: 5px;	
+	padding: 30px;
+	text-align: center;
+}
+
+#cabeza{
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	color: #707070;
+}
+
+.datosPaciente{
+	margin: 40px;
+	padding: 20px;
+	background:   #dcf6f2  ;
+	border-left-color: #9fbfef solid;
+	border-bottom-color: #9fbfef solid;
+        font-family: 'Roboto', sans-serif;
+}
+
+
+.formulario{
+	margin: 15px;
+	padding: 5px;
+	border: none;
+	background:   #dcf6f2  ;
+	font-family: 'Roboto', sans-serif;
+}
+
+.bloque{
+	margin: 0px;
+	padding: 10px;
+	border-bottom: 5px solid ;
+	border-color: rgba(192,192,192,0.3);
+}
+
+#encuesta{
+	margin: 10px;
+	padding: 5px;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+}
+
+#titulo1{
+	text-align: center;
+	display: block;
+	font-size: 22px;
+	font-family: 'Roboto', sans-serif;
+	background-color: rgba(192,192,192,0.4);
+	margin: 20px;
+}
+
+#titulo2{
+	margin: 0px;
+	text-align: center;
+	display: block;
+	font-size: 18px;
+}
+
+.table,td,th{
+	text-align: center;
+	border-collapse: collapse;
+    border: 1px solid rgba(0,0,255,0.3);
+    margin: 8px;
+    padding: 5px;
+    width: 80%;
+}
+
+input[type=text]{
+	width: 20%;
+	height: 10%;
+	padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid ;
+	border-color: rgba(0,0,255,0.3);
+	background-color: #dcf6f2;
+}
+
+#number{
+	width: 5%;
+	margin: 8px;
+	border: none;
+    border-bottom: 2px solid ;
+	border-color: rgba(0,0,255,0.3);
+	background-color: #dcf6f2;
+}
+
+#medico{
+	margin: 0px;
+	background-color:#ccd1d1;	
+}
+
+#medic{
+	width: 50%;
+	margin: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.formula input[type="radio"]{
+	display: none;
+}
+
+.label{
+	color: #212f3d;
+	/*background: rgba(0,0,0,0.1);*/
+	padding: 5px 15px 5px 51px;
+	display: inline-block;
+	position: relative;
+	font-size: 1em;
+	border-radius: 3px;
+	cursor: pointer;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.label:hover{
+	background: rgba( 46, 134, 193 ,0.8);
+}
+
+.label:before{
+	content: "";
+	width: 17px;
+	height: 17px;
+	display: inline-block;
+	background:none;
+	border: 3px solid #0074D9;
+	border-radius: 50%;
+	position: absolute;
+	left: 17px;
+	top: 3px;
+}
+
+.formula input[type="radio"]:checked + label{
+	padding: 5px 15px;
+	background:#0074D9;
+	border-radius: 2px;
+	color: white;
+}
+
+.formula input[type="radio"]:checked + label:before{
+	display: none;
+}
+
+.habilitados{
+    color:  #026db4; 
+}
+
+#boton{
+    margin: 50px;
+    border: 3px #212f3d;
+    background: #026db4;
+    margin: 50px;
+    padding: 10px 55px;
+    color: #f1f6f7;
+    border-radius: 5px;
+    text-decoration:none; 
+    text-align: center;
+}
+
+#boton:hover{
+    background: #063452;
+    transition: 0.3s;
+}

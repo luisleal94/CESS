@@ -58,7 +58,7 @@
         </form>
         
         <!--Mando el parametro ID del paciente que encontre-->
-        <a href="generarH.jsp?id=<%=rs.getString("idPacientes")%>" >Ver historial</a>
+        <a href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>" >Ver historial</a>
         <a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
         <a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
             
