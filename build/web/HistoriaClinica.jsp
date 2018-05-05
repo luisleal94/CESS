@@ -68,7 +68,8 @@
 	</div>
 
 	<div class="formulario">
-            <form class="formula" method="post" action="#" >
+            <form class="formula" method="post" action="GuardaH" >
+                <input type="text" value="<%=id%>" name="id" style="display: none"><br>
 		<label id="titulo1">Antecedentes Heredofamiliares</label>
 		<div class="contiene_tabla" align="center">
 			<table class="table">
@@ -207,40 +208,40 @@
 			<label id="titulo2">Abitos Higienicos (Numero de veces por semana)</label>
 			<div class="bloque" align="center">
 				<label>Aseo Corporal</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="aseo" id="number" onkeyUp="return ValNumero(this);">
 				<label>Aseo Bucal</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="bucal" id="number" onkeyUp="return ValNumero(this);">
 				<label>Cambio de ropa</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="ropa" id="number" onkeyUp="return ValNumero(this);">
 			</div>
 		
 			<div class="bloque" align="center">
 				<label id="titulo2">Habitos Alimenticios (Numero de veces por semana)</label>
 				<label>Leche</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="leche" id="number" onkeyUp="return ValNumero(this);">
 				<label>Carne</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);">
 				<label>Huevos</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="huevos" id="number" onkeyUp="return ValNumero(this);">
 				<label>Verduras</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="verduras" id="number" onkeyUp="return ValNumero(this);">
 				<label>Cereales</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="cereal" id="number" onkeyUp="return ValNumero(this);">
 				<label>Leguminosas</label>
-				<input type="text" name="cuantos" id="number" onkeyUp="return ValNumero(this);">
+				<input type="text" name="legum" id="number" onkeyUp="return ValNumero(this);">
 			</div>
 			<div class="bloque">
 				<label id="titulo2">INMUNIZACIONES (FECHAS)</label>
 				<label>ANTITETÁNICA</label>
-				<input type="text" name="cuantos">
+				<input type="text" name="tetano">
 				<label>ANTISARAMPIÓN</label>
-				<input type="text" name="cuantos"><br>
+				<input type="text" name="sarampion"><br>
 				<label>ANTIRUBEOLA</label>
-				<input type="text" name="cuantos">
+				<input type="text" name="rubeola">
 				<label>ANTIHEPÁTICA</label>
-				<input type="text" name="cuantos"><br>
+				<input type="text" name="hepatica"><br>
 				<label>DESPARASITACION</label>
-				<input type="text" name="cuantos">
+				<input type="text" name="paracitos">
 			</div>
 
 			<div class="bloque">
@@ -529,7 +530,8 @@
 		</div>
                 <div style="margin: 25px;" >
                     <a id="boton" href="inicio.jsp">Regresar</a>
-                    <a id="boton" href="#">Guardar</a>
+                    <!--<a id="boton" href="#">Guardar</a>-->
+                    <input type="submit" value="Guardar" >
                 </div>
 	</form>
 	</div>

@@ -111,89 +111,120 @@ public class Consulta extends Conexion{
         return false;
     }
     
-    
-    public boolean reg_historial(String id,String origen,String resi,String reli,String esco,String habitos,
-            String toxico,String zoo,String Rh,String Vacun){
-            PreparedStatement pst=null;
-            
-            try{
-            String consulta="insert into Pesonal_NoPat("
-                    + "Origen,Residencia,Religion,Escolaridad,Habitos,Toxiconomias,"
-                    + "Zoonosis,GrupuRh,Vacunacion,Id_Pacientes) values(?,?,?,?,?,?,?,?,?,?)";
-            pst=getConexion().prepareStatement(consulta);
-            
-            pst.setString(1,origen);
-            pst.setString(2,resi);
-            pst.setString(3,reli);
-            pst.setString(4,esco);
-            pst.setString(5,habitos);
-            pst.setString(6,toxico);
-            pst.setString(7,zoo);
-            pst.setString(8,Rh);
-            pst.setString(9,Vacun);
-            pst.setString(10,id);
-            if(pst.executeUpdate()==1){
-                return true;
-            } 
-        }catch(Exception e){
-             System.out.println("Error"+e);
-        }
-        finally{
-            try{
-                if(getConexion()!=null) getConexion().close();
-                if(pst!=null) pst.close();
-            }catch(Exception e){
-                System.out.println("Error"+e);
-            }
-        }   
-        return false;
-    }
-    
-    
-    public boolean historial_texto(String id,String famili,String Patolo,String SisActual,String ApaSis,
-            String EstAux,String Terapeutica){
+    //Metodo para registrar historial    
+    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String id){
         PreparedStatement pst=null;
         
         try{
-            String consulta="insert into Antecedentes("
-                    + "heredofamiliares,Perso_patologicos,Pade_actual,Aparat_sistemas,Estu_auxi,Tera_emple_result,"
-                    + "Id_Pacientes) values(?,?,?,?,?,?,?)";
+            String consulta="insert into ExploracionF(Peso,Talla,IMC,FrecuenciaC,FrecuenciaR,IdPaciente,"
+                    + "Temperatura) values(?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             
-            pst.setString(1,famili);
-            pst.setString(2,Patolo);
-            pst.setString(3,SisActual);
-            pst.setString(4,ApaSis);
-            pst.setString(5,EstAux);
-            pst.setString(6,Terapeutica);
-            pst.setString(7,id);
+            pst.setString(1,peso);
+            pst.setString(2,talla);
+            pst.setString(3,imc);
+            pst.setString(4,FR);
+            pst.setString(5,FC);
+            pst.setString(6,id);
+            pst.setString(7,tem);
             if(pst.executeUpdate()==1){
                 return true;
             } 
         }catch(Exception e){
-            System.out.println("Error"+e);
+            System.out.println("Error "+e);
         }
         finally{
             try{
                 if(getConexion()!=null) getConexion().close();
                 if(pst!=null) pst.close();
             }catch(Exception e){
-                System.out.println("Error"+e);
+                System.out.println("Error "+e);
             }
-        }       
+        }
+        
         return false;
     }
    
-   /*public static void main(String[] args){
+    public boolean historial_NoPato(String aseo,String bucal,String ropa,String leche,String carne,
+            String huevos,String verdura,String legum,String cereal,String id){
+        PreparedStatement pst=null;
+        
+        try{
+             String consulta="insert into NoPatologicos(Aseo,Cepillado,Ropa,Leche,Carne,Huevos,"
+                    + "Verduras,Cereales,Legumbres,idPaciente) values(?,?,?,?,?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, aseo);
+            pst.setString(2, bucal);
+            pst.setString(3, ropa);
+            pst.setString(4,leche);
+            pst.setString(5, carne);
+            pst.setString(6, huevos);
+            pst.setString(7, verdura);
+            pst.setString(8, cereal);
+            pst.setString(9, legum);
+            pst.setString(10, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean historial_Imnume(String tetano,String saram,String rubeola,String hepatica,String parasito,String id){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="insert into Inmune(Tetano,Sarampion,Hepatica,Rubeola,Desparacitacion,idPaciente)"
+                    + " values(?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, tetano);
+            pst.setString(2, saram);
+            pst.setString(3, hepatica);
+            pst.setString(4, rubeola);
+            pst.setString(5, parasito);
+            pst.setString(6, id);
+           
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*public static void main(String[] args){
         Consulta re= new Consulta();
         //re.registro("jose luis","Rosas Leal","1234");
         //re.reg_paciente("Eduardo","Rosas","Leal","21","1234","Ingeniero","Soltero","Tapicer","roll940909","masculino");
         
         /*re.reg_historial("6", "veracruz","La loma","catolica","licenciatura",
-                "gym", "nose","perros", "A+","si");
+                "gym", "nose","perros", "A+","si");*/
         
-        re.historial_texto("8", "ninguno","Alergia al tapcin", "Ninguno", "lleso en el "
-                + "brazo izquierdo", "rayos x", "Estiramiento");
+        /*re.historial_texto("8", "ninguno","Alergia al tapcin", "Ninguno", "lleso en el "
+                + "brazo izquierdo", "rayos x", "Estiramiento");*/
+        /*re.historial_fisica("68","1.78","24.5","36","86xseg","60xSeg","1");*/
+        
+        /*re.historial_NoPato("2", "3","5","3","3","4","6","8","6","1");*/
+        
+        /*re.historial_Imnume("24/54", "11/18", "25/18", "31/18","05/78","1");
     }*/
      
 }

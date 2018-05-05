@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/luis/netbeans/CESS/web/css/estilos.css</file>
-            <file>file:/home/luis/netbeans/CESS/web/css/estiloH.css</file>
-            <file>file:/home/luis/netbeans/CESS/web/index.jsp</file>
+            <file>file:/home/luis/netbeans/CESS/src/java/servlet/GuardaH.java</file>
+            <file>file:/home/luis/netbeans/CESS/src/java/servlet/consultah.java</file>
+            <file>file:/home/luis/netbeans/CESS/src/java/Controlador/Consulta.java</file>
+            <file>file:/home/luis/netbeans/CESS/web/generarH.jsp</file>
+            <file>file:/home/luis/netbeans/CESS/web/HistoriaClinica.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -20,6 +20,10 @@
         <servlet-name>consultah</servlet-name>
         <servlet-class>servlet.consultah</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuardaH</servlet-name>
+        <servlet-class>servlet.GuardaH</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>consultah</servlet-name>
         <url-pattern>/consultah</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardaH</servlet-name>
+        <url-pattern>/GuardaH</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

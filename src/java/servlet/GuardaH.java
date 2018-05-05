@@ -12,49 +12,50 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class consultah extends HttpServlet {
+public class GuardaH extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String id=request.getParameter("id");
-        String origen=request.getParameter("origen");
-        String residencia=request.getParameter("residen");
-        String religion=request.getParameter("reli"); 
-        String escolaridad=request.getParameter("escola");
-        String habitosH=request.getParameter("habitos");
-        String toxiconomia=request.getParameter("toxico");
-        String zoonosis=request.getParameter("zoo");
-        String grupoRg=request.getParameter("gru");
-        String vacunacion=request.getParameter("esq");
+         String id=request.getParameter("id");
+         
+        /*No patologicos*/
+        String aseo=request.getParameter("aseo");
+        String bucal=request.getParameter("bucal");
+        String ropa=request.getParameter("ropa");
+        String leche=request.getParameter("leche");
+        String carne=request.getParameter("carne");
+        String huevos=request.getParameter("huevos");
+        String verdura=request.getParameter("verduras");
+        String cereal=request.getParameter("cereal");
+        String legumbre=request.getParameter("legum");
         
-        String familia=request.getParameter("ant0");
-        String patologicos=request.getParameter("ant1");
-        String actual=request.getParameter("ant2");
-        String ApSistemas=request.getParameter("ant3");
-        String EstAux=request.getParameter("ant4");
-        String terapeutica=request.getParameter("ant5");
+        /*Exploracion fisica*/
+        String peso = request.getParameter("peso");
+        String talla= request.getParameter("talla");
+        String imc= request.getParameter("imc");
+        String temp= request.getParameter("temp");
+        String FR =request.getParameter("fr");
+        String FC= request.getParameter("fc");
+       
+        /*Imnunizacion*/
+        String tetano=request.getParameter("tetano");
+        String sarampion=request.getParameter("sarampion");
+        String rubeola=request.getParameter("rubeola");
+        String hepatica=request.getParameter("hepatica");
+        String parasito=request.getParameter("paracitos");
         
-       // Consulta con= new Consulta();
-        
-        /*if(new Consulta ().reg_historial(id, origen, residencia, religion,escolaridad, habitosH, toxiconomia, 
-                zoonosis,grupoRg, vacunacion)&&
-                new Consulta ().historial_texto(id, familia,patologicos, actual,ApSistemas, EstAux, terapeutica)){
-                response.sendRedirect("historial.jsp");
+        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
+                && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
+                && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)){
+            response.sendRedirect("historial.jsp");
         }else{
             response.sendRedirect("inicio.jsp");
         }
         
-        /*if(con.reg_historial(id, origen, residencia, religion,escolaridad, habitosH, toxiconomia, 
-                zoonosis,grupoRg, vacunacion)){
-            if(con.historial_texto(id, familia,patologicos, actual,ApSistemas, EstAux, terapeutica)){
-                response.sendRedirect("historial.jsp");
-            }
-        }else{
-            response.sendRedirect("pruebas.jsp");
-        }*/
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
