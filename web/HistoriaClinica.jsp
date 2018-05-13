@@ -63,12 +63,12 @@
                 <input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
 		<label>Domicilio</label>
                 <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
-                <input type="text" id="genero" name="genero" value="<%=rs.getString("Genero")%>" style="visibility: hidden;">
+                <input type="text" id="genero" name="genero" value="<%=rs.getString("Genero")%>" style="display: none;" >
                  <% } %>  
 	</div>
 
 	<div class="formulario">
-            <form class="formula" method="post" action="GuardaH" >
+            <form class="formula" method="post" action="GuardarHist" >
                 <input type="text" value="<%=id%>" name="id" style="display: none"><br>
 		<label id="titulo1">Antecedentes Heredofamiliares</label>
 		<div class="contiene_tabla" align="center">

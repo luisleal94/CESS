@@ -21,8 +21,8 @@
         <servlet-class>servlet.consultah</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GuardaH</servlet-name>
-        <servlet-class>servlet.GuardaH</servlet-class>
+        <servlet-name>GuardarHist</servlet-name>
+        <servlet-class>servlet.GuardarHist</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
@@ -45,8 +45,8 @@
         <url-pattern>/consultah</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GuardaH</servlet-name>
-        <url-pattern>/GuardaH</url-pattern>
+        <servlet-name>GuardarHist</servlet-name>
+        <url-pattern>/GuardarHist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
