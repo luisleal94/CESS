@@ -51,8 +51,8 @@
                     <input class="input1" type="text" name="estado_civil" placeholder="Estado Civil" required>
                     <input class="input1" type="text" name="ocupacion" placeholder="Ocupación" required>
                     <input class="input1" type="text" name="curp" placeholder="CURP" required>
-                    Masculino<input  type="radio" name="genero" value="Mascuino" checked>                  
-                    Femenino<input type="radio" name="genero" value="Femenino">
+                    Masculino<input  type="radio" name="genero" value="M" checked>                  
+                    Femenino<input type="radio" name="genero" value="F">
                     <div class="boton">
                     <input class="enter1" type="submit" value="Registrar">
                     <label class="enter2" for="activaventana" id="cierramodal" style="text-align:center">Salir</label>

@@ -34,7 +34,7 @@ public class GuardarHist extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String id=request.getParameter("id");
-        String sexo=request.getParameter("genero");
+        String sexo=request.getParameter("sexo");
         
         /*No patologicos*/
         String aseo=request.getParameter("aseo");

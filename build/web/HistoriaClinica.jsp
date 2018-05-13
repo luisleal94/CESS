@@ -62,8 +62,9 @@
 		<label>Ocupacion</label>
                 <input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
 		<label>Domicilio</label>
+                <label>Genero</label>
                 <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
-                <input type="text" id="genero" name="genero" value="<%=rs.getString("Genero")%>" style="display: none;" >
+                <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;" >
                  <% } %>  
 	</div>
 
