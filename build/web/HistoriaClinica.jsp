@@ -248,16 +248,16 @@
 				<label id="titulo2">Alcoholismo</label><br>
 				<label>¿Ingieres bebidas alcoholicas?</label>
 				<div>
-					<input type="radio" id="si" name="alcol" value="si" onclick="mostrarA()">
+					<input type="radio" id="si" name="alcol" value="Si" onclick="mostrarA()">
 					<label for="si" class="label">Si</label>
 	  				<input type="radio" id="no" name="alcol" value="No" onclick="ocultarA()" checked>
 	  				<label for="no" class="label">No</label>
 				</div>
 	  			<section id="muestraA" style="display: none" class="seccion">
 	  				<label>¿ A QUE EDAD EMPEZASTE A TOMAR ?</label>
-					<input type="text" name="inicio">	
+					<input type="text" name="inicio1">	
 					<label>¿ QUE CANTIDAD DE BEBIDAS INGIERES?</label>
-					<input type="text" name="cantidad">			
+					<input type="text" name="cantidad1">			
 	  			</section> 
 			</div>
 
@@ -265,16 +265,16 @@
 				<label id="titulo2">Tabaquismo</label>
 				<label>¿Fuma?</label>
 				<div>
-					<input type="radio" id="si1" name="fuma" value="si" onclick="mostrarCiga()">
+					<input type="radio" id="si1" name="fuma" value="Si" onclick="mostrarCiga()">
 					<label for="si1" class="label">Si</label>
 	  				<input type="radio" id="no1" name="fuma" value="No" onclick="ocultarCiga()" checked>
 	  				<label for="no1" class="label">No</label>
 				</div>
 				<section id="muestraC" style="display: none;" class="seccion">
 					<label>¿ A QUE EDAD EMPEZASTE A FUMAR?</label>
-					<input type="text" name="inicio">
+					<input type="text" name="inicio2">
 					<label>¿Cuantos cigarros fuma diario</label>
-					<input type="text" name="cantidad">
+					<input type="text" name="cantidad2">
 				</section>
 			</div>
 
@@ -282,7 +282,7 @@
 				<label id="titulo2">Vida sexual</label>
 				<label>¿Has tenido relaciones sexuales?</label>
 				<div>
-					<input type="radio" id="si2" name="rela" value="si" onclick="mostrar()">
+					<input type="radio" id="si2" name="rela" value="Si" onclick="mostrar()">
 					<label for="si2" class="label">Si</label>
 	  				<input type="radio" id="no2" name="rela" value="No" onclick="ocultar()" checked>
 	  				<label for="no2" class="label">No</label>
@@ -290,15 +290,15 @@
 	  			<section id="muestra" style="display: none" class="seccion"> 
 	  				<div id="text">
 	  				<label>¿A QUE EDAD INICIASTE?</label>
-		  			<input type="text" name="inici">
+		  			<input type="text" name="inicio3">
 		  			<label>¿CON QUE FRECUENCIA?</label>
-		  			<input type="text" name="inici"><br>
+		  			<input type="text" name="frecuencia3"><br>
 		  			<label>¿CUÁNTAS PAREJAS HAS TENIDO?</label>
 		  			<input type="text" name="parejas">
 		  			<label>¿CON SEXO SERVIDORAS?</label>
-		  			<input type="text" name="parejas"><br>
+		  			<input type="text" name="servidoras"><br>
 		  			<label>¿USAS PROTECCIÓN, CUAL?</label>
-		  			<input type="text" name="parejas">
+		  			<input type="text" name="proteccion">
                                     </div>
 	  			</section>
 			</div>
@@ -307,16 +307,16 @@
                     <section id="mujer">
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
 			<label>Edad de primera mestruacion</label>
-			<input type="text" name="inici">
+			<input type="text" name="menarca">
 			<label>¿Cada cuantos dias y cuantos dias dura?</label>
-			<input type="text" name="inici"><br>
+			<input type="text" name="duracion"><br>
 			<label>¿Presentas dolor?</label>
-			<input type="text" name="inici">
+			<input type="text" name="dolorM">
 			<label>¿Te obliga a tomar medicamentos?</label>
-			<input type="text" name="inici"><br>
+			<input type="text" name="MedicaM"><br>
 			<label>Te has embarazado</label>
 			<div>
-                            <input type="radio" id="si3" name="embara" value="si" onclick="mostrar2()">
+                            <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()">
                             <label for="si3" class="label">Si</label>
                             <input type="radio" id="no3" name="embara" value="No" onclick="ocultar2()" checked>
                             <label for="no3" class="label">No</label> 
@@ -324,15 +324,15 @@
                             <section id="muestra2" style="display: none;" class="seccion">
   				<div>
   				<label>¿Cuantos embarazos?</label>
-  				<input type="text" name="inici" id="number" onkeyUp="return ValNumero(this);">
+  				<input type="text" name="NoEmba" id="number" onkeyUp="return ValNumero(this);">
   				<label>Abortos</label>
   				<input type="text" name="abortos" id="number" onkeyUp="return ValNumero(this);">
   				<label>Cesareas</label>
   				<input type="text" name="Cesareas" id="number" onkeyUp="return ValNumero(this);">
   				<label>Complicaciones</label>
-  				<input type="text" name="Complicaciones"><br>
+  				<input type="text" name="CompliEmba"><br>
   				<label>Fecha de ultima regla</label>
-  				<input type="text" name="fecha">
+  				<input type="text" name="UltimaRe">
                                 </div>
                             </section>
                     </section>
@@ -344,14 +344,14 @@
   				<label>Antecedentes Quirúrjicos</label>
   			</div>
 			<label>¿Te han intervenido quirúrjicamente?</label>
-			<input type="radio" id="si4" name="quirur" value="si" onclick="mostrar3()">
+			<input type="radio" id="si4" name="ciru" value="Si" onclick="mostrar3()">
 			<label for="si4" class="label">Si</label>
-  			<input type="radio" id="no4" name="quirur" value="No" onclick="ocultar3()" checked> 
+  			<input type="radio" id="no4" name="ciru" value="No" onclick="ocultar3()" checked> 
   			<label for="no4" class="label">No</label>
   			<section id="muestra3" style="display: none;" class="seccion">
   				<div>
 	  				<label>¿De qué?</label>
-	  				<input type="text" name="deque">
+	  				<input type="text" name="causaQ">
 	  				<label>¿En que fecha?</label>
 	  				<input type="text" name="fechaQ">
 	  				<label>Complicaciones</label>
@@ -362,7 +362,7 @@
   				<label>Alergias</label>
   			</div>
   			<label>¿Has presentado alguna reacción alergica?</label>
-  			<input type="radio" id="si5" name="alergia" value="si" onclick="cirujia()">
+  			<input type="radio" id="si5" name="alergia" value="Si" onclick="cirujia()">
   			<label for="si5" class="label">Si</label>
   			<input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()" checked>
   			<label for="no5" class="label">No</label>
