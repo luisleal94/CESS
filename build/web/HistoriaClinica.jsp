@@ -32,12 +32,13 @@
     <body>
        <img src="uv.png" style="float: left; width: 80px; height: 80px;">
 	<div id="encabezado">
-		<label id="cabeza"">HISTORIAL CLÍNICO DEL PACIENTE</label>
+		<label id="cabeza">HISTORIAL CLÍNICO DEL PACIENTE</label>
 	</div>
 
 	<div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
                     String id=request.getParameter("id");
+                    String genero;
                     Conexion con= new Conexion();
                     PreparedStatement pst;
                     ResultSet rs;
@@ -61,16 +62,18 @@
                 <input type="text" name="estado" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
 		<label>Ocupacion</label>
                 <input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
-		<label>Domicilio</label>
-                <label>Genero</label>
+		<label>Domicilio</label>                
                 <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
-                <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;" >
-                 <% } %>  
+                <label>Genero</label>
+                <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
+                <%genero=rs.getString("Genero"); %>
+                <% } %>  
 	</div>
 
 	<div class="formulario">
             <form class="formula" method="post" action="GuardarHist" >
                 <input type="text" value="<%=id%>" name="id" style="display: none"><br>
+                <input type="text" id="sexo" name="sexo" style="display: none"><br>
 		<label id="titulo1">Antecedentes Heredofamiliares</label>
 		<div class="contiene_tabla" align="center">
 			<table class="table">
@@ -540,7 +543,7 @@
     <script>
 		var x = document.getElementById("genero").value;
 		var str2 = "Femenino";
-
+                document.getElementById("sexo").value=x;
 		if(str2==x){
     		document.getElementById("mujer").style.display="block";
     	}else{
