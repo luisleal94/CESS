@@ -401,7 +401,6 @@ public class Consulta extends Conexion{
             pst.setString(4, medica);
             pst.setString(5, Embarazo);
             pst.setString(6, id);
-            pst=getConexion().prepareStatement(consulta);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -422,7 +421,7 @@ public class Consulta extends Conexion{
     public boolean ResGineco(String cuantosEm,String Abortos,String Cesareas,String Compli,String ultRe,String id){
         PreparedStatement pst=null;
         try{
-            String consulta="insert into ResGineco(Cuantos,Abortos,Cesareas,Complicaiones,UltimaRegla,IdPaciente)"
+            String consulta="insert into ResGineco(Cuantos,Abortos,Cesareas,Complicaciones,UltimaRegla,IdPaciente)"
                     + " values(?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, cuantosEm);
@@ -431,7 +430,6 @@ public class Consulta extends Conexion{
             pst.setString(4, Compli);
             pst.setString(5, ultRe);
             pst.setString(6, id);
-            pst=getConexion().prepareStatement(consulta);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -464,7 +462,8 @@ public class Consulta extends Conexion{
         /*re.historial_NoPato("2", "3","5","3","3","4","6","8","6","1");*/
         
         /*re.historial_Imnume("24/54", "11/18", "25/18", "31/18","05/78","1");*/
-        /*re.historial_Sistema1("si", "No","Si","No","No", "si","NO","SI","NO","1");
+        /*re.historial_Sistema1("si", "No","Si","No","No", "si","NO","SI","NO","1");*/
+        /*re.Ginecologo("Si","1 dia","Si","Paracetamol","No","3");
     }*/
      
 }
