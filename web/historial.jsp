@@ -60,7 +60,7 @@
                 <td>            
                     <a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
                     <a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
-                    <a href="generarH.jsp?id=<%=rs.getString("idPacientes")%>">Generar historial</a>
+                    <a href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>">Generar historial</a>
                 </td>
             </tr>
             <% } %>  

@@ -27,7 +27,7 @@ public class registrarP extends HttpServlet {
         String Ecivil=request.getParameter("estado_civil");
         String ocu=request.getParameter("ocupacion");
         String curp=request.getParameter("curp");
-        String sexo=request.getParameter("genero");
+        String sexo=request.getParameter("sexo");
         
         Consulta con= new Consulta();
         if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){

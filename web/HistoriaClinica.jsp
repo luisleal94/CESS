@@ -30,12 +30,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
     </head>
     <body>
-       <img src="uv.png" style="float: left; width: 80px; height: 80px;">
+       <img src="img/uv.jpg" style="float: left; width: 80px; height: 80px;">
 	<div id="encabezado">
 		<label id="cabeza">HISTORIAL CLÍNICO DEL PACIENTE</label>
 	</div>
 
-	<div class="datosPaciente">
+            <div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
                     String id=request.getParameter("id");
                     String genero;
@@ -64,7 +64,6 @@
                 <input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
 		<label>Domicilio</label>                
                 <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
-                <label>Genero</label>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  

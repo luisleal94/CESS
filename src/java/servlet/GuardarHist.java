@@ -250,6 +250,64 @@ public class GuardarHist extends HttpServlet {
                 }
             }
        }else{/*Es hombre*/
+            if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
+                if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
+                    if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
+                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
+                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
+                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
+                                ejercicio, cabeza, id)
+                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
+                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)){
+                            response.sendRedirect("historial.jsp");
+                        }else{
+                            response.sendRedirect("inicio.jsp");
+                        }
+                }else{/*No vicio, Si cirujia*/
+                    if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
+                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
+                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
+                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
+                                ejercicio, cabeza, id)
+                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
+                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)){
+                            response.sendRedirect("historial.jsp");
+                        }else{
+                            response.sendRedirect("inicio.jsp");
+                        }
+                }
+            }else{/*SI vicio*/
+                if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
+                    if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
+                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
+                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
+                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
+                                ejercicio, cabeza, id)
+                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
+                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)){
+                            response.sendRedirect("historial.jsp");
+                        }else{
+                            response.sendRedirect("inicio.jsp");
+                        }
+                }else{/*SI vicio, Si cirujia*/
+                     if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
+                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
+                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
+                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
+                                ejercicio, cabeza, id)
+                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
+                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
+                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)){
+                            response.sendRedirect("historial.jsp");
+                        }else{
+                            response.sendRedirect("inicio.jsp");
+                        }
+                }
+            }
            
        }
     }
