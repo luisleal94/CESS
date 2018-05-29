@@ -33,13 +33,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/estilo2.css">
         <title>CESS UV</title>
+        <style>
+            head,body{
+               background-image: url(img/jj.png);
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
     </head>
     <body >
-        <a href="pruebas.jsp">Buscar historial</a>
-        <a href="inicio.jsp">Inicio</a>
-        <label>Nombre del paciente</label>
-        <input type="text" name="nombre">
-        
+        <div id="contien_link">
+            <a id="link2" href="inicio.jsp">Inicio</a>
+            <a id="link2" href="pruebas.jsp">Buscar historial</a>
+        </div>
+        <div id="contiene_tabla">
         <table id="tabla">
             <tr>
                 <th>Fecha de Ingreso</th>
@@ -48,6 +54,7 @@
                 <th>Apellido Materno</th>
                 <th>Edad</th>
                 <th>Telefono</th>
+                <th>Opciones</th>
             </tr>
              <%  while(rs.next()){  %>
             <tr>
@@ -58,13 +65,14 @@
                 <td><%=rs.getString("Edad")%></td>
                 <td><%=rs.getString("Telefono")%></td>
                 <td>            
-                    <a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
-                    <a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
-                    <a href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>">Generar historial</a>
+                    <a id="link" href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
+                    <a id="link" href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
+                    <a id="link" href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>">Generar historial</a>
                 </td>
             </tr>
             <% } %>  
             
         </table>
+        </div>
     </body>
 </html>

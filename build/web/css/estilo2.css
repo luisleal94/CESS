@@ -155,10 +155,16 @@ head, body {
   text-align: center;
 }
 
+#contiene_tabla{
+    margin-left: 5%;
+    position: relative;
+    margin-right: 5%;
+}
 #tabla{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
+    margin-top: 5%;
 }
 
 #tabla td, #tabla th{
@@ -179,7 +185,54 @@ head, body {
     color: white;
 }
 
+#link{
+    text-decoration: none;
+    display: inline-block;
+    background:    #36ac2a;
+    border-radius: 5px;
+    padding: 3px;
+    color: white;
+    font-weight:700; 
+}
 
+#link:hover{
+    text-decoration: none;
+    display: inline-block;
+    background: #0d530c ;
+    border-radius: 5px;
+    padding: 3px;
+    color: white;
+    font-weight:700; 
+    transition: 0.5s;
+}
+
+#contien_link{
+    width: 90%;
+    margin: 15px;
+}
+
+#link2{
+    text-decoration: none;
+    padding: 5px;
+    display: inline-block;
+    background:  #1798cc ;
+    font-weight:700; 
+    color: white;
+    border-radius: 3px;
+    
+}
+
+#link2:hover{
+    text-decoration: none;
+    padding: 5px;
+    display: inline-block;
+    background:#10688c;
+    font-weight:700; 
+    color: white;
+    border-radius: 3px;
+    transition: 0.2s;
+    
+}
 #activaventana{
     display: block;
 }

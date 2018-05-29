@@ -47,6 +47,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #145a32 ;
+    transition: 0.4s;
 }
 
 #datos {
@@ -62,7 +63,7 @@ input[type=submit]:hover {
 
 #buscar{
     background: #e1edfa ;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
     margin-right: 150px;
     margin-left: 100px;
@@ -87,6 +88,17 @@ input[type=submit]:hover {
     padding: 10px;
     display: inline-block;
     border-radius: 5px;
+    color: white;
+}
+
+#boton0:hover{
+    background: #ec7063;
+    margin:10px;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    transition: 0.3s;
 }
 
 a{
@@ -96,24 +108,45 @@ a{
 
 #boton1:hover{
     background: #2e86c1;
+    transition:0.3s;
 }
 
+#link{
+    text-decoration: none;
+    padding: 3px;
+    display: inline-block;
+    background:  #1798cc ;
+    font-weight:700; 
+    color: white;
+    border-radius: 3px;
+}
+
+#link:hover{
+    text-decoration: none;
+    padding: 3px;
+    display: inline-block;
+    background:#10688c;
+    font-weight:700; 
+    color: white;
+    border-radius: 3px;
+    transition: 0.3s;
+}
 </style>
         <style>
             head,body{
-               background-image: url(img/uu.png);
+               background-image: url(img/jj.png);
                font-family: 'Roboto', sans-serif;
             }
         </style>
     </head>
     <body>
-        <a href="inicio.jsp" style="color:black">Regresar</a>
+        <a id="link" href="inicio.jsp">Regresar</a>
         <div id="buscar">
             <form action="" method="post">
                 <label id="label">Nombre</label>
                 <input type="text" name="nombre">
                 <input type="submit" value="Bucar"> 
-                <div id="boton0" ><a href="historial.jsp" style="color:black">Mostrar tabla</a></div>
+                <div id="boton0" ><a href="historial.jsp">Mostrar tabla</a></div>
             </form>
         </div>
         <!--<form action="" method="post">

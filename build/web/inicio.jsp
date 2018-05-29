@@ -27,7 +27,7 @@
         <title>JSP Page</title>
         <style>
             head,body{
-               background-image: url(img/uu.png);
+               background-image: url(img/jj.png);
                 font-family: 'Roboto', sans-serif;
             }
 		#popup {
@@ -88,7 +88,7 @@ a.popup-cerrar {
 <div class="container3">
   <img src="img/historial.png" width="268" height="289"; alt="Avatar" class="image3">
   <div class="overlay3">
-    <div class="text3">Historial Clínico</div>
+    <div class="text3">Receta Médica</div>
   </div>
 </div>
 <div class="container4">
