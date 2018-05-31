@@ -17,6 +17,17 @@
 	color: #707070;
 }
 
+#link:hover{
+    text-decoration: none;
+    padding: 3px;
+    display: inline-block;
+    background:#10688c;
+    font-weight:700; 
+    color: white;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
 .datosPaciente{
 	margin: 40px;
 	padding: 20px;
@@ -40,6 +51,21 @@
 	padding: 10px;
 	border-bottom: 5px solid ;
 	border-color: rgba(192,192,192,0.3);
+}
+
+.area{
+    max-width: 95%;
+    resize: none;
+    font-family: 'roboto';
+}
+
+.areatexto{
+    margin-top: 15px; 
+    padding: 10px;
+    text-align: left;
+    font-weight: 400;
+    color: #203942;
+    font-size: 18px;
 }
 
 #encuesta{

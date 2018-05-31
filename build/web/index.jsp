@@ -17,7 +17,13 @@
     <title>CESS</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
-</head>
+    <style>
+            head,body{
+               background-image: url(img/jj.png);
+                font-family: 'Roboto', sans-serif;
+            }
+          </style>
+</head> 
 <body>
     <div class="contenedor-form">
         <div class="toggle">
@@ -25,7 +31,7 @@
         </div>
         
         <div class="formulario">
-            <h2 style="text-align: center">Iniciar Sesión</h2>
+            <h2 style="text-align: center">Iniciar Sesión</h2><br>
                  <form action="sesion" method="post">            
                 <input type="text" name="Usuario" placeholder="&#128100; Usuario" required>
                 <input type="password" name="pass" placeholder="&#128273; Contraseña" required>

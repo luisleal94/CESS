@@ -23,6 +23,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
          <link rel="stylesheet" href="css/estilo2.css">
+         <script type="text/javascript" src="js/Validacion.js"></script>
          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
         <title>JSP Page</title>
         <style>
@@ -69,10 +70,16 @@ a.popup-cerrar {
    line-height: 1;
    color:#fff;
 }
+
+#titulo{
+    background: black;
+}
         </style>
     </head>
     <body>
-        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
+        <div id="titulo">
+            <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
+        </div>
 <div class="container">
   <img src="img/agregarpaciente.png" width="268" height="289" alt="Avatar" class="image">
   <div class="overlay">  
@@ -87,15 +94,15 @@ a.popup-cerrar {
 </div>
 <div class="container3">
   <img src="img/historial.png" width="268" height="289"; alt="Avatar" class="image3">
-  <div class="overlay3">
+  <a href="Receta.jsp"><div class="overlay3">
     <div class="text3">Receta Médica</div>
-  </div>
+  </div></a>
 </div>
 <div class="container4">
   <img src="img/consulta.png" width="268" height="289"; alt="Avatar" class="image4">
-  <div class="overlay4">
+  <a href="Consulta.jsp"> <div class="overlay4">
     <div class="text4">Consulta</div>
-  </div>
+  </div></a>
 </div>        
     <div class="modal-wrapper" id="popup">
        <div id="contenido">
@@ -103,8 +110,8 @@ a.popup-cerrar {
 		    <input class="input1" type="text" name="nombre" placeholder="Nombre" required>
 		    <input class="input1" type="text" name="apellido1" placeholder="Apellido Paterno" required><br>
 		    <input class="input1" type="text" name="apellido2" placeholder="Apelllido Materno" required>
-		    <input class="input1" type="number" name="edad" placeholder="Edad" required><br>
-		    <input class="input1" type="text" name="telefono" placeholder="Telefono" required>
+		    <input class="input1" type="text" name="edad" placeholder="Edad" onkeyUp="return ValNumero(this)" required><br>
+                    <input class="input1" type="text" name="telefono" placeholder="Telefono"  onkeyUp="return ValNumero(this)" required>
 		    <input class="input1" type="text" name="domicilio" placeholder="Domicilio" required ><br>
 		    <input class="input1" type="text" name="estado_civil" placeholder="Estado Civil" required>
 		    <input class="input1" type="text" name="ocupacion" placeholder="Ocupación" required><br>

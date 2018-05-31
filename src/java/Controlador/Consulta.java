@@ -446,7 +446,42 @@ public class Consulta extends Conexion{
         }
        return false; 
     }
-        
+      
+    public boolean GenerarConsulta(String id,String peso,String talla,String imc,String temp,String fc,String fr,
+            String padeci,String diagnos,String labora,String tratamiento,String medico){
+            PreparedStatement pst=null;
+        try{
+            String consulta="insert into ResGineco(Cuantos,Abortos,Cesareas,Complicaciones,UltimaRegla,IdPaciente)"
+                    + " values(?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, peso);
+            pst.setString(2, talla);
+            pst.setString(3, imc);
+            pst.setString(4, temp);
+            pst.setString(5, fc);
+            pst.setString(6, fr);
+            pst.setString(7, padeci);
+            pst.setString(8, diagnos);
+            pst.setString(9, labora);
+            pst.setString(6, tratamiento);
+            pst.setString(6, medico);
+            pst.setString(6, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
     /*public static void main(String[] args){
         Consulta re= new Consulta();
         //re.registro("jose luis","Rosas Leal","1234");

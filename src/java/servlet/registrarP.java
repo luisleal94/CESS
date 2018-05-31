@@ -1,8 +1,14 @@
 package servlet;
 
+import Controlador.Conexion;
 import Controlador.Consulta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,8 +37,24 @@ public class registrarP extends HttpServlet {
         
         Consulta con= new Consulta();
         if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){
-            response.sendRedirect("historial.jsp");
-        }else{
+            Conexion conecta= new Conexion();
+            PreparedStatement pst;
+            ResultSet rs;
+            String id="";
+            try {                
+                pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
+                rs=pst.executeQuery();
+                if(rs.next()){
+                    id=rs.getString("idPacientes");
+                }
+                System.out.println(id);
+                request.setAttribute("id",id);
+                request.getRequestDispatcher("HistoriaClinica.jsp").forward(request, response);
+            } catch (Exception ex) {
+                System.out.println("Error"+ex);
+            }
+            //response.sendRedirect("historial.jsp");
+        }else{  
             response.sendRedirect("inicio.jsp");
         }
    

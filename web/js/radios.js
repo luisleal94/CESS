@@ -94,6 +94,22 @@ function ocultarDes(){
 	document.getElementById("despa").style.display="none";
 }
 
+function mostrarOtros(){
+	document.getElementById("otros").style.display="block";
+}
+
+function ocultarOtros(){
+	document.getElementById("otros").style.display="none";
+}
+
+function mostrarOtros2(){
+	document.getElementById("otros2").style.display="block";
+}
+
+function ocultarOtros2(){
+	document.getElementById("otros2").style.display="none";
+}
+
 function ocultarMujer(genero){
     if(genero.value=='Masculino'){
         document.getElementById("mujer").style.display="none"

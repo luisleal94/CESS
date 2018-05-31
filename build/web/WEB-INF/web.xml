@@ -24,6 +24,10 @@
         <servlet-name>GuardarHist</servlet-name>
         <servlet-class>servlet.GuardarHist</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>registrarCon</servlet-name>
+        <servlet-class>servlet.registrarCon</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>GuardarHist</servlet-name>
         <url-pattern>/GuardarHist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registrarCon</servlet-name>
+        <url-pattern>/registrarCon</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

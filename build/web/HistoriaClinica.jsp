@@ -22,7 +22,7 @@
 <html>
     <head>
 	<title>CESS</title>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/estiloH.css">
 	<script type="text/javascript" src="js/radios.js"></script>
@@ -30,14 +30,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
     </head>
     <body>
-       <img src="img/uv.jpg" style="float: left; width: 80px; height: 80px;">
-	<div id="encabezado">
+       <!--<img src="img/uv.jpg" style="float: left; width: 80px; height: 80px;">-->
+	<div id="encabezado" >
 		<label id="cabeza">HISTORIAL CLÍNICO DEL PACIENTE</label>
 	</div>
-
             <div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
                     String id=request.getParameter("id");
+                    System.out.println("Id obtenido:"+id);
                     String genero;
                     Conexion con= new Conexion();
                     PreparedStatement pst;
@@ -81,10 +81,10 @@
 					<th>Vive</th>
 					<th>DM</th>
 					<th>HTA</th>
-					<th>Neoplastia</th>
-					<th>Obecidad</th>
+					<th>Neoplasia</th>
+					<th>Obesidad</th>
 					<th>TBP</th>
-					<th>Cardiopatias</th>
+					<th>Cardiopatías</th>
 					<th>Alergias</th>
 					<th>Mal formaciones</th>
 					<th>Dependencias</th>
@@ -207,8 +207,8 @@
 
 		<div  style="background-color:  #dcf6f2  ">
 
-			<label id="titulo1">Antecedentes Personales No Patologicos</label>
-			<label id="titulo2">Abitos Higienicos (Numero de veces por semana)</label>
+			<label id="titulo1">Antecedentes Personales No Patológicos</label>
+			<label id="titulo2">Habitos Higienicos (Número de veces por semana)</label>
 			<div class="bloque" align="center">
 				<label>Aseo Corporal</label>
 				<input type="text" name="aseo" id="number" onkeyUp="return ValNumero(this);">
@@ -220,12 +220,14 @@
 		
 			<div class="bloque" align="center">
 				<label id="titulo2">Habitos Alimenticios (Numero de veces por semana)</label>
-				<label>Leche</label>
+				<label>Lácteos</label>
 				<input type="text" name="leche" id="number" onkeyUp="return ValNumero(this);">
-				<label>Carne</label>
+				<label>Proteínas</label>
 				<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);">
-				<label>Huevos</label>
-				<input type="text" name="huevos" id="number" onkeyUp="return ValNumero(this);">
+                                <!--<label>Carne</label>
+				<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);">
+				<label>Huevos</label>-
+				<input type="text" name="huevos" id="number" onkeyUp="return ValNumero(this);">-->
 				<label>Verduras</label>
 				<input type="text" name="verduras" id="number" onkeyUp="return ValNumero(this);">
 				<label>Cereales</label>
@@ -239,17 +241,19 @@
 				<input type="text" name="tetano">
 				<label>ANTISARAMPIÓN</label>
 				<input type="text" name="sarampion"><br>
-				<label>ANTIRUBEOLA</label>
+				<label>RUBÉOLA</label>
 				<input type="text" name="rubeola">
-				<label>ANTIHEPÁTICA</label>
-				<input type="text" name="hepatica"><br>
-				<label>DESPARASITACION</label>
+				<!--<label>ANTIHEPÁTICA</label>
+				<input type="text" name="hepatica"><br>-->
+				<label>DESPARASITACIÓN</label>
 				<input type="text" name="paracitos">
+                                <label>ANTI HBS</label>
+				<input type="text" name="hepatitis"> <!--Nuevo agregado-->
 			</div>
 
 			<div class="bloque">
-				<label id="titulo2">Alcoholismo</label><br>
-				<label>¿Ingieres bebidas alcoholicas?</label>
+				<label id="titulo2">Alcohólismo</label><br>
+				<label>¿Ingieres bebidas alcohólicas?</label>
 				<div>
 					<input type="radio" id="si" name="alcol" value="Si" onclick="mostrarA()">
 					<label for="si" class="label">Si</label>
@@ -257,9 +261,9 @@
 	  				<label for="no" class="label">No</label>
 				</div>
 	  			<section id="muestraA" style="display: none" class="seccion">
-	  				<label>¿ A QUE EDAD EMPEZASTE A TOMAR ?</label>
+	  				<label>¿A qué edad empezaste a ingerir alcohól?</label>
 					<input type="text" name="inicio1">	
-					<label>¿ QUE CANTIDAD DE BEBIDAS INGIERES?</label>
+					<label>¿Qué cantidad de bebida ingieres?</label>
 					<input type="text" name="cantidad1">			
 	  			</section> 
 			</div>
@@ -274,9 +278,9 @@
 	  				<label for="no1" class="label">No</label>
 				</div>
 				<section id="muestraC" style="display: none;" class="seccion">
-					<label>¿ A QUE EDAD EMPEZASTE A FUMAR?</label>
+					<label>¿ A qué edad empezaste a fumar?</label>
 					<input type="text" name="inicio2">
-					<label>¿Cuantos cigarros fuma diario</label>
+					<label>¿Cuántos cigarros fuma diario</label>
 					<input type="text" name="cantidad2">
 				</section>
 			</div>
@@ -292,15 +296,15 @@
 				</div>
 	  			<section id="muestra" style="display: none" class="seccion"> 
 	  				<div id="text">
-	  				<label>¿A QUE EDAD INICIASTE?</label>
+	  				<label>¿A qué edad iniciaste?</label>
 		  			<input type="text" name="inicio3">
-		  			<label>¿CON QUE FRECUENCIA?</label>
-		  			<input type="text" name="frecuencia3"><br>
-		  			<label>¿CUÁNTAS PAREJAS HAS TENIDO?</label>
+		  			<!--<label>¿CON QUE FRECUENCIA?</label>
+		  			<input type="text" name="frecuencia3">--><br>
+		  			<label>¿Cuántas parejas has tenido?</label>
 		  			<input type="text" name="parejas">
-		  			<label>¿CON SEXO SERVIDORAS?</label>
-		  			<input type="text" name="servidoras"><br>
-		  			<label>¿USAS PROTECCIÓN, CUAL?</label>
+		  			<!--<label>¿CON SEXO SERVIDORAS?</label>
+		  			<input type="text" name="servidoras">--><br>
+		  			<label>¿Usas preservativo o método anticonceptivo?</label>
 		  			<input type="text" name="proteccion">
                                     </div>
 	  			</section>
@@ -309,15 +313,15 @@
                 <div style="margin: 15px;">
                     <section id="mujer">
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
-			<label>Edad de primera mestruacion</label>
+			<label>Menarca</label>
 			<input type="text" name="menarca">
 			<label>¿Cada cuantos dias y cuantos dias dura?</label>
 			<input type="text" name="duracion"><br>
-			<label>¿Presentas dolor?</label>
+			<label>Dismenorrea</label>
 			<input type="text" name="dolorM">
 			<label>¿Te obliga a tomar medicamentos?</label>
 			<input type="text" name="MedicaM"><br>
-			<label>Te has embarazado</label>
+			<label>Embarazos</label>
 			<div>
                             <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()">
                             <label for="si3" class="label">Si</label>
@@ -326,11 +330,13 @@
 			</div> 
                             <section id="muestra2" style="display: none;" class="seccion">
   				<div>
-  				<label>¿Cuantos embarazos?</label>
-  				<input type="text" name="NoEmba" id="number" onkeyUp="return ValNumero(this);">
-  				<label>Abortos</label>
+  				<label>Gestas</label>
+  				<input type="text" name="gestas" id="number" onkeyUp="return ValNumero(this);"><!--Nuevo-->
+  				<label>Partos</label>
+  				<input type="text" name="Partos" id="number" onkeyUp="return ValNumero(this);"><!--Nuevo-->
+                                <label>Abortos</label>
   				<input type="text" name="abortos" id="number" onkeyUp="return ValNumero(this);">
-  				<label>Cesareas</label>
+  				<label>Cesáreas</label>
   				<input type="text" name="Cesareas" id="number" onkeyUp="return ValNumero(this);">
   				<label>Complicaciones</label>
   				<input type="text" name="CompliEmba"><br>
@@ -342,11 +348,16 @@
                 </div>    
 
 		<div  class="bloque" style="background-color:  #dcf6f2 ">
-			<label id="titulo1">Antecedentes Personales Patológicos</label>
-			<div style="margin: 15px;">
-  				<label>Antecedentes Quirúrjicos</label>
+                    <label id="titulo1">Antecedentes Personales Patológicos</label>
+                        <label>Combe</label>
+                        <input type="radio" id="siC" name="combe" value="Positivo">
+			<label for="siC" class="label">Positivo</label>
+  			<input type="radio" id="noC" name="combe" value="Negativo" checked> 
+                        <label for="noC" class="label">Negativo</label>
+                        <div style="margin: 15px;">
+  				<label>Antecedentes Quirúrgicos</label>
   			</div>
-			<label>¿Te han intervenido quirúrjicamente?</label>
+			<label>¿Te han intervenido quirúrgicamente?</label>
 			<input type="radio" id="si4" name="ciru" value="Si" onclick="mostrar3()">
 			<label for="si4" class="label">Si</label>
   			<input type="radio" id="no4" name="ciru" value="No" onclick="ocultar3()" checked> 
@@ -364,13 +375,13 @@
   			<div style="margin: 15px;">
   				<label>Alergias</label>
   			</div>
-  			<label>¿Has presentado alguna reacción alergica?</label>
+  			<label>¿Has presentado alguna reacción alérgica?</label>
   			<input type="radio" id="si5" name="alergia" value="Si" onclick="cirujia()">
   			<label for="si5" class="label">Si</label>
   			<input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()" checked>
   			<label for="no5" class="label">No</label>
 	  			<section id="ciru" style="display: none;" class="seccion">
-	  				<label>¿En que fecha?</label>
+	  				<label>¿En qué fecha?</label>
 	  				<input type="text" name="fechaA">
 	  				<label>¿Algún medicamento, alimento, sustancia, etc?</label>
 	  				<input type="text" name="medicA">
@@ -378,7 +389,7 @@
   			<div style="margin: 15px;">
   				<label>Enfermedades</label>
   			</div>
-  			<label>¿Eres diabetico?</label>
+  			<label>¿Eres diabético?</label>
   			<input type="radio" id="si6" name="diabe" value="Si" onclick="mostrarDiabe()">
   			<label for="si6" class="label">Si</label>
   			<input type="radio" id="no6" name="diabe" value="No" onclick="ocultarDiabe()" checked>
@@ -392,7 +403,7 @@
   				<input type="text" name="compliDA">
   			</section><br>
   			<div style="margin: 10px">
-  				<label>¿Eres hipertenso</label>
+  				<label>¿Eres hipertenso?</label>
 	  			<input type="radio" id="si7" name="hiper" value="Si" onclick="mostrarH()">
 	  			<label for="si7" class="label">Si</label>
 	  			<input type="radio" id="no7"  name="hiper" value="No" onclick="ocultarH()" checked>
@@ -417,12 +428,22 @@
 	  			<label>¿Desde cuando?</label>
 		  		<input type="text" name="cuandoConv">
 		  		<label>¿Qué las ocaciona?</label>
-		  		<input type="text" name="ocaciona">
+                                <input type="text" name="ocaciona"><br>
 		  		<label>¿Con qué medicamento te controlas?</label>
 			  	<input type="text" name="medicConv">
 			  	<label>¿Has presentado alguna complicación?</label>
 			  	<input type="text" name="compliConv">
-	  		</section>
+                        </section>
+                        <br><label>Otros</label>
+		  	<input type="radio" id="siOtros" name="otros" value="Si" onclick="mostrarOtros()">
+		  	<label for="siOtros" class="label">Si</label>
+	  		<input type="radio" id="noOtros" name="otros" value="No" onclick="ocultarOtros()" checked> 
+	  		<label for="noOtros" class="label">No</label>
+                        <section id="otros" style="display: none;" class="seccion">
+                            <div class="areatexto">
+                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            </div>
+                        </section>
   		</div>
 		
 		<div class="bloque" style="background-color:  #dcf6f2 ">
@@ -458,7 +479,7 @@
 		  	<label for="si12" class="label">Si</label>
 	  		<input type="radio" id="no12" name="vomito" value="No" checked> 
 	  		<label for="no12" class="label">No</label><br>
-  			<br><label>¿Tienes agruras?</label>
+  			<!--<br><label>¿Tienes agruras?</label>
   			<input type="radio" id="si13" name="agruras" value="Si" >
 		  	<label for="si13" class="label">Si</label>
 	  		<input type="radio" id="no13" name="agruras" value="No" checked> 
@@ -473,7 +494,7 @@
 	  				<input type="text" name="cuandoDes">
 	  				<label>¿Con qué?</label>	
 	  				<input type="text" name="conqueDes">	
-	  			</section>
+	  			</section>-->                     
 	  		<div style="margin: 15px;">
   				<label>Sistema respiratorio</label>
   			</div>
@@ -487,20 +508,20 @@
 		  	<label for="si16" class="label">Si</label>
 	  		<input type="radio" id="no16" name="pecho" value="No" checked> 
 	  		<label for="no16" class="label">No</label>
-  			<br><br><label>¿Dolor de esplada?</label>
+  			<!--<br><br><label>¿Dolor de esplada?</label>
   			<input type="radio" id="si17" name="esplada" value="Si">
 		  	<label for="si17" class="label">Si</label>
 	  		<input type="radio" id="no17" name="esplada" value="No" checked> 
-	  		<label for="no17" class="label">No</label>
+	  		<label for="no17" class="label">No</label>-->
 	  		<div style="margin: 15px;">
   				<label>Sistema circulatorio</label>
   			</div>
-  			<label>¿Tienes palpitaciones?</label>
+  			<!--<label>¿Tienes palpitaciones?</label>
   			<input type="radio" id="si18" name="palpita" value="Si">
 		  	<label for="si18" class="label">Si</label>
 	  		<input type="radio" id="no18" name="palpita" value="No" checked> 
-	  		<label for="no18" class="label">No</label>
-  			<br><br><label>¿Presentas fatiga al realizar ejercicios fisicos?</label>
+	  		<label for="no18" class="label">No</label>-->
+  			<label>¿Presentas fatiga al realizar ejercicios fisicos?</label>
   			<input type="radio" id="si19" name="fatiga" value="Si">
 		  	<label for="si19" class="label">Si</label>
 	  		<input type="radio" id="no19" name="fatiga" value="No" checked> 
@@ -510,6 +531,16 @@
 		  	<label for="si20" class="label">Si</label>
 	  		<input type="radio" id="no20" name="dolCab" value="No" checked> 
 	  		<label for="no20" class="label">No</label>
+                        <br><label>Otros</label>
+		  	<input type="radio" id="siOtros2" name="otros2" value="Si" onclick="mostrarOtros2()">
+		  	<label for="siOtros2" class="label">Si</label>
+	  		<input type="radio" id="noOtros2" name="otros2" value="No" onclick="ocultarOtros2()" checked> 
+	  		<label for="noOtros2" class="label">No</label>
+                        <section id="otros2" style="display: none;" class="seccion">
+                            <div class="areatexto">
+                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            </div>
+                        </section>
 		</div>
 		
 		<div class="bloque" style="background-color:  #dcf6f2 ">

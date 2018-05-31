@@ -184,7 +184,5 @@ a{
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            
     <% } %>
-    
-    
     </body>
 </html>
