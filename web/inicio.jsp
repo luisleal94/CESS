@@ -48,7 +48,7 @@
    bottom:0;
    margin:0;
    z-index: 999;
-   transition:all 1.2s;
+   transition:all 0.8s;
 }
 .popup-contenedor {
    position: relative;
@@ -117,9 +117,9 @@ a.popup-cerrar {
 		    <input class="input1" type="text" name="ocupacion" placeholder="Ocupación" required><br>
 		    <input class="input1" type="text" name="curp" placeholder="CURP" required><br>
 		   	<div>
-				<input type="radio" id="hombre" name="sexo" value="Hombre" checked>
+				<input type="radio" id="hombre" name="sexo" value="Masculino" checked>
 				<label for="hombre" class="label">Masculino</label>
-				<input type="radio" id="Mujer" name="sexo" value="Mujer">
+				<input type="radio" id="Mujer" name="sexo" value="Femenino">
 				<label for="Mujer" class="label">Femenino</label> 
 			</div> 
 		    <div class="boton">

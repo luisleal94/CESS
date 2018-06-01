@@ -110,6 +110,47 @@ function ocultarOtros2(){
 	document.getElementById("otros2").style.display="none";
 }
 
+function mostrarOtros3(){
+	document.getElementById("otros3").style.display="block";
+}
+
+function ocultarOtros3(){
+	document.getElementById("otros3").style.display="none";
+}
+
+function mostrarOtros4(){
+	document.getElementById("otros4").style.display="block";
+}
+
+function ocultarOtros4(){
+	document.getElementById("otros4").style.display="none";
+}
+
+function mostrarCana(){
+	document.getElementById("mostrarCana").style.display="block";
+}
+
+function ocultarCana(){
+	document.getElementById("mostrarCana").style.display="none";
+}
+
+function mostrargabi(){
+	document.getElementById("mostrarGabi").style.display="block";
+}
+
+function ocultargabi(){
+	document.getElementById("mostrarGabi").style.display="none";
+}
+
+function mostrarlabo(){
+	document.getElementById("mostrarLabo").style.display="block";
+}
+
+function ocultarlabo(){
+	document.getElementById("mostrarLabo").style.display="none";
+}
+
+
 function ocultarMujer(genero){
     if(genero.value=='Masculino'){
         document.getElementById("mujer").style.display="none"

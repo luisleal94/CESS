@@ -80,6 +80,7 @@ input[type=submit]:hover {
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
+    width: 15%;
 }
 
 #boton0{
@@ -149,12 +150,6 @@ a{
                 <div id="boton0" ><a href="historial.jsp">Mostrar tabla</a></div>
             </form>
         </div>
-        <!--<form action="" method="post">
-            <a href="historial.jsp">Mostrar tabla de pacientes</a>
-            <p>Nombre</p>
-            <input name="nombre" type="text">
-            <input type="submit" value="Bucar">            
-        </form>-->
         <div id="datos">
       <% //Busqueda por nombre del usuario a buscar
           String nombre=request.getParameter("nombre");
@@ -167,7 +162,8 @@ a{
         while(rs.next()){
     %>
          <h2>Datos del paciente</h2>
-         
+         <form  action="" method="post">
+            <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
             <label id="titulos">Nombre</label>
             <input type="text" name="nombre" value="<%=rs.getString("Nombre")%>" disabled style="color: #273746" ><br>
             <label id="titulos">Apellido Paterno</label>
@@ -178,9 +174,14 @@ a{
             <input type="text" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746"><br>
             <label id="titulos">Telefono</label>
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746"><br>       
-            <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>
-            <div id="boton1" ><a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar paciente</a></div>
-            <div id="boton1"><a href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>" >Ver historial</a></div>
+            <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    
+            <!--<div id="boton1" ><a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar paciente</a></div>
+            <div id="boton1"><a href="HistoriaClinica.jsp?ID=<%=rs.getString("idPacientes")%>" >Ver historial</a></div>-->
+            <!--<input type="submit" id="boton1" value="Eliminar">-->
+            <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
+            <!--<input type="submit" id="boton1" value="Actualizar datos" onclick=this.form.action="EdicionPaciente">-->
+                       
+         </form>
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            
     <% } %>

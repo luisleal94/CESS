@@ -61,6 +61,27 @@
                 resize: none;
                 font-family: 'roboto';
             }
+            
+            #link{
+                text-decoration: none;
+                padding: 3px;
+                display: inline-block;
+                background:  #1798cc ;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+            }
+
+            #link:hover{
+                text-decoration: none;
+                padding: 3px;
+                display: inline-block;
+                background:#10688c;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+                transition: 0.3s;
+            }
         </style>
     </head>
     <body>
@@ -70,6 +91,7 @@
             <h1>SISTEMA DE ATENCIÓN INTEGRAL A LA SALUD (SAISUV)</h1>
             <h1>RECETA MÉDICA</h1>
         </div>
+        <a id="link" href="inicio.jsp">Regresar</a>
         <div  class="receta">
             <label>No. De Personal</label>
             <input type="text">

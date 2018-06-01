@@ -28,6 +28,14 @@
         <servlet-name>registrarCon</servlet-name>
         <servlet-class>servlet.registrarCon</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PasarParamentros</servlet-name>
+        <servlet-class>servlet.PasarParamentros</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EdicionPaciente</servlet-name>
+        <servlet-class>servlet.EdicionPaciente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>registrarCon</servlet-name>
         <url-pattern>/registrarCon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PasarParamentros</servlet-name>
+        <url-pattern>/PasarParamentros</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EdicionPaciente</servlet-name>
+        <url-pattern>/EdicionPaciente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -16,6 +16,7 @@
     </head>
     <body>
         <%
+            //String id=request.getAttribute("id").toString();
             String id=request.getParameter("id");
             Conexion con= new Conexion();
             PreparedStatement pst;

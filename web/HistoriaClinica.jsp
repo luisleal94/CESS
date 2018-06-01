@@ -36,7 +36,8 @@
 	</div>
             <div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
-                    String id=request.getParameter("id");
+                    String id=request.getAttribute("id").toString();//El que obtengo del serlevt
+                    //String iD=request.getParameter("id");  //El que se manda por herf
                     System.out.println("Id obtenido:"+id);
                     String genero;
                     Conexion con= new Conexion();
@@ -68,7 +69,7 @@
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
 	</div>
-
+        <div style="margin: 15px;"><a id="link" href="inicio.jsp">Inicio</a></div>
 	<div class="formulario">
             <form class="formula" method="post" action="GuardarHist" >
                 <input type="text" value="<%=id%>" name="id" style="display: none"><br>
@@ -478,23 +479,17 @@
   			<input type="radio" id="si12" name="vomito" value="Si">
 		  	<label for="si12" class="label">Si</label>
 	  		<input type="radio" id="no12" name="vomito" value="No" checked> 
-	  		<label for="no12" class="label">No</label><br>
-  			<!--<br><label>¿Tienes agruras?</label>
-  			<input type="radio" id="si13" name="agruras" value="Si" >
-		  	<label for="si13" class="label">Si</label>
-	  		<input type="radio" id="no13" name="agruras" value="No" checked> 
-	  		<label for="no13" class="label">No</label><br>
-  			<br><label>¿Te has desparasitado?</label>
-  			<input type="radio" id="si14" name="despa" value="Si" onclick="mostrarDes()">
-		  	<label for="si14" class="label">Si</label>
-	  		<input type="radio" id="no14" name="despa" value="No" onclick="ocultarDes()" checked> 
-	  		<label for="no14" class="label">No</label>
-	  			<section id="despa" style="display: none; margin-left: 15px;" class="seccion">
-	  				<label>¿Desde cuando?</label>
-	  				<input type="text" name="cuandoDes">
-	  				<label>¿Con qué?</label>	
-	  				<input type="text" name="conqueDes">	
-	  			</section>-->                     
+	  		<label for="no12" class="label">No</label><br>  
+                        <br><label>Otros</label>
+		  	<input type="radio" id="siOtros3" name="otros3" value="Si" onclick="mostrarOtros3()">
+		  	<label for="siOtros3" class="label">Si</label>
+	  		<input type="radio" id="noOtros3" name="otros3" value="No" onclick="ocultarOtros3()" checked> 
+	  		<label for="noOtros3" class="label">No</label>
+                        <section id="otros3" style="display: none;" class="seccion">
+                            <div class="areatexto">
+                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            </div>
+                        </section>                        
 	  		<div style="margin: 15px;">
   				<label>Sistema respiratorio</label>
   			</div>
@@ -507,20 +502,20 @@
   			<input type="radio" id="si16" name="pecho" value="Si">
 		  	<label for="si16" class="label">Si</label>
 	  		<input type="radio" id="no16" name="pecho" value="No" checked> 
-	  		<label for="no16" class="label">No</label>
-  			<!--<br><br><label>¿Dolor de esplada?</label>
-  			<input type="radio" id="si17" name="esplada" value="Si">
-		  	<label for="si17" class="label">Si</label>
-	  		<input type="radio" id="no17" name="esplada" value="No" checked> 
-	  		<label for="no17" class="label">No</label>-->
+	  		<label for="no16" class="label">No</label>  
+                        <br><label>Otros</label>
+		  	<input type="radio" id="siOtros4" name="otros4" value="Si" onclick="mostrarOtros4()">
+		  	<label for="siOtros4" class="label">Si</label>
+	  		<input type="radio" id="noOtros4" name="otros4" value="No" onclick="ocultarOtros4()" checked> 
+	  		<label for="noOtros4" class="label">No</label>
+                        <section id="otros4" style="display: none;" class="seccion">
+                            <div class="areatexto">
+                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            </div>
+                        </section>       
 	  		<div style="margin: 15px;">
   				<label>Sistema circulatorio</label>
-  			</div>
-  			<!--<label>¿Tienes palpitaciones?</label>
-  			<input type="radio" id="si18" name="palpita" value="Si">
-		  	<label for="si18" class="label">Si</label>
-	  		<input type="radio" id="no18" name="palpita" value="No" checked> 
-	  		<label for="no18" class="label">No</label>-->
+  			</div>  			
   			<label>¿Presentas fatiga al realizar ejercicios fisicos?</label>
   			<input type="radio" id="si19" name="fatiga" value="Si">
 		  	<label for="si19" class="label">Si</label>
@@ -541,23 +536,7 @@
                             <textarea class="area" cols="150" rows="5" autofocus></textarea>
                             </div>
                         </section>
-		</div>
-		
-		<div class="bloque" style="background-color:  #dcf6f2 ">
-			<label id="titulo1">Exploracion Física</label>
-			<label>Peso (Kg)</label>
-			<input type="text" name="peso" onkeyUp="return decimales(this);" >
-			<label>Talla (mts)</label>
-			<input type="text" name="talla" onkeyUp="return decimales(this);">
-			<label>IMC</label>
-			<input type="text" name="imc" ><br>
-			<label>Temperatura</label>
-			<input type="text" name="temp" onkeyUp="return decimales(this);">
-			<label>Frecuencia Cardiaca</label>
-			<input type="text" name="fc"><br>
-			<label>Frecuencia Respiratoria</label>
-			<input type="text" name="fr" onkeyUp="return decimales(this);">
-		</div>
+                </div>
 		<div id="medico">
 			<label>Medico Tratante</label>
                         <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
