@@ -1,0 +1,29 @@
+head, body {
+    background-image: url(img/jj.png);
+    font-family: 'Roboto', sans-serif;
+}
+.salir{
+    background: orange;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    margin-left:87%;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.salir:hover{
+    background:  #e74c3c;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    margin-left:87%;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+.link{
+    text-decoration: none;
+    color: white;
+}

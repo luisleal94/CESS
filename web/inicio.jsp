@@ -10,8 +10,17 @@
     //Obtengo atributo
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
+    String gerarquia=(String)sesion.getAttribute("Gerarquia");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
+    }
+    else{
+        if(gerarquia.equals("Admin")){
+            response.sendRedirect("CessAdmin.jsp"); 
+        }
+        if(gerarquia.equals("Super")){
+            response.sendRedirect("CessSuper.jsp"); 
+        }
     }
     /*if(usuario.equals("")){
         response.sendRedirect("index.jsp"); 
@@ -74,11 +83,41 @@ a.popup-cerrar {
 #titulo{
     background: black;
 }
+
+.salir{
+    background: orange;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    margin-left:87%;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.salir:hover{
+    background:  #e74c3c;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    margin-left:87%;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+.link{
+    text-decoration: none;
+    color: white;
+}
         </style>
     </head>
     <body>
         <div id="titulo">
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
+        </div>
+        <div class="salir">
+            <label><% out.println(usuario.toUpperCase());%> </label><br>
+            <a class="link" href="out">Cerrar sesión</a> 
         </div>
 <div class="container">
   <img src="img/agregarpaciente.png" width="268" height="289" alt="Avatar" class="image">

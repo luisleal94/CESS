@@ -389,3 +389,27 @@ head, body {
 #formulario input[type="radio"]:checked + label:before{
   display: none;
 }
+
+/*CESS SUPER*/
+.salir{
+    background: orange;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    margin-left:87%;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.salir:hover{
+    background:  #e74c3c;
+    padding: 5px;
+    width: 10%;
+    text-align: center;
+    margin-left:87%;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+

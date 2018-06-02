@@ -1,8 +1,11 @@
 package servlet;
 
+import Controlador.Conexion;
 import Controlador.Consulta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,14 +27,50 @@ public class sesion extends HttpServlet {
         //Obtengo parametros de mi base de datos
         String usuario=request.getParameter("Usuario");
         String pass=request.getParameter("pass");
-        
+        String id="";
+        String gerarquia="";
         Consulta co= new Consulta();
         if(co.login(usuario, pass)){
-            //Creo la variable sesion
-            HttpSession sesion= request.getSession(true);
-            sesion.setAttribute("Usuario", usuario);
+            Conexion conecta= new Conexion();
+            PreparedStatement pst;
+            ResultSet rs;
+            try {                
+                pst=conecta.getConexion().prepareStatement("select *from PERSONAL where NOMBRE='"+usuario+"' and PASSWORD='"+pass+"'");
+                rs=pst.executeQuery();
+                while(rs.next()){
+                    //id=rs.getString("ID_");
+                    gerarquia=rs.getString("Gerarquia");                    
+                }
+                System.out.println(id);
+                System.out.println(gerarquia);
+               
+                if(gerarquia.equals("Super")){
+                    HttpSession sesion= request.getSession(true);
+                    sesion.setAttribute("Usuario", usuario);
+                    sesion.setAttribute("Gerarquia", gerarquia);
+                    response.sendRedirect("CessSuper.jsp");
+                }
+                if(gerarquia.equals("Admin")){
+                    HttpSession sesion= request.getSession(true);
+                    sesion.setAttribute("Usuario", usuario);
+                    sesion.setAttribute("Gerarquia", gerarquia);
+                    response.sendRedirect("CessAdmin.jsp");
+                }
+                if(gerarquia.equals("usuario")){
+                    HttpSession sesion= request.getSession(true);
+                    sesion.setAttribute("Usuario", usuario);
+                    sesion.setAttribute("Gerarquia", gerarquia);
+                    response.sendRedirect("inicio.jsp");
+                }
             
-            response.sendRedirect("inicio.jsp");
+                
+            } catch (Exception ex) {
+                System.out.println("Error"+ex);
+            }
+            //Creo la variable sesion
+            /*HttpSession sesion= request.getSession(true);
+            sesion.setAttribute("Usuario", usuario);
+            response.sendRedirect("inicio.jsp");*/
         }else{
             response.sendRedirect("index.jsp");
         }
