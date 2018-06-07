@@ -54,6 +54,7 @@ public class registrarP extends HttpServlet {
                 System.out.println("Error"+ex);
             }
             //response.sendRedirect("historial.jsp");
+            System.out.println("Registrado");
         }else{  
             response.sendRedirect("inicio.jsp");
         }

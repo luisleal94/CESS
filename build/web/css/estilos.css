@@ -16,14 +16,16 @@ body{
 }
 
 .contenedor-form{
-    position: relative;
-    background-color:rgba( 9, 180, 113,0.7);
+    position: absolute;
+    background-color:rgba( 9, 180, 113,0.1);
     width: 100%;
     max-width: 500px;
     margin: 48px auto;
     color: #fff;   
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 40px;
+    left:50%;
+    top: 8%;
 }
 
 .contenedor-form .toggle{
@@ -60,19 +62,20 @@ contenedor-form h2{
 .contenedor-form input[type="text"],
 .contenedor-form input[type="password"]{
     outline: none;
-    background: white;
+    /*background-color:rgba( 9, 180, 113,0.3);*/
     display: block;
     width: 100%;
     padding: 10px 15px;
     color: black;
     border: none;
     border-radius: 2px;
-    border-bottom: 4px solid  #4a9879;
+    border-bottom: 3px solid  #4a9879;
     font-family: Roboto;
     font-size: 14px;
     font-weight: normal;
     margin: 0 0 20px 0;
     transition: all .5s ease;
+    
 }
 
 .contenedor-form input[type="text"]:focus,
@@ -105,4 +108,10 @@ contenedor-form h2{
 
 .contenedor-form .formulario:nth-child(2){
     display: block;
+}
+
+.imagen{
+    position: absolute;
+    left: 15%;
+    top: 20%;
 }

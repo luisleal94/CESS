@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
 import Controlador.Consulta;
@@ -12,23 +17,30 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class resgistrar extends HttpServlet {
+public class registrarPersonal extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre= request.getParameter("nombre");
-        String apellido =request.getParameter("apellido");
-        String contra = request.getParameter("pass");
+        String nombre=request.getParameter("nombre");
+        String apellido=request.getParameter("apellido");
+        String pass=request.getParameter("pass");
+        String tele=request.getParameter("tele");
+        //String domi=request.getParameter("domicilio");
+        String espe=request.getParameter("Especialidad");
+        String cedula=request.getParameter("Cedula");
+        String gerar=request.getParameter("gerar");
+        String user=request.getParameter("user");
         
         Consulta con= new Consulta();   
         
-       /* if(con.registro(nombre, apellido,contra)){
-            response.sendRedirect("index.jsp");
+        if(con.registro(nombre, apellido, pass, tele, espe, gerar, cedula,user)){
+            response.sendRedirect("CessSuper.jsp");
         }else{
-            response.sendRedirect("index.jsp");
-        }*/
+            response.sendRedirect("CessSuper.jsp");
+        }
+        
         
     }
 

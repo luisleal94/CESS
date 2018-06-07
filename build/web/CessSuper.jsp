@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    //Obtengo atributo
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
     if(usuario==null){
@@ -21,9 +20,6 @@
             response.sendRedirect("inicio.jsp"); 
         }
     }
-    /*if(usuario.equals("")){
-        response.sendRedirect("index.jsp"); 
-    }*/
 %>
 
 <!DOCTYPE html>
@@ -46,8 +42,37 @@
         </div>
         <h1>Hola super administrador</h1>
         <div class="salir">
-            <label><% out.println(usuario.toUpperCase());%> </label><br>
+            <label><% out.println(usuario);%> </label><br>
             <a class="link" href="out">Cerrar sesión</a> 
         </div>
+                    
+        <div class="container3">
+        <img src="img/admin.png" width="268" height="289" alt="Avatar" class="image3">
+            <a href="Personal.jsp"><div class="overlay3">
+              <div class="text3">Agregar Personal CESS</div>
+            </div></a>
+        </div>
+   
+        <div class="container5">
+            <img src="img/person.png" width="268" height="289" alt="Avatar" class="image5">
+                <a href="MostrarPersonal.jsp"><div class="overlay5">
+                  <div class="text5">Listado de Personal</div>
+                </div></a>
+        </div>
+                    
+        <div class="container2">
+        <img src="img/busqueda.png" width="268" height="289" alt="Avatar" class="image2">
+            <a href="pruebas.jsp"><div class="overlay2">
+              <div class="text2">Pacientes</div>
+            </div></a>
+        </div>
+            
+        <div class="container4">
+            <img src="img/consulta.png" width="268" height="289"; alt="Avatar" class="image4">
+            <a href="Consulta.jsp"> <div class="overlay4">
+              <div class="text4">Consulta</div>
+            </div></a>
+        </div>
+            
     </body>
 </html>

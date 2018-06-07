@@ -16,7 +16,7 @@ public class Consulta extends Conexion{
         ResultSet rs=null;
             
         try{
-           String consulta="select *from PERSONAL where NOMBRE=? and PASSWORD=?"; 
+           String consulta="select *from PERSONAL where Username=? and PASSWORD=?"; 
            pst = getConexion().prepareStatement(consulta);
            pst.setString(1,usuario);
            pst.setString(2,pass);
@@ -40,16 +40,20 @@ public class Consulta extends Conexion{
     }
     
     //Metodo para registro de personal CESS
-    public boolean registro(String user,String apellido,String pass){
+    public boolean registro(String user,String apellido,String pass,String tele,String Espe,String gerar,String cedula,String username){
         PreparedStatement pst=null;
         
         try{
-            String consulta="insert into PERSONAL(NOMBRE,APELLIDO,PASSWORD) values(?,?,?)";
+            String consulta="insert into PERSONAL(NOMBRE,APELLIDO,PASSWORD,telefono,Gerarquia,Cedula,Username,Especialidad) values(?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, user);
             pst.setString(2, apellido);
-            pst.setString(3, pass);
-            
+            pst.setString(3, pass);     
+            pst.setString(4, tele);
+            pst.setString(5, gerar);
+            pst.setString(6, cedula);
+            pst.setString(7, username);
+            pst.setString(8, username);
             if(pst.executeUpdate()==1){
                 return true;
             }
@@ -76,12 +80,12 @@ public class Consulta extends Conexion{
         int anio=calender.get(Calendar.YEAR);
         fecha=dia+"-"+mes+"-"+anio;
         System.out.println(fecha);
-        
+        String status="0";
          PreparedStatement pst=null;
          
          try{
             String consulta="insert into Pacientes(fecha,Nombre,Apellido_P,Apellido_M,Edad,telefono,"
-                    + "Ocupacion,EstadoC,Domicilio,Curp,Genero) values(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Ocupacion,EstadoC,Domicilio,Curp,Genero,Historial) values(?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, fecha);
             pst.setString(2, nombre);
@@ -94,6 +98,7 @@ public class Consulta extends Conexion{
             pst.setString(9, domicilio);
             pst.setString(10, curp.toUpperCase()); //La covierto a mayuscula
             pst.setString(11, genero);
+            pst.setString(12, status);
             if(pst.executeUpdate()==1){
                 return true;
             }
@@ -146,23 +151,22 @@ public class Consulta extends Conexion{
     }
    
     public boolean historial_NoPato(String aseo,String bucal,String ropa,String leche,String carne,
-            String huevos,String verdura,String legum,String cereal,String id){
+            String verdura,String legum,String cereal,String id){
         PreparedStatement pst=null;
         
         try{
-             String consulta="insert into NoPatologicos(Aseo,Cepillado,Ropa,Leche,Carne,Huevos,"
-                    + "Verduras,Cereales,Legumbres,idPaciente) values(?,?,?,?,?,?,?,?,?,?)";
+             String consulta="insert into NoPatologicos(Aseo,Cepillado,Ropa,Leche,Carne,"
+                    + "Verduras,Cereales,Legumbres,idPaciente) values(?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, aseo);
             pst.setString(2, bucal);
             pst.setString(3, ropa);
             pst.setString(4,leche);
-            pst.setString(5, carne);
-            pst.setString(6, huevos);
-            pst.setString(7, verdura);
-            pst.setString(8, cereal);
-            pst.setString(9, legum);
-            pst.setString(10, id);
+            pst.setString(5, carne);           
+            pst.setString(6, verdura);
+            pst.setString(7, cereal);
+            pst.setString(8, legum);
+            pst.setString(9, id);
             if(pst.executeUpdate()==1){
                 return true;
             } 

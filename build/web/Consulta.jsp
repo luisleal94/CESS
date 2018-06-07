@@ -83,7 +83,7 @@ input[type=submit]:hover {
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
-    width: 15%;
+    width: 20%;
 }
 
 #boton0{
@@ -243,7 +243,7 @@ input[type="radio"]{
         </div>
         <div class="datos">
       <% //Busqueda por nombre del usuario a buscar
-          String nombre=request.getParameter("nombre");
+        String nombre=request.getParameter("nombre");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
@@ -353,7 +353,8 @@ input[type="radio"]{
             </div>        
             <div class="botones" >
                 <!--<input id="boton1" type="submit" value="Nota Médica">-->
-                <input id="boton1" type="submit" value="Generar Consulta">
+                <input id="boton1" type="submit" value="Generar Consulta y Receta">
+                <input id="boton1" type="submit" value="Generar Consulta y Arancel">
                 <!--<div id="boton1" ><a href="#">Nota Médica</a></div>
                 <!--<div id="boton1"><a href="#" >Generar Consulta</a></div>-->
             </div>

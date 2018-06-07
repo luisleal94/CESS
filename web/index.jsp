@@ -25,29 +25,22 @@
           </style>
 </head> 
 <body>
+    <div class="imagen">
+           <img src="img/Logo.gif" width="278" height="299" class="ima">
+        </div>
     <div class="contenedor-form">
         <div class="toggle">
             <!--<span> Crear Cuenta</span>-->
-        </div>
+        </div>        
         
         <div class="formulario">
-            <h2 style="text-align: center">Iniciar Sesión</h2><br>
+            <h2 style="text-align: center; color: #404140" >Iniciar Sesión</h2><br>
                  <form action="sesion" method="post">            
                     <input type="text" name="Usuario" placeholder="&#128100; Usuario" required>
                     <input type="password" name="pass" placeholder="&#128273; Contraseña" required>
-                    <input type="submit" value="Iniciar sesión">
+                    <input type="submit" value="Ingresar">
                 </form>
             </div>
-        
-       <!--<div class="formulario">
-                <h2>Cuenta Personal CESS</h2>
-                <form action="resgistrar" method="post">
-                <input type="text" name="nombre" placeholder="Nombre" required>
-                <input type="text" name="apellido" placeholder="Apellido" required>
-                <input type="password" name="pass" placeholder="Contraseña" required>
-                <input type="submit" value="Registrarse">
-                </form>              
-            </div>-->
     </div>
     <script src="js/jquery-3.1.1.min.js"></script>    
     <script src="js/main.js"></script>

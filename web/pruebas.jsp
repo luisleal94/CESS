@@ -10,12 +10,17 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
 <%
-    HttpSession sesion=request.getSession(false); //Sesion
     //Obtengo atributo
-    
+    HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
+    }
+    else{
+        String gerarquia=(String)sesion.getAttribute("Gerarquia");
+        if(gerarquia.equals("usuario")){
+            response.sendRedirect("inicio.jsp"); 
+        }
     }
 %>
 <!DOCTYPE html>
@@ -132,6 +137,10 @@ a{
     border-radius: 3px;
     transition: 0.3s;
 }
+
+form{
+    text-align: center;
+}
 </style>
         <style>
             head,body{
@@ -141,12 +150,12 @@ a{
         </style>
     </head>
     <body>
-        <a id="link" href="inicio.jsp">Regresar</a>
+        <a id="link" href="CessSuper.jsp">Regresar</a>
         <div id="buscar">
             <form action="" method="post">
                 <label id="label">Nombre</label>
                 <input type="text" name="nombre">
-                <input type="submit" value="Bucar"> 
+                <input type="submit" value="Buscar"> 
                 <div id="boton0" ><a href="historial.jsp">Mostrar tabla</a></div>
             </form>
         </div>
@@ -172,7 +181,7 @@ a{
             <input type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" disabled style="color: #273746"><br>
             <label id="titulos">Edad</label>
             <input type="text" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746"><br>
-            <label id="titulos">Telefono</label>
+            <label id="titulos">Teléfono</label>
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746"><br>       
             <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    
             <!--<div id="boton1" ><a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar paciente</a></div>

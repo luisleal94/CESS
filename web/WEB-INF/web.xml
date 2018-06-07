@@ -36,6 +36,10 @@
         <servlet-name>EdicionPaciente</servlet-name>
         <servlet-class>servlet.EdicionPaciente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>registrarPersonal</servlet-name>
+        <servlet-class>servlet.registrarPersonal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>EdicionPaciente</servlet-name>
         <url-pattern>/EdicionPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registrarPersonal</servlet-name>
+        <url-pattern>/registrarPersonal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

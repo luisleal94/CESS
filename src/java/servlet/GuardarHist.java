@@ -42,7 +42,6 @@ public class GuardarHist extends HttpServlet {
         String ropa=request.getParameter("ropa");
         String leche=request.getParameter("leche");
         String carne=request.getParameter("carne");
-        String huevos=request.getParameter("huevos");
         String verdura=request.getParameter("verduras");
         String cereal=request.getParameter("cereal");
         String legumbre=request.getParameter("legum");
@@ -59,19 +58,22 @@ public class GuardarHist extends HttpServlet {
         String tetano=request.getParameter("tetano");
         String sarampion=request.getParameter("sarampion");
         String rubeola=request.getParameter("rubeola");
-        String hepatica=request.getParameter("hepatica");
+        String hepatica=request.getParameter("hepatitis");
         String parasito=request.getParameter("paracitos");
         
         /*Sistema 1*/
         String estomago=request.getParameter("estomago");
         String Vomito=request.getParameter("vomito");
-        String agruras=request.getParameter("agruras");
+        String otros3=request.getParameter("otros3");
+        
         String tos=request.getParameter("tos");
         String pecho=request.getParameter("pecho");
-        String espalda=request.getParameter("esplada");
-        String palpitaciones=request.getParameter("palpita");
+        String otros4=request.getParameter("otros4");
+        
         String ejercicio=request.getParameter("fatiga");
         String cabeza=request.getParameter("dolCab");
+        String otros2=request.getParameter("otros2");
+        
         
         /*Vicios*/
         String toma=request.getParameter("alcol");
@@ -82,17 +84,15 @@ public class GuardarHist extends HttpServlet {
         String inicioF=request.getParameter("inicio2"); //Inicio de fumar
         String cantidadF=request.getParameter("cantidad2"); //Cuanto fuma
         String inicioR=request.getParameter("inicio3"); //Inicio de relaciones
-        String frecuenciaR=request.getParameter("frecuencia3");
-        String parejaR=request.getParameter("parejas");
-        String servidoras=request.getParameter("servidoras");
         String protec=request.getParameter("proteccion");
         
         /*Patologicos*/
+        String combre=request.getParameter("combe");
         String cirujia=request.getParameter("ciru");
         String alergia=request.getParameter("alergia");
         String diabetes=request.getParameter("diabe");
         String hiper=request.getParameter("hiper");
-        String convul=request.getParameter("convul");
+        //String convul=request.getParameter("convul");
         String causaQ=request.getParameter("causaQ");
         String fechaQ=request.getParameter("fechaQ");
         String CompQ=request.getParameter("CompQ");
@@ -104,212 +104,22 @@ public class GuardarHist extends HttpServlet {
         String fechaHi=request.getParameter("cuandoHI");
         String medicHI=request.getParameter("medicHI");
         String compliHI=request.getParameter("compliHI");
-        String fechaConv=request.getParameter("cuandoConv");
+        String texto=request.getParameter("texto");
+        
+        /*String fechaConv=request.getParameter("cuandoConv");
         String CausaConv=request.getParameter("ocaciona");
         String medicConv=request.getParameter("medicConv");
-        String compliConv=request.getParameter("compliConv");
+        String compliConv=request.getParameter("compliConv");*/
+        
+        if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)){
+            //String id=request.getParameter("id");
+            request.setAttribute("id",id);
+            request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+            //response.sendRedirect("Consulta.jsp");
+        }else{
+            response.sendRedirect("inicio.jsp");
+        }
 
-        if(sexo.equals("Femenino")){
-            String menarca=request.getParameter("menarca");
-            String duracionM=request.getParameter("duracion");
-            String dolorM=request.getParameter("dolorM");
-            String MedicaM=request.getParameter("MedicaM");
-            String embara=request.getParameter("embara");
-            if(embara.equals("Si")){
-                String NoEmba=request.getParameter("NoEmba");
-                String abortos=request.getParameter("abortos");
-                String Cesareas=request.getParameter("Cesareas");
-                String CompliEmba=request.getParameter("CompliEmba");
-                String UltimaRe=request.getParameter("UltimaRe");
-                if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
-                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)
-                            &&new Consulta().ResGineco(NoEmba, abortos, Cesareas, CompliEmba, UltimaRe, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }else{/*Si cirujia Si alerjia*/
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)
-                            &&new Consulta().ResGineco(NoEmba, abortos, Cesareas, CompliEmba, UltimaRe, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }
-                }else{/*Si toma Si fuma Si rela*/
-                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)
-                            &&new Consulta().ResGineco(NoEmba, abortos, Cesareas, CompliEmba, UltimaRe, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }else{/*Si cirujia Si alerjia*/
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            && new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)
-                            &&new Consulta().ResGineco(NoEmba, abortos, Cesareas, CompliEmba, UltimaRe, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }
-                }
-            }else{/*No embarazo*/
-                if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
-                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }else{/*si cirujia */
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }
-                }else{/*Si toma*/
-                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }else{/*Si cirujia*/
-                        if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)
-                            &&new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                    }
-                }
-            }
-       }else{/*Es hombre*/
-            if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
-                if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
-                    if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                }else{/*No vicio, Si cirujia*/
-                    if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                }
-            }else{/*SI vicio*/
-                if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")&&convul.equals("No")){
-                    if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                }else{/*SI vicio, Si cirujia*/
-                     if(new Consulta().historial_fisica(peso, talla, imc, temp, FR, FC, id)
-                            && new Consulta().historial_NoPato(aseo, bucal, ropa, leche, carne, huevos, verdura, legumbre, cereal, id)
-                            && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatica, parasito, id)
-                            && new Consulta().historial_Sistema1(estomago, Vomito, agruras, tos, pecho, espalda, palpitaciones,
-                                ejercicio, cabeza, id)
-                            &&new Consulta().historial_Vicio(toma, fuma, relacion, id)
-                            &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,frecuenciaR,parejaR,servidoras,protec, id)
-                            &&new Consulta().Patologicos(cirujia, alergia, diabetes, hiper, convul, id)
-                            &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI, fechaConv, CausaConv, medicConv, compliConv, id)){
-                            response.sendRedirect("historial.jsp");
-                        }else{
-                            response.sendRedirect("inicio.jsp");
-                        }
-                }
-            }
-           
-       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -27,7 +27,7 @@ public class registrarCon extends HttpServlet {
         String tratamiento=request.getParameter("tratamiento");
         String medico=request.getParameter("medico");
                 
-        
+        response.sendRedirect("Receta.jsp");
        
     }
 

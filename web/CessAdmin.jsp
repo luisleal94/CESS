@@ -20,9 +20,6 @@
             response.sendRedirect("inicio.jsp"); 
         }
     }
-    /*if(usuario.equals("")){
-        response.sendRedirect("index.jsp"); 
-    }*/
 %>
 
 <!DOCTYPE html>
@@ -45,8 +42,27 @@
         </div>
         <h1>Hola Administrador</h1>
         <div class="salir">
-            <label><% out.println(usuario.toUpperCase());%> </label><br>
+            <label><% out.println(usuario);%> </label><br>
             <a class="link" href="out">Cerrar sesión</a> 
+        </div>
+        <div class="container2">
+            <img src="img/busqueda.png" width="268" height="289" alt="Avatar" class="image2">
+            <a href="pruebas.jsp"><div class="overlay2">
+              <div class="text2">Pacientes</div>
+            </div></a>
+        </div>
+        <div class="container1">
+            <img src="img/person.png" width="268" height="289" alt="Avatar" class="image1">
+            <a href="#"><div class="overlay1">
+              <div class="text1">Historial de Consultas</div>
+            </div></a>
+        </div>
+            
+        <div class="container3">
+            <img src="img/historial.png" width="268" height="289" alt="Avatar" class="image3">
+            <a href="Receta.jsp"><div class="overlay3">
+              <div class="text3">Receta Médica</div>
+            </div></a>
         </div>
     </body>
 </html>

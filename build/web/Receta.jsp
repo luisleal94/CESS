@@ -23,6 +23,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
+        <script type="text/javascript" src="js/app.js"></script>
         <title>CESS</title>
         <style>
             head,body{
@@ -82,6 +83,44 @@
                 border-radius: 3px;
                 transition: 0.3s;
             }
+            
+            .contiendeTa{
+    position: relative;
+    /*background: #ecfdf4;*/
+    width: 50%;
+    font-size:15px;
+    margin-left:25%;
+    margin-right: 30px; 
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.contiendeTa input[type=text]{
+               width: 70%;
+            }
+            
+            #myTableData {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#myTableData td, #myTableData th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#myTableData tr:nth-child(even){background-color: #f2f2f2;}
+
+#myTableData tr:hover {background-color: #ddd;}
+
+#myTableData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
         </style>
     </head>
     <body>
@@ -107,26 +146,69 @@
             <input type="text"><br>
             <label>Nombre del Dependiente Económico</label>
             <input type="text">
+        </div>
             <div class="medicamento">
-                <label>Plan de Tratamiento</label><br>
-                <textarea class="area" cols="50" rows="5" autofocus></textarea><br>
-                <label>Controlado</label>
-                <input type="text"><br>            
-                <label>Nombre del Medicamento</label>
-                <input type="text">
-                <label>F. Farmaceutica</label>
-                <input type="text">
-                <label>Unidades</label>
-                <input type="text"><br>
-                <label>Vía Admon.</label>
-                <input type="text">
-                <label>Presentación</label>
-                <input type="text">
-                <label>Pzas.</label>
-                <input type="text">
-                <label>Dosis</label>
-                <input type="text">                
+                <div id="myform">
+                    <div class="contiendeTa">
+                        <table cellpadding="3" id="table">
+                            <tr>
+                                <td>Nombre del medicamento</td>
+                                <td><input type="text" id="name"></td>
+                            <tr>
+                            <td>F.Farmaceutica</td>
+                                <td><input size="4" type="text" id="formaf"></td>
+                                 </tr>
+                                    <td>Unidades</td>
+                                    <td><input siparcetamolze="6" type="text" id="unidades"></td>
+                            <tr>
+                                                <td>Via.Admon</td>
+                                                <td><input size="6" type="text" id="viaa"></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Presentación</td>
+                                                <td><input type="text" id="presentacion"></td>
+                                        </tr>
+                                                <td>Pzas</td>
+                                                <td><input size="4" type="text" id="pzas"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>dosis</td>
+                                        <td><input type="text" id="dosis">
+                                    </tr>
+                                    <tr>
+                                                <td>cada</td>
+                                        <td><input size="4" type="text" id="cada">
+                                                <td>Por</td>
+                                                <td><input size="6" type="text" id="dias">
+                                                <td>Días</td>
+                                        </td>
+                                    </tr>
+                        </table>
+                        </div>
+                        <div class="boton">
+                                <input type="button" id="add" class="input" value="Agregar +" onclick="Javascript:addRow()">
+                        </div>	
+                </div>   
             </div>
+        <div id="mydata">
+            <b>Medicamentos</b>
+                    <div class="tabla2">
+                            <table id="myTableData"  border="1" cellpadding="3">
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th><b>Nombre</b></th>
+                                    <th><b>dosis</b></th>
+                                            <th><b>f.farmaceutica</b></th>
+                                            <th><b>unidades</b></th>
+                                            <th><b>via.admon</b></th>
+                                            <th><b>presentacion</b></th>
+                                            <th><b>piezas</b></th>
+                                            <th><b>cada</b></th>
+                                            <th><b>dias</b></th>
+                                </tr>
+                            </table>
+                    </div>
+            &nbsp;<br/>
         </div>
         <div class="doctor">
                 <label>Medico Tratante</label>

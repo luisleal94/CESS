@@ -35,7 +35,7 @@ public class sesion extends HttpServlet {
             PreparedStatement pst;
             ResultSet rs;
             try {                
-                pst=conecta.getConexion().prepareStatement("select *from PERSONAL where NOMBRE='"+usuario+"' and PASSWORD='"+pass+"'");
+                pst=conecta.getConexion().prepareStatement("select *from PERSONAL where Username='"+usuario+"' and PASSWORD='"+pass+"'");
                 rs=pst.executeQuery();
                 while(rs.next()){
                     //id=rs.getString("ID_");

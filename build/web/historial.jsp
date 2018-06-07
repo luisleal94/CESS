@@ -18,9 +18,6 @@
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
-    /*if(usuario.equals("")){
-        response.sendRedirect("index.jsp"); 
-    }*/
     Conexion con= new Conexion();
     PreparedStatement pst;
     ResultSet rs;

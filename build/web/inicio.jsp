@@ -116,7 +116,7 @@ a.popup-cerrar {
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
         </div>
         <div class="salir">
-            <label><% out.println(usuario.toUpperCase());%> </label><br>
+            <label><% out.println(usuario);%> </label><br>
             <a class="link" href="out">Cerrar sesión</a> 
         </div>
 <div class="container">
@@ -124,12 +124,6 @@ a.popup-cerrar {
   <div class="overlay">  
    <a href="#popup" class="popup-link" style="text-decoration:none" id="text" >Agregar Paciente</a>
   </div>
-</div>
-<div class="container2">
-  <img src="img/busqueda.png" width="268" height="289"; alt="Avatar" class="image2">
-  <a href="pruebas.jsp"><div class="overlay2">
-    <div class="text2">Búsqueda</div>
-  </div></a>
 </div>
 <div class="container3">
   <img src="img/historial.png" width="268" height="289"; alt="Avatar" class="image3">
