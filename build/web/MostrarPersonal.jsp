@@ -56,6 +56,7 @@
                 <th>Gerarquia</th>
                 <th>Cédula</th>
                 <th>Especialidad</th>
+                <th></th>
             </tr>
              <%  while(rs.next()){  %>
             <tr>

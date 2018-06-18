@@ -15,14 +15,13 @@
     HttpSession sesion=request.getSession(false); //Sesion    
     String usuario=(String)sesion.getAttribute("Usuario");
     String gerarquia="";
+    String cedula="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }else{
         gerarquia=(String)sesion.getAttribute("Gerarquia");
+        cedula=(String)sesion.getAttribute("Cedula");
         System.out.println("Geraquia:"+gerarquia);
-        if(gerarquia.equals("Super")){
-            response.sendRedirect("CessSuper.jsp"); 
-        }
     }
 %>
 <!DOCTYPE html>
@@ -218,7 +217,7 @@
 		<div  style="background-color:  #dcf6f2  ">
 
 			<label id="titulo1">Antecedentes Personales No Patológicos</label>
-			<label id="titulo2">Habitos Higienicos</label>
+			<label id="titulo2">Hábitos Higienicos</label>
 			<div class="bloque" align="center">
 				<label>Aseo Corporal</label>
 				<input type="text" name="aseo" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
@@ -241,16 +240,15 @@
 				<label>Leguminosas</label>
 				<input type="text" name="legum" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
 			</div>
-			<div class="bloque">
+			
+                        <div class="bloque">
 				<label id="titulo2">INMUNIZACIONES (FECHAS)</label>
 				<label>ANTITETÁNICA</label>
 				<input type="text" name="tetano">
 				<label>ANTISARAMPIÓN</label>
 				<input type="text" name="sarampion"><br>
 				<label>RUBÉOLA</label>
-				<input type="text" name="rubeola">			
-				<label>DESPARASITACIÓN</label>
-				<input type="text" name="paracitos">
+				<input type="text" name="rubeola">				
                                 <label>ANTI HBS</label>
 				<input type="text" name="hepatitis"> <!--Nuevo agregado-->
 			</div>
@@ -411,18 +409,16 @@
   			</div>
   			<section id="hiper" style="display: none;" class="seccion">
   				<label>¿Desde cuando?</label>
-	  					<input type="text" name="cuandoHI">
-	  					<label>¿Con qué medicamento te controlas?</label>
-		  				<input type="text" name="medicHI">
-		  				<label>¿Has presentado alguna complicación?</label>
-		  				<input type="text" name="compliHI">
-		  				<label>¿Presentas convulciones?
-		  		</label>
+	  			<input type="text" name="cuandoHI">
+	  			<label>¿Con qué medicamento te controlas?</label>
+		  		<input type="text" name="medicHI">
+		  		<label>¿Has presentado alguna complicación?</label>
+		  		<input type="text" name="compliHI">		  		
   			</section>  			
-                        <br><label>Otros Síntomas</label>
-		  	<input type="radio" id="siOtros" name="otros" value="Si" onclick="mostrarOtros()">
+                        <br><label>Otros</label>
+		  	<input type="radio" id="siOtros" name="otrosP" value="Si" onclick="mostrarOtros()">
 		  	<label for="siOtros" class="label">Si</label>
-	  		<input type="radio" id="noOtros" name="otros" value="No" onclick="ocultarOtros()" checked> 
+	  		<input type="radio" id="noOtros" name="otrosP" value="No" onclick="ocultarOtros()" checked> 
 	  		<label for="noOtros" class="label">No</label>
                         <section id="otros" style="display: none;" class="seccion">
                             <div class="areatexto">
@@ -464,14 +460,14 @@
 		  	<label for="si12" class="label">Si</label>
 	  		<input type="radio" id="no12" name="vomito" value="No" checked> 
 	  		<label for="no12" class="label">No</label><br>  
-                        <br><label>Otros Síntomas</label>
+                        <br><label>Otros</label>
 		  	<input type="radio" id="siOtros3" name="otros3" value="Si" onclick="mostrarOtros3()">
 		  	<label for="siOtros3" class="label">Si</label>
 	  		<input type="radio" id="noOtros3" name="otros3" value="No" onclick="ocultarOtros3()" checked> 
 	  		<label for="noOtros3" class="label">No</label>
                         <section id="otros3" style="display: none;" class="seccion">
                             <div class="areatexto">
-                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            <textarea class="area" name="texto3" cols="150" rows="5" autofocus></textarea>
                             </div>
                         </section>                        
 	  		<div style="margin: 15px;">
@@ -487,14 +483,14 @@
 		  	<label for="si16" class="label">Si</label>
 	  		<input type="radio" id="no16" name="pecho" value="No" checked> 
 	  		<label for="no16" class="label">No</label>  
-                        <br><label>Otros Síntomas</label>
+                        <br><label>Otros</label>
 		  	<input type="radio" id="siOtros4" name="otros4" value="Si" onclick="mostrarOtros4()">
 		  	<label for="siOtros4" class="label">Si</label>
 	  		<input type="radio" id="noOtros4" name="otros4" value="No" onclick="ocultarOtros4()" checked> 
 	  		<label for="noOtros4" class="label">No</label>
                         <section id="otros4" style="display: none;" class="seccion">
                             <div class="areatexto">
-                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            <textarea class="area" name="texto4" cols="150" rows="5" autofocus></textarea>
                             </div>
                         </section>       
 	  		<div style="margin: 15px;">
@@ -510,27 +506,29 @@
 		  	<label for="si20" class="label">Si</label>
 	  		<input type="radio" id="no20" name="dolCab" value="No" checked> 
 	  		<label for="no20" class="label">No</label>
-                        <br><label>Otros Síntomas</label>
+                        <br><label>Otros</label>
 		  	<input type="radio" id="siOtros2" name="otros2" value="Si" onclick="mostrarOtros2()">
 		  	<label for="siOtros2" class="label">Si</label>
 	  		<input type="radio" id="noOtros2" name="otros2" value="No" onclick="ocultarOtros2()" checked> 
 	  		<label for="noOtros2" class="label">No</label>
                         <section id="otros2" style="display: none;" class="seccion">
                             <div class="areatexto">
-                            <textarea class="area" cols="150" rows="5" autofocus></textarea>
+                            <textarea class="area"  name="texto2" cols="150" rows="5" autofocus></textarea>
                             </div>
                         </section>
                 </div>
 		<div id="medico">
 			<label>Medico Tratante</label>
                         <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                        <label>Cédula</label>
+                        <input type="text" name="medico" value="<% out.println(cedula);%>" disabled style="color:#063452">
 		</div>
                 <div style="margin: 25px;" >
                      <a id="boton" href="inicio.jsp">Regresar</a>
                     <%
                         if(gerarquia.equals("Admin")){%>
            
-                            <a id="boton" href="inicio.jsp">Actualizar Historial Clínico</a>
+                            <input id="boton" type="submit" value="Generar Consulta">
                                               
                         <%
                         }else{  %>            

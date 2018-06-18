@@ -150,19 +150,19 @@ public class Consulta extends Conexion{
         return false;
     }
    
-    public boolean historial_NoPato(String aseo,String bucal,String ropa,String leche,String carne,
+    public boolean historial_NoPato(String aseo,String bucal,String ropa,String lacteos,String prote,
             String verdura,String legum,String cereal,String id){
         PreparedStatement pst=null;
         
         try{
-             String consulta="insert into NoPatologicos(Aseo,Cepillado,Ropa,Leche,Carne,"
+             String consulta="insert into NoPatologicos(Aseo,Cepillado,Ropa,Lacteos,Proteinas,"
                     + "Verduras,Cereales,Legumbres,idPaciente) values(?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, aseo);
             pst.setString(2, bucal);
             pst.setString(3, ropa);
-            pst.setString(4,leche);
-            pst.setString(5, carne);           
+            pst.setString(4,lacteos);
+            pst.setString(5, prote);           
             pst.setString(6, verdura);
             pst.setString(7, cereal);
             pst.setString(8, legum);
@@ -184,19 +184,18 @@ public class Consulta extends Conexion{
         return false;
     }
     
-    public boolean historial_Imnume(String tetano,String saram,String rubeola,String hepatica,String parasito,String id){
+    public boolean historial_Imnume(String tetano,String saram,String rubeola,String hepatitis,String id){
         PreparedStatement pst=null;
         
         try{
-            String consulta="insert into Inmune(Tetano,Sarampion,Hepatica,Rubeola,Desparacitacion,idPaciente)"
-                    + " values(?,?,?,?,?,?)";
+            String consulta="insert into Inmune(Tetano,Sarampion,Rubeola,hepatitis,idPaciente)"
+                    + " values(?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, tetano);
             pst.setString(2, saram);
-            pst.setString(3, hepatica);
-            pst.setString(4, rubeola);
-            pst.setString(5, parasito);
-            pst.setString(6, id);
+            pst.setString(3, rubeola);
+            pst.setString(4, hepatitis);
+            pst.setString(5, id);
            
             if(pst.executeUpdate()==1){
                 return true;
@@ -216,26 +215,23 @@ public class Consulta extends Conexion{
     }
     
     
-    public boolean historial_Sistema1(String estoma,String Vomi,String agru,String tos,String pecho,
-            String espalda,String palpitaciones, String ejercicio,String cabeza,String id){
+    public boolean historial_Sistema1(String estoma,String Vomi,String tos,String pecho,
+            String ejercicio,String cabeza,String id){
         PreparedStatement pst=null;
         
         try{
-            String consulta="insert into Sistema1(DolorEstomago,Nauseas,Agruras,Tos,DolorPecho,"
-                + "Espalda,Palpitaciones,Fatiga,DolorCabeza,idPaciente)"
-                    + " values(?,?,?,?,?,?,?,?,?,?)";
+            String consulta="insert into Sistema1(DolorEstomago,Nauseas,Tos,"
+                + "DolorPecho,Fatiga,DolorCabeza,idPaciente)"
+                    + " values(?,?,?,?,?,?,?)";
             
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, estoma);
-            pst.setString(2, Vomi);
-            pst.setString(3, agru);
-            pst.setString(4, tos);
-            pst.setString(5, pecho);
-            pst.setString(6, espalda);
-            pst.setString(7, palpitaciones);
-            pst.setString(8, ejercicio);
-            pst.setString(9, cabeza);
-            pst.setString(10, id);
+            pst.setString(2, Vomi);          
+            pst.setString(3, tos);
+            pst.setString(4, pecho);            
+            pst.setString(5, ejercicio);
+            pst.setString(6, cabeza);
+            pst.setString(7, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -253,6 +249,60 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean historial_Sistema1_2(String id,String estre,String diarrea,String tex1,String text2,String text3){
+        PreparedStatement pst=null;
+        try{
+            String consulta="insert into Sistema1_2(Estreñimiento,Diarrea,IdPaciente,Otros2,Otros3,Otros4)"
+                    + " values(?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, estre);
+            pst.setString(2, diarrea);
+            pst.setString(3, id);
+            pst.setString(4, tex1);
+            pst.setString(5, text2);
+            pst.setString(6, text3);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean historial_resSistema1_2(String frecEs,String FrecDia,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="insert into ResSistema1_2(FrecuenciaEstre,FrecuenciaDia,idPaciente)"
+                    + " values(?,?,?)";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, frecEs);
+            pst.setString(2, FrecDia);
+            pst.setString(3, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }    
     public boolean historial_Vicio(String toma,String fuma,String rela,String id){
         PreparedStatement pst=null;
         
@@ -283,13 +333,13 @@ public class Consulta extends Conexion{
     
     
     public boolean ResVicio(String resT,String resT2,String resF,String resF2,String resR1,String resR2,
-            String resR3,String resR4,String resR5,String id){
+            String resR3,String id){
         PreparedStatement pst=null;
         
         try{
             String consulta="insert into ResVicios(EdadInicio,CantidadAlco,EdadFum,CigarrosDia,"
-                    + "EdadRela,Frecuencia,NoParejas,Sexoservidoras,Proteccion,IdPaciente)"
-                    + " values(?,?,?,?,?,?,?,?,?,?)";
+                    + "EdadRela,NoParejas,Proteccion,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?,?)";
            
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, resT);
@@ -298,10 +348,8 @@ public class Consulta extends Conexion{
             pst.setString(4, resF2);
             pst.setString(5, resR1);
             pst.setString(6, resR2);
-            pst.setString(7, resR3);
-            pst.setString(8, resR4);
-            pst.setString(9, resR5);
-            pst.setString(10, id);
+            pst.setString(7, resR3);          
+            pst.setString(8, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -319,19 +367,20 @@ public class Consulta extends Conexion{
         return false;
     }
     
-    public boolean Patologicos(String cirujia,String alergia,String diabetes,String hiper,String convul,String id){
+    public boolean Patologicos(String combe,String cirujia,String alergia,String diabetes,String hiper,String texto,String id){
         PreparedStatement pst=null;
         
         try{
-            String consulta="insert into Patologicos(Cirujia,Alergia,Diabetico,Hipertenso,Convulciones,idPaciente)"
-                    + " values(?,?,?,?,?,?)";
+            String consulta="insert into Patologicos(Combe,Cirujia,Alergia,Diabetico,Hipertenso,OtrosPato,idPaciente)"
+                    + " values(?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
-            pst.setString(1, cirujia);
-            pst.setString(2, alergia);
-            pst.setString(3, diabetes);
-            pst.setString(4, hiper);
-            pst.setString(5, convul);
-            pst.setString(6, id);
+            pst.setString(1, combe);
+            pst.setString(2, cirujia);
+            pst.setString(3, alergia);
+            pst.setString(4, diabetes);
+            pst.setString(5, hiper);
+            pst.setString(6, texto);
+            pst.setString(7, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -352,13 +401,13 @@ public class Consulta extends Conexion{
     
     public boolean ResPatolo(String causaQ,String fechaQ,String CompQ,String fechaA,String cual,
             String cuandoDA,String medicDA,String compliDA,String cuandoHI,String medicHI,String compliHI,
-            String cuandoConv,String causaCon,String medicConv,String compliConv,String id){
+            String id){
         PreparedStatement pst=null;
         try{
             String consulta="insert into ResPatologicos(fechaQ,CausaQ,ComplicacionesQ,"
                     + "FechaA,CuasaA,FechaDia,MedicamentoDia,ComplicacionesDia,CuandoHi,"
-                    + "MedicamentoHi,CompliDia,FechaCon,CausaCon,MedicamentoCon,ConplicacionCon,idPacientes)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "MedicamentoHi,CompliDia,idPacientes)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, causaQ);
             pst.setString(2, fechaQ);
@@ -370,12 +419,8 @@ public class Consulta extends Conexion{
             pst.setString(8, compliDA);
             pst.setString(9, cuandoHI);
             pst.setString(10, medicHI);
-            pst.setString(11, compliHI);
-            pst.setString(12, cuandoConv);
-            pst.setString(13, causaCon);
-            pst.setString(14, medicConv);
-            pst.setString(15, compliConv);
-            pst.setString(16, id);
+            pst.setString(11, compliHI);            
+            pst.setString(12, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -422,18 +467,19 @@ public class Consulta extends Conexion{
         return false;
     }
    
-    public boolean ResGineco(String cuantosEm,String Abortos,String Cesareas,String Compli,String ultRe,String id){
+    public boolean ResGineco(String Gestas,String Partos,String Abortos,String Cesareas,String Compli,String ultRe,String id){
         PreparedStatement pst=null;
         try{
-            String consulta="insert into ResGineco(Cuantos,Abortos,Cesareas,Complicaciones,UltimaRegla,IdPaciente)"
-                    + " values(?,?,?,?,?,?)";
+            String consulta="insert into ResGineco(Gestas,Partos,Abortos,Cesareas,Complicaciones,UltimaRegla,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
-            pst.setString(1, cuantosEm);
-            pst.setString(2, Abortos);
-            pst.setString(3, Cesareas);
-            pst.setString(4, Compli);
-            pst.setString(5, ultRe);
-            pst.setString(6, id);
+            pst.setString(1, Gestas);
+            pst.setString(2,Partos);
+            pst.setString(3, Abortos);
+            pst.setString(4, Cesareas);
+            pst.setString(5, Compli);
+            pst.setString(6, ultRe);
+            pst.setString(7, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             

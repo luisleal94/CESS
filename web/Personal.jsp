@@ -37,9 +37,7 @@
 				<input type="radio" id="admin" name="gerar" value="Admin">
 				<label for="admin" class="label">Administrador</label> 
 				<input type="radio" id="user" name="gerar" value="usuario">
-				<label for="user" class="label">Médico</label> 
-                                <input type="radio" id="especial" name="gerar" value="usuario">
-				<label for="especial" class="label">Especialista</label> 
+				<label for="user" class="label">Médico</label>
 			</div> 
 		    <div class="boton">
 		      <input class="enter1" type="submit" value="Registrar">

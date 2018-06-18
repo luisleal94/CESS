@@ -14,9 +14,11 @@
     //Obtengo atributo
     
     String usuario=(String)sesion.getAttribute("Usuario");
+    String cedula="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
+    cedula=(String)sesion.getAttribute("Cedula");
 %>
 <!DOCTYPE html>
 <html>
@@ -350,6 +352,8 @@ input[type="radio"]{
             <div class="doctor">
                 <label>Medico Tratante</label>
                 <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                <label>Cédula</label>
+                <input type="text" name="medico" value="<% out.println(cedula);%>" disabled style="color:#063452">
             </div>        
             <div class="botones" >
                 <!--<input id="boton1" type="submit" value="Nota Médica">-->

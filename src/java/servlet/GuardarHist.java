@@ -46,34 +46,11 @@ public class GuardarHist extends HttpServlet {
         String cereal=request.getParameter("cereal");
         String legumbre=request.getParameter("legum");
         
-        /*Exploracion fisica*/
-        String peso = request.getParameter("peso");
-        String talla= request.getParameter("talla");
-        String imc= request.getParameter("imc");
-        String temp= request.getParameter("temp");
-        String FR =request.getParameter("fr");
-        String FC= request.getParameter("fc");
-        
         /*Imnunizacion*/
         String tetano=request.getParameter("tetano");
         String sarampion=request.getParameter("sarampion");
         String rubeola=request.getParameter("rubeola");
-        String hepatica=request.getParameter("hepatitis");
-        String parasito=request.getParameter("paracitos");
-        
-        /*Sistema 1*/
-        String estomago=request.getParameter("estomago");
-        String Vomito=request.getParameter("vomito");
-        String otros3=request.getParameter("otros3");
-        
-        String tos=request.getParameter("tos");
-        String pecho=request.getParameter("pecho");
-        String otros4=request.getParameter("otros4");
-        
-        String ejercicio=request.getParameter("fatiga");
-        String cabeza=request.getParameter("dolCab");
-        String otros2=request.getParameter("otros2");
-        
+        String hepatitis=request.getParameter("hepatitis");
         
         /*Vicios*/
         String toma=request.getParameter("alcol");
@@ -83,16 +60,20 @@ public class GuardarHist extends HttpServlet {
         String cantidad=request.getParameter("cantidad1"); //Cuanto beb
         String inicioF=request.getParameter("inicio2"); //Inicio de fumar
         String cantidadF=request.getParameter("cantidad2"); //Cuanto fuma
+        String parejas=request.getParameter("parejas");
         String inicioR=request.getParameter("inicio3"); //Inicio de relaciones
-        String protec=request.getParameter("proteccion");
-        
+        String protec=request.getParameter("proteccion");        
+   
         /*Patologicos*/
-        String combre=request.getParameter("combe");
+        String combe=request.getParameter("combe");
         String cirujia=request.getParameter("ciru");
         String alergia=request.getParameter("alergia");
         String diabetes=request.getParameter("diabe");
         String hiper=request.getParameter("hiper");
-        //String convul=request.getParameter("convul");
+        String otrosP=request.getParameter("otrosP");
+        String textoP=request.getParameter("texto"); //Text area para Patologicos
+        
+        
         String causaQ=request.getParameter("causaQ");
         String fechaQ=request.getParameter("fechaQ");
         String CompQ=request.getParameter("CompQ");
@@ -103,23 +84,427 @@ public class GuardarHist extends HttpServlet {
         String compli=request.getParameter("compliDA");
         String fechaHi=request.getParameter("cuandoHI");
         String medicHI=request.getParameter("medicHI");
-        String compliHI=request.getParameter("compliHI");
-        String texto=request.getParameter("texto");
+        String compliHI=request.getParameter("compliHI");        
         
-        /*String fechaConv=request.getParameter("cuandoConv");
-        String CausaConv=request.getParameter("ocaciona");
-        String medicConv=request.getParameter("medicConv");
-        String compliConv=request.getParameter("compliConv");*/
+         /*Sistema 1,2*/
+        String estomago=request.getParameter("estomago");
+        String estre=request.getParameter("estre");
+        String freEs=request.getParameter("freEs");//Respuesta de estreñimiento
+        String diarrea=request.getParameter("diarrea");
+        String freDea=request.getParameter("freDea");//Respuesta Diarrea
+        String vomito=request.getParameter("vomito"); 
+        String otros3=request.getParameter("otros3");
+        String textoSis=request.getParameter("texto3");       
         
-        if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)){
-            //String id=request.getParameter("id");
-            request.setAttribute("id",id);
-            request.getRequestDispatcher("Consulta.jsp").forward(request, response);
-            //response.sendRedirect("Consulta.jsp");
-        }else{
-            response.sendRedirect("inicio.jsp");
+        String tos=request.getParameter("tos");
+        String pecho=request.getParameter("pecho");
+        String otros4=request.getParameter("otros4");
+        String texto4=request.getParameter("texto4");        
+        
+        String ejercicio=request.getParameter("fatiga");
+        String cabeza=request.getParameter("dolCab");
+        String otros2=request.getParameter("otros2"); 
+        String texto2=request.getParameter("texto2");
+    
+        /*Gineco*/
+        String menarca=request.getParameter("menarca");
+        String duracionM=request.getParameter("duracion");
+        String dolorM=request.getParameter("dolorM");
+        String MedicaM=request.getParameter("MedicaM");
+        String embara=request.getParameter("embara");
+        
+        String gestas=request.getParameter("gestas");
+        String Partos=request.getParameter("Partos");
+        String abortos=request.getParameter("abortos");
+        String Cesareas=request.getParameter("Cesareas");
+        String CompliEmba=request.getParameter("CompliEmba");
+        String UltimaRe=request.getParameter("UltimaRe");
+        
+        if(otrosP.equals("No")){
+            textoP="Ninguno";
         }
-
+        if(otros3.equals("No")){
+            textoSis="Ninguno";
+        }
+        if(otros4.equals("No")){
+            texto4="No";
+        }
+        if(otros2.equals("No")){
+            texto2="No";
+        }
+        if(sexo.equals("Femenino")){         
+            if(embara.equals("Si")){                
+                if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
+                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){                        
+                       if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }                        
+                    }else{ //Si cirujia
+                        if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,So cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }
+                    }
+                }else{ //Si Fuma
+                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){                        
+                       if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }                        
+                    }else{ //Si cirujia
+                        if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,So cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    && new Consulta().ResGineco(gestas, Partos, abortos, Cesareas, compli, estre, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }
+                    }
+                }
+            }else{ //No esta ebarazada
+                if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
+                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){                        
+                       if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }                        
+                    }else{ //Si cirujia
+                        if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,So cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }
+                    }
+                }else{ //Si Fuma
+                    if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){                        
+                       if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }                        
+                    }else{ //Si cirujia
+                        if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,So cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    && new Consulta().Ginecologo(menarca, duracionM, dolorM, MedicaM, embara, id)                                    
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }
+                    }
+                }
+            }
+        }else{ //Es Hombre
+            if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){                        
+                       if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                       }                        
+            }else{ //Si cirujia
+                        if(estre.equals("No")&&diarrea.equals("No")){
+                            System.out.println("Es mujer,Si embarazo,No toma,So cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }
+                       }else{ //Femenino-Si embarazo,No toma-No cirujia-si estreñimiento
+                           System.out.println("Es mujer,Si embarazo,No toma,No cirujia,No estreñimiento ");
+                            if(new Consulta().historial_NoPato(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
+                                    && new Consulta().historial_Imnume(tetano, sarampion, rubeola, hepatitis, id)
+                                    && new Consulta().historial_Sistema1(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
+                                    && new Consulta().historial_Vicio(toma, fuma, relacion, id)
+                                    &&new Consulta().ResVicio(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec, id)
+                                    &&new Consulta().Patologicos(combe,cirujia, alergia, diabetes, hiper,textoP, id)
+                                    &&new Consulta().ResPatolo(causaQ, fechaQ, CompQ, fechaA, medicaA, fechaDI, medicDia, compli, fechaHi, medicHI, compliHI,id)
+                                    &&new Consulta().historial_Sistema1_2(id, estre, diarrea, textoSis, texto4, texto2)
+                                    &&new Consulta().historial_resSistema1_2(freEs,freDea,id)){                
+                                request.setAttribute("id",id);
+                                request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+                                //response.sendRedirect("Consulta.jsp");
+                            }else{
+                                response.sendRedirect("inicio.jsp");
+                            }                           
+                }
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

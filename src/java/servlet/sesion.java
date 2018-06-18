@@ -29,6 +29,7 @@ public class sesion extends HttpServlet {
         String pass=request.getParameter("pass");
         String id="";
         String gerarquia="";
+        String cedula="";
         Consulta co= new Consulta();
         if(co.login(usuario, pass)){
             Conexion conecta= new Conexion();
@@ -39,7 +40,9 @@ public class sesion extends HttpServlet {
                 rs=pst.executeQuery();
                 while(rs.next()){
                     //id=rs.getString("ID_");
-                    gerarquia=rs.getString("Gerarquia");                    
+                    gerarquia=rs.getString("Gerarquia");   
+                    cedula=rs.getString("Cedula");
+                    
                 }
                 System.out.println(id);
                 System.out.println(gerarquia);
@@ -48,18 +51,21 @@ public class sesion extends HttpServlet {
                     HttpSession sesion= request.getSession(true);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
+                    sesion.setAttribute("Cedula", cedula);
                     response.sendRedirect("CessSuper.jsp");
                 }
                 if(gerarquia.equals("Admin")){
                     HttpSession sesion= request.getSession(true);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
+                    sesion.setAttribute("Cedula", cedula);
                     response.sendRedirect("CessAdmin.jsp");
                 }
                 if(gerarquia.equals("usuario")){
                     HttpSession sesion= request.getSession(true);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
+                    sesion.setAttribute("Cedula", cedula);
                     response.sendRedirect("inicio.jsp");
                 }
             
