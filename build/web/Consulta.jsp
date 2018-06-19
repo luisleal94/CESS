@@ -300,7 +300,7 @@ input[type="radio"]{
             </div>
             <div class="areatexto">
                 <label>Diagnóstico</label><br>
-                <textarea name="diagnos" class="area" cols="150" rows="5" autofocus></textarea>
+                <input type="text" name="diagnos">
             </div>
             <div class="areatexto">
                 <label>Estudios</label><br>
@@ -311,7 +311,6 @@ input[type="radio"]{
 	  		<label for="no" class="label">No</label>
                     </div>
                     <section id="mostrarCana" style="display: none;" class="seccion">
-                        <!--<textarea name="labora" class="area" cols="150" rows="5" autofocus></textarea>-->
                         <div>
                             <label>Estudios de gabinete</label><br>
                             <input type="radio" id="si1" name="gabinete" value="Si" onclick="mostrargabi()">
@@ -320,7 +319,7 @@ input[type="radio"]{
                             <label for="no1" class="label">No</label>
                         </div>
                         <section id="mostrarGabi" style="display: none;" class="seccion">
-                            <textarea name="labora" class="area" cols="150" rows="5" autofocus></textarea>
+                            <textarea name="ResGabi" class="area" cols="150" rows="5" autofocus></textarea>
                         </section>
                         <div>
                             <label>Estudios de Laboratorio</label><br>
@@ -330,7 +329,7 @@ input[type="radio"]{
                             <label for="no2" class="label">No</label>
                         </div>
                         <section id="mostrarLabo" style="display: none;" class="seccion">
-                            <textarea name="labora" class="area" cols="150" rows="5" autofocus></textarea>
+                            <textarea name="Reslabora" class="area" cols="150" rows="5" autofocus></textarea>
                         </section>
                     
                     </section>
@@ -358,9 +357,7 @@ input[type="radio"]{
             <div class="botones" >
                 <!--<input id="boton1" type="submit" value="Nota Médica">-->
                 <input id="boton1" type="submit" value="Generar Consulta y Receta">
-                <input id="boton1" type="submit" value="Generar Consulta y Arancel">
-                <!--<div id="boton1" ><a href="#">Nota Médica</a></div>
-                <!--<div id="boton1"><a href="#" >Generar Consulta</a></div>-->
+                <input id="boton1" type="submit" value="Generar Consulta y Arancel">                
             </div>
         </form>
     </div>    

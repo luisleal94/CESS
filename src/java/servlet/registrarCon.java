@@ -14,7 +14,7 @@ public class registrarCon extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String id=request.getParameter("id");
+        String id=request.getParameter("id");  //Id del paciente
         String peso=request.getParameter("peso");
         String talla=request.getParameter("talla");
         String imc=request.getParameter("imc");
@@ -22,9 +22,14 @@ public class registrarCon extends HttpServlet {
         String fc=request.getParameter("fc");
         String fr=request.getParameter("fr");
         String padeci=request.getParameter("padeci");
+        String explo=request.getParameter("exploracion");
         String diagnos=request.getParameter("diagnos");
-        String labora=request.getParameter("labora");
-        String tratamiento=request.getParameter("tratamiento");
+        String canali=request.getParameter("canali");// Canalizacion?
+        String gabinete=request.getParameter("gabinete");  //Gabinete
+        String ResGabi=request.getParameter("ResGabi");  //Si gabinete
+        String laboratorio=request.getParameter("laboratorio"); //Laboratorio?
+        String Reslabora=request.getParameter("Reslabora"); //SI laboratirio
+        String tratamiento=request.getParameter("tratamiento");  
         String medico=request.getParameter("medico");
                 
         response.sendRedirect("Receta.jsp");
