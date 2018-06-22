@@ -221,6 +221,37 @@ input[type="radio"]{
     padding: 15px;
 }
 
+#contiene_tabla{
+    margin-top: 0px;
+    margin-left: 5%;
+    position: relative;
+    margin-right: 5%;
+}
+#tabla{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 0px;
+}
+
+#tabla td, #tabla th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    position: relative;
+}
+
+#tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabla tr:hover {background-color: #ddd;}
+
+#tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #54adfc;
+    color: white;
+}
+
 </style>
         <style>
             head,body{
@@ -228,6 +259,7 @@ input[type="radio"]{
                font-family: 'Roboto', sans-serif;
             }
         </style>
+         <link rel="stylesheet" href="css/Personal.css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
@@ -240,7 +272,7 @@ input[type="radio"]{
             <form action="" method="post">
                 <label id="label">Nombre</label>
                 <input type="text" name="nombre">
-                <input type="submit" value="Bucar"> 
+                <input type="submit" value="Buscar"> 
             </form>
         </div>
         <div class="datos">
@@ -274,6 +306,16 @@ input[type="radio"]{
     
     <div class="datos">
         <form action="registrarCon" method="post">
+            <div>
+                <label>Tipo de Personal</label>
+                <select name="Tipo">
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Poblacion Abierta">Poblacion Abierta</option>
+                    <option value="FESAPAUV">FESAPAUV</option>
+                    <option value="SETSUV">SETSUV</option>
+                </select>
+            </div>
+            
             <input type="text" id="ID" name="id" style="display: none">
             <br><label >Signos Vitales</label><br>
             <label>Peso (Kg)</label>
@@ -288,7 +330,7 @@ input[type="radio"]{
             <input type="text" name="fc"><br>
             <label>Frecuencia Respiratoria</label>
             <input type="text" name="fr" onkeyUp="return decimales(this);">
-            <label>Presión Arteriol</label>
+            <label>Presión Arterial</label>
             <input type="text" name="fr"><br>
             <div class="areatexto">
                 <label>Padecimiento Actual</label><br>
@@ -300,7 +342,26 @@ input[type="radio"]{
             </div>
             <div class="areatexto">
                 <label>Diagnóstico</label><br>
-                <input type="text" name="diagnos">
+                <input class="dia" type="text" name="diagnos">
+                <%
+                  pst = con.getConexion().prepareStatement("select *from db29179_cie10 limit 10");
+                  rs=pst.executeQuery();                   
+                %>
+                <div id="contiene_tabla">
+                <table  id="tabla">
+                    <tr>
+                        <th>Nombre</th>                        
+                        <th></th>
+                    </tr>
+                    <%while(rs.next()){%>
+                    <tr>                        
+                        <td><%=rs.getString("dec10")%></td>                      
+                        <td><button id="Diagnos">Seleccionar</button></td>
+                    </tr>
+                    <% }
+                    %>
+                </table> 
+                </div>
             </div>
             <div class="areatexto">
                 <label>Estudios</label><br>
@@ -315,7 +376,7 @@ input[type="radio"]{
                             <label>Estudios de gabinete</label><br>
                             <input type="radio" id="si1" name="gabinete" value="Si" onclick="mostrargabi()">
                             <label for="si1" class="label">Si</label>
-                            <input type="radio" id="no1" name="gabinete" value="Si" onclick="ocultargabi()" checked>
+                            <input type="radio" id="no1" name="gabinete" value="No" onclick="ocultargabi()" checked>
                             <label for="no1" class="label">No</label>
                         </div>
                         <section id="mostrarGabi" style="display: none;" class="seccion">
@@ -325,7 +386,7 @@ input[type="radio"]{
                             <label>Estudios de Laboratorio</label><br>
                             <input type="radio" id="si2" name="laboratorio" value="Si" onclick="mostrarlabo()">
                             <label for="si2" class="label">Si</label>
-                            <input type="radio" id="no2" name="laboratorio" value="Si" onclick="ocultarlabo()" checked>
+                            <input type="radio" id="no2" name="laboratorio" value="No" onclick="ocultarlabo()" checked>
                             <label for="no2" class="label">No</label>
                         </div>
                         <section id="mostrarLabo" style="display: none;" class="seccion">
@@ -348,23 +409,29 @@ input[type="radio"]{
                     <input type="checkbox" name="urologo" value="urologia" > Urología<br>
                 </div>
             </div>
+            <label>Costo de Consulta</label>
+            <input type="text" name="Costo">  
             <div class="doctor">
                 <label>Medico Tratante</label>
-                <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                <input type="text" name="medico" id="Medic" value="<% out.println(usuario);%>" disabled style="color:#063452">
                 <label>Cédula</label>
-                <input type="text" name="medico" value="<% out.println(cedula);%>" disabled style="color:#063452">
-            </div>        
+                <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
+                <input type="text" name="Doctor" id="Doc" style="display: none">
+            </div>  
+              
             <div class="botones" >
                 <!--<input id="boton1" type="submit" value="Nota Médica">-->
                 <input id="boton1" type="submit" value="Generar Consulta y Receta">
                 <input id="boton1" type="submit" value="Generar Consulta y Arancel">                
-            </div>
+            </div>                
         </form>
     </div>    
     </body>
     <script>
 		var x = document.getElementById("id").value;
                 document.getElementById("ID").value=x;
-		
-	</script>
+		 
+                var med=document.getElementById("Medic").value;
+                document.getElementById("Doc").value=med; 
+    </script>
 </html>

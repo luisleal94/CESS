@@ -1,5 +1,6 @@
 package servlet;
 
+import Controlador.Consulta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,9 +31,29 @@ public class registrarCon extends HttpServlet {
         String laboratorio=request.getParameter("laboratorio"); //Laboratorio?
         String Reslabora=request.getParameter("Reslabora"); //SI laboratirio
         String tratamiento=request.getParameter("tratamiento");  
-        String medico=request.getParameter("medico");
-                
-        response.sendRedirect("Receta.jsp");
+        String medico=request.getParameter("Doctor");
+        String costo=request.getParameter("Costo");
+        String tipo=request.getParameter("Tipo");
+        if(canali.equals("No")){
+            ResGabi="Ninguno";
+            Reslabora="Ninguno";
+        }       
+        else{
+            if(gabinete.equals("No")){
+                ResGabi="Ninguno";
+            }
+            if(laboratorio.equals("No")){
+                Reslabora="Ninguno";
+            }
+        }
+        System.out.println(medico);
+        Consulta con= new Consulta();
+        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo)){
+            response.sendRedirect("Receta.jsp");
+        }else{
+            response.sendRedirect("CessSuper.jsp");
+        }
+//response.sendRedirect("Receta.jsp");
        
     }
 

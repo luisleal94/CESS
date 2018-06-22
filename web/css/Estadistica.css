@@ -1,0 +1,66 @@
+.contieneForm{
+    /*background: orange;*/
+    margin-top:5%;
+    margin-left: 10%;
+    margin-right:10%; 
+}
+
+input[type=date] {
+    width: 130px;
+    background-color: #e9f5f3 ;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    color: #0c5c4b;
+}
+
+input[type=submit] {
+    width: 200px;
+    background-color: #0c5c4b;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight:700; 
+}
+
+input[type=submit]:hover {
+    background-color: #1fb092;
+    transition: 0.4s;
+}
+
+.contiene_tabla{
+    margin-left: 15%;
+    position: relative;
+    margin-right: 5%;
+    text-align: center;
+}
+
+#tabla{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+    margin-top: 5%;
+}
+
+#tabla td, #tabla th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    position: relative;
+}
+
+#tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabla tr:hover {background-color: #ddd;}
+
+#tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #54adfc;
+    color: white;
+}

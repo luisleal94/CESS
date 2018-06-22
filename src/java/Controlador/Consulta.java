@@ -497,25 +497,33 @@ public class Consulta extends Conexion{
        return false; 
     }
       
-    public boolean GenerarConsulta(String id,String peso,String talla,String imc,String temp,String fc,String fr,
-            String padeci,String diagnos,String labora,String tratamiento,String medico){
+    public boolean GenerarConsulta(String id,String ExploF,String padeci,String diagnos,String Estudios,String gabine,String labora,String tratamiento,String medico
+                    ,String Costo,String Tipo){
             PreparedStatement pst=null;
+            Calendar calender = Calendar.getInstance();
+            String fecha;
+            int dia=calender.get(Calendar.DAY_OF_MONTH);
+            int mes=(calender.get(Calendar.MONTH))+1;
+            int anio=calender.get(Calendar.YEAR);
+            fecha=anio+"-"+mes+"-"+dia;
         try{
-            String consulta="insert into ResGineco(Cuantos,Abortos,Cesareas,Complicaciones,UltimaRegla,IdPaciente)"
-                    + " values(?,?,?,?,?,?)";
-            pst=getConexion().prepareStatement(consulta);
-            pst.setString(1, peso);
-            pst.setString(2, talla);
-            pst.setString(3, imc);
-            pst.setString(4, temp);
-            pst.setString(5, fc);
-            pst.setString(6, fr);
-            pst.setString(7, padeci);
-            pst.setString(8, diagnos);
-            pst.setString(9, labora);
-            pst.setString(6, tratamiento);
-            pst.setString(6, medico);
-            pst.setString(6, id);
+            String consulta="insert into Consulta(Fecha,ExploracionF,Padecimiento,Diagnostico,Estudios,Laboratorio,"
+                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);           
+            pst.setString(1, fecha);
+            pst.setString(2, ExploF);
+            pst.setString(3, padeci);
+            pst.setString(4, diagnos);
+            pst.setString(5, Estudios);
+            pst.setString(6, labora);
+            pst.setString(7, gabine);
+            pst.setString(8, tratamiento);
+            pst.setString(9, medico);
+            pst.setString(10, Costo);
+            pst.setString(11, Tipo);
+            pst.setString(12, id);
+            
             if(pst.executeUpdate()==1){
                 return true;
             }             
