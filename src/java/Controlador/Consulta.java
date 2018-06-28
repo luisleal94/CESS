@@ -498,7 +498,9 @@ public class Consulta extends Conexion{
     }
       
     public boolean GenerarConsulta(String id,String ExploF,String padeci,String diagnos,String Estudios,String gabine,String labora,String tratamiento,String medico
-                    ,String Costo,String Tipo){
+                    ,String Costo,String Tipo,String Nombre,String Demanda,String folio){
+        
+            String NombreMayus=Nombre.toUpperCase();
             PreparedStatement pst=null;
             Calendar calender = Calendar.getInstance();
             String fecha;
@@ -508,8 +510,8 @@ public class Consulta extends Conexion{
             fecha=anio+"-"+mes+"-"+dia;
         try{
             String consulta="insert into Consulta(Fecha,ExploracionF,Padecimiento,Diagnostico,Estudios,Laboratorio,"
-                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,IdPaciente)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,Nombre,Demanda,Folio,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);           
             pst.setString(1, fecha);
             pst.setString(2, ExploF);
@@ -522,7 +524,10 @@ public class Consulta extends Conexion{
             pst.setString(9, medico);
             pst.setString(10, Costo);
             pst.setString(11, Tipo);
-            pst.setString(12, id);
+            pst.setString(12, NombreMayus);
+            pst.setString(13, Demanda);
+            pst.setString(14, folio);
+            pst.setString(15, id);
             
             if(pst.executeUpdate()==1){
                 return true;

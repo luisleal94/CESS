@@ -23,7 +23,7 @@
     </head>
     <body>
         <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:44%; color: #00A99D;">Datos del Paciente</p>
-        <a id="link" href="historial.jsp">Regresar</a>
+        <a id="link" href="CessSuper.jsp">Regresar</a>
         <div id="contenido">
             
         <%
@@ -32,19 +32,17 @@
             Conexion con= new Conexion();
             PreparedStatement pst;
             ResultSet rs;
-            pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes="+id);
+            pst = con.getConexion().prepareStatement("Select * from PERSONAL where ID_USER="+id);
             rs=pst.executeQuery();
             while(rs.next()){
                 %>
                 <form id="formulario" action="" method="post">                    
-                    <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("Nombre")%>">
-		    <label>Apellido Paterno</label><input class="input1" type="text" name="apellidoP" value="<%=rs.getString("Apellido_P")%>">
-                    <label>Apellido Materno</label><input class="input1" type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>">
-                    <label>Edad</label><input class="input1" type="text" name="edad" value="<%=rs.getString("Edad")%>">
+                    <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("NOMBRE")%>">
+		    <label>Apellido</label><input class="input1" type="text" name="apellido" value="<%=rs.getString("APELLIDO")%>">
                     <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>">
-		    <label>Ocupación</label><input class="input1" type="text" name="ocupa" value="<%=rs.getString("Ocupacion")%>">
-                    <label>Estado Civil</label><input class="input1" type="text" name="Estado" value="<%=rs.getString("EstadoC")%>">
-                    <label>Domicilio</label><input class="input1" type="text" name="Domi" value="<%=rs.getString("Domicilio")%>">
+		    <label>Cédula</label><input class="input1" type="text" name="cedula" value="<%=rs.getString("Cedula")%>">
+                    <label>Username</label><input class="input1" type="text" name="username" value="<%=rs.getString("Username")%>">
+                    <label>Especialidad</label><input class="input1" type="text" name="especialidad" value="<%=rs.getString("Especialidad")%>">
                     <div class="boton">
 		      <input class="enter1" type="submit" value="Guardar">                      
 		    </div>
@@ -52,21 +50,18 @@
                 <%
             }
 
-            String nombre,apellidop,apellidom,edad,tele,ocu,estado,domi;
+            String nombre,apellido,tele,cedula,user,especialidad;
             nombre=request.getParameter("nombre");//Obtengo el parametro del texbox
-            apellidop=request.getParameter("apellidoP");
-            apellidom=request.getParameter("apellidoM");
-            edad=request.getParameter("edad");
+            apellido=request.getParameter("apellido");           
             tele=request.getParameter("tele");
-            ocu=request.getParameter("ocupa");
-            estado=request.getParameter("Estado");
-            domi=request.getParameter("Domi");
+            cedula=request.getParameter("cedula");
+            user=request.getParameter("username");
+            especialidad=request.getParameter("especialidad");
             if(nombre!=null){
-                pst = con.getConexion().prepareStatement("update Pacientes set Nombre='"+nombre+"',Apellido_P='"+apellidop+"',Apellido_M='" + apellidom +"',Edad='"+edad+"',telefono='"+tele+"',"
-                + "Ocupacion='"+ocu+"',EstadoC='"+estado+"',Domicilio='"+domi+"'" +"where idPacientes='"+id+"'");
+                pst = con.getConexion().prepareStatement("update PERSONAL set NOMBRE='"+nombre+"',APELLIDO='"+apellido+"',telefono='"+tele+"',"
+                + "Cedula='"+cedula+"',Username='"+user+"',Especialidad='"+especialidad+"'" + " where ID_USER='"+id+"'");
                 pst.executeUpdate();
-                response.sendRedirect("pruebas.jsp");
-               
+                response.sendRedirect("MostrarPersonal.jsp");               
             }
         %>            
 	</div>

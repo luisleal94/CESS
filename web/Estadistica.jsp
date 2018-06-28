@@ -52,7 +52,7 @@
                     <tr>
                         <th>Fecha</th>                        
                         <th>Medico</th>
-                        <th>Paciente</th>
+                        <th>Nombre</th>
                         <th>Personal</th>
                         <th>Costo</th>
                     </tr>
@@ -60,7 +60,7 @@
                     <tr>
                         <td><%=rs.getString("Fecha")%></td>
                         <td><%=rs.getString("Medico")%></td>
-                        <td><%=rs.getString("IdPaciente")%></td>
+                        <td><%=rs.getString("Nombre")%></td>
                         <td><%=rs.getString("Tipo")%></td>
                         <td><%=rs.getString("Costo")%></td>
                     </tr>

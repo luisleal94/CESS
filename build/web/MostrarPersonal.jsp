@@ -69,10 +69,9 @@
                 <td><%=rs.getString("Especialidad")%></td>
                 <td>         
                   <form action="" method="post">
-                    <input type="text" name="id" value="" style="display: none">
-                    <a id="link" href="#">Editar</a>
-                    <a id="link" href="#">Eliminar</a>                                     
-                    <!--<input type="submit" id="link" value="Historia Clínica" onclick=this.form.action="PasarParamentros">-->
+                    <input type="text" name="id" value="<%=rs.getString("ID_USER")%>" style="display: none">
+                    <a id="link" href="ActPerso.jsp?id=<%=rs.getString("ID_USER")%>">Editar</a>
+                    <a id="link" href="EliminaPer.jsp?id=<%=rs.getString("ID_USER")%>">Eliminar</a>                                     
                     </form>
                 </td>
             </tr>

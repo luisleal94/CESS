@@ -16,6 +16,7 @@ public class registrarCon extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String id=request.getParameter("id");  //Id del paciente
+        String NombrePaci=request.getParameter("NombrePaci");
         String peso=request.getParameter("peso");
         String talla=request.getParameter("talla");
         String imc=request.getParameter("imc");
@@ -34,6 +35,10 @@ public class registrarCon extends HttpServlet {
         String medico=request.getParameter("Doctor");
         String costo=request.getParameter("Costo");
         String tipo=request.getParameter("Tipo");
+        String Demanda=request.getParameter("Demanda");
+        String folio=request.getParameter("folio");
+        
+        System.out.println(NombrePaci);
         if(canali.equals("No")){
             ResGabi="Ninguno";
             Reslabora="Ninguno";
@@ -48,7 +53,7 @@ public class registrarCon extends HttpServlet {
         }
         System.out.println(medico);
         Consulta con= new Consulta();
-        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo)){
+        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio)){
             response.sendRedirect("Receta.jsp");
         }else{
             response.sendRedirect("CessSuper.jsp");

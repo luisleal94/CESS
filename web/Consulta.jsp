@@ -285,10 +285,12 @@ input[type="radio"]{
         rs=pst.executeQuery();
        
         while(rs.next()){
+            String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
     %>
         <div class="h2"><h2>Paciente</h2> </div>
         <form action="" method="post">
             <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
+            <input id="NombreCom" name="Nombre" value="<%=Nombre%>" style="display: none;">
             <label id="titulos">Nombre</label>
             <input type="text" name="nombre" value="<%=rs.getString("Nombre")%>" disabled style="color: #273746" >
             <label id="titulos">Apellido Paterno</label>
@@ -296,7 +298,6 @@ input[type="radio"]{
             <label id="titulos">Apellido Materno</label>
             <input type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" disabled style="color: #273746"><br><br>
             <div class="botones">
-                <!--<div id="boton1"><a href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>" >Ver historial</a></div>-->
                 <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
             </div>
                 </form>
@@ -315,8 +316,19 @@ input[type="radio"]{
                     <option value="SETSUV">SETSUV</option>
                 </select>
             </div>
+            <div>
+                <label>Demanda</label>
+                <select name="Demanda">
+                    <option value="Programada">Programada</option>
+                    <option value="Espontanea">Espontánea</option>
+                    <option value="Urgencia">Urgencia</option>                    
+                </select>
+            </div>
+            <label>Folio de Arancel</label>
+            <input type="text" name="folio">
             
             <input type="text" id="ID" name="id" style="display: none">
+            <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">
             <br><label >Signos Vitales</label><br>
             <label>Peso (Kg)</label>
             <input type="text" name="peso" onkeyUp="return decimales(this);" >
@@ -419,10 +431,8 @@ input[type="radio"]{
                 <input type="text" name="Doctor" id="Doc" style="display: none">
             </div>  
               
-            <div class="botones" >
-                <!--<input id="boton1" type="submit" value="Nota Médica">-->
-                <input id="boton1" type="submit" value="Generar Consulta y Receta">
-                <input id="boton1" type="submit" value="Generar Consulta y Arancel">                
+            <div class="botones" >                
+                <input id="boton1" type="submit" value="Guardar Consulta y Receta">                          
             </div>                
         </form>
     </div>    
@@ -433,5 +443,8 @@ input[type="radio"]{
 		 
                 var med=document.getElementById("Medic").value;
                 document.getElementById("Doc").value=med; 
+                
+                var Nom=document.getElementById("NombreCom").value;
+                document.getElementById("NombreCompleto").value=Nom;
     </script>
 </html>

@@ -5,11 +5,8 @@
  */
 package servlet;
 
-import Controlador.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,17 +16,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class PasarParamentros extends HttpServlet {
+public class Inspecciona extends HttpServlet {
 
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
         String id=request.getParameter("id");
         request.setAttribute("id",id);
-        request.getRequestDispatcher("MuestraHistorial.jsp").forward(request, response);
-
+        request.getRequestDispatcher("VerConsulta.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

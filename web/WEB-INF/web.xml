@@ -40,6 +40,14 @@
         <servlet-name>registrarPersonal</servlet-name>
         <servlet-class>servlet.registrarPersonal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistoConsulta</servlet-name>
+        <servlet-class>servlet.HistoConsulta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Inspecciona</servlet-name>
+        <servlet-class>servlet.Inspecciona</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>registrarPersonal</servlet-name>
         <url-pattern>/registrarPersonal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoConsulta</servlet-name>
+        <url-pattern>/HistoConsulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Inspecciona</servlet-name>
+        <url-pattern>/Inspecciona</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

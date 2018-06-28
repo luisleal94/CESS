@@ -66,7 +66,7 @@
                     <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
                     <a id="link" href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
                     <a id="link" href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
-                    <!--<a id="link" href="HistoriaClinica.jsp?id=<%=rs.getString("idPacientes")%>">Generar historial</a>-->                    
+                    <input type="submit" id="link" value="Consultas" onclick=this.form.action="HistoConsulta">
                     <input type="submit" id="link" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
                     </form>
                 </td>

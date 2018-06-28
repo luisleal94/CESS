@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
-import Controlador.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class PasarParamentros extends HttpServlet {
+public class HistoConsulta extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,9 +19,10 @@ public class PasarParamentros extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String id=request.getParameter("id");
+        
+        System.out.println(id);
         request.setAttribute("id",id);
-        request.getRequestDispatcher("MuestraHistorial.jsp").forward(request, response);
-
+        request.getRequestDispatcher("ConsultasH.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
