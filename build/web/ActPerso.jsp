@@ -23,7 +23,7 @@
     </head>
     <body>
         <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:44%; color: #00A99D;">Datos del Paciente</p>
-        <a id="link" href="CessSuper.jsp">Regresar</a>
+        <a id="link" href="MostrarPersonal.jsp">Regresar</a>
         <div id="contenido">
             
         <%

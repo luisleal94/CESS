@@ -53,7 +53,7 @@ public class Consulta extends Conexion{
             pst.setString(5, gerar);
             pst.setString(6, cedula);
             pst.setString(7, username);
-            pst.setString(8, username);
+            pst.setString(8, Espe);
             if(pst.executeUpdate()==1){
                 return true;
             }
@@ -406,7 +406,7 @@ public class Consulta extends Conexion{
         try{
             String consulta="insert into ResPatologicos(fechaQ,CausaQ,ComplicacionesQ,"
                     + "FechaA,CuasaA,FechaDia,MedicamentoDia,ComplicacionesDia,CuandoHi,"
-                    + "MedicamentoHi,CompliDia,idPacientes)"
+                    + "MedicamentoHi,CompliHip,idPacientes)"
                     + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, causaQ);

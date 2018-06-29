@@ -53,7 +53,7 @@
         </div>
         <div class="container1">
             <img src="img/person.png" width="268" height="289" alt="Avatar" class="image1">
-            <a href="#"><div class="overlay1">
+            <a href="BuscaConsulta.jsp"><div class="overlay1">
               <div class="text1">Historial de Consultas</div>
             </div></a>
         </div>

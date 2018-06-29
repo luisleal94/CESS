@@ -184,12 +184,8 @@ form{
             <label id="titulos">Teléfono</label>
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746"><br>       
             <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    
-            <!--<div id="boton1" ><a href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar paciente</a></div>
-            <div id="boton1"><a href="HistoriaClinica.jsp?ID=<%=rs.getString("idPacientes")%>" >Ver historial</a></div>-->
-            <!--<input type="submit" id="boton1" value="Eliminar">-->
             <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
-            <!--<input type="submit" id="boton1" value="Actualizar datos" onclick=this.form.action="EdicionPaciente">-->
-                       
+            <input type="submit" id="boton1" value="Consultas" onclick=this.form.action="HistoConsulta">           
          </form>
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            
