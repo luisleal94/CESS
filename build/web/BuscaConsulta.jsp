@@ -178,6 +178,7 @@
                     <td>         
                         <form action="" method="post">
                         <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">
+                        <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
                         <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">                              
                         </form>
                     </td>

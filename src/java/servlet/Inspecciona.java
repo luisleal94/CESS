@@ -24,7 +24,10 @@ public class Inspecciona extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String id=request.getParameter("id");
+        String Fecha=request.getParameter("Fecha");
+        System.out.println(Fecha);
         request.setAttribute("id",id);
+        request.setAttribute("Fecha",Fecha);
         request.getRequestDispatcher("VerConsulta.jsp").forward(request, response);
     }
 

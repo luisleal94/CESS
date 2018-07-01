@@ -114,12 +114,14 @@
         <div class="titulo"><h1>Notas Médicas</h1></div>
         <div class="contenedor" >
             <% //Busqueda por ID del usuario a buscar
-                        String id=request.getAttribute("id").toString();//El que obtengo del serlevt                   
+                        String id=request.getAttribute("id").toString();//El que obtengo del serlevt     
+                        String fecha=request.getAttribute("Fecha").toString();//El que obtengo del serlevt     
                         System.out.println("Id obtenido:"+id);                   
                         Conexion con= new Conexion();
                         PreparedStatement pst;
                         ResultSet rs;        
-                        pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"'");
+                        pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"' and"
+                                + " Fecha='"+fecha+"'");
                         rs=pst.executeQuery();
                         while(rs.next()){
             %>

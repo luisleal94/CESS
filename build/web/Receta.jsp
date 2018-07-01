@@ -14,9 +14,11 @@
     //Obtengo atributo
     
     String usuario=(String)sesion.getAttribute("Usuario");
+    String cedula="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
+    cedula=(String)sesion.getAttribute("Cedula");
 %>
 <!DOCTYPE html>
 <html>
@@ -35,9 +37,12 @@
                 text-align: center;
              }
              .receta{
-                /*background: #f2f4f5;*/
-                padding: 10px;
+                margin-left:5%;
+                margin-right: 5%;
+                background: #f2f4f5;
+                padding: 5px;
                 border-radius: 5px;
+                padding-left: 3%;
              }
              
              .medicamento{
@@ -46,7 +51,7 @@
              }
              
              input[type=text]{
-                width: 14%;
+                width: 16%;
                 height: 10%;
                 padding: 12px 20px;
                 margin: 8px 0;
@@ -54,7 +59,7 @@
                 border: none;
                 border-bottom: 2px solid ;
                 border-color: rgba(0,0,255,0.3);
-                /*background-color: #fbfbfb ;*/
+                background:none;
             }
             
             .area{
@@ -64,6 +69,7 @@
             }
             
             #link{
+                margin-bottom: 5px;
                 text-decoration: none;
                 padding: 3px;
                 display: inline-block;
@@ -84,43 +90,78 @@
                 transition: 0.3s;
             }
             
-            .contiendeTa{
-    position: relative;
-    /*background: #ecfdf4;*/
-    width: 50%;
-    font-size:15px;
-    margin-left:25%;
-    margin-right: 30px; 
-    border-radius: 5px;
-    padding: 10px;
-}
+            .contiendeTa{               
+                width: 90%;
+                font-size:15px;
+                margin-left:5%;
+                border-radius: 5px;
+                
+                padding-left:25px; 
+            }
 
-.contiendeTa input[type=text]{
-               width: 70%;
+            .contiendeTa input[type=text]{
+               width: 15%;
             }
             
             #myTableData {
-    font-family: sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+                font-family: sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-#myTableData td, #myTableData th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
+            #myTableData td, #myTableData th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
 
-#myTableData tr:nth-child(even){background-color: #f2f2f2;}
+            #myTableData tr:nth-child(even){background-color: #f2f2f2;}
 
-#myTableData tr:hover {background-color: #ddd;}
+            #myTableData tr:hover {background-color: #ddd;}
 
-#myTableData th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
+            #myTableData th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #a9cce3;
+                color: #1a5276;
+            }
+            .boton{               
+                margin-left: 45%;
+                margin-top: 15px;
+                margin-bottom:20px; 
+            }
+            .input1{              
+               height:35px; 
+               border: none;
+               background: #418994;
+               color: white;
+               font-family: roboto;
+               font-weight: 400;
+               font-size: 20px;
+               border-radius: 5px;
+            }
+            .input1:hover{ background: #2b5960;}            
+            .boton2{
+                background:  #d02523 ;
+                color: white;
+                border: none;
+                width:30px;
+                height: 30px;
+                border-radius: 5px;
+                font-size: 15px;
+                margin-left:28%;
+            }
+            .boton2:hover{background: #f13304;}
+            .imprimir{
+                margin-left: 42%;
+                 margin-bottom: 20px;
+            }
+            .doctor{
+                background:rgba( 62, 141, 193 ,0.5);
+                margin-left:5px; 
+                margin-right: 20px;
+                padding:5px;     
+            }
         </style>
     </head>
     <body>
@@ -151,42 +192,29 @@
                 <div id="myform">
                     <div class="contiendeTa">
                         <table cellpadding="3" id="table">
-                            <tr>
-                                <td>Nombre del medicamento</td>
-                                <td><input type="text" id="name"></td>
-                            <tr>
-                            <td>F.Farmaceutica</td>
-                                <td><input size="4" type="text" id="formaf"></td>
-                                 </tr>
-                                    <td>Unidades</td>
-                                    <td><input siparcetamolze="6" type="text" id="unidades"></td>
-                            <tr>
-                                                <td>Via.Admon</td>
-                                                <td><input size="6" type="text" id="viaa"></td>
-                                        </tr>
-                                        <tr>
-                                                <td>Presentación</td>
-                                                <td><input type="text" id="presentacion"></td>
-                                        </tr>
-                                                <td>Pzas</td>
-                                                <td><input size="4" type="text" id="pzas"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>dosis</td>
-                                        <td><input type="text" id="dosis">
-                                    </tr>
-                                    <tr>
-                                                <td>cada</td>
-                                        <td><input size="4" type="text" id="cada">
-                                                <td>Por</td>
-                                                <td><input size="6" type="text" id="dias">
-                                                <td>Días</td>
-                                        </td>
-                                    </tr>
+                            <label>Nombre del medicamento</label>
+                            <input type="text" id="name">
+                            <label>F.Farmaceutica</label>
+                            <input size="4" type="text" id="formaf">
+                            <label>Unidades</label>
+                            <input siparcetamolze="6" type="text" id="unidades"><br>
+                            <label>Via.Admon</label>
+                            <input size="6" type="text" id="viaa">
+                            <label>Presentación</label>
+                            <input type="text" id="presentacion">
+                            <label>Pzas</label>
+                            <input size="4" type="text" id="pzas">
+                            <label>Dosis</label>
+                            <input type="text" id="dosis"><br>
+                            <label>Cada</label>
+                            <input size="4" type="text" id="cada">
+                            <label>Por</label>
+                            <input size="6" type="text" id="dias">
+                            <label>Días</label>  
                         </table>
                         </div>
                         <div class="boton">
-                                <input type="button" id="add" class="input" value="Agregar +" onclick="Javascript:addRow()">
+                                <input type="button" id="add" class="input1" value="Agregar +" onclick="Javascript:addRow()">
                         </div>	
                 </div>   
             </div>
@@ -210,9 +238,14 @@
                     </div>
             &nbsp;<br/>
         </div>
+        <div class="imprimir">
+            <input type="button" class="input1" value="Imprimir Receta">
+        </div>
         <div class="doctor">
                 <label>Medico Tratante</label>
                 <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                <label>Cédula</label>
+                <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
         </div>  
     </body>
 </html>

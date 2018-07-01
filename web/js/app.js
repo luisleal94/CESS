@@ -14,7 +14,7 @@ function addRow() {
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
-    row.insertCell(0).innerHTML= '<input type="button" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+    row.insertCell(0).innerHTML= '<input type="button" class="boton2" value = "X" onClick="Javacsript:deleteRow(this)">';
     row.insertCell(1).innerHTML= myName.value;
 	
     row.insertCell(2).innerHTML= dosis.value;

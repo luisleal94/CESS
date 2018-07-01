@@ -18,8 +18,7 @@ public class HistoConsulta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String id=request.getParameter("id");
-        
+        String id=request.getParameter("id");        
         System.out.println(id);
         request.setAttribute("id",id);
         request.getRequestDispatcher("ConsultasH.jsp").forward(request, response);
