@@ -48,6 +48,10 @@
         <servlet-name>Inspecciona</servlet-name>
         <servlet-class>servlet.Inspecciona</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarSintoma</servlet-name>
+        <servlet-class>servlet.BuscarSintoma</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>Inspecciona</servlet-name>
         <url-pattern>/Inspecciona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarSintoma</servlet-name>
+        <url-pattern>/BuscarSintoma</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

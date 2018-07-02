@@ -2,6 +2,7 @@ package Controlador;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -545,8 +546,36 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-    /*public static void main(String[] args){
+    
+    public ArrayList<String> getDiagnostico(String buscar){
+        ArrayList<String> nombre= new ArrayList<>();
+        PreparedStatement pst=null;
+        ResultSet rs=null;
+        try{
+            String sql="select dec10 from db29179_cie10 where dec10 like ? limit 10";
+            pst=getConexion().prepareStatement(sql);
+            pst.setString(1,buscar+"%");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                nombre.add(rs.getString("dec10"));
+            }
+            System.out.println(nombre);
+        }catch(Exception e){  
+            System.out.println("Error "+e);
+        }finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(rs!=null)rs.close();
+                if(pst!=null)pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return nombre;
+    }
+   /*public static void main(String[] args){
         Consulta re= new Consulta();
+        re.getDiagnostico("Co");
         //re.registro("jose luis","Rosas Leal","1234");
         //re.reg_paciente("Eduardo","Rosas","Leal","21","1234","Ingeniero","Soltero","Tapicer","roll940909","masculino");
         
@@ -561,8 +590,8 @@ public class Consulta extends Conexion{
         
         /*re.historial_Imnume("24/54", "11/18", "25/18", "31/18","05/78","1");*/
         /*re.historial_Sistema1("si", "No","Si","No","No", "si","NO","SI","NO","1");*/
-        /*re.Ginecologo("Si","1 dia","Si","Paracetamol","No","3");
-    }*/
+        /*re.Ginecologo("Si","1 dia","Si","Paracetamol","No","3");*/
+    //}
      
 }
 

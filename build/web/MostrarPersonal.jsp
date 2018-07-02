@@ -28,7 +28,7 @@
     Conexion con= new Conexion();
     PreparedStatement pst;
     ResultSet rs;
-    pst = con.getConexion().prepareStatement("Select * from PERSONAL");
+    pst = con.getConexion().prepareStatement("Select * from PERSONAL where Username<>'"+usuario+"'");
     rs=pst.executeQuery();
 %>
 <!DOCTYPE html>

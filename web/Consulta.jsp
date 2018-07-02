@@ -262,8 +262,31 @@ input[type="radio"]{
          <link rel="stylesheet" href="css/Personal.css">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
         <script type="text/javascript" src="js/radios.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          <script>
+            $(function() {
+              var availableTags = new Array();
+              #("#tags").bind("keydown",function(event){
+                  var datos={Diagnos:$("#tags").val()};                  
+                  $.getJSON("BuscarSintoma",datos,function(res,es,jqXHR){
+                      availableTags.length=0;
+                      $.each(res,function(i,item){
+                          availableTags[i]=item;
+                      });
+                  });
+              });
+              
+              $( "#tags" ).autocomplete({
+                source: availableTags,
+                minLength:1;
+              });
+            }); 
+        </script>
         <title>CESS</title>
     </head>
     <body>
@@ -352,29 +375,10 @@ input[type="radio"]{
                 <label>Exploración Física</label><br>
                 <textarea name="exploracion" class="area" cols="150" rows="5" autofocus></textarea>
             </div>
-            <div class="areatexto">
-                <label>Diagnóstico</label><br>
-                <input class="dia" type="text" name="diagnos">
-                <%
-                  pst = con.getConexion().prepareStatement("select *from db29179_cie10 limit 10");
-                  rs=pst.executeQuery();                   
-                %>
-                <div id="contiene_tabla">
-                <table  id="tabla">
-                    <tr>
-                        <th>Nombre</th>                        
-                        <th></th>
-                    </tr>
-                    <%while(rs.next()){%>
-                    <tr>                        
-                        <td><%=rs.getString("dec10")%></td>                      
-                        <td><button id="Diagnos">Seleccionar</button></td>
-                    </tr>
-                    <% }
-                    %>
-                </table> 
-                </div>
-            </div>
+            <div class="ui-widget">
+                <label for="tags">Tags: </label>
+                <input id="tags">
+            </div>            
             <div class="areatexto">
                 <label>Estudios</label><br>
                     <div>
