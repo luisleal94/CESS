@@ -125,6 +125,12 @@ a.popup-cerrar {
    <a href="#popup" class="popup-link" style="text-decoration:none" id="text" >Agregar Paciente</a>
   </div>
 </div>
+<div class="container1">
+    <img src="img/person.png" width="268" height="289" alt="Avatar" class="image1">
+    <a href="BuscaConsulta.jsp"><div class="overlay1">
+    <div class="text1">Historial de Consultas</div>
+    </div></a>
+</div>
 <div class="container3">
   <img src="img/historial.png" width="268" height="289"; alt="Avatar" class="image3">
   <a href="Receta.jsp"><div class="overlay3">
@@ -143,10 +149,17 @@ a.popup-cerrar {
 		    <input class="input1" type="text" name="nombre" placeholder="Nombre" required>
 		    <input class="input1" type="text" name="apellido1" placeholder="Apellido Paterno" required><br>
 		    <input class="input1" type="text" name="apellido2" placeholder="Apelllido Materno" required>
-		    <input class="input1" type="text" name="edad" placeholder="Edad" onkeyUp="return ValNumero(this)" required><br>
-                    <input class="input1" type="text" name="telefono" placeholder="Telefono"  onkeyUp="return ValNumero(this)" required>
+		    <input class="input1" type="text" name="edad" placeholder="Edad" onkeyUp="return Edad(this)" required><br>
+                    <input class="input1" type="text" name="telefono" placeholder="Telefono"  onkeyUp="return Telefono(this)" required>
 		    <input class="input1" type="text" name="domicilio" placeholder="Domicilio" required ><br>
-		    <input class="input1" type="text" name="estado_civil" placeholder="Estado Civil" required>
+                    <label>Estado Civil</label>
+                    <select name="estado_civil">
+                        <option value="Soltero">Soltero</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Viudo">Viudo</option>
+                        <option value="Union Libre">Union Libre</option>
+                        <option value="Divorciado">Divorciado</option>
+                    </select>             
 		    <input class="input1" type="text" name="ocupacion" placeholder="Ocupación" required><br>
 		    <input class="input1" type="text" name="curp" placeholder="CURP" required><br>
 		   	<div>

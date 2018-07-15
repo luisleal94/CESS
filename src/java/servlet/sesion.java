@@ -30,6 +30,8 @@ public class sesion extends HttpServlet {
         String id="";
         String gerarquia="";
         String cedula="";
+        String Nombre="";
+        String Especialidad="";
         Consulta co= new Consulta();
         if(co.login(usuario, pass)){
             Conexion conecta= new Conexion();
@@ -42,16 +44,20 @@ public class sesion extends HttpServlet {
                     //id=rs.getString("ID_");
                     gerarquia=rs.getString("Gerarquia");   
                     cedula=rs.getString("Cedula");
-                    
+                    Nombre=rs.getString("NOMBRE")+" "+rs.getString("APELLIDO");
+                    Especialidad=rs.getString("Especialidad");
                 }
                 System.out.println(id);
                 System.out.println(gerarquia);
+                System.out.println(Nombre);
+                System.out.println(Especialidad);
                
                 if(gerarquia.equals("Super")){
                     HttpSession sesion= request.getSession(true);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);
+                    sesion.setAttribute("Nombre", Nombre);                    
                     response.sendRedirect("CessSuper.jsp");
                 }
                 if(gerarquia.equals("Admin")){
@@ -59,6 +65,8 @@ public class sesion extends HttpServlet {
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);
+                    sesion.setAttribute("Nombre", Nombre);
+                    sesion.setAttribute("Especialidad",Especialidad);
                     response.sendRedirect("CessAdmin.jsp");
                 }
                 if(gerarquia.equals("usuario")){
@@ -66,6 +74,8 @@ public class sesion extends HttpServlet {
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);
+                    sesion.setAttribute("Nombre", Nombre);
+                    sesion.setAttribute("Especialidad",Especialidad);
                     response.sendRedirect("inicio.jsp");
                 }
             

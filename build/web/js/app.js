@@ -61,6 +61,10 @@ function addTable() {
    
 }
 
+function limpiarFormulario() {
+    document.getElementById("miForm").reset();
+}
+                
 function load() {
    
     console.log("Page load finished");

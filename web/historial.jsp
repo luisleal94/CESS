@@ -64,6 +64,7 @@
                 <td>         
                     <form action="" method="post">
                     <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
+                    <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">
                     <a id="link" href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Editar</a>
                     <a id="link" href="eliminar.jsp?id=<%=rs.getString("idPacientes")%>">Eliminar</a>
                     <input type="submit" id="link" value="Consultas" onclick=this.form.action="HistoConsulta">

@@ -10,21 +10,25 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
 <%
-    HttpSession sesion=request.getSession(false); //Sesion
-    //Obtengo atributo
-    
+    HttpSession sesion=request.getSession(false); //Sesion  
+    //Obtengo atributo    
     String usuario=(String)sesion.getAttribute("Usuario");
     String cedula="";
+    String NOMBRE="";
+    String Especialidad="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
     cedula=(String)sesion.getAttribute("Cedula");
+    NOMBRE=(String)sesion.getAttribute("Nombre");
+    Especialidad=(String)sesion.getAttribute("Especialidad");
+    System.out.println(Especialidad);
 %>
 <!DOCTYPE html>
 <html>
     <style>
 input[type=text] {
-    width: 15%;
+    width: 16%;
     height: 10%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -48,6 +52,22 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
+    background-color: #145a32 ;
+    transition: 0.4s;
+}
+
+input[type=button] {
+    width: 100px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=button]:hover {
     background-color: #145a32 ;
     transition: 0.4s;
 }
@@ -266,70 +286,101 @@ input[type="radio"]{
         <link rel="stylesheet" href="/resources/demos/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
         <script type="text/javascript" src="js/radios.js"></script>
+        <script type="text/javascript" src="js/Confirmacion.js"></script>
+        <script type="text/javascript" src="js/Validacion.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-          <script>
-            $(function() {
+        <script>
+            $( function() {
               var availableTags = new Array();
-              #("#tags").bind("keydown",function(event){
-                  var datos={Diagnos:$("#tags").val()};                  
-                  $.getJSON("BuscarSintoma",datos,function(res,es,jqXHR){
+              $("#tags").bind("keydown",function(event){
+                  var data={Diagnos:$("#tags").val()};
+                  $.getJSON("BuscarSintoma",data,function(res,est,jqXHR){
                       availableTags.length=0;
                       $.each(res,function(i,item){
                           availableTags[i]=item;
                       });
                   });
               });
-              
+
+
               $( "#tags" ).autocomplete({
                 source: availableTags,
-                minLength:1;
+                minLength:1
               });
-            }); 
+            } );
+            
+            function multiplicar(){
+		  peso = document.getElementById("multiplicando").value;
+		  altura = document.getElementById("multiplicador").value;
+		  r = peso/Math.pow(altura,2);
+		  document.getElementById("resultado").value = r;
+		}
         </script>
         <title>CESS</title>
     </head>
     <body>
-        <a id="link" href="inicio.jsp">Regresar</a>
-        <div id="buscar">
-            <form action="" method="post">
-                <label id="label">Nombre</label>
-                <input type="text" name="nombre">
-                <input type="submit" value="Buscar"> 
-            </form>
-        </div>
+        <a id="link" href="inicio.jsp">Regresar</a>        
         <div class="datos">
-      <% //Busqueda por nombre del usuario a buscar
-        String nombre=request.getParameter("nombre");
+        <% 
+        String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
-        rs=pst.executeQuery();
-       
-        while(rs.next()){
-            String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
-    %>
-        <div class="h2"><h2>Paciente</h2> </div>
-        <form action="" method="post">
-            <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
-            <input id="NombreCom" name="Nombre" value="<%=Nombre%>" style="display: none;">
-            <label id="titulos">Nombre</label>
-            <input type="text" name="nombre" value="<%=rs.getString("Nombre")%>" disabled style="color: #273746" >
-            <label id="titulos">Apellido Paterno</label>
-            <input type="text" name="apellidoP" value="<%=rs.getString("Apellido_P")%>" disabled style="color: #273746">
-            <label id="titulos">Apellido Materno</label>
-            <input type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" disabled style="color: #273746"><br><br>
-            <div class="botones">
-                <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
-            </div>
+        if(id==null){ %>
+            <div id="buscar">
+                <form action="" method="post">
+                    <label id="label">Nombre</label>
+                    <input type="text" name="nombre">
+                    <input type="submit" value="Buscar"> 
                 </form>
-        </div>
+            </div>           
+            <% String nombre=request.getParameter("nombre");      
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+                %> 
+                <div class="h2"><h2>Paciente</h2> </div>
+                <form action="" method="post">
+                    <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
+                    <label id="titulos">Nombre</label>
+                    <input type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>" disabled style="color: #273746" >
+                    &emsp;&emsp;&emsp;<label id="titulos">Edad</label>
+                    <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" >   
+                    &emsp;<label>Genero</label>
+                    <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >                    
+                    <div class="botones">
+                        <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
+                    </div>
+                </form>
+             
+            <% }                        
+        }else{
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
+            %>
+            <div class="h2"><h2>Paciente</h2> </div>
+                <form action="" method="post">
+                    <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
+                    <label id="titulos">Nombre</label>
+                    <input  type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>">   
+                    &emsp;&emsp;&emsp;<label id="titulos">Edad</label>
+                    <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>">   
+                    <div class="botones">
+                    &emsp;<label>Genero</label>
+                    <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>">   
+                    <div class="botones">
+                        <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
+                    </div>
+                </form>
+       <% } }//Busqueda por nombre del usuario a buscar %>
         <!--Mando el parametro ID del paciente que encontre-->            
-    <% } %>
-    
+    </div>  
     <div class="datos">
-        <form action="registrarCon" method="post">
+        <form name="formulario" action="registrarCon" method="post">
             <div>
                 <label>Tipo de Personal</label>
                 <select name="Tipo">
@@ -348,23 +399,25 @@ input[type="radio"]{
                 </select>
             </div>
             <label>Folio de Arancel</label>
-            <input type="text" name="folio">
-            
+            <input type="text" name="folio">            
             <input type="text" id="ID" name="id" style="display: none">
             <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">
+            &emsp;&emsp;<label>Costo de Consulta</label>
+            <input type="text" name="Costo" onkeyUp=" return decimales(this);"> 
+            
             <br><label >Signos Vitales</label><br>
-            <label>Peso (Kg)</label>
-            <input type="text" name="peso" onkeyUp="return decimales(this);" >
+            <label>Peso</label>
+            <input type="text" name="peso"  value="0" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
             <label>Talla (mts)</label>
-            <input type="text" name="talla" onkeyUp="return decimales(this);">
+            <input type="text" name="talla" id="multiplicador" onkeyUp=" return decimales(this);" onChange="multiplicar();">
             <label>IMC</label>
-            <input type="text" name="imc" ><br>
+            <input type="text" name="imc" id="resultado" disabled><br>
             <label>Temperatura</label>
-            <input type="text" name="temp" onkeyUp="return decimales(this);">
+            <input type="text" name="temp" onkeyUp=" return decimales(this);">
             <label>Frecuencia Cardiaca</label>
             <input type="text" name="fc"><br>
             <label>Frecuencia Respiratoria</label>
-            <input type="text" name="fr" onkeyUp="return decimales(this);">
+            <input type="text" name="fr">
             <label>Presión Arterial</label>
             <input type="text" name="fr"><br>
             <div class="areatexto">
@@ -376,9 +429,9 @@ input[type="radio"]{
                 <textarea name="exploracion" class="area" cols="150" rows="5" autofocus></textarea>
             </div>
             <div class="ui-widget">
-                <label for="tags">Tags: </label>
-                <input id="tags">
-            </div>            
+                <label for="tags">Diagnostico </label>
+                <input id="tags" name="Diagnos">
+           </div>          
             <div class="areatexto">
                 <label>Estudios</label><br>
                     <div>
@@ -416,7 +469,7 @@ input[type="radio"]{
                 <textarea name="tratamiento" class="area" cols="150" rows="5" autofocus></textarea>
             </div>
             <div class="especialidad">
-                <label>Canalización</label>
+                <label>Referir a:</label>
                 <div class="checkbox">
                     <input type="checkbox" name="Anestesiología" value="Anestesiología">Anestesiologí<br>
                     <input type="checkbox" name="gine" value="GinecoObste"> Ginecología y Obstetricia<br>
@@ -424,19 +477,18 @@ input[type="radio"]{
                     <input type="checkbox" name="cardio" value="cardiologia" > Cardiología <br>
                     <input type="checkbox" name="urologo" value="urologia" > Urología<br>
                 </div>
-            </div>
-            <label>Costo de Consulta</label>
-            <input type="text" name="Costo">  
+            </div>             
             <div class="doctor">
                 <label>Medico Tratante</label>
-                <input type="text" name="medico" id="Medic" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                <input type="text" name="medico" id="Medic" value="<% out.println(NOMBRE);%>" disabled style="color:#063452">
                 <label>Cédula</label>
                 <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
                 <input type="text" name="Doctor" id="Doc" style="display: none">
+                <input type="text" name="Especialidad" value="<%=Especialidad%>" style="display: none">
             </div>  
               
             <div class="botones" >                
-                <input id="boton1" type="submit" value="Guardar Consulta y Receta">                          
+                <input id="boton1" type="button" onclick="confirmation()" value="Guardar Consulta y Receta">                          
             </div>                
         </form>
     </div>    

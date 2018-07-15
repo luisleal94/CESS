@@ -4,6 +4,7 @@
     Author     : luis
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Conexion"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -15,10 +16,12 @@
     
     String usuario=(String)sesion.getAttribute("Usuario");
     String cedula="";
+     String NOMBRE="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
     cedula=(String)sesion.getAttribute("Cedula");
+    NOMBRE=(String)sesion.getAttribute("Nombre");
 %>
 <!DOCTYPE html>
 <html>
@@ -37,8 +40,8 @@
                 text-align: center;
              }
              .receta{
-                margin-left:5%;
-                margin-right: 5%;
+                margin-left:2%;
+                margin-right: 2%;
                 background: #f2f4f5;
                 padding: 5px;
                 border-radius: 5px;
@@ -46,12 +49,11 @@
              }
              
              .medicamento{
-                margin: 10px;
-                
+                margin: 10px;                
              }
              
              input[type=text]{
-                width: 16%;
+                width: 20%;
                 height: 10%;
                 padding: 12px 20px;
                 margin: 8px 0;
@@ -93,7 +95,7 @@
             .contiendeTa{               
                 width: 90%;
                 font-size:15px;
-                margin-left:5%;
+                margin-left:2%;
                 border-radius: 5px;
                 
                 padding-left:25px; 
@@ -126,7 +128,7 @@
                 color: #1a5276;
             }
             .boton{               
-                margin-left: 45%;
+                margin-left: 35%;
                 margin-top: 15px;
                 margin-bottom:20px; 
             }
@@ -140,7 +142,19 @@
                font-size: 20px;
                border-radius: 5px;
             }
-            .input1:hover{ background: #2b5960;}            
+            .input2{              
+               height:35px; 
+               border: none;
+               background:  #fd551f;
+               color: white;
+               font-family: roboto;
+               font-weight: 400;
+               font-size: 20px;
+               border-radius: 5px;
+            }
+            
+            .input1:hover{ background: #2b5960;}    
+            .input2:hover{ background:  #d52e20;} 
             .boton2{
                 background:  #d02523 ;
                 color: white;
@@ -162,6 +176,21 @@
                 margin-right: 20px;
                 padding:5px;     
             }
+            #cortos{
+                text-align: center;
+                width: 10%;
+                height: 10%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: none;
+                border-bottom: 2px solid ;
+                border-color: rgba(0,0,255,0.3);
+                background:none;
+            }
+            #buscar{               
+                margin-left: 2%;
+            }
         </style>
     </head>
     <body>
@@ -172,50 +201,101 @@
             <h1>RECETA MÉDICA</h1>
         </div>
         <a id="link" href="inicio.jsp">Regresar</a>
-        <div  class="receta">
-            <label>No. De Personal</label>
-            <input type="text">
-            <label>Nombre del Paciente</label>
-            <input type="text">
-            <label>Tipo de Personal</label>
-            <input type="text"><br>
-            <label>Dependencia</label>
-            <input type="text">
-            <label>Dependencia Comisión</label>
-            <input type="text">
-            <label>Cve. Única Dep.</label>
-            <input type="text"><br>
-            <label>Nombre del Dependiente Económico</label>
-            <input type="text">
-        </div>
+       
+        <div class="receta">
+        <% 
+        Calendar calender = Calendar.getInstance();
+        String fecha;
+        int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fecha=dia+" / "+mes+" / "+anio;
+        String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
+        Conexion con= new Conexion();
+        PreparedStatement pst;
+        ResultSet rs;
+        if(id==null){ %>
+            <div id="buscar">
+                <form action="" method="post">
+                    <label id="label">Nombre</label>
+                    <input type="text" name="nombre">
+                    <input id="link" type="submit" value="Buscar" style="border:none"> 
+                </form>
+            </div>
+        
+            <%String nombre=request.getParameter("nombre");      
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+                %> 
+                <form action="" method="post">
+                    <label id="titulos">ID</label>
+                    <input type="text" id="cortos" name="id" value="<%=rs.getString("idPacientes")%>">                  
+                    &emsp;&emsp;<label id="titulos">Nombre</label>
+                    <input type="text" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
+                    &emsp;&emsp;<label id="titulos">Edad</label>
+                    <input type="text"  id="cortos" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" ><br>                    
+                    <label id="titulos">Genero</label>
+                    <input type="text" id="cortos" name="sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >
+                    &emsp;&emsp;<label id="titulos">Fecha</label>
+                    <input type="text" id="cortos" name="fecha" value="<%=fecha%>" disabled style="color: #273746" >
+                </form>
+             
+            <% }                        
+        }else{
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
+            %>
+            <div class="h2"><h2>Paciente</h2> </div>
+                <form action="" method="post">
+                    <label id="titulos">ID</label>
+                    <input type="text" id="cortos" name="id" value="<%=rs.getString("idPacientes")%>">                  
+                    &emsp;&emsp;<label id="titulos">Nombre</label>
+                    <input type="text" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
+                    &emsp;&emsp;<label id="titulos">Edad</label>
+                    <input type="text"  id="cortos" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" ><br>                    
+                    <label id="titulos">Genero</label>
+                    <input type="text" id="cortos" name="sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >
+                    &emsp;&emsp;<label id="titulos">Fecha</label>
+                    <input type="text" id="cortos" name="fecha" value="<%=fecha%>" disabled style="color: #273746" >
+                </form>
+       <% } }//Busqueda por nombre del usuario a buscar %>
+        <!--Mando el parametro ID del paciente que encontre-->            
+    </div>        
             <div class="medicamento">
                 <div id="myform">
-                    <div class="contiendeTa">
+                    <form id="miForm" action="">
+                    <div class="contiendeTa">                        
                         <table cellpadding="3" id="table">
                             <label>Nombre del medicamento</label>
                             <input type="text" id="name">
-                            <label>F.Farmaceutica</label>
+                            &emsp;&emsp;<label>F.Farmaceutica</label>
                             <input size="4" type="text" id="formaf">
-                            <label>Unidades</label>
+                            &emsp;&emsp;<label>Unidades</label>
                             <input siparcetamolze="6" type="text" id="unidades"><br>
                             <label>Via.Admon</label>
                             <input size="6" type="text" id="viaa">
-                            <label>Presentación</label>
+                            &emsp;<label>Presentación</label>
                             <input type="text" id="presentacion">
-                            <label>Pzas</label>
+                            &emsp;<label>Pzas</label>
                             <input size="4" type="text" id="pzas">
-                            <label>Dosis</label>
+                            &emsp;<label>Dosis</label>
                             <input type="text" id="dosis"><br>
                             <label>Cada</label>
                             <input size="4" type="text" id="cada">
-                            <label>Por</label>
+                            &emsp;&emsp;<label>Por</label>
                             <input size="6" type="text" id="dias">
-                            <label>Días</label>  
-                        </table>
+                            &emsp;<label>Días</label>  
+                        </table>                            
                         </div>
                         <div class="boton">
-                                <input type="button" id="add" class="input1" value="Agregar +" onclick="Javascript:addRow()">
-                        </div>	
+                                <input type="button" id="add" class="input1" value="Agregar +" onclick="Javascript:addRow()" onclick="limpiarFormulario()">
+                                <input type="button" class="input2" onclick="limpiarFormulario()" value="Limpiar formulario">
+                        </div>
+                    </form>
                 </div>   
             </div>
         <div id="mydata">
@@ -243,7 +323,7 @@
         </div>
         <div class="doctor">
                 <label>Medico Tratante</label>
-                <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                <input type="text" name="medico" value="<% out.println(NOMBRE);%>" disabled style="color:#063452">
                 <label>Cédula</label>
                 <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
         </div>  

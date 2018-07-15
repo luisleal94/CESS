@@ -8,6 +8,7 @@
 <%
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
+    String Nombre=(String)sesion.getAttribute("Nombre");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
@@ -20,6 +21,7 @@
             response.sendRedirect("inicio.jsp"); 
         }
     }
+    System.out.println("Nombre:"+Nombre);
 %>
 
 <!DOCTYPE html>
@@ -39,8 +41,7 @@
     <body>
         <div id="titulo">
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
-        </div>
-        <h1>Hola super administrador</h1>
+        </div>        
         <div class="salir">
             <label><% out.println(usuario);%> </label><br>
             <a class="link" href="out">Cerrar sesión</a> 

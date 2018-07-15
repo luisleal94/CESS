@@ -304,6 +304,7 @@ public class Consulta extends Conexion{
         }
         return false;
     }    
+    
     public boolean historial_Vicio(String toma,String fuma,String rela,String id){
         PreparedStatement pst=null;
         
@@ -334,13 +335,13 @@ public class Consulta extends Conexion{
     
     
     public boolean ResVicio(String resT,String resT2,String resF,String resF2,String resR1,String resR2,
-            String resR3,String id){
+            String resR3,String metodo,String id){
         PreparedStatement pst=null;
         
         try{
             String consulta="insert into ResVicios(EdadInicio,CantidadAlco,EdadFum,CigarrosDia,"
-                    + "EdadRela,NoParejas,Proteccion,IdPaciente)"
-                    + " values(?,?,?,?,?,?,?,?)";
+                    + "EdadRela,NoParejas,Proteccion,Anticonceptivo,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?,?,?)";
            
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, resT);
@@ -349,8 +350,9 @@ public class Consulta extends Conexion{
             pst.setString(4, resF2);
             pst.setString(5, resR1);
             pst.setString(6, resR2);
-            pst.setString(7, resR3);          
-            pst.setString(8, id);
+            pst.setString(7, resR3);
+            pst.setString(8, metodo);
+            pst.setString(9, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -400,28 +402,21 @@ public class Consulta extends Conexion{
     }
     
     
-    public boolean ResPatolo(String causaQ,String fechaQ,String CompQ,String fechaA,String cual,
-            String cuandoDA,String medicDA,String compliDA,String cuandoHI,String medicHI,String compliHI,
+    public boolean ResPatolo(String cuandoDA,String medicDA,String compliDA,String cuandoHI,String medicHI,String compliHI,
             String id){
         PreparedStatement pst=null;
         try{
-            String consulta="insert into ResPatologicos(fechaQ,CausaQ,ComplicacionesQ,"
-                    + "FechaA,CuasaA,FechaDia,MedicamentoDia,ComplicacionesDia,CuandoHi,"
+            String consulta="insert into ResPatologicos(FechaDia,MedicamentoDia,ComplicacionesDia,CuandoHi,"
                     + "MedicamentoHi,CompliHip,idPacientes)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?)";
-            pst=getConexion().prepareStatement(consulta);
-            pst.setString(1, causaQ);
-            pst.setString(2, fechaQ);
-            pst.setString(3, CompQ);
-            pst.setString(4, fechaA);
-            pst.setString(5, cual);
-            pst.setString(6, cuandoDA);
-            pst.setString(7, medicDA);
-            pst.setString(8, compliDA);
-            pst.setString(9, cuandoHI);
-            pst.setString(10, medicHI);
-            pst.setString(11, compliHI);            
-            pst.setString(12, id);
+                    + " values(?,?,?,?,?,?,?)";
+            pst=getConexion().prepareStatement(consulta);            
+            pst.setString(1, cuandoDA);
+            pst.setString(2, medicDA);
+            pst.setString(3, compliDA);
+            pst.setString(4, cuandoHI);
+            pst.setString(5, medicHI);
+            pst.setString(6, compliHI);            
+            pst.setString(7, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -499,9 +494,9 @@ public class Consulta extends Conexion{
     }
       
     public boolean GenerarConsulta(String id,String ExploF,String padeci,String diagnos,String Estudios,String gabine,String labora,String tratamiento,String medico
-                    ,String Costo,String Tipo,String Nombre,String Demanda,String folio){
+                    ,String Costo,String Tipo,String Nombre,String Demanda,String folio,String Especialidad){
         
-            String NombreMayus=Nombre.toUpperCase();
+            //String NombreMayus=Nombre.toUpperCase();            
             PreparedStatement pst=null;
             Calendar calender = Calendar.getInstance();
             String fecha;
@@ -511,8 +506,8 @@ public class Consulta extends Conexion{
             fecha=anio+"-"+mes+"-"+dia;
         try{
             String consulta="insert into Consulta(Fecha,ExploracionF,Padecimiento,Diagnostico,Estudios,Laboratorio,"
-                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,Nombre,Demanda,Folio,IdPaciente)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,Nombre,Demanda,Folio,Especialidad,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);           
             pst.setString(1, fecha);
             pst.setString(2, ExploF);
@@ -525,10 +520,11 @@ public class Consulta extends Conexion{
             pst.setString(9, medico);
             pst.setString(10, Costo);
             pst.setString(11, Tipo);
-            pst.setString(12, NombreMayus);
+            pst.setString(12, Nombre);
             pst.setString(13, Demanda);
             pst.setString(14, folio);
-            pst.setString(15, id);
+            pst.setString(15, Especialidad);
+            pst.setString(16, id);
             
             if(pst.executeUpdate()==1){
                 return true;
@@ -573,9 +569,128 @@ public class Consulta extends Conexion{
         }
         return nombre;
     }
-   /*public static void main(String[] args){
+    
+    public boolean AbueloPa(String Viv,String DM,String hta, String neoplas,String obesi,String tbp,
+            String cardio,String alergi,String formac,String toxico,String cancer,String id,int tipo){
+        PreparedStatement pst=null;
+        try{
+            String consulta="";
+            if(tipo==1){
+                consulta="insert into AbueloPa(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            if(tipo==2){
+                consulta="insert into AbuelaPa(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            } 
+            if(tipo==3){
+                consulta="insert into AbueloMa(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            if(tipo==4){
+                consulta="insert into AbuelaMa(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            if(tipo==5){
+                consulta="insert into Hermanos(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            if(tipo==6){
+                consulta="insert into Madre(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            if(tipo==7){
+                consulta="insert into Padre(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            if(tipo==8){
+                consulta="insert into Tios(Vive,DM,HTA,Neoplasia,Obesidad,TBP,Cardiopatias,"
+                    + "Alergias,Formaciones,Toxicomanias,Cancer,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            }
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1,Viv);
+            pst.setString(2,DM);
+            pst.setString(3,hta);
+            pst.setString(4,neoplas);
+            pst.setString(5,obesi);
+            pst.setString(6,tbp);
+            pst.setString(7,cardio);
+            pst.setString(8,alergi);
+            pst.setString(9,formac);
+            pst.setString(10,toxico);
+            pst.setString(11,cancer);
+            pst.setString(12,id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean Cirujia(String fecha,String Motivo,String Causa,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="insert into Cirujias(Fecha,Motivo,Tipo,IdPaciente) values(?,?,?,?) ";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, fecha);
+            pst.setString(2, Motivo);
+            pst.setString(3, Causa);
+            pst.setString(4, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean Alergia(String fecha,String Motivo,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="insert into Alergias(Fecha,Causa,IdPaciente) values(?,?,?) ";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, fecha);
+            pst.setString(2, Motivo);           
+            pst.setString(3, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*public static void main(String[] args){
         Consulta re= new Consulta();
-        re.getDiagnostico("Co");
+        re.AbueloPa("si","si","si","si","si","no","si","si","si","no","no1","2");*/
+        //re.getDiagnostico("Co");
         //re.registro("jose luis","Rosas Leal","1234");
         //re.reg_paciente("Eduardo","Rosas","Leal","21","1234","Ingeniero","Soltero","Tapicer","roll940909","masculino");
         

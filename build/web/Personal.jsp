@@ -11,6 +11,7 @@
 	<title>CESS</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/Personal.css">	
+        <script type="text/javascript" src="js/Validacion.js"></script>
         <style>
             head,body{
                background-image: url(img/jj.png);
@@ -27,8 +28,7 @@
 		    <input class="input1" type="text" name="nombre" placeholder="Nombre" required>
 		    <input class="input1" type="text" name="apellido" placeholder="Apellidos" required><br>
 		    <input class="input1" type="password" name="pass" placeholder="Contraseña" required>
-		    <input class="input1" type="text" name="tele" placeholder="Teléfono" required><br>
-		   <!-- <input class="input1" type="text" name="domicilio" placeholder="Domicilio" required ><br>-->
+		    <input class="input1" type="text" name="tele" placeholder="Teléfono" onkeyUp="return Telefono(this)" required><br>		   
 		    <input class="input1" type="text" name="Especialidad" placeholder="Especialidad" required><br>
                     <input class="input1" type="text" name="Cedula" placeholder="Cedula O Pre Cedula" required><br>
 		   	<div>

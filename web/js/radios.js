@@ -150,6 +150,13 @@ function ocultarlabo(){
 	document.getElementById("mostrarLabo").style.display="none";
 }
 
+function mostrarAnti(){
+    document.getElementById("muestraAnti").style.display="block";
+}
+
+function ocultarAnti(){
+    document.getElementById("muestraAnti").style.display="none";
+}
 
 function ocultarMujer(genero){
     if(genero.value=='Masculino'){

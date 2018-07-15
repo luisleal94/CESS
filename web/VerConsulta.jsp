@@ -51,7 +51,7 @@
                 border: none;               
                 background:none;
                 color: #294c4f;
-                text-align: center;
+                /*text-align: center;*/
                 text-decoration: underline;
             }
             .titulo{
@@ -106,7 +106,11 @@
                 border-radius: 3px;
                 transition: 0.3s;
             }
-
+            #diagnostico{
+                width: 50%;
+                border: none;
+                padding: 10px;      
+            }
         </style>
     </head>
     <body>

@@ -48,7 +48,7 @@ public class registrarP extends HttpServlet {
                     id=rs.getString("idPacientes");
                 }
                 System.out.println(id);
-                request.setAttribute("id",id);
+                request.setAttribute("id",id);               
                 request.getRequestDispatcher("HistoriaClinica.jsp").forward(request, response);
             } catch (Exception ex) {
                 System.out.println("Error"+ex);

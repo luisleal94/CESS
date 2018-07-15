@@ -43,8 +43,9 @@
             <div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
                     String id=request.getAttribute("id").toString();//El que obtengo del serlevt
-                    //String iD=request.getParameter("id");  //El que se manda por herf
+                    String Genero=request.getParameter("Genero"); 
                     System.out.println("Id obtenido:"+id);
+                    System.out.println("Genero: "+Genero);
                     String genero;
                     Conexion con= new Conexion();
                     PreparedStatement pst;
@@ -77,14 +78,14 @@
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
 	</div>
-        <div style="margin: 15px;"><a id="link" href="inicio.jsp">Inicio</a></div>
+        <!--<div style="margin: 15px;"><a id="link" href="inicio.jsp">Inicio</a></div>-->
 	<div class="formulario">
             <form class="formula" method="post" action="GuardarHist" >
                 <%String ID=id;%>
                 <input type="text" value="<%=id%>" name="id" style="display: none"><br>
                 <input type="text" id="sexo" name="sexo" style="display: none"><br>		
 
-		<div  style="background-color:  #dcf6f2  ">
+		<div  style="background-color:white">
                     <%
                         pst = con.getConexion().prepareStatement("select *from NoPatologicos where idPaciente='"+ID+"'");
                         rs=pst.executeQuery(); 
@@ -132,19 +133,19 @@
 				<input type="text" name="hepatitis" value="<%=rs.getString("hepatitis")%>"disabled> <!--Nuevo agregado-->
 			</div>
                         <% } %>
-			<div class="bloque">
+			<div class="bloque">                            
                         <%
                             pst = con.getConexion().prepareStatement("select *from VIcios where IdPaciente='"+ID+"'");
                             rs=pst.executeQuery(); 
                             while(rs.next()){
-                        %>
-				<label id="titulo2">Alcohólismo</label><br>
-				<label>¿Ingieres bebidas alcohólicas?</label>
-				<div>                               
-                                    <input type="text" value="<%=rs.getString("Toma")%>" disabled>
-				</div>
-                                <%
-                                    if(rs.getString("Toma").equals("Si")){
+                        %>			
+				<label>Bebidas alcohólicas</label>
+				<input type="text" value="<%=rs.getString("Toma")%>" disabled>
+                                <label>Fumas</label> 
+                                <input type="text" value="<%=rs.getString("Fuma")%>" disabled>
+                                <label>Relaciones Sexuales</label> 
+                                <input type="text" value="<%=rs.getString("Relaciones")%>" disabled>
+                                <%                                    
                                         pst = con.getConexion().prepareStatement("select *from ResVicios where IdPaciente='"+ID+"'");
                                         rs=pst.executeQuery(); 
                                         while(rs.next()){
@@ -155,13 +156,136 @@
                                             <label>¿Qué cantidad de bebida ingieres?</label>
                                             <input type="text" name="cantidad1" value="<%=rs.getString("CantidadAlco")%>" disabled>			
                                         </section>                                     
-                                <%   } }
-                                }
-                                %>  			
-                                 
+                                <%   }                                   
+                                        pst = con.getConexion().prepareStatement("select *from ResVicios where IdPaciente='"+ID+"'");
+                                        rs=pst.executeQuery(); 
+                                        while(rs.next()){
+                                %>   
+                                        <section id="muestraA" class="seccion">
+                                            <label>Edad de inicio</label>
+                                            <input type="text" name="inicio1" value="<%=rs.getString("EdadFum")%>" disabled>	
+                                            <label>¿Qué cantidad de bebida ingieres?</label>
+                                            <input type="text" name="cantidad1" value="<%=rs.getString("CigarrosDia")%>" disabled>			
+                                        </section>  
+                                <%  }
+                                        pst = con.getConexion().prepareStatement("select *from ResVicios where IdPaciente='"+ID+"'");
+                                        rs=pst.executeQuery(); 
+                                        while(rs.next()){%>
+                                        <section id="muestraA" class="seccion">
+                                            <label>Edad de inicio</label>
+                                            <input type="text" name="inicio1" value="<%=rs.getString("EdadRela")%>" disabled>	
+                                            <label>Número de parejas</label>
+                                            <input type="text" name="cantidad1" value="<%=rs.getString("NoParejas")%>" disabled>
+                                            <label>Protección</label>
+                                            <input type="text" name="cantidad1" value="<%=rs.getString("Proteccion")%>" disabled>
+                                            <label>Anticonceptivo</label>
+                                            <input type="text" name="cantidad1" value="<%=rs.getString("Anticonceptivo")%>" disabled>
+                                        </section>
+                        <% } } %>
 			</div>
-			
-                               
+                        <%if(Genero.equals("Femenino")){ %>
+                            <div class="bloque"> 
+                            <%  pst = con.getConexion().prepareStatement("select *from Ginecologo where IdPaciente='"+ID+"'");
+                                rs=pst.executeQuery(); 
+                                while(rs.next()){ %>
+                                <section id="muestraA" class="seccion">
+                                    <label>Menarca</label>
+                                    <input type="text" name="inicio1" value="<%=rs.getString("Menarca")%>" disabled>	
+                                    <label>Duración</label>
+                                    <input type="text" name="cantidad1" value="<%=rs.getString("Duracion")%>" disabled>                                   
+                                    <label>Dolor</label>
+                                    <input type="text" name="cantidad1" value="<%=rs.getString("Dolor")%>" disabled>
+                                    <br><label>Medicamentos</label>
+                                    <input type="text" name="cantidad1" value="<%=rs.getString("Medicamentos")%>" disabled>
+                                    <label>Embarazo</label>
+                                    <input type="text" name="cantidad1" value="<%=rs.getString("Embarazo")%>" disabled>
+                                    <section id="muestraA" class="seccion">
+                                    <%  pst = con.getConexion().prepareStatement("select *from ResGineco where IdPaciente='"+ID+"'");
+                                        rs=pst.executeQuery(); 
+                                         while(rs.next()){ %> 
+                                        <label>Gestas</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("Gestas")%>" disabled>
+                                        <label>Partos</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("Partos")%>" disabled>
+                                        <label>Abortos</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("Abortos")%>" disabled>
+                                        <label>Cesareas</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("Cesareas")%>" disabled>
+                                        <label>Complicaciones</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("Complicaciones")%>" disabled>
+                                        <label>Ultima regla</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("UltimaRegla")%>" disabled>
+                                    <% } %>
+                                    </section>
+                                </section>
+                                
+                            </div>
+                        <% } }%>
+                <label id="titulo1">Antecedentes Personales Patológicos</label>
+                    <div class="bloque">
+                        <%  pst = con.getConexion().prepareStatement("select *from Patologicos where IdPaciente='"+ID+"'");
+                            rs=pst.executeQuery(); 
+                            while(rs.next()){ %>
+                            <label>Combe</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Combe")%>" disabled>
+                            <label>Cirugía</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Cirujia")%>" disabled>
+                            <label>Alergia</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Alergia")%>" disabled>
+                            <br><label>Diabetico</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Diabetico")%>" disabled>                            
+                            <label>Hipertenso</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Hipertenso")%>" disabled>
+                            <br><label>Otros</label>
+                            <textarea><%=rs.getString("OtrosPato")%></textarea>
+                        <% } %>
+                        <%  pst = con.getConexion().prepareStatement("select *from ResPatologicos  where IdPacientes='"+ID+"'");
+                            rs=pst.executeQuery(); 
+                            while(rs.next()){ %>
+                            <label>Desde cuando</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("FechaDia")%>" disabled>
+                            <label>Medicamento para controlarse</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("MedicamentoDia")%>" disabled>
+                            <label>Complicaciones</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("ComplicacionesDia")%>" disabled>
+                            <label>Inicio de la Hipertensión</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("CuandoHi")%>" disabled>
+                            <label>Medicamento</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("MedicamentoHi")%>" disabled>
+                            <label>Complicaciones</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("CompliHip")%>" disabled>
+                        <% } %>    
+                    </div>
+                    <div class="bloque">
+                        <label id="titulo1">Interrogatorio por Aparato y Sistemas</label>
+                        <%  pst = con.getConexion().prepareStatement("select *from Sistema1 where IdPaciente='"+ID+"'");
+                            rs=pst.executeQuery(); 
+                            while(rs.next()){ %>
+                            <label>Dolor de estomago frecuente</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("DolorEstomago")%>" disabled>
+                            <label>Náuseas o Vómito</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Nauseas")%>" disabled>
+                            <label>Tos frecuente</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Tos")%>" disabled>
+                            <label>Dolor de pecho</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("DolorPecho")%>" disabled>
+                            <label>Fatiga al realizar ejercicios</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Fatiga")%>" disabled>
+                            <label>Cefalea</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("DolorCabeza")%>" disabled>
+                        <%  } %>
+                        <%  pst = con.getConexion().prepareStatement("select *from Sistema1_2 where IdPaciente='"+ID+"'");
+                            rs=pst.executeQuery(); 
+                            while(rs.next()){ %>
+                            <label>Estreñimiento</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Estreñimiento")%>" disabled>
+                            <label>Padece Diarrea</label>
+                            <input type="text" name="inicio1" value="<%=rs.getString("Diarrea")%>" disabled>
+                            <textarea><%=rs.getString("Otros2")%></textarea>
+                            <textarea><%=rs.getString("Otros3")%></textarea>
+                            <textarea><%=rs.getString("Otros4")%></textarea>
+                        <%  } %>
+                    </div>
                 </div>
 	</form>
 	</div>

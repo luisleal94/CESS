@@ -41,9 +41,9 @@
                 color:  #212f3d ;
             }
             .contiene_tabla{
-                margin-left: 15%;
+                margin-left: 10%;
                 position: relative;
-                margin-right: 15%;
+                margin-right: 10%;
             }
             .tabla{
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -91,7 +91,7 @@
                 transition: 0.3s;
             }
             input[type=submit]{
-                width: 40%;
+                width: 50%;
                 height: 10%;
                 padding: 10px 18px;
                 margin: 0px 0;
@@ -120,14 +120,15 @@
         <table class="tabla">
             <tr>
                 <th>Fecha</th>                
-                <th>Medico</th>                
+                <th>Medico</th>  
+                <th>Especialidad</th>
                 <th></th>
             </tr>
              <%  while(rs.next()){  %>
             <tr>
                 <td><%=rs.getString("Fecha")%></td>
                 <td><%=rs.getString("Medico")%></td>
-                
+                <td><%=rs.getString("Especialidad")%></td>
                 <td>         
                   <form action="" method="post">
                     <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">

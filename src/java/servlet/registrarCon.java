@@ -25,7 +25,7 @@ public class registrarCon extends HttpServlet {
         String fr=request.getParameter("fr");
         String padeci=request.getParameter("padeci");
         String explo=request.getParameter("exploracion");
-        String diagnos=request.getParameter("diagnos");
+        String diagnos=request.getParameter("Diagnos");
         String canali=request.getParameter("canali");// Canalizacion?
         String gabinete=request.getParameter("gabinete");  //Gabinete
         String ResGabi=request.getParameter("ResGabi");  //Si gabinete
@@ -37,8 +37,10 @@ public class registrarCon extends HttpServlet {
         String tipo=request.getParameter("Tipo");
         String Demanda=request.getParameter("Demanda");
         String folio=request.getParameter("folio");
+        String Especialidad=request.getParameter("Especialidad");
         
         System.out.println(NombrePaci);
+        System.out.println(Especialidad);
         if(canali.equals("No")){
             ResGabi="Ninguno";
             Reslabora="Ninguno";
@@ -53,8 +55,9 @@ public class registrarCon extends HttpServlet {
         }
         System.out.println(medico);
         Consulta con= new Consulta();
-        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio)){
-            response.sendRedirect("Receta.jsp");
+        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad)){
+            request.setAttribute("id",id);
+            request.getRequestDispatcher("Receta.jsp").forward(request, response);
         }else{
             response.sendRedirect("CessSuper.jsp");
         }

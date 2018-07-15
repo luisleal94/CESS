@@ -15,13 +15,7 @@
     String usuario=(String)sesion.getAttribute("Usuario");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
-    }
-    else{
-        String gerarquia=(String)sesion.getAttribute("Gerarquia");
-        if(gerarquia.equals("usuario")){
-            response.sendRedirect("inicio.jsp"); 
-        }
-    }
+    }    
 %>
 
 <!DOCTYPE html>
@@ -168,13 +162,15 @@
             <table id="tabla">
                 <tr>
                     <th>Fecha de Consulta</th>
-                    <th>Médico Tratante</th>                
+                    <th>Médico Tratante</th> 
+                    <th>Especialidad</th> 
                     <th>Opciones</th>
                 </tr>
                  <%  while(rs.next()){  %>
                 <tr>
                     <td><%=rs.getString("Fecha")%></td>
                     <td><%=rs.getString("Medico")%></td>
+                    <td><%=rs.getString("Especialidad")%></td>
                     <td>         
                         <form action="" method="post">
                         <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">

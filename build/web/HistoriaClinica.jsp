@@ -33,6 +33,8 @@
         <link rel="stylesheet" type="text/css" href="css/estiloH.css">
 	<script type="text/javascript" src="js/radios.js"></script>
 	<script type="text/javascript" src="js/Validacion.js"></script>
+        <script type="text/javascript" src="js/Tabla.js"></script>
+        <script type="text/javascript" src="js/Confirmacion.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
     </head>
     <body>
@@ -42,9 +44,10 @@
 	</div>
             <div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
-                    String id=request.getAttribute("id").toString();//El que obtengo del serlevt
-                    //String iD=request.getParameter("id");  //El que se manda por herf
-                    System.out.println("Id obtenido:"+id);
+                   String id=(String)request.getAttribute("id");//El que obtengo del serlevt                   
+                   if(id==null){
+                       response.sendRedirect("inicio.jsp"); 
+                   }
                     String genero;
                     Conexion con= new Conexion();
                     PreparedStatement pst;
@@ -54,7 +57,7 @@
                      while(rs.next()){
                 %>
 		<label >Nombre</label>
-                <input type="text" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
+                &emsp;<input type="text" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
                 <% 
                 Calendar calender = Calendar.getInstance();
                 String fecha;
@@ -63,16 +66,16 @@
                 int anio=calender.get(Calendar.YEAR);
                 fecha=dia+" / "+mes+" / "+anio;
                 %>
-		<label >Fecha</label>
-                <input type="text" name="fecha" value="<%=fecha%>" style="color:#063452" disabled>
-		<label>Estado Civil</label>
-                <input type="text" name="estado" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
+		&emsp;&emsp;<label >Fecha</label>
+                &emsp;<input type="text" name="fecha" value="<%=fecha%>" style="color:#063452" disabled>
+		&emsp;&emsp;<label>Estado Civil</label>
+                &emsp;<input type="text" name="estado" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
 		<label>Ocupacion</label>
-                <input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
-		<label>Domicilio</label>                
-                <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
-                <label>Edad</label>  
-                <input type="text" name="Edad" value="<%=rs.getString("Edad")%>" style="color:#063452" disabled>
+                &emsp;<input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
+		&emsp;&emsp;<label>Domicilio</label>                
+                &emsp;<input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
+                &emsp;&emsp;<label>Edad</label>  
+                &emsp;<input type="text" name="Edad" value="<%=rs.getString("Edad")%>" style="color:#063452" disabled>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
@@ -80,7 +83,7 @@
         <div style="margin: 15px;"><a id="link" href="inicio.jsp">Inicio</a></div>
 	<div class="formulario">
             <form class="formula" method="post" action="GuardarHist" >
-                <input type="text" value="<%=id%>" name="id" style="display: none"><br>
+                <input type="text" value="<%=id%>" name="id" style="display: none"><br>                
                 <input type="text" id="sexo" name="sexo" style="display: none"><br>
 		<label id="titulo1">Antecedentes Heredofamiliares</label>
 		<div class="contiene_tabla" align="center">
@@ -101,129 +104,129 @@
 				</tr>
 				<tr>
 					<td>Abuelo Paterno</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
+					<td><input type="checkbox" name="AbueloP0" value="Vive"><br></td>
+					<td><input type="checkbox" name="AbueloP1" value="DM"><br></td>
+					<td><input type="checkbox" name="AbueloP2" value="HTA"><br></td>
+					<td><input type="checkbox" name="AbueloP3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="AbueloP4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="AbueloP5" value="TBP"><br></td>
+					<td><input type="checkbox" name="AbueloP6" value="Cardiopatias"><br></td>
+					<td><input type="checkbox" name="AbueloP7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="AbueloP8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="AbueloP9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="AbueloP10" value="Cancer"><br></td>
 				</tr>
 				<tr>
 					<td>Abuela Paterna</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
+					<td><input type="checkbox" name="AbuelaP0" value="Vive"><br></td>
+					<td><input type="checkbox" name="AbuelaP1" value="DM"><br></td>
+					<td><input type="checkbox" name="AbuelaP2" value="HTA"><br></td>
+					<td><input type="checkbox" name="AbuelaP3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="AbuelaP4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="AbuelaP5" value="TBP"><br></td>
+					<td><input type="checkbox" name="AbuelaP6" value="Cardiopatias"><br></td>
+					<td><input type="checkbox" name="AbuelaP7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="AbuelaP8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="AbuelaP9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="AbuelaP10" value="Cancer"><br></td>
 				</tr>
 				<tr>
 					<td>Abuelo Materno</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>	
+					<td><input type="checkbox" name="AbueloMa0" value="Vive"><br></td>
+					<td><input type="checkbox" name="AbueloMa1" value="DM"><br></td>
+					<td><input type="checkbox" name="AbueloMa2" value="HTA"><br></td>
+					<td><input type="checkbox" name="AbueloMa3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="AbueloMa4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="AbueloMa5" value="TBP"><br></td>
+					<td><input type="checkbox" name="AbueloMa6" value="Cardiopatías"><br></td>
+					<td><input type="checkbox" name="AbueloMa7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="AbueloMa8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="AbueloMa9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="AbueloMa10" value="Cancer"><br></td>	
 				</tr>
 				<tr>
 					<td>Abuela Materna</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
+					<td><input type="checkbox" name="AbuelaMa1" value="Vive"><br></td>
+					<td><input type="checkbox" name="AbuelaMa2" value="DM"><br></td>
+					<td><input type="checkbox" name="AbuelaMa3" value="HTA"><br></td>
+					<td><input type="checkbox" name="AbuelaMa4" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="AbuelaMa5" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="AbuelaMa6" value="TBP"><br></td>
+					<td><input type="checkbox" name="AbuelaMa7" value="Cardiopatias"><br></td>
+					<td><input type="checkbox" name="AbuelaMa8" value="Alergias"><br></td>
+					<td><input type="checkbox" name="AbuelaMa9" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="AbuelaMa10" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="AbuelaMa11" value="Cancer"><br></td>
 				</tr>
 				<tr>
 					<td>Padre</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>	
+					<td><input type="checkbox" name="Padre0" value="Vive"><br></td>
+					<td><input type="checkbox" name="Padre1" value="DM"><br></td>
+					<td><input type="checkbox" name="Padre2" value="HTA"><br></td>
+					<td><input type="checkbox" name="Padre3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="Padre4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="Padre5" value="TBP"><br></td>
+					<td><input type="checkbox" name="Padre6" value="Cardiopatías"><br></td>
+					<td><input type="checkbox" name="Padre7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="Padre8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="Padre9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="Padre10" value="Cancer"><br></td>	
 				</tr>
 				<tr>
 					<td>Madre</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>	
+					<td><input type="checkbox" name="Madre0" value="Vive"><br></td>
+					<td><input type="checkbox" name="Madre1" value="DM"><br></td>
+					<td><input type="checkbox" name="Madre2" value="HTA"><br></td>
+					<td><input type="checkbox" name="Madre3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="Madre4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="Madre5" value="TBP"><br></td>
+					<td><input type="checkbox" name="Madre6" value="Cardiopatias"><br></td>
+					<td><input type="checkbox" name="Madre7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="Madre8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="Madre9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="Madre10" value="Cancer"><br></td>	
 				</tr>
 				<tr>
 					<td>Hermanos</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>	
+					<td><input type="checkbox" name="Hermanos0" value="Vive"><br></td>
+					<td><input type="checkbox" name="Hermanos1" value="DM"><br></td>
+					<td><input type="checkbox" name="Hermanos2" value="HTA"><br></td>
+					<td><input type="checkbox" name="Hermanos3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="Hermanos4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="Hermanos5" value="TBP"><br></td>
+					<td><input type="checkbox" name="Hermanos6" value="Cardiopatias"><br></td>
+					<td><input type="checkbox" name="Hermanos7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="Hermanos8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="Hermanos9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="Hermanos10" value="Cancer"><br></td>	
 				</tr>
 				<tr>
 					<td>Tios</td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>
-					<td><input type="checkbox" name="vehicle" value="si"><br></td>	
+					<td><input type="checkbox" name="Tios0" value="Vive"><br></td>
+					<td><input type="checkbox" name="Tios1" value="DM"><br></td>
+					<td><input type="checkbox" name="Tios2" value="HTA"><br></td>
+					<td><input type="checkbox" name="Tios3" value="Neoplasia"><br></td>
+					<td><input type="checkbox" name="Tios4" value="Obesidad"><br></td>
+					<td><input type="checkbox" name="Tios5" value="TBP"><br></td>
+					<td><input type="checkbox" name="Tios6" value="Cardiopatias"><br></td>
+					<td><input type="checkbox" name="Tios7" value="Alergias"><br></td>
+					<td><input type="checkbox" name="Tios8" value="Mal formaciones"><br></td>
+					<td><input type="checkbox" name="Tios9" value="Toxicomanias"><br></td>
+					<td><input type="checkbox" name="Tios10" value="Cancer"><br></td>	
 				</tr>
 			</table>
 		</div>
 
-		<div  style="background-color:  #dcf6f2  ">
+		<div  style="background-color:white">
 
 			<label id="titulo1">Antecedentes Personales No Patológicos</label>
 			<label id="titulo2">Hábitos Higienicos</label>
 			<div class="bloque" align="center">
 				<label>Aseo Corporal</label>
 				<input type="text" name="aseo" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
-				<label>Aseo Bucal</label>
-				<input type="text" name="bucal" id="number" onkeyUp="return ValNumero(this);"><label>/ 3</label>
-				<label>Cambio de ropa</label>
+				&emsp;&emsp;<label>Aseo Bucal</label>
+				&emsp;&emsp;<input type="text" name="bucal" id="number" onkeyUp="return ValNumero2(this);"><label>/ 3</label>
+				&emsp;&emsp;<label>Cambio de ropa</label>
 				<input type="text" name="ropa" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
 			</div>
 		
@@ -231,26 +234,26 @@
 				<label id="titulo2">Hábitos Alimenticios</label>
 				<label>Lácteos</label>
 				<input type="text" name="leche" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
-				<label>Proteínas</label>
-				<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);"> <label>/ 7</label>                
-				<label>Verduras</label>
-				<input type="text" name="verduras" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
-				<label>Cereales</label>
-				<input type="text" name="cereal" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
-				<label>Leguminosas</label>
+				&emsp;&emsp;<label>Proteínas</label>
+				&emsp;&emsp;<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);"> <label>/ 7</label>                
+				&emsp;&emsp;<label>Verduras</label>
+				&emsp;&emsp;<input type="text" name="verduras" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+				&emsp;&emsp;<label>Cereales</label>
+				&emsp;&emsp;<input type="text" name="cereal" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+				&emsp;&emsp;<label>Leguminosas</label>
 				<input type="text" name="legum" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
 			</div>
 			
                         <div class="bloque">
-				<label id="titulo2">INMUNIZACIONES (FECHAS)</label>
-				<label>ANTITETÁNICA</label>
-				<input type="text" name="tetano">
-				<label>ANTISARAMPIÓN</label>
-				<input type="text" name="sarampion"><br>
-				<label>RUBÉOLA</label>
-				<input type="text" name="rubeola">				
-                                <label>ANTI HBS</label>
-				<input type="text" name="hepatitis"> <!--Nuevo agregado-->
+                            <label id="titulo2">INMUNIZACIONES (FECHAS)</label><br>
+				<label>ANTITETÁNICA</label>&emsp;                           
+                                <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">                                
+				&emsp;&emsp;&emsp;<label>ANTISARAMPIÓN</label>&emsp;&emsp;
+                                <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha"><br>				
+				<label>RUBÉOLA</label>&emsp;&emsp;
+                                <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">
+                                &emsp;&emsp;&emsp;<label>ANTI HBS</label>
+				<input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha"> <!--Nuevo agregado-->
 			</div>
 
 			<div class="bloque">
@@ -302,8 +305,20 @@
                                         <input type="text" name="inicio3">		  			
 		  			<label>¿Cuántas parejas has tenido?</label>
                                         <input type="text" name="parejas"><br>
-		  			<label>¿Usas preservativo o método anticonceptivo?</label>
-		  			<input type="text" name="proteccion">
+		  			<label>¿Usas preservativo?</label>
+                                        <input type="radio" id="siPre" name="proteccion" value="Si" onclick="mostrarProte()">
+                                        <label for="siPre" class="label">Si</label>
+                                        <input type="radio" id="noPre" name="proteccion" value="No" onclick="ocultarProte()" checked> 
+                                        <label for="noPre" class="label">No</label>		  			                                 
+                                        &emsp;&emsp;&emsp;&emsp;<label>¿Usas Método Anticonceptivo?</label>		  			
+                                        <input type="radio" id="siMet" name="anticonceptivo" value="Si" onclick="mostrarAnti()">
+                                        <label for="siMet" class="label">Si</label>                                            
+                                        <input type="radio" id="noMet" name="anticonceptivo" value="No" onclick="ocultarAnti()" checked> 
+                                        <label for="noMet" class="label">No</label>  
+                                        <section id="muestraAnti" style="display: none;" class="seccion">
+                                            <label>¿Cual o Cuales?</label>
+                                            <input type="text" name="NombreAnticon">					
+                                        </section>
                                     </div>
 	  			</section>
 			</div>
@@ -313,7 +328,7 @@
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
 			<label>Menarca</label>
 			<input type="text" name="menarca">
-			<label>¿Cada cuantos dias y cuantos dias dura?</label>
+			<label>Duración</label>
 			<input type="text" name="duracion"><br>
 			<label>Dismenorrea</label>
 			<input type="text" name="dolorM">
@@ -330,22 +345,22 @@
   				<div>
   				<label>Gestas</label>
   				<input type="text" name="gestas" id="number" onkeyUp="return ValNumero(this);"><!--Nuevo-->
-  				<label>Partos</label>
+  				&emsp;&emsp;<label>Partos</label>
   				<input type="text" name="Partos" id="number" onkeyUp="return ValNumero(this);"><!--Nuevo-->
-                                <label>Abortos</label>
+                                &emsp;&emsp;<label>Abortos</label>
   				<input type="text" name="abortos" id="number" onkeyUp="return ValNumero(this);">
-  				<label>Cesáreas</label>
+  				&emsp;&emsp;<label>Cesáreas</label>
   				<input type="text" name="Cesareas" id="number" onkeyUp="return ValNumero(this);">
-  				<label>Complicaciones</label>
+                                &emsp;&emsp;<br><label>Complicaciones</label>
   				<input type="text" name="CompliEmba"><br>
   				<label>Fecha de ultima regla</label>
-  				<input type="text" name="UltimaRe">
+  				<input type="text" name="UltimaRe" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">
                                 </div>
                             </section>
                     </section>
                 </div>    
 
-		<div  class="bloque" style="background-color:  #dcf6f2 ">
+		<div  class="bloque" style="background-color:white">
                     <label id="titulo1">Antecedentes Personales Patológicos</label>
                         <label>Combe</label>
                         <input type="radio" id="siC" name="combe" value="Positivo">
@@ -361,14 +376,28 @@
   			<input type="radio" id="no4" name="ciru" value="No" onclick="ocultar3()" checked> 
   			<label for="no4" class="label">No</label>
   			<section id="muestra3" style="display: none;" class="seccion">
-  				<div>
+  				<!--<div>
 	  				<label>¿De qué?</label>
 	  				<input type="text" name="causaQ">
 	  				<label>¿En que fecha?</label>
 	  				<input type="text" name="fechaQ">
 	  				<label>Complicaciones</label>
 	  				<input type="text" name="CompQ">
-	  			</div>
+	  			</div>-->
+                                <div class="boton">
+                                    <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow()">
+                                </div>
+                                <div class="contiene_tabla" align="center">
+                                    <table class="table" id="myTableData">
+                                        <tr>
+                                            <td style="width:5%">Borrar</td>
+                                            <td style="width:30%">Fecha</td>
+                                            <td style="width:30%">Motivo</td>
+                                            <td style="width:30%">Tipo</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <input type="text" name="Valor1" id="Valor" style="display: none;">
   			</section>
   			<div style="margin: 15px;">
   				<label>Alergias</label>
@@ -378,12 +407,25 @@
   			<label for="si5" class="label">Si</label>
   			<input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()" checked>
   			<label for="no5" class="label">No</label>
-	  			<section id="ciru" style="display: none;" class="seccion">
-	  				<label>¿En qué fecha?</label>
-	  				<input type="text" name="fechaA">
-	  				<label>¿Algún medicamento, alimento, sustancia, etc?</label>
-	  				<input type="text" name="medicA">
-	  			</section>
+                            <section id="ciru" style="display: none;" class="">
+                                <!--<label>¿En qué fecha?</label>
+	  			<input type="text" name="fechaA">
+                                <label>¿Algún medicamento, alimento, sustancia, etc?</label>
+                                <input type="text" name="medicA"><br>-->
+                                <div class="boton">
+                                    <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow2()">
+                                </div>
+                                <div class="contiene_tabla" align="center">
+                                    <table class="table" id="myTableData2">
+                                        <tr>
+                                            <td style="width:10%">Borrar</td>
+                                            <td style="width:45%">Fecha</td>
+                                            <td style="width:45%">A que</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <input type="text" name="Valor2" id="Valor2">
+	  		</section>
   			<div style="margin: 15px;">
   				<label>Enfermedades</label>
   			</div>
@@ -411,7 +453,7 @@
   				<label>¿Desde cuando?</label>
 	  			<input type="text" name="cuandoHI">
 	  			<label>¿Con qué medicamento te controlas?</label>
-		  		<input type="text" name="medicHI">
+                                <input type="text" name="medicHI"><br>
 		  		<label>¿Has presentado alguna complicación?</label>
 		  		<input type="text" name="compliHI">		  		
   			</section>  			
@@ -427,7 +469,7 @@
                         </section>
   		</div>
 		
-		<div class="bloque" style="background-color:  #dcf6f2 ">
+		<div class="bloque" style="background-color:white">
 			<label id="titulo1">Interrogatorio por Aparato y Sistemas</label>
 			<div style="margin: 15px;">
   				<label>Sistema digestivo</label>
@@ -455,7 +497,7 @@
   				<label>¿Con qué frecuencia?</label>
   				<input type="text" name="freDea">
   			</section>
-  			<br><label>¿Tienes nauseas y/o vomito?</label>
+  			<br><label>¿Tienes náuseas y/o vómito?</label>
   			<input type="radio" id="si12" name="vomito" value="Si">
 		  	<label for="si12" class="label">Si</label>
 	  		<input type="radio" id="no12" name="vomito" value="No" checked> 
@@ -501,7 +543,7 @@
 		  	<label for="si19" class="label">Si</label>
 	  		<input type="radio" id="no19" name="fatiga" value="No" checked> 
 	  		<label for="no19" class="label">No</label>
-  			<br><br><label>¿Tienens dolor de cabeza frecuentemente?</label>
+  			<br><br><label>¿Tiene cefalea frecuentemente?</label>
   			<input type="radio" id="si20" name="dolCab" value="Si">
 		  	<label for="si20" class="label">Si</label>
 	  		<input type="radio" id="no20" name="dolCab" value="No" checked> 
@@ -525,18 +567,7 @@
 		</div>
                 <div style="margin: 25px;" >
                      <a id="boton" href="inicio.jsp">Regresar</a>
-                    <%
-                        if(gerarquia.equals("Admin")){%>
-           
-                            <input id="boton" type="submit" value="Generar Consulta">
-                                              
-                        <%
-                        }else{  %>            
-                        
-                            <input id="boton"  type="submit" value="Generar Consulta" >
-                                               
-                        <%}
-                    %>
+                      <input id="boton" type="submit" value="Generar Consulta" onclick="confirmation()">                    
                 </div>
 	</form>
 	</div>
@@ -547,8 +578,8 @@
                 document.getElementById("sexo").value=x;
 		if(str2==x){
     		document.getElementById("mujer").style.display="block";
-    	}else{
-    		document.getElementById("mujer").style.display="none";
-    	}
+                }else{
+                    document.getElementById("mujer").style.display="none";
+                }
 	</script>
 </html>
