@@ -22,13 +22,22 @@
     }
     cedula=(String)sesion.getAttribute("Cedula");
     NOMBRE=(String)sesion.getAttribute("Nombre");
+    String IDPac="";
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
+        <script>
+            $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+                $("#add").click( function() {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+                    $.post("enviar",$("#miForm").serialize());   // Primero validará el formulario.                    
+                });    
+            });
+        </script>
         <title>CESS</title>
         <style>
             head,body{
@@ -228,10 +237,11 @@
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+                IDPac=rs.getString("idPacientes");
                 %> 
                 <form action="" method="post">
                     <label id="titulos">ID</label>
-                    <input type="text" id="cortos" name="id" value="<%=rs.getString("idPacientes")%>">                  
+                    <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" disabled style="color: #273746">                  
                     &emsp;&emsp;<label id="titulos">Nombre</label>
                     <input type="text" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Edad</label>
@@ -248,11 +258,12 @@
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
+                IDPac=rs.getString("idPacientes");
             %>
             <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post">
                     <label id="titulos">ID</label>
-                    <input type="text" id="cortos" name="id" value="<%=rs.getString("idPacientes")%>">                  
+                    <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>">                  
                     &emsp;&emsp;<label id="titulos">Nombre</label>
                     <input type="text" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Edad</label>
@@ -267,37 +278,39 @@
     </div>        
             <div class="medicamento">
                 <div id="myform">
-                    <form id="miForm" action="">
+                    <form id="miForm" method="post">
                     <div class="contiendeTa">                        
                         <table cellpadding="3" id="table">
+                            <input type="text" name="id" value="<%=IDPac%>" style="display: none;">
                             <label>Nombre del medicamento</label>
-                            <input type="text" id="name">
+                            <input type="text" id="name" name="nombre">
                             &emsp;&emsp;<label>F.Farmaceutica</label>
-                            <input size="4" type="text" id="formaf">
+                            <input size="4" type="text" id="formaf" name="farmacia">
                             &emsp;&emsp;<label>Unidades</label>
-                            <input siparcetamolze="6" type="text" id="unidades"><br>
+                            <input siparcetamolze="6" type="text" id="unidades" name="unidades"><br>
                             <label>Via.Admon</label>
-                            <input size="6" type="text" id="viaa">
+                            <input size="6" type="text" id="viaa" name="administracion">
                             &emsp;<label>Presentación</label>
-                            <input type="text" id="presentacion">
+                            <input type="text" id="presentacion" name="presentacion">
                             &emsp;<label>Pzas</label>
-                            <input size="4" type="text" id="pzas">
+                            <input size="4" type="text" id="pzas" name="piezas">
                             &emsp;<label>Dosis</label>
-                            <input type="text" id="dosis"><br>
+                            <input type="text" id="dosis" name="dosis"><br>
                             <label>Cada</label>
-                            <input size="4" type="text" id="cada">
+                            <input size="4" type="text" id="cada" name="cada">
                             &emsp;&emsp;<label>Por</label>
-                            <input size="6" type="text" id="dias">
+                            <input size="6" type="text" id="dias" name="dias">
                             &emsp;<label>Días</label>  
                         </table>                            
                         </div>
                         <div class="boton">
-                                <input type="button" id="add" class="input1" value="Agregar +" onclick="Javascript:addRow()" onclick="limpiarFormulario()">
+                            <input type="button" id="add" class="input1" value="Agregar +" onclick="Javascript:addRow()">
                                 <input type="button" class="input2" onclick="limpiarFormulario()" value="Limpiar formulario">
                         </div>
                     </form>
                 </div>   
             </div>
+        
         <div id="mydata">
             <b>Medicamentos</b>
                     <div class="tabla2">
@@ -327,5 +340,5 @@
                 <label>Cédula</label>
                 <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
         </div>  
-    </body>
+    </body
 </html>

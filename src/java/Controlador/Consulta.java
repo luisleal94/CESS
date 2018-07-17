@@ -118,12 +118,12 @@ public class Consulta extends Conexion{
     }
     
     //Metodo para registrar historial    
-    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String id){
+    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String Presion,String id){
         PreparedStatement pst=null;
         
         try{
-            String consulta="insert into ExploracionF(Peso,Talla,IMC,FrecuenciaC,FrecuenciaR,IdPaciente,"
-                    + "Temperatura) values(?,?,?,?,?,?,?)";
+            String consulta="insert into ExploracionF(Peso,Talla,IMC,FrecuenciaC,FrecuenciaR,Temperatura,"
+                    + "PresionArterial,IdPaciente) values(?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             
             pst.setString(1,peso);
@@ -131,8 +131,10 @@ public class Consulta extends Conexion{
             pst.setString(3,imc);
             pst.setString(4,FR);
             pst.setString(5,FC);
-            pst.setString(6,id);
-            pst.setString(7,tem);
+            pst.setString(6,tem);
+            pst.setString(7,Presion);
+            pst.setString(8,id);
+            
             if(pst.executeUpdate()==1){
                 return true;
             } 
@@ -687,9 +689,44 @@ public class Consulta extends Conexion{
         }
         return false;
     }
+    
+    public boolean Receta(String nombre,String farmacia,String unidad,String dosis,String via,
+            String presenta,String pieza,String cada,String dias,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="insert into Receta(Medicamento,Farmacia,Unidades,Administracion,Presentacion,"
+                    + "Piezas,Dosis,Cada,Dias,IdPaciente) values(?,?,?,?,?,?,?,?,?,?) ";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, nombre);
+            pst.setString(2, farmacia);
+            pst.setString(3, unidad);
+            pst.setString(4, via);
+            pst.setString(5, presenta);
+            pst.setString(6, pieza);
+            pst.setString(7, dosis);
+            pst.setString(8, cada);
+            pst.setString(9, dias);
+            pst.setString(10, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
     /*public static void main(String[] args){
         Consulta re= new Consulta();
-        re.AbueloPa("si","si","si","si","si","no","si","si","si","no","no1","2");*/
+        //re.Receta("1","2","3","4","5","6","8","9","10","45");
+        //re.AbueloPa("si","si","si","si","si","no","si","si","si","no","no1","2");*/
         //re.getDiagnostico("Co");
         //re.registro("jose luis","Rosas Leal","1234");
         //re.reg_paciente("Eduardo","Rosas","Leal","21","1234","Ingeniero","Soltero","Tapicer","roll940909","masculino");

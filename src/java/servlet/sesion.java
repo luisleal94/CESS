@@ -57,7 +57,8 @@ public class sesion extends HttpServlet {
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);
-                    sesion.setAttribute("Nombre", Nombre);                    
+                    sesion.setAttribute("Nombre", Nombre);    
+                    sesion.setAttribute("Especialidad",Especialidad);
                     response.sendRedirect("CessSuper.jsp");
                 }
                 if(gerarquia.equals("Admin")){

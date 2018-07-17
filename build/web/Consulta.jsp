@@ -40,6 +40,12 @@ input[type=text] {
     border-radius: 4px;
 }
 
+input:focus {
+    border-bottom:2px solid  #236087 ;
+    background-color: white ;
+    transition:0.5s; 
+}
+
 input[type=submit] {
     width: 100px;
     background-color: #4CAF50;
@@ -80,7 +86,7 @@ input[type=button]:hover {
     border-radius: 5px;
     padding-top:0px;
     padding-left:15px; 
-    background: #e1edfa ;
+    background: white;
 }
 
 .label{
@@ -174,6 +180,10 @@ a{
     font-family: 'roboto';
 }
 
+.area:focus{
+    border:2px solid #58ade5;
+    transition:0.5s; 
+}
 .areatexto{
     margin-top: 15px; 
     padding: 10px;
@@ -272,6 +282,18 @@ input[type="radio"]{
     color: white;
 }
 
+#tags{
+    width: 80%;
+    height:30px;
+    border-radius: 10px;
+    border: 1px solid #aed6f1;
+    padding: 5px;
+}
+
+#tags:focus{
+    border:0.8px solid  #236087 ;
+    transition:0.5s; 
+}
 </style>
         <style>
             head,body{
@@ -303,7 +325,6 @@ input[type="radio"]{
                   });
               });
 
-
               $( "#tags" ).autocomplete({
                 source: availableTags,
                 minLength:1
@@ -313,7 +334,8 @@ input[type="radio"]{
             function multiplicar(){
 		  peso = document.getElementById("multiplicando").value;
 		  altura = document.getElementById("multiplicador").value;
-		  r = peso/Math.pow(altura,2);
+                  estatura=altura/100;
+		  r = (peso/Math.pow(estatura,2)).toFixed(2);
 		  document.getElementById("resultado").value = r;
 		}
         </script>
@@ -370,7 +392,7 @@ input[type="radio"]{
                     &emsp;&emsp;&emsp;<label id="titulos">Edad</label>
                     <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>">   
                     <div class="botones">
-                    &emsp;<label>Genero</label>
+                    <label>Genero</label>
                     <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>">   
                     <div class="botones">
                         <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
@@ -408,18 +430,18 @@ input[type="radio"]{
             <br><label >Signos Vitales</label><br>
             <label>Peso</label>
             <input type="text" name="peso"  value="0" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
-            <label>Talla (mts)</label>
-            <input type="text" name="talla" id="multiplicador" onkeyUp=" return decimales(this);" onChange="multiplicar();">
-            <label>IMC</label>
-            <input type="text" name="imc" id="resultado" disabled><br>
+            &emsp;&emsp;&emsp;<label>Estatura</label>
+            <input type="text" name="talla" value="1" id="multiplicador" onkeyUp=" return decimalTalla(this);" onChange="multiplicar();">
+            &emsp;&emsp;&emsp;<label>IMC</label>
+            <input type="text" name="imc" id="resultado" disabled><br>          
             <label>Temperatura</label>
-            <input type="text" name="temp" onkeyUp=" return decimales(this);">
-            <label>Frecuencia Cardiaca</label>
+            <input type="text" name="temp" onkeyUp=" return decimalTemp(this);">
+            &emsp;&emsp;&emsp;<label>Frecuencia Cardiaca</label>
             <input type="text" name="fc"><br>
             <label>Frecuencia Respiratoria</label>
             <input type="text" name="fr">
-            <label>Presión Arterial</label>
-            <input type="text" name="fr"><br>
+            &emsp;&emsp;&emsp;<label>Presión Arterial</label>
+            <input type="text" name="PresionArterial"><br>
             <div class="areatexto">
                 <label>Padecimiento Actual</label><br>
                 <textarea name="padeci" class="area" cols="150" rows="5" autofocus></textarea>
@@ -501,6 +523,6 @@ input[type="radio"]{
                 document.getElementById("Doc").value=med; 
                 
                 var Nom=document.getElementById("NombreCom").value;
-                document.getElementById("NombreCompleto").value=Nom;
+                document.getElementById("NombreCompleto").value=Nom;             
     </script>
 </html>

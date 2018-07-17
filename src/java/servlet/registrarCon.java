@@ -3,6 +3,7 @@ package servlet;
 import Controlador.Consulta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ public class registrarCon extends HttpServlet {
         String temp=request.getParameter("temp");
         String fc=request.getParameter("fc");
         String fr=request.getParameter("fr");
+        String presion=request.getParameter("PresionArterial");
         String padeci=request.getParameter("padeci");
         String explo=request.getParameter("exploracion");
         String diagnos=request.getParameter("Diagnos");
@@ -38,7 +40,10 @@ public class registrarCon extends HttpServlet {
         String Demanda=request.getParameter("Demanda");
         String folio=request.getParameter("folio");
         String Especialidad=request.getParameter("Especialidad");
-        
+        double altura=Double.parseDouble(talla)/100;
+        double IMC=Double.parseDouble(peso)/(altura*altura);
+        DecimalFormat formato= new DecimalFormat("#.00");
+        System.out.println(formato.format(IMC));
         System.out.println(NombrePaci);
         System.out.println(Especialidad);
         if(canali.equals("No")){
@@ -55,7 +60,8 @@ public class registrarCon extends HttpServlet {
         }
         System.out.println(medico);
         Consulta con= new Consulta();
-        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad)){
+        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad)
+            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)){
             request.setAttribute("id",id);
             request.getRequestDispatcher("Receta.jsp").forward(request, response);
         }else{

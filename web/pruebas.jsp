@@ -172,6 +172,7 @@ form{
     %>
          <h2>Datos del paciente</h2>
          <form  action="" method="post">
+            <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">
             <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
             <label id="titulos">Nombre</label>
             <input type="text" name="nombre" value="<%=rs.getString("Nombre")%>" disabled style="color: #273746" ><br>

@@ -22,7 +22,7 @@
         </style>
     </head>
     <body>
-        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:44%; color: #00A99D;">Datos del Paciente</p>
+        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:39%; color: #00A99D;">Datos del Paciente</p>
         <a id="link" href="MostrarPersonal.jsp">Regresar</a>
         <div id="contenido">
             
@@ -43,6 +43,14 @@
 		    <label>Cédula</label><input class="input1" type="text" name="cedula" value="<%=rs.getString("Cedula")%>">
                     <label>Username</label><input class="input1" type="text" name="username" value="<%=rs.getString("Username")%>">
                     <label>Especialidad</label><input class="input1" type="text" name="especialidad" value="<%=rs.getString("Especialidad")%>">
+                    <div>
+			<input type="radio" id="super" name="gerar" value="Super" checked>
+			<label for="super" class="label">Super Usuario</label>
+			<input type="radio" id="admin" name="gerar" value="Admin">
+			<label for="admin" class="label">Administrador</label> 
+			<input type="radio" id="user" name="gerar" value="usuario">
+			<label for="user" class="label">Médico</label>
+			</div> 
                     <div class="boton">
 		      <input class="enter1" type="submit" value="Guardar">                      
 		    </div>
@@ -50,16 +58,17 @@
                 <%
             }
 
-            String nombre,apellido,tele,cedula,user,especialidad;
+            String nombre,apellido,tele,cedula,user,especialidad,Gerarquia;
             nombre=request.getParameter("nombre");//Obtengo el parametro del texbox
             apellido=request.getParameter("apellido");           
             tele=request.getParameter("tele");
             cedula=request.getParameter("cedula");
             user=request.getParameter("username");
             especialidad=request.getParameter("especialidad");
+            Gerarquia=request.getParameter("gerar");
             if(nombre!=null){
                 pst = con.getConexion().prepareStatement("update PERSONAL set NOMBRE='"+nombre+"',APELLIDO='"+apellido+"',telefono='"+tele+"',"
-                + "Cedula='"+cedula+"',Username='"+user+"',Especialidad='"+especialidad+"'" + " where ID_USER='"+id+"'");
+                + "Cedula='"+cedula+"',Username='"+user+"',Especialidad='"+especialidad+"', Gerarquia='"+Gerarquia+"' where ID_USER='"+id+"'");
                 pst.executeUpdate();
                 response.sendRedirect("MostrarPersonal.jsp");               
             }

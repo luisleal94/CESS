@@ -108,23 +108,75 @@ function validateDecimal(valor) {
     }
 } 
 
-function validaPeso(valor) {  
-    var RE = /^\d*\.?\d*$/;
-    if (RE.test(valor)) {
-        return valor;       
+function validaPeso(valor) {
+	Numer=valor;
+	if(Numer[0]=='-'){
+            return "";
+	}
+        var RE = /^\d*\.?\d*$/;
+	if (RE.test(valor)) {
+            if(parseFloat(valor)<200){
+		return valor;
+   	}else{
+            return "";
+   	}
     } else {
         return "";
     }
 } 
+
+function validaEdad(valor) {
+	Numer=valor;
+	if(Numer[0]=='-'){
+            return "";
+	}
+        var RE = /^\d*\.?\d*$/;
+	if (RE.test(valor)) {
+            if(parseFloat(valor)<250){
+		return valor;
+   	}else{
+            return "";
+   	}
+    } else {
+        return "";
+    }
+} 
+
+function validaTemp(valor) {
+	Numer=valor;
+	if(Numer[0]=='-'){
+            return "";
+	}
+        var RE = /^\d*\.?\d*$/;
+	if (RE.test(valor)) {
+            if(parseFloat(valor)<50){
+		return valor;
+   	}else{
+            return "";
+   	}
+    } else {
+        return "";
+    }
+}
 
 function decimales(Control){
 	//Control.value=decimal(Control.value);
 	Control.value=validateDecimal(Control.value);
 }
 
+function decimalTalla(Control){
+	//Control.value=decimal(Control.value);
+	Control.value=validaEdad(Control.value);
+}
+
 function decimalPeso(Control){
 	//Control.value=decimal(Control.value);
 	Control.value=validaPeso(Control.value);
+}
+
+function decimalTemp(Control){
+	//Control.value=decimal(Control.value);
+	Control.value=validaTemp(Control.value);
 }
 
 function IsNumeric(valor){ 
