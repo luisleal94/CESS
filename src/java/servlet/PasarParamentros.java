@@ -29,6 +29,7 @@ public class PasarParamentros extends HttpServlet {
         String id=request.getParameter("id");
         String Genero=request.getParameter("Genero");
         request.setAttribute("id",id);
+        request.setAttribute("Genero",Genero);
         request.getRequestDispatcher("MuestraHistorial.jsp").forward(request, response);
 
     }

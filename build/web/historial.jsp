@@ -18,6 +18,12 @@
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
+    else{
+        String gerarquia=(String)sesion.getAttribute("Gerarquia");       
+        if(gerarquia.equals("usuario")){
+            response.sendRedirect("inicio.jsp"); 
+        }
+    }
     Conexion con= new Conexion();
     PreparedStatement pst;
     ResultSet rs;

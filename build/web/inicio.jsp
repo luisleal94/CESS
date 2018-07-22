@@ -22,9 +22,7 @@
             response.sendRedirect("CessSuper.jsp"); 
         }
     }
-    /*if(usuario.equals("")){
-        response.sendRedirect("index.jsp"); 
-    }*/
+    
 %>
 <!DOCTYPE html>
 <html>

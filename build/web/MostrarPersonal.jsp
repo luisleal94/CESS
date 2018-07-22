@@ -46,6 +46,10 @@
     </head>
     <body>
         <a id="link" href="CessSuper.jsp">Regresar</a>
+        <div class="titulo">
+            <h1>Personal CESS</h1>
+        </div>
+        
         <div id="contiene_tabla">
         <table id="tabla">
             <tr>

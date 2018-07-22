@@ -79,7 +79,7 @@ public class Consulta extends Conexion{
         int dia=calender.get(Calendar.DAY_OF_MONTH);
         int mes=(calender.get(Calendar.MONTH))+1;
         int anio=calender.get(Calendar.YEAR);
-        fecha=dia+"-"+mes+"-"+anio;
+        fecha=anio+"-"+mes+"-"+dia;
         System.out.println(fecha);
         String status="0";
          PreparedStatement pst=null;
@@ -120,10 +120,15 @@ public class Consulta extends Conexion{
     //Metodo para registrar historial    
     public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String Presion,String id){
         PreparedStatement pst=null;
-        
+        Calendar calender = Calendar.getInstance();
+        String fecha;
+        int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fecha=anio+"-"+mes+"-"+dia;
         try{
             String consulta="insert into ExploracionF(Peso,Talla,IMC,FrecuenciaC,FrecuenciaR,Temperatura,"
-                    + "PresionArterial,IdPaciente) values(?,?,?,?,?,?,?,?)";
+                    + "PresionArterial,Fecha,IdPaciente) values(?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             
             pst.setString(1,peso);
@@ -133,7 +138,8 @@ public class Consulta extends Conexion{
             pst.setString(5,FC);
             pst.setString(6,tem);
             pst.setString(7,Presion);
-            pst.setString(8,id);
+            pst.setString(8,fecha);
+            pst.setString(9,id);
             
             if(pst.executeUpdate()==1){
                 return true;
@@ -692,10 +698,16 @@ public class Consulta extends Conexion{
     
     public boolean Receta(String nombre,String farmacia,String unidad,String dosis,String via,
             String presenta,String pieza,String cada,String dias,String id){
+        Calendar calender = Calendar.getInstance();
+        String fecha;
+        int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fecha=anio+"-"+mes+"-"+dia;
         PreparedStatement pst=null;
         try{
             String consulta="insert into Receta(Medicamento,Farmacia,Unidades,Administracion,Presentacion,"
-                    + "Piezas,Dosis,Cada,Dias,IdPaciente) values(?,?,?,?,?,?,?,?,?,?) ";
+                    + "Piezas,Dosis,Cada,Dias,Fecha,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?) ";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, nombre);
             pst.setString(2, farmacia);
@@ -706,7 +718,8 @@ public class Consulta extends Conexion{
             pst.setString(7, dosis);
             pst.setString(8, cada);
             pst.setString(9, dias);
-            pst.setString(10, id);
+            pst.setString(10, fecha);
+            pst.setString(11, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             

@@ -31,7 +31,7 @@
         <title>CESS</title>
         <style>
             head,body{
-               background-image: url(img/jj.png);               
+               background:white;               
                font-family: 'Roboto', sans-serif;               
             }
             .contenedor{               
@@ -64,7 +64,7 @@
                 font-family: roboto; 
                 margin-top: 0px;
                 margin: 5px;
-                padding: 5px;                 
+                padding: 5px;                
             }
             .area{
                 margin: 0px;
@@ -111,6 +111,38 @@
                 border: none;
                 padding: 10px;      
             }
+            
+            
+            #contiene_tabla{
+                margin-left: 5%;
+                position: relative;
+                margin-right: 5%;
+                margin-bottom: 30px;    
+            }
+            #tabla{
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 2%;
+            }
+
+            #tabla td, #tabla th{
+                border: 1px solid #ddd;
+                padding: 8px;
+                position: relative;
+            }
+
+            #tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+            #tabla tr:hover {background-color: #ddd;}
+
+            #tabla th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #54adfc;
+                color: white;
+            }
         </style>
     </head>
     <body>
@@ -123,12 +155,35 @@
                         System.out.println("Id obtenido:"+id);                   
                         Conexion con= new Conexion();
                         PreparedStatement pst;
-                        ResultSet rs;        
-                        pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"' and"
+                        ResultSet rs;     
+                        pst = con.getConexion().prepareStatement("Select * from ExploracionF where IdPaciente='"+id+"' and"
+                                + " Fecha='"+fecha+"'");
+                        rs=pst.executeQuery();
+                        while(rs.next()){  %>
+                        <div class="titulo"><h2>Signos Vitales</h2></div>                       
+                        <label>Peso</label>
+                        <input type="text" value="<%=rs.getString("Peso")%>">
+                        <label>Estatura</label>
+                        <input type="text" value="<%=rs.getString("Talla")%>" >
+                        <br><label>IMC</label>
+                        <input type="text" value="<%=rs.getString("IMC")%>">
+                        <br><label>Frecuencia Cardiaca</label>
+                        <input type="text"  value="<%=rs.getString("FrecuenciaC")%>">
+                        <label>Frecuencia Respiratoria</label>
+                        <input type="text"  value="<%=rs.getString("FrecuenciaR")%>">
+                        <label>Temperatura</label>
+                        <input type="text"  value="<%=rs.getString("Temperatura")%>"> 
+                        <label>Presion Arterial</label>
+                        <input type="text" value="<%=rs.getString("PresionArterial")%>">
+                        
+                        
+                      <% }                                       
+                          pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"' and"
                                 + " Fecha='"+fecha+"'");
                         rs=pst.executeQuery();
                         while(rs.next()){
             %>
+            <div class="titulo"><h2>Consulta</h2></div> 
             <input type="text" id="exploracion" value="<%=rs.getString("ExploracionF")%>" style="display: none">
             <input type="text" id="padecimiento" value="<%=rs.getString("Padecimiento")%>" style="display: none">
             <label>Diagnóstico</label>
@@ -137,7 +192,7 @@
             <input type="text" id="Laboratorio" value="<%=rs.getString("Laboratorio")%>" style="display: none">
             <input type="text" id="Gabinete" value="<%=rs.getString("Gabinete")%>" style="display: none">
             <input type="text" id="Tratamiento" value="<%=rs.getString("Tratamiento")%>" style="display: none">
-            <% } %>
+            <% } %>            
             <br><label>Exploración Física</label>
             <div class="textarea">
                 <textarea class="area" id="area1" cols="150" rows="5" disabled></textarea>
@@ -160,6 +215,36 @@
             <div class="textarea">
                 <textarea class="area" id="area5" cols="150" rows="5" disabled></textarea>
             </div>
+        </div>
+            <div class="titulo"><h1>Medicamento Recetado</h1></div>
+        <div id="contiene_tabla">
+            <table id="tabla">
+            <tr>
+                <th>Medicamento</th>
+                <th>F.farmaceutica</th>
+                <th>unidades</th>
+                <th>Via.Admin</th>
+                <th>Presentación</th>
+                <th>Piezas</th>
+                <th>Cada</th>
+                <th>Días</th>
+            </tr>
+             <% pst = con.getConexion().prepareStatement("Select * from Receta where IdPaciente='"+id+"' "
+                     + "and Fecha='"+fecha+"'");
+                rs=pst.executeQuery();
+                while(rs.next()){  %>
+            <tr>
+                <td><%=rs.getString("Medicamento")%></td>
+                <td><%=rs.getString("Farmacia")%></td>
+                <td><%=rs.getString("Unidades")%></td>
+                <td><%=rs.getString("Presentacion")%></td>
+                <td><%=rs.getString("Piezas")%></td>
+                <td><%=rs.getString("Dosis")%></td>                
+                <td><%=rs.getString("Cada")%></td>
+                <td><%=rs.getString("Dias")%></td>
+            </tr>
+            <% } %>              
+        </table>
         </div>
     </body>
     <script>

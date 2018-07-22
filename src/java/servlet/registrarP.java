@@ -35,11 +35,48 @@ public class registrarP extends HttpServlet {
         String curp=request.getParameter("curp");
         String sexo=request.getParameter("sexo");
         
+        String curp2="";
         Consulta con= new Consulta();
-        if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){
-            Conexion conecta= new Conexion();
-            PreparedStatement pst;
-            ResultSet rs;
+        Conexion conecta= new Conexion();
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        try {                
+            pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                curp2=rs.getString("Curp");
+            }
+            System.out.println(curp2);
+                if(curp2.equals("")){
+                    System.out.println("No hay pacientes similares");
+                    if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){       
+                    String id="";
+                    try {                
+                        pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
+                        rs=pst.executeQuery();
+                        while(rs.next()){
+                            id=rs.getString("idPacientes");
+                        }
+                        System.out.println(id);
+                        request.setAttribute("id",id);               
+                        request.getRequestDispatcher("HistoriaClinica.jsp").forward(request, response);
+                    } catch (Exception ex) {
+                        System.out.println("Error"+ex);
+                    }                 
+                    System.out.println("Registrado");
+                    }else{  
+                        response.sendRedirect("inicio.jsp");
+                    }
+                }else{
+                    System.out.println("Paciente registrado");                     
+                    response.sendRedirect("inicio.jsp");  
+                }
+            } catch (Exception ex) {
+                System.out.println("Error"+ex);
+            }
+        
+        /*if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){       
             String id="";
             try {                
                 pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
@@ -57,7 +94,7 @@ public class registrarP extends HttpServlet {
             System.out.println("Registrado");
         }else{  
             response.sendRedirect("inicio.jsp");
-        }
+        }*/
    
     }
 

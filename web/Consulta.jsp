@@ -83,10 +83,21 @@ input[type=button]:hover {
     margin-bottom: 30px;
     margin-right: 30px;
     margin-left: 30px;
-    border-radius: 5px;
     padding-top:0px;
-    padding-left:15px; 
-    background: white;
+    padding-left:2%; 
+    background:white;
+    border: 2px solid #85c1e9;
+    border-radius: 10px;
+}
+
+.datos2 {
+    margin-left:3px;
+    margin-right: 3px;
+    padding-top:3%;
+    padding-left:20px;  
+    background:white;
+    border: 2px solid #85c1e9;
+    border-radius: 10px;
 }
 
 .label{
@@ -103,7 +114,7 @@ input[type=button]:hover {
 }
 
 #label{
-    padding: 5px;
+    padding:10px;
 }
 
 #boton1{
@@ -294,6 +305,10 @@ input[type="radio"]{
     border:0.8px solid  #236087 ;
     transition:0.5s; 
 }
+#cabeza{
+    padding: 10px;
+    margin-left:40%; 
+}
 </style>
         <style>
             head,body{
@@ -343,7 +358,7 @@ input[type="radio"]{
     </head>
     <body>
         <a id="link" href="inicio.jsp">Regresar</a>        
-        <div class="datos">
+        
         <% 
         String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
         Conexion con= new Conexion();
@@ -356,13 +371,15 @@ input[type="radio"]{
                     <input type="text" name="nombre">
                     <input type="submit" value="Buscar"> 
                 </form>
-            </div>           
+            </div>   
+            
             <% String nombre=request.getParameter("nombre");      
             pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
                 %> 
+                <div class="datos">
                 <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
@@ -370,13 +387,14 @@ input[type="radio"]{
                     <input type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;&emsp;<label id="titulos">Edad</label>
                     <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" >   
-                    &emsp;<label>Genero</label>
-                    <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >                    
+                    &emsp;&emsp;<label>Genero</label>
+                    <input type="text" name="Sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746">
+                    <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">                                    
                     <div class="botones">
                         <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
                     </div>
                 </form>
-             
+            </div>
             <% }                        
         }else{
             pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
@@ -384,24 +402,21 @@ input[type="radio"]{
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
             %>
+            <div class="datos">
             <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
                     <label id="titulos">Nombre</label>
                     <input  type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>">   
-                    &emsp;&emsp;&emsp;<label id="titulos">Edad</label>
+                    &emsp;&emsp;<label id="titulos">Edad</label>
                     <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>">   
-                    <div class="botones">
-                    <label>Genero</label>
-                    <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>">   
-                    <div class="botones">
-                        <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
-                    </div>
+                    &emsp;&emsp;<label>Genero</label>
+                    <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>">                  
                 </form>
+            </div>
        <% } }//Busqueda por nombre del usuario a buscar %>
         <!--Mando el parametro ID del paciente que encontre-->            
-    </div>  
-    <div class="datos">
+    <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
             <div>
                 <label>Tipo de Personal</label>
@@ -420,14 +435,14 @@ input[type="radio"]{
                     <option value="Urgencia">Urgencia</option>                    
                 </select>
             </div>
-            <label>Folio de Arancel</label>
+            &emsp;<label>Folio de Arancel</label>
             <input type="text" name="folio">            
             <input type="text" id="ID" name="id" style="display: none">
             <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">
             &emsp;&emsp;<label>Costo de Consulta</label>
             <input type="text" name="Costo" onkeyUp=" return decimales(this);"> 
             
-            <br><label >Signos Vitales</label><br>
+            <br><br><label id="cabeza" >Signos Vitales</label><br>
             <label>Peso</label>
             <input type="text" name="peso"  value="0" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
             &emsp;&emsp;&emsp;<label>Estatura</label>

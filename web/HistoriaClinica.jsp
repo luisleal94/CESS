@@ -375,15 +375,7 @@
 			<label for="si4" class="label">Si</label>
   			<input type="radio" id="no4" name="ciru" value="No" onclick="ocultar3()" checked> 
   			<label for="no4" class="label">No</label>
-  			<section id="muestra3" style="display: none;" class="seccion">
-  				<!--<div>
-	  				<label>¿De qué?</label>
-	  				<input type="text" name="causaQ">
-	  				<label>¿En que fecha?</label>
-	  				<input type="text" name="fechaQ">
-	  				<label>Complicaciones</label>
-	  				<input type="text" name="CompQ">
-	  			</div>-->
+  			<section id="muestra3" style="display: none;" class="seccion">  			
                                 <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow()">
                                 </div>
@@ -407,11 +399,7 @@
   			<label for="si5" class="label">Si</label>
   			<input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()" checked>
   			<label for="no5" class="label">No</label>
-                            <section id="ciru" style="display: none;" class="">
-                                <!--<label>¿En qué fecha?</label>
-	  			<input type="text" name="fechaA">
-                                <label>¿Algún medicamento, alimento, sustancia, etc?</label>
-                                <input type="text" name="medicA"><br>-->
+                            <section id="ciru" style="display: none;" class="">                             
                                 <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow2()">
                                 </div>
@@ -424,7 +412,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <input type="text" name="Valor2" id="Valor2">
+                                <input type="text" name="Valor2" id="Valor2" style="display: none">
 	  		</section>
   			<div style="margin: 15px;">
   				<label>Enfermedades</label>

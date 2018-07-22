@@ -247,3 +247,34 @@ input:focus {
     background: #063452;
     transition: 0.3s;
 }
+
+#contiene_tabla{
+                margin-left: 5%;
+                position: relative;
+                margin-right: 5%;
+                margin-bottom: 30px;    
+            }
+            #tabla{
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 2%;
+            }
+
+            #tabla td, #tabla th{
+                border: 1px solid #ddd;
+                padding: 8px;
+                position: relative;
+            }
+
+            #tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+            #tabla tr:hover {background-color: #ddd;}
+
+            #tabla th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #54adfc;
+                color: white;
+            }
