@@ -114,3 +114,26 @@ contenedor-form h2{
     left: 15%;
     top: 20%;
 }
+
+#boton2{
+    text-decoration: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color:  #16a085;
+    border: none;
+    border-radius: 2px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 20px 0;
+    transition: all .5s ease;
+    text-align: center;
+}
+
+#boton2:hover{
+   color:#0b5345;
+   text-decoration:underline;
+   transition: all 0.5s ease;
+}

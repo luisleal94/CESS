@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -32,13 +33,15 @@ public class sesion extends HttpServlet {
         String cedula="";
         String Nombre="";
         String Especialidad="";
+        String encriptMD5=DigestUtils.md5Hex(pass);
+        System.out.println("md5:"+encriptMD5);
         Consulta co= new Consulta();
-        if(co.login(usuario, pass)){
+        if(co.login(usuario, encriptMD5)){
             Conexion conecta= new Conexion();
             PreparedStatement pst;
             ResultSet rs;
             try {                
-                pst=conecta.getConexion().prepareStatement("select *from PERSONAL where Username='"+usuario+"' and PASSWORD='"+pass+"'");
+                pst=conecta.getConexion().prepareStatement("select *from PERSONAL where Username='"+usuario+"' and PASSWORD='"+encriptMD5+"'");
                 rs=pst.executeQuery();
                 while(rs.next()){
                     //id=rs.getString("ID_");
@@ -89,6 +92,7 @@ public class sesion extends HttpServlet {
             sesion.setAttribute("Usuario", usuario);
             response.sendRedirect("inicio.jsp");*/
         }else{
+            System.out.println("Usuario no encontrado");
             response.sendRedirect("index.jsp");
         }
     }

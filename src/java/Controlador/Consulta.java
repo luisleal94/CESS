@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
  * @author luis
@@ -14,7 +14,7 @@ public class Consulta extends Conexion{
     //Metodo para el login del personal CESS
     public boolean login(String usuario, String pass){
         PreparedStatement pst=null;
-        ResultSet rs=null;
+        ResultSet rs=null;        
             
         try{
            String consulta="select *from PERSONAL where Username=? and PASSWORD=?"; 
@@ -42,8 +42,7 @@ public class Consulta extends Conexion{
     
     //Metodo para registro de personal CESS
     public boolean registro(String user,String apellido,String pass,String tele,String Espe,String gerar,String cedula,String username){
-        PreparedStatement pst=null;
-        
+        PreparedStatement pst=null;       
         try{
             String consulta="insert into PERSONAL(NOMBRE,APELLIDO,PASSWORD,telefono,Gerarquia,Cedula,Username,Especialidad) values(?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
@@ -53,7 +52,7 @@ public class Consulta extends Conexion{
             pst.setString(4, tele);
             pst.setString(5, gerar);
             pst.setString(6, cedula);
-            pst.setString(7, username);
+            pst.setString(7, username.toUpperCase());
             pst.setString(8, Espe);
             if(pst.executeUpdate()==1){
                 return true;
@@ -66,6 +65,29 @@ public class Consulta extends Conexion{
                 if(pst!=null) pst.close();
             }catch(Exception e){
                 System.err.println("Error"+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean ActualizaConta(String user,String pass,String id){
+        PreparedStatement pst=null;       
+        try{
+            String consulta="Update PERSONAL set PASSWORD= ? where ID_USER = ?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, pass);       
+            pst.setString(2, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
             }
         }
         return false;
@@ -738,6 +760,7 @@ public class Consulta extends Conexion{
     }
     /*public static void main(String[] args){
         Consulta re= new Consulta();
+        //re.ActualizaConta("karina94","123","23");
         //re.Receta("1","2","3","4","5","6","8","9","10","45");
         //re.AbueloPa("si","si","si","si","si","no","si","si","si","no","no1","2");*/
         //re.getDiagnostico("Co");

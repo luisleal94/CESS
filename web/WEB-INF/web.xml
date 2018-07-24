@@ -56,6 +56,10 @@
         <servlet-name>enviar</servlet-name>
         <servlet-class>servlet.enviar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CabiaContra</servlet-name>
+        <servlet-class>servlet.CabiaContra</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>enviar</servlet-name>
         <url-pattern>/enviar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CabiaContra</servlet-name>
+        <url-pattern>/CabiaContra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

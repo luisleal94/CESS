@@ -68,8 +68,8 @@ public class registrarP extends HttpServlet {
                     }else{  
                         response.sendRedirect("inicio.jsp");
                     }
-                }else{
-                    System.out.println("Paciente registrado");                     
+                }else{                  
+                    System.out.println("Paciente Repetido");                     
                     response.sendRedirect("inicio.jsp");  
                 }
             } catch (Exception ex) {

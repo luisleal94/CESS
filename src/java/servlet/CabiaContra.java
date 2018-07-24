@@ -5,12 +5,9 @@
  */
 package servlet;
 
-import Controlador.Conexion;
 import Controlador.Consulta;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,59 +18,36 @@ import org.apache.commons.codec.digest.DigestUtils;
  *
  * @author luis
  */
-public class registrarPersonal extends HttpServlet {
+public class CabiaContra extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre=request.getParameter("nombre");
-        String apellido=request.getParameter("apellido");
-        String pass=request.getParameter("pass");
-        String tele=request.getParameter("tele");
-        //String domi=request.getParameter("domicilio");
-        String espe=request.getParameter("Especialidad");
-        String cedula=request.getParameter("Cedula");
-        String gerar=request.getParameter("gerar");
+        
+        String id=request.getParameter("id");
         String user=request.getParameter("user");
+        String contra=request.getParameter("contra");
+        System.out.println(id+" "+user+ " "+contra);
+        String encriptMD5=DigestUtils.md5Hex(contra);
         
-        Consulta con= new Consulta();  
-        String usuario="";
-        Conexion conecta= new Conexion();
-        PreparedStatement pst;
-        ResultSet rs;
-        String encriptMD5=DigestUtils.md5Hex(pass);
-        System.out.println("md5:"+encriptMD5);
-   
-        /*if(con.registro(nombre, apellido, pass, tele, espe, gerar, cedula,user)){
-            response.sendRedirect("MostrarPersonal.jsp");
+        Consulta con= new Consulta(); 
+        if(con.ActualizaConta(user,encriptMD5,id)){
+            System.out.println("Coreccto");
+            response.sendRedirect("index.jsp");
         }else{
-            response.sendRedirect("CessSuper.jsp");
-        }*/
-        
-        try {                
-            pst=conecta.getConexion().prepareStatement("Select * from PERSONAL where Username='"+user+"'");
-            rs=pst.executeQuery();
-            while(rs.next()){
-                usuario=rs.getString("Username");
-            }
-            System.out.println(usuario);
-                if(usuario.equals("")){
-                    System.out.println("No hay pacientes similares");
-                    if(con.registro(nombre, apellido, encriptMD5, tele, espe, gerar, cedula,user)){
-                        response.sendRedirect("MostrarPersonal.jsp");
-                    }else{
-                        response.sendRedirect("CessSuper.jsp");
-                    }                    
-                }else{                  
-                    System.out.println("Usuario Repetido");                     
-                    response.sendRedirect("CessSuper.jsp");  
-                }
-            } catch (Exception ex) {
-                System.out.println("Error"+ex);
-            }
+             out.println("<p1>Error</p1>");
+        }
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

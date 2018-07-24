@@ -35,10 +35,11 @@
         
         <div class="formulario">
             <h2 style="text-align: center; color: #404140" >Iniciar Sesión</h2><br>
-                 <form action="sesion" method="post">            
+                <form action="sesion" method="post">            
                     <input type="text" name="Usuario" placeholder="&#128100; Usuario" required>
                     <input type="password" name="pass" placeholder="&#128273; Contraseña" required>
-                    <input type="submit" value="Ingresar">
+                    <input type="submit" value="Ingresar" onclick=this.form.action="sesion">                    
+                    <a id="boton2" href="Renueva.jsp">Olvidaste tu contraseña</a>
                 </form>
             </div>
     </div>

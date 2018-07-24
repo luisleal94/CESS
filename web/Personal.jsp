@@ -5,6 +5,23 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    //Obtengo atributo
+    HttpSession sesion=request.getSession(false);
+    String usuario=(String)sesion.getAttribute("Usuario");
+    if(usuario==null){
+        response.sendRedirect("index.jsp"); 
+    }
+    else{
+        String gerarquia=(String)sesion.getAttribute("Gerarquia");
+        if(gerarquia.equals("Admin")){
+            response.sendRedirect("CessAdmin.jsp"); 
+        }
+        if(gerarquia.equals("usuario")){
+            response.sendRedirect("inicio.jsp"); 
+        }
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,9 +61,6 @@
                       <a href="CessSuper.jsp" class="enter2" style="text-align:center">Regresar</a>
 		    </div>
 	  	</form>
-	</div>
-     <script>
-         
-     </script>
+	</div>     
 </body>
 </html>
