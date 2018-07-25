@@ -257,39 +257,79 @@ input[type="radio"]{
 	display: none;
 }
 
+.checkbox label {
+  cursor: pointer;
+  color:  #1b4f72;
+  position: relative;
+  padding: 5px 15px 5px 51px;
+  font-size: 1em;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; 
+}
+
+.checkbox label:hover {
+  background: rgba( 52, 152, 219, 0.2); }
+
+.checkbox label:before {
+  content: "";
+  
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  left: 15px;
+  border-radius: 50%;
+  background: none;
+  border: 3px solid  #2874a6; 
+}
+
+.checkbox label:before {
+  border-radius: 3px; 
+}
+
+.checkbox input[type="checkbox"] {
+  display: none; 
+}
+
+.checkbox input[type="checkbox"]:checked + label:before {
+  display: none; 
+}
+
+.checkbox input[type="checkbox"]:checked + label {
+  background: #3498db;
+  color: #fff;
+  padding: 5px 15px; 
+}
+
 .seccion{
     margin: 15px;
     padding: 15px;
 }
 
-#contiene_tabla{
+#contiene_tabla2{
     margin-top: 0px;
     margin-left: 5%;
     position: relative;
     margin-right: 5%;
 }
-#tabla{
+#tabla2{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     margin-top: 0px;
 }
 
-#tabla td, #tabla th{
-    border: 1px solid #ddd;
+#tabla2 td, #tabla2 th{
+    border:none;
     padding: 8px;
     position: relative;
 }
 
-#tabla tr:nth-child(even){background-color: #f2f2f2;}
-
-#tabla tr:hover {background-color: #ddd;}
-
-#tabla th {
+#tabla2 th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #54adfc;
     color: white;
 }
 
@@ -309,6 +349,24 @@ input[type="radio"]{
     padding: 10px;
     margin-left:40%; 
 }
+.especialidad{
+    padding: 12px;
+    margin-left: 5%;
+}
+
+select{
+      background: white;
+      width: 300px;
+      height: 30px;
+      padding: 5px;
+      border:1px solid  #abb2b9;
+      cursor: pointer;
+      color: #2874a6;
+}
+
+select:focus {
+      border:1px solid  #85c1e9;
+}
 </style>
         <style>
             head,body{
@@ -322,7 +380,7 @@ input[type="radio"]{
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
-        <script type="text/javascript" src="js/radios.js"></script>
+        <script type="text/javascript" src="js/radios.js"></script>       
         <script type="text/javascript" src="js/Confirmacion.js"></script>
         <script type="text/javascript" src="js/Validacion.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -418,23 +476,22 @@ input[type="radio"]{
         <!--Mando el parametro ID del paciente que encontre-->            
     <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
-            <div>
+           
                 <label>Tipo de Personal</label>
                 <select name="Tipo">
                     <option value="Estudiante">Estudiante</option>
                     <option value="Poblacion Abierta">Poblacion Abierta</option>
                     <option value="FESAPAUV">FESAPAUV</option>
                     <option value="SETSUV">SETSUV</option>
-                </select>
-            </div>
-            <div>
+                </select> &emsp; &emsp;             
+            
                 <label>Demanda</label>
                 <select name="Demanda">
                     <option value="Programada">Programada</option>
                     <option value="Espontanea">Espontánea</option>
                     <option value="Urgencia">Urgencia</option>                    
-                </select>
-            </div>
+                </select><br>
+            
             &emsp;<label>Folio de Arancel</label>
             <input type="text" name="folio">            
             <input type="text" id="ID" name="id" style="display: none">
@@ -504,17 +561,61 @@ input[type="radio"]{
             <div class="areatexto">
                 <label>Tratamiento</label><br>
                 <textarea name="tratamiento" class="area" cols="150" rows="5" autofocus></textarea>
-            </div>
-            <div class="especialidad">
+            </div>           
+            
+            <div id="contiene_tabla2">
                 <label>Referir a:</label>
                 <div class="checkbox">
-                    <input type="checkbox" name="Anestesiología" value="Anestesiología">Anestesiologí<br>
-                    <input type="checkbox" name="gine" value="GinecoObste"> Ginecología y Obstetricia<br>
-                    <input type="checkbox" name="Trauma" value="Traumato" > Traumatología y Ortopedia<br>
-                    <input type="checkbox" name="cardio" value="cardiologia" > Cardiología <br>
-                    <input type="checkbox" name="urologo" value="urologia" > Urología<br>
+                    <table id="tabla2">                        
+                        <tr>
+                            <td><input type="checkbox" name="pediatra" value="1" id="checkbox1">
+                                <label for="checkbox1">Pediatría</label></td>
+                            <td><input type="checkbox" name="Ginecologia" value="1" id="checkbox2">
+                                <label for="checkbox2">Ginecología</label></td>                        
+                            <td><input type="checkbox" name="Gastro" value="1" id="checkbox3">
+                                <label for="checkbox3">Gastroenterología</label></td>                       
+                            <td><input type="checkbox" name="Neuro" value="1" id="checkbox4">
+                                <label for="checkbox4">Neurología</label></td>                        
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="Trauma" value="1" id="checkbox9">
+                                <label for="checkbox9">Tramatología</label></td>
+                            <td><input type="checkbox" name="Endocri" value="1" id="checkbox6">
+                                <label for="checkbox6">Endocrinología</label></td>
+                            <td><input type="checkbox" name="Geriatria" value="1" id="checkbox7">
+                                <label for="checkbox7">Geriatría</label></td>
+                            <td><input type="checkbox" name="Urolo" value="1" id="checkbox8">
+                                <label for="checkbox8">Urología</label></td>
+                        </tr>
+                        <tr>                            
+                            <td><input type="checkbox" name="Otorri" value="1" id="checkbox10">
+                                <label for="checkbox10">Otorrinología</label></td>
+                            <td><input type="checkbox" name="Gene" value="1" id="checkbox11">
+                                <label for="checkbox11">Genética</label></td>
+                            <td><input type="checkbox" name="Psiqui" value="1" id="checkbox12">
+                                <label for="checkbox12">Psiquiatría</label></td>
+                            <td><input type="checkbox" name="Cardio" value="1" id="checkbox13">
+                                <label for="checkbox13">Cardiología</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="Olfta" value="1" id="checkbox15">
+                                <label for="checkbox15">Oftalmología</label></td>
+                            <td><input type="checkbox" name="Neomo" value="1" id="checkbox16">
+                                <label for="checkbox16">Neumología</label>  </td>
+                            <td><input type="checkbox" name="Nefro" value="1" id="checkbox17">
+                                <label for="checkbox17">Nefrología</label></td>
+                            <td><input type="checkbox" name="Hemato" value="1" id="checkbox18">
+                                <label for="checkbox18">Hematología</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="Vascular" value="1" id="checkbox19">
+                                <label for="checkbox19">Vascular periférico</label></td>
+                            <td><input type="checkbox" name="inmuno" value="1" id="checkbox14">
+                                <label for="checkbox14">Inmuno-alergia</label></td>
+                        </tr>
+                    </table>
                 </div>
-            </div>             
+            </div><br>
             <div class="doctor">
                 <label>Medico Tratante</label>
                 <input type="text" name="medico" id="Medic" value="<% out.println(NOMBRE);%>" disabled style="color:#063452">

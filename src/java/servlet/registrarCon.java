@@ -16,6 +16,34 @@ public class registrarCon extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
+        /**************************************/
+        String pediatra=request.getParameter("pediatra");
+        String Ginecologia=request.getParameter("Ginecologia");
+        String Gastro=request.getParameter("Gastro");
+        String Neuro=request.getParameter("Neuro");
+        
+        String Trauma=request.getParameter("Trauma");
+        String Endocri=request.getParameter("Endocri");
+        String Geriatria=request.getParameter("Geriatria");
+        String Urolo=request.getParameter("Urolo");
+        
+        String Otorri=request.getParameter("Otorri");
+        String Gene=request.getParameter("Gene");
+        String Psiqui=request.getParameter("Psiqui");
+        String Cardio=request.getParameter("Cardio");
+        
+        String Olfta=request.getParameter("Olfta");
+        String Neomo=request.getParameter("Neomo");
+        String Nefro=request.getParameter("Nefro");
+        String Hemato=request.getParameter("Hemato");
+        
+        String Vascular=request.getParameter("Vascular");
+        String inmuno=request.getParameter("inmuno");
+        
+        System.out.println(pediatra);
+        System.out.println(Trauma);
+        /***********************************/
+        
         String id=request.getParameter("id");  //Id del paciente
         String NombrePaci=request.getParameter("NombrePaci");
         String peso=request.getParameter("peso");
@@ -61,13 +89,14 @@ public class registrarCon extends HttpServlet {
         System.out.println(medico);
         Consulta con= new Consulta();
         if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad)
-            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)){
+            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)
+            && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
+                    Nefro, Hemato, Vascular, inmuno, id)){
             request.setAttribute("id",id);
             request.getRequestDispatcher("Receta.jsp").forward(request, response);
         }else{
             response.sendRedirect("CessSuper.jsp");
         }
-//response.sendRedirect("Receta.jsp");
        
     }
 
