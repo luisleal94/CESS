@@ -35,6 +35,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/estilo2.css">
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <title>CESS UV</title>
         <style>
             head,body{
@@ -43,7 +44,7 @@
             }
         </style>
     </head>
-    <body >
+    <body onload="nobackbutton();">
         <div id="contien_link">
             <a id="link2" href="inicio.jsp">Inicio</a>
             <a id="link2" href="pruebas.jsp">Buscar historial</a>

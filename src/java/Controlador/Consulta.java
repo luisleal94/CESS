@@ -70,6 +70,28 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean Eliminar(String id){
+        PreparedStatement pst=null; 
+        try{
+            String consulta="Delete from Pacientes where idPacientes= ?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, id); 
+            if(pst.executeUpdate()==1){
+                return true;
+            }
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
     public boolean ActualizaConta(String user,String pass,String id){
         PreparedStatement pst=null;       
         try{
@@ -524,7 +546,7 @@ public class Consulta extends Conexion{
     }
       
     public boolean GenerarConsulta(String id,String ExploF,String padeci,String diagnos,String Estudios,String gabine,String labora,String tratamiento,String medico
-                    ,String Costo,String Tipo,String Nombre,String Demanda,String folio,String Especialidad){
+                    ,String Costo,String Tipo,String Nombre,String Demanda,String folio,String Especialidad,String doc){
         
             //String NombreMayus=Nombre.toUpperCase();            
             PreparedStatement pst=null;
@@ -536,8 +558,8 @@ public class Consulta extends Conexion{
             fecha=anio+"-"+mes+"-"+dia;
         try{
             String consulta="insert into Consulta(Fecha,ExploracionF,Padecimiento,Diagnostico,Estudios,Laboratorio,"
-                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,Nombre,Demanda,Folio,Especialidad,IdPaciente)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Gabinete,Tratamiento,Medico,Costo,Tipo,Nombre,Demanda,Folio,Especialidad,IdPaciente,IdMedico)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);           
             pst.setString(1, fecha);
             pst.setString(2, ExploF);
@@ -553,8 +575,9 @@ public class Consulta extends Conexion{
             pst.setString(12, Nombre);
             pst.setString(13, Demanda);
             pst.setString(14, folio);
-            pst.setString(15, Especialidad);
+            pst.setString(15, Especialidad);            
             pst.setString(16, id);
+            pst.setString(17, doc);
             
             if(pst.executeUpdate()==1){
                 return true;
@@ -719,7 +742,7 @@ public class Consulta extends Conexion{
     }
     
     public boolean Receta(String nombre,String farmacia,String unidad,String dosis,String via,
-            String presenta,String pieza,String cada,String dias,String id){
+            String presenta,String pieza,String cada,String dias,String IdMedico,String id){
         Calendar calender = Calendar.getInstance();
         String fecha;
         int dia=calender.get(Calendar.DAY_OF_MONTH);
@@ -729,7 +752,7 @@ public class Consulta extends Conexion{
         PreparedStatement pst=null;
         try{
             String consulta="insert into Receta(Medicamento,Farmacia,Unidades,Administracion,Presentacion,"
-                    + "Piezas,Dosis,Cada,Dias,Fecha,IdPaciente) values(?,?,?,?,?,?,?,?,?,?,?) ";
+                    + "Piezas,Dosis,Cada,Dias,Fecha,IdPaciente,IdMedico) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, nombre);
             pst.setString(2, farmacia);
@@ -742,6 +765,7 @@ public class Consulta extends Conexion{
             pst.setString(9, dias);
             pst.setString(10, fecha);
             pst.setString(11, id);
+            pst.setString(12,IdMedico);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -812,6 +836,7 @@ public class Consulta extends Conexion{
     }
     /*public static void main(String[] args){
         Consulta re= new Consulta();
+        //re.GenerarConsulta("7","Dolor","Pecho","Fiebre","No","No","No","Reposo","Joel","180.5","Espontanea","Lucero","Urgencia","12354","Medicina","25");
         //re.ActualizaConta("karina94","123","23");
         //re.Receta("1","2","3","4","5","6","8","9","10","45");
         //re.AbueloPa("si","si","si","si","si","no","si","si","si","no","no1","2");*/

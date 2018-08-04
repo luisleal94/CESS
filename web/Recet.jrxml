@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="584708e5-729b-4af3-9df8-9bdbbdc45e2e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Paciente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Medico" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Receta.`idReceta` AS Receta_idReceta,
+     Receta.`Medicamento` AS Receta_Medicamento,
+     Receta.`Farmacia` AS Receta_Farmacia,
+     Receta.`Unidades` AS Receta_Unidades,
+     Receta.`Administracion` AS Receta_Administracion,
+     Receta.`Presentacion` AS Receta_Presentacion,
+     Receta.`Piezas` AS Receta_Piezas,
+     Receta.`Dosis` AS Receta_Dosis,
+     Receta.`Cada` AS Receta_Cada,
+     Receta.`Dias` AS Receta_Dias,
+     Receta.`Fecha` AS Receta_Fecha,
+     Receta.`IdPaciente` AS Receta_IdPaciente,
+     Receta.`IdMedico` AS Receta_IdMedico,
+     PERSONAL.`ID_USER` AS PERSONAL_ID_USER,
+     PERSONAL.`NOMBRE` AS PERSONAL_NOMBRE,
+     PERSONAL.`Especialidad` AS PERSONAL_Especialidad,
+     PERSONAL.`APELLIDO` AS PERSONAL_APELLIDO,
+     PERSONAL.`Cedula` AS PERSONAL_Cedula     
+FROM
+     `PERSONAL` PERSONAL,
+     `Receta` Receta
+where Receta.`IdPaciente`=$P{Paciente} and
+Receta.`Fecha`=$P{Fecha} and
+Receta.`IdMedico` = $P{Medico} and
+PERSONAL.`ID_USER`=$P{Medico}]]>
+	</queryString>
+	<field name="Receta_idReceta" class="java.lang.Integer"/>
+	<field name="Receta_Medicamento" class="java.lang.String"/>
+	<field name="Receta_Farmacia" class="java.lang.String"/>
+	<field name="Receta_Unidades" class="java.lang.String"/>
+	<field name="Receta_Administracion" class="java.lang.String"/>
+	<field name="Receta_Presentacion" class="java.lang.String"/>
+	<field name="Receta_Piezas" class="java.lang.String"/>
+	<field name="Receta_Dosis" class="java.lang.String"/>
+	<field name="Receta_Cada" class="java.lang.String"/>
+	<field name="Receta_Dias" class="java.lang.String"/>
+	<field name="Receta_Fecha" class="java.sql.Date"/>
+	<field name="Receta_IdPaciente" class="java.lang.Integer"/>
+	<field name="Receta_IdMedico" class="java.lang.Integer"/>
+	<field name="PERSONAL_ID_USER" class="java.lang.Integer"/>
+	<field name="PERSONAL_NOMBRE" class="java.lang.String"/>
+	<field name="PERSONAL_Especialidad" class="java.lang.String"/>
+	<field name="PERSONAL_APELLIDO" class="java.lang.String"/>
+	<field name="PERSONAL_Cedula" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="443" y="0" width="91" height="79" uuid="139706b4-fedb-4bd4-95e9-ea2431d33d7f"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="15" y="0" width="96" height="68" uuid="d3129586-b349-4aae-b69b-167bdf65d17a"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/UV.jpeg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="158" y="0" width="55" height="20" uuid="96baf608-4950-48c9-9d97-2b5b53e8e0b1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Médico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="48" width="55" height="20" uuid="ba428af4-eb4d-48a1-a016-e3db1a5b2b18"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cédula]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="213" y="0" width="63" height="20" uuid="3ed9f280-43c8-4c7b-b625-332cf6ac7b3c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="20" width="171" height="20" uuid="ca0f54cb-2523-48be-89cd-c3bfa4359c63"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_Especialidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="84" height="20" uuid="2b399972-a868-4231-a75c-c89eeb334183"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="48" width="100" height="20" uuid="55c208a6-e2e2-4d9c-97c1-60704e0c00a8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="15" y="11" width="519" height="1" uuid="84d3ee13-21c3-4a89-9976-bf03e807269a"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="17" width="77" height="20" uuid="e82ef3f9-744c-4c4e-a3d8-9d25c238da53"/>
+				<text><![CDATA[Medicamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="17" width="68" height="20" uuid="27c31fc6-5cd5-453c-b620-75b3c91671fd"/>
+				<text><![CDATA[Farmacia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="17" width="60" height="20" uuid="25e1cbb3-a47e-4285-a7d7-6d1efa347751"/>
+				<text><![CDATA[Unidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="17" width="76" height="20" uuid="f7c0d297-b53b-40c4-aa67-4da5d855c47b"/>
+				<text><![CDATA[Administración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="17" width="71" height="20" uuid="d5dc3ce2-2d5f-4b1e-8960-719ca828c4eb"/>
+				<text><![CDATA[Presentación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="17" width="47" height="20" uuid="67e40705-e271-428c-91ee-c333649fefec"/>
+				<text><![CDATA[Dosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="17" width="60" height="20" uuid="be090e08-0713-4d2f-88d4-e3c2c1e89708"/>
+				<text><![CDATA[Cada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="17" width="70" height="20" uuid="23474680-2d0d-44ad-861d-5d30a4ccf081"/>
+				<text><![CDATA[Días]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="77" height="20" uuid="f469f689-83dc-4dec-bd6a-a6f1295ad7bf"/>
+				<textFieldExpression><![CDATA[$F{Receta_Medicamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="0" width="68" height="20" uuid="abd8ab34-fed6-4cb6-ba69-c2f574b84b35"/>
+				<textFieldExpression><![CDATA[$F{Receta_Farmacia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="60" height="20" uuid="400f29f7-7034-49ac-a8b0-1f85636c93ed"/>
+				<textFieldExpression><![CDATA[$F{Receta_Unidades}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="0" width="78" height="20" uuid="d41061b4-f6bd-4104-babb-2d352d0f6060"/>
+				<textFieldExpression><![CDATA[$F{Receta_Administracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="0" width="71" height="20" uuid="bfae36ac-d857-4ada-aaff-a1e0adbce541"/>
+				<textFieldExpression><![CDATA[$F{Receta_Presentacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="47" height="20" uuid="70d25d80-420c-4b2e-bfcd-14f0d34a9048"/>
+				<textFieldExpression><![CDATA[$F{Receta_Dosis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="0" width="60" height="20" uuid="a7d279d9-d7ec-4390-a9cf-6c7701e80093"/>
+				<textFieldExpression><![CDATA[$F{Receta_Cada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="0" width="60" height="20" uuid="b152aced-f1ad-4663-be5d-dc659816dc34"/>
+				<textFieldExpression><![CDATA[$F{Receta_Dias}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement x="15" y="12" width="519" height="1" uuid="cd9e31ab-8c75-408b-82b8-b34bffc2d95a"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="200" height="20" uuid="338e46d0-12e8-4527-8099-74123e282dc6"/>
+				<text><![CDATA[Centro de Estudio y Servicios de Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="0" width="272" height="40" uuid="ecbaf594-32ad-4b7b-9448-ae4b5f8f5d42"/>
+				<text><![CDATA[Carmen Serdan N° 147 Casi esq. Mina. Veracruz, Ver. C.P. 91700 Tel: 932-49-78]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="41" splitType="Stretch"/>
+	</summary>
+</jasperReport>

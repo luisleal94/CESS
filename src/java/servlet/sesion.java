@@ -44,7 +44,7 @@ public class sesion extends HttpServlet {
                 pst=conecta.getConexion().prepareStatement("select *from PERSONAL where Username='"+usuario+"' and PASSWORD='"+encriptMD5+"'");
                 rs=pst.executeQuery();
                 while(rs.next()){
-                    //id=rs.getString("ID_");
+                    id=rs.getString("ID_USER");
                     gerarquia=rs.getString("Gerarquia");   
                     cedula=rs.getString("Cedula");
                     Nombre=rs.getString("NOMBRE")+" "+rs.getString("APELLIDO");
@@ -57,6 +57,7 @@ public class sesion extends HttpServlet {
                
                 if(gerarquia.equals("Super")){
                     HttpSession sesion= request.getSession(true);
+                    sesion.setAttribute("IDUSER", id);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);
@@ -66,6 +67,7 @@ public class sesion extends HttpServlet {
                 }
                 if(gerarquia.equals("Admin")){
                     HttpSession sesion= request.getSession(true);
+                    sesion.setAttribute("IDUSER", id);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);
@@ -74,7 +76,8 @@ public class sesion extends HttpServlet {
                     response.sendRedirect("CessAdmin.jsp");
                 }
                 if(gerarquia.equals("usuario")){
-                    HttpSession sesion= request.getSession(true);                    
+                    HttpSession sesion= request.getSession(true); 
+                    sesion.setAttribute("IDUSER", id);
                     sesion.setAttribute("Usuario", usuario);
                     sesion.setAttribute("Gerarquia", gerarquia);
                     sesion.setAttribute("Cedula", cedula);

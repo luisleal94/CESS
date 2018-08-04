@@ -1,3 +1,9 @@
+<%@page import="java.io.*"%>
+<%@page import="java.util.*"%>
+<%@page import="net.sf.jasperreports.engine.*"%>
+<%@page import="net.sf.jasperreports.view.JasperViewer"%>
+<%@page import="javax.servlet.ServletResponse" %>
+<%@page import="Controlador.Conexion"%>
 <!doctype html>
 <html lang="es">
 <head>
@@ -8,34 +14,39 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    var availableTags = new Array();
-    $("#tags").bind("keydown",function(event){
-        var data={Diagnos:$("#tags").val()};
-        $.getJSON("BuscarSintoma",data,function(res,est,jqXHR){
-            availableTags.length=0;
-            $.each(res,function(i,item){
-                availableTags[i]=item;
-            });
-        });
-    });
-    
-    
-    $( "#tags" ).autocomplete({
-      source: availableTags,
-      minLength:1
-    });
-  } );
-  </script>
 </head>
 <body>
- 
-<div class="ui-widget">
-  <label for="tags">Diagnostico </label>
-  <input id="tags" >
-</div>
- 
- 
+
+    <%
+        //Calendar calender = Calendar.getInstance();
+        /*int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fecha=anio+"-"+mes+"-"+dia;*/
+        
+        Conexion con= new Conexion();
+        
+        String IdPaciente=request.getParameter("ID");
+        String Medico=request.getParameter("Doctor");
+        String fecha=request.getParameter("Fecha");
+        System.out.println(IdPaciente);
+        System.out.println(Medico);
+        System.out.println(fecha);
+        
+        File reporfile=new File(application.getRealPath("Recet.jasper"));
+        Map parameter =new HashMap();        
+     
+        
+        parameter.put("Paciente",new String(IdPaciente));        
+        parameter.put("Medico",new String(Medico));      
+        parameter.put("Fecha",new String(fecha));
+        byte[] bytes=JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
+        response.setContentType("application/pdf");
+        response.setContentLength(bytes.length);
+        ServletOutputStream outputstream=response.getOutputStream();
+        outputstream.write(bytes,0,bytes.length);
+        outputstream.flush();
+        outputstream.close();
+    %>
 </body>
 </html>

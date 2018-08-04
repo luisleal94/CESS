@@ -22,8 +22,8 @@
         </style>
     </head>
     <body>
-        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:44%; color: #00A99D;">Datos del Paciente</p>
-        <a id="link" href="historial.jsp">Regresar</a>
+        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:39%; color: #00A99D;">Datos del Paciente</p>
+        <br><br>
         <div id="contenido">
             
         <%

@@ -16,12 +16,14 @@
     
     String usuario=(String)sesion.getAttribute("Usuario");
     String cedula="";
-     String NOMBRE="";
+    String NOMBRE="";
+    String IdMedic="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
     cedula=(String)sesion.getAttribute("Cedula");
     NOMBRE=(String)sesion.getAttribute("Nombre");
+    String IdMedico=(String)sesion.getAttribute("IDUSER");
     String IDPac="";
 %>
 <!DOCTYPE html>
@@ -29,6 +31,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script>
@@ -37,6 +40,9 @@
                     $.post("enviar",$("#miForm").serialize());   // Primero validará el formulario.                    
                 });    
             });
+            function cambia_de_pagina(){
+	        location.href="inicio.jsp";
+	    }
         </script>
         <title>CESS</title>
         <style>
@@ -202,7 +208,7 @@
             }
         </style>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <div class="cabecera" >
             <h1>UNIVERSIDAD VERACRUZANA</h1>
             <h1>SECRETARIA DE ADMINISTRACIÓN Y FINANZAS</h1>
@@ -218,7 +224,7 @@
         int dia=calender.get(Calendar.DAY_OF_MONTH);
         int mes=(calender.get(Calendar.MONTH))+1;
         int anio=calender.get(Calendar.YEAR);
-        fecha=dia+" / "+mes+" / "+anio;
+        fecha=anio+"-"+mes+"-"+dia;
         String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
         Conexion con= new Conexion();
         PreparedStatement pst;
@@ -227,13 +233,20 @@
             <div id="buscar">
                 <form action="" method="post">
                     <label id="label">Nombre</label>
-                    <input type="text" name="nombre">
-                    <input id="link" type="submit" value="Buscar" style="border:none"> 
+                    <input type="text" name="nombre">&emsp;&emsp;
+                    <label id="label">Apellido Paterno</label>                
+                    <input id="Cajas"type="text" name="apellidoP"><br>
+                    <label id="label">Apellido Materno</label>                
+                    <input id="Cajas" type="text" name="apellidoM"><br>
+                    <input class="input1" type="submit" value="Buscar" style="border:none"> 
                 </form>
             </div>
         
-            <%String nombre=request.getParameter("nombre");      
-            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+            <%String nombre=request.getParameter("nombre");
+            String apellidoP=request.getParameter("apellidoP");
+            String apellidoM=request.getParameter("apellidoM");
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
+            //pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
@@ -282,6 +295,7 @@
                     <div class="contiendeTa">                        
                         <table cellpadding="3" id="table">
                             <input type="text" name="id" value="<%=IDPac%>" style="display: none;">
+                            <input type="text" name="Doc" value="<%=IdMedico%>" style="display: none;">
                             <label>Nombre del medicamento</label>
                             <input type="text" id="name" name="nombre">
                             &emsp;&emsp;<label>F.Farmaceutica</label>
@@ -293,12 +307,12 @@
                             &emsp;<label>Presentación</label>
                             <input type="text" id="presentacion" name="presentacion">
                             &emsp;<label>Pzas</label>
-                            <input size="4" type="text" id="pzas" name="piezas">
-                            &emsp;<label>Dosis</label>
-                            <input type="text" id="dosis" name="dosis"><br>
+                            <input size="4" type="text" id="pzas" name="piezas"><br>
+                            <label>Dosis</label>
+                            <input type="text" id="dosis" name="dosis">
                             <label>Cada</label>
                             <input size="4" type="text" id="cada" name="cada">
-                            &emsp;&emsp;<label>Por</label>
+                            &emsp;<label>Por</label>
                             <input size="6" type="text" id="dias" name="dias">
                             &emsp;<label>Días</label>  
                         </table>                            
@@ -332,13 +346,24 @@
             &nbsp;<br/>
         </div>
         <div class="imprimir">
-            <input type="button" class="input1" value="Imprimir Receta">
+            <form method="post" action="newjsp.jsp" target="_black">
+                <input type="text" name="Fecha" id="fecha" value="<%=fecha%>" style="display: none">
+                <input type="text" name="ID" id="IdPaciente" style="display: none">
+                <input type="text" name="Doctor" id="Doc" value="<%=IdMedico%>" style="display: none">
+                <input type="submit" class="input1" value="Imprimir Receta" onclick="javascript:cambia_de_pagina();">
+            </form>
         </div>
         <div class="doctor">
                 <label>Medico Tratante</label>
-                <input type="text" name="medico" value="<% out.println(NOMBRE);%>" disabled style="color:#063452">
+                <input type="text" name="medico" id="Medic" value="<% out.println(NOMBRE);%>" disabled style="color:#063452">
                 <label>Cédula</label>
                 <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
         </div>  
-    </body
+    </body>
+    <script>
+        var x = document.getElementById("id").value;
+        document.getElementById("IdPaciente").value=x;
+	//alert(x);      
+      
+    </script>
 </html>

@@ -29,6 +29,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/EstiloSuper.css">
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
         <style>
             head,body{
@@ -38,7 +39,7 @@
         </style>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <div id="titulo">
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
         </div>        
@@ -51,6 +52,13 @@
         <img src="img/admin.png" width="268" height="289" alt="Avatar" class="image3">
             <a href="Personal.jsp"><div class="overlay3">
               <div class="text3">Agregar Personal CESS</div>
+            </div></a>
+        </div>
+            
+        <div class="container1">
+        <img src="img/estadistica.png" width="268" height="289" alt="Avatar" class="image1">
+            <a href="Estadistica.jsp"><div class="overlay1">
+              <div class="text1">Estadística</div>
             </div></a>
         </div>
    

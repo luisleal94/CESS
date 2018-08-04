@@ -3,7 +3,7 @@ function addRow() {
   var table = document.getElementById("myTableData");
 
   var rowCount = table.rows.length;
-  alert(rowCount); //Obtengo el numero de filas en mi tabla
+  //alert(rowCount); //Obtengo el numero de filas en mi tabla
   var row = table.insertRow(rowCount);
 
   row.insertCell(0).innerHTML= '<input type="button" value = " X " onClick="Javacsript:deleteRow(this)">';
@@ -18,7 +18,7 @@ function addRow2() {
   var table = document.getElementById("myTableData2");
 
   var rowCount = table.rows.length;
-  alert(rowCount); //Obtengo el numero de filas en mi tabla
+  //alert(rowCount); //Obtengo el numero de filas en mi tabla
   var row = table.insertRow(rowCount);
 
   row.insertCell(0).innerHTML= '<input type="button" value = " X " onClick="Javacsript:deleteRow2(this)">';

@@ -16,7 +16,7 @@ public class registrarCon extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        /**************************************/
+        /**************************************/       
         String pediatra=request.getParameter("pediatra");
         String Ginecologia=request.getParameter("Ginecologia");
         String Gastro=request.getParameter("Gastro");
@@ -43,7 +43,7 @@ public class registrarCon extends HttpServlet {
         System.out.println(pediatra);
         System.out.println(Trauma);
         /***********************************/
-        
+         String idDoc=request.getParameter("IdDoctor");
         String id=request.getParameter("id");  //Id del paciente
         String NombrePaci=request.getParameter("NombrePaci");
         String peso=request.getParameter("peso");
@@ -88,7 +88,7 @@ public class registrarCon extends HttpServlet {
         }
         System.out.println(medico);
         Consulta con= new Consulta();
-        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad)
+        if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad,idDoc)
             && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)
             && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
                     Nefro, Hemato, Vascular, inmuno, id)){

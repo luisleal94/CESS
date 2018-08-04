@@ -16,12 +16,14 @@
     String cedula="";
     String NOMBRE="";
     String Especialidad="";
+    String user="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
     cedula=(String)sesion.getAttribute("Cedula");
     NOMBRE=(String)sesion.getAttribute("Nombre");
     Especialidad=(String)sesion.getAttribute("Especialidad");
+    user=(String)sesion.getAttribute("IDUSER");
     System.out.println(Especialidad);
 %>
 <!DOCTYPE html>
@@ -380,7 +382,8 @@ select:focus {
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
-        <script type="text/javascript" src="js/radios.js"></script>       
+        <script type="text/javascript" src="js/radios.js"></script> 
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <script type="text/javascript" src="js/Confirmacion.js"></script>
         <script type="text/javascript" src="js/Validacion.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -414,7 +417,7 @@ select:focus {
         </script>
         <title>CESS</title>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <a id="link" href="inicio.jsp">Regresar</a>        
         
         <% 
@@ -427,19 +430,27 @@ select:focus {
                 <form action="" method="post">
                     <label id="label">Nombre</label>
                     <input type="text" name="nombre">
-                    <input type="submit" value="Buscar"> 
+                    <label id="label">Apellido Paterno</label>                
+                    <input id="Cajas"type="text" name="apellidoP">&emsp;&emsp;
+                    <label id="label">Apellido Materno</label>                
+                    <input id="Cajas" type="text" name="apellidoM"><br>
+                    <div class="botones">
+                        <input type="submit" value="Buscar"> 
+                    </div>                    
                 </form>
             </div>   
             
             <% String nombre=request.getParameter("nombre");      
-            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+            String apellidoP=request.getParameter("apellidoP");
+            String apellidoM=request.getParameter("apellidoM");
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
                 %> 
                 <div class="datos">
                 <div class="h2"><h2>Paciente</h2> </div>
-                <form action="" method="post">
+                <form action="" method="post" target="_black">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
                     <label id="titulos">Nombre</label>
                     <input type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>" disabled style="color: #273746" >
@@ -492,7 +503,8 @@ select:focus {
                     <option value="Urgencia">Urgencia</option>                    
                 </select><br>
             
-            &emsp;<label>Folio de Arancel</label>
+            <input name="IdDoctor" value="<%=user%>" style="display: none">
+            &emsp;<label>Folio de Arancel</label>            
             <input type="text" name="folio">            
             <input type="text" id="ID" name="id" style="display: none">
             <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">

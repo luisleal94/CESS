@@ -16,6 +16,7 @@
     <meta charset="UTF-8">
     <title>CESS</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <script type="text/javascript" src="js/NoBack.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
     <style>
             head,body{
@@ -24,7 +25,7 @@
             }
           </style>
 </head> 
-<body>
+<body onload="nobackbutton();">
     <div class="imagen">
            <img src="img/Logo.gif" width="278" height="299" class="ima">
         </div>

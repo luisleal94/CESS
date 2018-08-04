@@ -29,6 +29,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/Personal.css">	
         <script type="text/javascript" src="js/Validacion.js"></script>
+        
         <style>
             head,body{
                background-image: url(img/jj.png);
@@ -61,6 +62,7 @@
                       <a href="CessSuper.jsp" class="enter2" style="text-align:center">Regresar</a>
 		    </div>
 	  	</form>
-	</div>     
+	</div>
+
 </body>
 </html>

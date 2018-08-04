@@ -56,16 +56,9 @@
                 %>
 		<label >Nombre</label>
                 <input type="text" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
-                <% 
-                Calendar calender = Calendar.getInstance();
-                String fecha;
-                int dia=calender.get(Calendar.DAY_OF_MONTH);
-                int mes=(calender.get(Calendar.MONTH))+1;
-                int anio=calender.get(Calendar.YEAR);
-                fecha=dia+" / "+mes+" / "+anio;
-                %>
+                
 		<label >Fecha</label>
-                <input type="text" name="fecha" value="<%=fecha%>" style="color:#063452" disabled>
+                <input type="text" name="fecha" value="<%=rs.getString("fecha")%>" style="color:#063452" disabled>
 		<label>Estado Civil</label>
                 <input type="text" name="estado" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
 		<label>Ocupacion</label>

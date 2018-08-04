@@ -36,6 +36,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/Personal.css">
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <style>
             head,body{
                background-image: url(img/jj.png);
@@ -44,7 +45,7 @@
         </style>
         <title>CESS</title>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <a id="link" href="CessSuper.jsp">Regresar</a>
         <div class="titulo">
             <h1>Personal CESS</h1>
@@ -57,7 +58,7 @@
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Teléfono</th>
-                <th>Gerarquia</th>
+                <th>Jerarquía</th>
                 <th>Cédula</th>
                 <th>Especialidad</th>
                 <th></th>

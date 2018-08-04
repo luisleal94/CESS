@@ -27,6 +27,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/EstiloAdmin.css">
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">  
         <style>
             head,body{
@@ -36,7 +37,7 @@
         </style>
         <title>CESS</title>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <div id="titulo">
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
         </div>       

@@ -105,8 +105,8 @@
         </style>
     </head>
     <body>
-        <a id="link" href="historial.jsp">Regresar</a>
-        <div class="titulo"><h1>Consultas Realizadas</h1></div>
+       
+        <div class="titulo"><h1>Consultas Realizadas</h1></div>        
         <% //Busqueda por ID del usuario a buscar
                     String id=request.getAttribute("id").toString();//El que obtengo del serlevt                   
                     System.out.println("Id obtenido:"+id);                   
@@ -116,6 +116,12 @@
                     pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"'");
                     rs=pst.executeQuery();
         %>
+        <div class="Estadistico_Peso">
+            <form method="post" action="Grafica.jsp" target="_black">
+                <input type="text" name="Id" value="<%=id%>">
+                <input type="submit" value="Estadístico de Peso corporal">
+            </form>
+        </div>
         <div class="contiene_tabla">
         <table class="tabla">
             <tr>
@@ -131,6 +137,7 @@
                 <td><%=rs.getString("Especialidad")%></td>
                 <td>         
                   <form action="" method="post">
+                    <input type="text" name="IdMedico" value="<%=rs.getString("IdMedico")%>" style="display: none">
                     <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">
                     <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
                     <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">                              

@@ -25,9 +25,11 @@ public class Inspecciona extends HttpServlet {
         PrintWriter out = response.getWriter();
         String id=request.getParameter("id");
         String Fecha=request.getParameter("Fecha");
+        String IdMedico=request.getParameter("IdMedico");
         System.out.println(Fecha);
         request.setAttribute("id",id);
         request.setAttribute("Fecha",Fecha);
+        request.setAttribute("IdMedico",IdMedico);
         request.getRequestDispatcher("VerConsulta.jsp").forward(request, response);
     }
 

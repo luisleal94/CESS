@@ -165,3 +165,15 @@ function ocultarMujer(genero){
         document.getElementById("mujer").style.display="block"
     }
 }
+
+function mostrarEsta(){
+	document.getElementById("muestraEs").style.display="block";
+}
+
+function mostrarBus(){
+    document.getElementById("MuestraBusqueda").style.display="block";
+}
+
+function ocultarBus(){
+    document.getElementById("MuestraBusqueda").style.display="none";
+}

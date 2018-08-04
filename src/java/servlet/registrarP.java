@@ -47,9 +47,9 @@ public class registrarP extends HttpServlet {
             while(rs.next()){
                 curp2=rs.getString("Curp");
             }
-            System.out.println(curp2);
+            //System.out.println(curp2);
                 if(curp2.equals("")){
-                    System.out.println("No hay pacientes similares");
+                    //System.out.println("No hay pacientes similares");
                     if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){       
                     String id="";
                     try {                
@@ -58,44 +58,24 @@ public class registrarP extends HttpServlet {
                         while(rs.next()){
                             id=rs.getString("idPacientes");
                         }
-                        System.out.println(id);
+                        //System.out.println(id);
                         request.setAttribute("id",id);               
                         request.getRequestDispatcher("HistoriaClinica.jsp").forward(request, response);
+                        System.out.println("Se registro de nuevo");
                     } catch (Exception ex) {
-                        System.out.println("Error"+ex);
+                        System.out.println("Error 1: "+ex);                        
                     }                 
-                    System.out.println("Registrado");
+                    //System.out.println("Registrado");
                     }else{  
                         response.sendRedirect("inicio.jsp");
                     }
                 }else{                  
-                    System.out.println("Paciente Repetido");                     
+                    //System.out.println("Paciente Repetido");                     
                     response.sendRedirect("inicio.jsp");  
                 }
             } catch (Exception ex) {
-                System.out.println("Error"+ex);
+                System.out.println("Error 2: "+ex);
             }
-        
-        /*if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){       
-            String id="";
-            try {                
-                pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
-                rs=pst.executeQuery();
-                while(rs.next()){
-                    id=rs.getString("idPacientes");
-                }
-                System.out.println(id);
-                request.setAttribute("id",id);               
-                request.getRequestDispatcher("HistoriaClinica.jsp").forward(request, response);
-            } catch (Exception ex) {
-                System.out.println("Error"+ex);
-            }
-            //response.sendRedirect("historial.jsp");
-            System.out.println("Registrado");
-        }else{  
-            response.sendRedirect("inicio.jsp");
-        }*/
-   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

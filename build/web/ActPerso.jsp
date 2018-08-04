@@ -22,7 +22,7 @@
         </style>
     </head>
     <body>
-        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:39%; color: #00A99D;">Datos del Paciente</p>
+        <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:39%; color: #00A99D;">Datos del Usuario</p>
         <a id="link" href="MostrarPersonal.jsp">Regresar</a>
         <div id="contenido">
             
@@ -38,7 +38,7 @@
                 %>
                 <form id="formulario" action="" method="post">                    
                     <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("NOMBRE")%>">
-		    <label>Apellido</label><input class="input1" type="text" name="apellido" value="<%=rs.getString("APELLIDO")%>">
+		    <label>Apellidos</label><input class="input1" type="text" name="apellido" value="<%=rs.getString("APELLIDO")%>">
                     <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>">
 		    <label>Cédula</label><input class="input1" type="text" name="cedula" value="<%=rs.getString("Cedula")%>">
                     <label>Username</label><input class="input1" type="text" name="username" value="<%=rs.getString("Username")%>">

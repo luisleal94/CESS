@@ -29,84 +29,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" href="css/estilo2.css">
+         <link rel="stylesheet" href="css/estilo2.css">         
          <script type="text/javascript" src="js/Validacion.js"></script>
          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
         <title>JSP Page</title>
-        <style>
+       <style>
             head,body{
                background-image: url(img/jj.png);
                 font-family: 'Roboto', sans-serif;
             }
-		#popup {
-   visibility: hidden;
-   opacity: 0;
-   margin-top: -300px;
-}
-
-#popup:target {
-   visibility:visible;
-   opacity: 1;
-   background-color: rgba(0,0,0,0.8);
-   position: fixed;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-   margin:0;
-   z-index: 999;
-   transition:all 0.8s;
-}
-.popup-contenedor {
-   position: relative;
-   margin:2% auto;
-   padding:30px 50px;
-   background-color: #fafafa;
-   color:#333;
-   border-radius: 3px;
-   width:50%;
-}
-a.popup-cerrar {
-   position: absolute;
-   top:3px;
-   right:3px;
-   background-color: #333;
-   padding:7px 10px;
-   font-size: 20px;
-   text-decoration: none;
-   line-height: 1;
-   color:#fff;
-}
-
-#titulo{
-    background: black;
-}
-
-.salir{
-    background: orange;
-    padding: 5px;
-    width: 10%;
-    text-align: center;
-    margin-left:87%;
-    border-radius: 5px;
-    color: white;
-    font-weight: 700;
-}
-
-.salir:hover{
-    background:  #e74c3c;
-    padding: 5px;
-    width: 10%;
-    text-align: center;
-    margin-left:87%;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-}
-.link{
-    text-decoration: none;
-    color: white;
-}
         </style>
     </head>
     <body>

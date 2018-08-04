@@ -32,12 +32,13 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/estiloH.css">
 	<script type="text/javascript" src="js/radios.js"></script>
+        <script type="text/javascript" src="js/NoBack.js"></script>
 	<script type="text/javascript" src="js/Validacion.js"></script>
         <script type="text/javascript" src="js/Tabla.js"></script>
         <script type="text/javascript" src="js/Confirmacion.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
     </head>
-    <body>
+    <body onload="nobackbutton();">
        <!--<img src="img/uv.jpg" style="float: left; width: 80px; height: 80px;">-->
 	<div id="encabezado" >
 		<label id="cabeza">HISTORIAL CLÍNICO DEL PACIENTE</label>
@@ -80,7 +81,7 @@
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
 	</div>
-        <div style="margin: 15px;"><a id="link" href="inicio.jsp">Inicio</a></div>
+        
 	<div class="formulario">
             <form class="formula" method="post" action="GuardarHist" >
                 <input type="text" value="<%=id%>" name="id" style="display: none"><br>                
@@ -223,11 +224,11 @@
 			<label id="titulo2">Hábitos Higienicos</label>
 			<div class="bloque" align="center">
 				<label>Aseo Corporal</label>
-				<input type="text" name="aseo" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                                <input type="text" name="aseo" id="number" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 				&emsp;&emsp;<label>Aseo Bucal</label>
-				&emsp;&emsp;<input type="text" name="bucal" id="number" onkeyUp="return ValNumero2(this);"><label>/ 3</label>
+				&emsp;&emsp;<input type="text" name="bucal" id="number" onkeyUp="return ValNumero2(this);" required><label>/ 3</label>
 				&emsp;&emsp;<label>Cambio de ropa</label>
-				<input type="text" name="ropa" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+				<input type="text" name="ropa" id="number" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 			</div>
 		
 			<div class="bloque" align="center">
@@ -235,25 +236,25 @@
 				<label>Lácteos</label>
 				<input type="text" name="leche" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
 				&emsp;&emsp;<label>Proteínas</label>
-				&emsp;&emsp;<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);"> <label>/ 7</label>                
+				&emsp;&emsp;<input type="text" name="carne" id="number" onkeyUp="return ValNumero(this);" required> <label>/ 7</label>                
 				&emsp;&emsp;<label>Verduras</label>
-				&emsp;&emsp;<input type="text" name="verduras" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+				&emsp;&emsp;<input type="text" name="verduras" id="number" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 				&emsp;&emsp;<label>Cereales</label>
-				&emsp;&emsp;<input type="text" name="cereal" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+				&emsp;&emsp;<input type="text" name="cereal" id="number" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 				&emsp;&emsp;<label>Leguminosas</label>
-				<input type="text" name="legum" id="number" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+				<input type="text" name="legum" id="number" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 			</div>
 			
                         <div class="bloque">
                             <label id="titulo2">INMUNIZACIONES (FECHAS)</label><br>
 				<label>ANTITETÁNICA</label>&emsp;                           
-                                <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">                                
+                                <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required>                                
 				&emsp;&emsp;&emsp;<label>ANTISARAMPIÓN</label>&emsp;&emsp;
-                                <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha"><br>				
+                                <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required><br>				
 				<label>RUBÉOLA</label>&emsp;&emsp;
-                                <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">
+                                <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required>
                                 &emsp;&emsp;&emsp;<label>ANTI HBS</label>
-				<input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha"> <!--Nuevo agregado-->
+				<input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required> <!--Nuevo agregado-->
 			</div>
 
 			<div class="bloque">
@@ -327,13 +328,13 @@
                     <section id="mujer">
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
 			<label>Menarca</label>
-			<input type="text" name="menarca">
+			<input type="text" name="menarca" required>
 			<label>Duración</label>
-			<input type="text" name="duracion"><br>
+			<input type="text" name="duracion" required><br>
 			<label>Dismenorrea</label>
-			<input type="text" name="dolorM">
+			<input type="text" name="dolorM" required>
 			<label>¿Te obliga a tomar medicamentos?</label>
-			<input type="text" name="MedicaM"><br>
+			<input type="text" name="MedicaM" required><br>
 			<label>Embarazos</label>
 			<div>
                             <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()">
@@ -399,10 +400,10 @@
   			<label for="si5" class="label">Si</label>
   			<input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()" checked>
   			<label for="no5" class="label">No</label>
-                            <section id="ciru" style="display: none;" class="">                             
+                            <section id="ciru" style="display: none;" class="">
                                 <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow2()">
-                                </div>
+                                </div>                                
                                 <div class="contiene_tabla" align="center">
                                     <table class="table" id="myTableData2">
                                         <tr>

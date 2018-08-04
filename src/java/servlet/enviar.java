@@ -42,6 +42,7 @@ public class enviar extends HttpServlet {
         String dosis=request.getParameter("dosis");
         String cada=request.getParameter("cada");
         String dias=request.getParameter("dias");
+        String IdMedico=request.getParameter("Doc");
         
         System.out.println(id);
         System.out.println(nombre);
@@ -53,8 +54,8 @@ public class enviar extends HttpServlet {
         System.out.println(dosis);
         System.out.println(cada);
         System.out.println(dias);
-        
-        new Consulta().Receta(nombre, farmacia, unidades, dosis, administracion, presentacion, piezas, cada, dias, id);
+        System.out.println(IdMedico);
+        new Consulta().Receta(nombre, farmacia, unidades, dosis, administracion, presentacion, piezas, cada, dias,IdMedico,id);
            
       
           

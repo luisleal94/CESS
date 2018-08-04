@@ -22,6 +22,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/NoBack.js"></script>
         <title>CESS</title>
                 <style>
                     head,body{
@@ -133,23 +134,44 @@
                 background-color: #54adfc;
                 color: white;
             }
+            #Cajas{
+                width: 20%;
+                padding: 12px 20px;
+                margin-left:0px;
+                /*display: inline-block;*/
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            #Cajas:focus {
+                  border:2px solid  #85c1e9;
+            }
             </style>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <a id="link" href="CessAdmin.jsp">Regresar</a>
         <div id="buscar">
             <form action="" method="post">
                 <label id="label">Nombre</label>
-                <input type="text" name="nombre">
+                <input id="Cajas" type="text" name="nombre">
+                <label id="label">Apellido Paterno</label>                
+                <input id="Cajas"type="text" name="apellidoP">
+                <label id="label">Apellido Materno</label>                
+                <input id="Cajas" type="text" name="apellidoM"><br>
                 <input type="submit" value="Buscar">                
             </form>
         </div>
         <% //Busqueda por nombre del usuario a buscar
-          String nombre=request.getParameter("nombre");
+        String nombre=request.getParameter("nombre");
+        String apellidoP=request.getParameter("apellidoP");
+        String apellidoM=request.getParameter("apellidoM");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+        pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
+        //pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+        //pst = con.getConexion().prepareStatement("Select * from Pacientes where Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
         rs=pst.executeQuery();
         String IdPaciente="";
         while(rs.next()){
@@ -173,6 +195,7 @@
                     <td><%=rs.getString("Especialidad")%></td>
                     <td>         
                         <form action="" method="post">
+                        <input type="text" name="IdMedico" value="<%=rs.getString("IdMedico")%>" style="display: none">
                         <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">
                         <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
                         <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">                              

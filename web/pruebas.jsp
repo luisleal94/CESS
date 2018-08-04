@@ -141,6 +141,20 @@ a{
 form{
     text-align: center;
 }
+
+#Cajas{
+    width: 25%;
+    padding: 12px 20px;
+    margin-left:0px;
+    /*display: inline-block;*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#Cajas:focus {
+      border:2px solid  #85c1e9;
+}
 </style>
         <style>
             head,body{
@@ -148,29 +162,38 @@ form{
                font-family: 'Roboto', sans-serif;
             }
         </style>
+        <script type="text/javascript" src="js/NoBack.js"></script>
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <a id="link" href="CessSuper.jsp">Regresar</a>
         <div id="buscar">
             <form action="" method="post">
-                <label id="label">Nombre</label>
-                <input type="text" name="nombre">
+                <!--<label id="label">Nombre</label>
+                <input id="Cajas" type="text" name="nombre">-->
+                <label id="label">Apellido Paterno</label>                
+                <input id="Cajas"type="text" name="apellidoP">&emsp;&emsp;
+                <label id="label">Apellido Materno</label>                
+                <input id="Cajas" type="text" name="apellidoM"><br>
                 <input type="submit" value="Buscar"> 
                 <div id="boton0" ><a href="historial.jsp">Mostrar tabla</a></div>
             </form>
         </div>
-        <div id="datos">
+        
       <% //Busqueda por nombre del usuario a buscar
-          String nombre=request.getParameter("nombre");
+        //String Nombre=request.getParameter("nombre");
+        String apellidoP=request.getParameter("apellidoP");
+        String apellidoM=request.getParameter("apellidoM");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+        //pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+Nombre+"'");
+        pst = con.getConexion().prepareStatement("Select * from Pacientes where Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
         rs=pst.executeQuery();
        
         while(rs.next()){
     %>
-         <h2>Datos del paciente</h2>
+        <div id="datos"> 
+        <h2>Datos del paciente</h2>
          <form  action="" method="post">
             <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">
             <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
@@ -186,7 +209,8 @@ form{
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746"><br>       
             <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    
             <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
-            <input type="submit" id="boton1" value="Consultas" onclick=this.form.action="HistoConsulta">           
+            <input type="submit" id="boton1" value="Consultas" onclick=this.form.action="HistoConsulta">
+            <input type="submit" id="boton1" value="Eliminar" onclick=this.form.action="Eliminar">
          </form>
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            

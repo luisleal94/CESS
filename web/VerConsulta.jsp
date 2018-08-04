@@ -14,12 +14,14 @@
     String usuario=(String)sesion.getAttribute("Usuario");
     String gerarquia="";
     String cedula="";
+    String IdUser="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }else{
         gerarquia=(String)sesion.getAttribute("Gerarquia");
         cedula=(String)sesion.getAttribute("Cedula");
-        System.out.println("Geraquia:"+gerarquia);
+        IdUser=(String)sesion.getAttribute("IDUSER");
+        System.out.println("Geraquia:"+gerarquia+" Usuario:"+IdUser);
     }
 %>
 <!DOCTYPE html>
@@ -143,13 +145,26 @@
                 background-color: #54adfc;
                 color: white;
             }
+            .input1{              
+               height:35px; 
+               border: none;
+               background: #418994;
+               color: white;
+               font-family: roboto;
+               font-weight: 400;
+               font-size: 20px;
+               border-radius: 5px;
+               cursor:pointer;
+            }
         </style>
     </head>
     <body>
-        <a id="link" href="historial.jsp">Regresar</a>
+       
         <div class="titulo"><h1>Notas Médicas</h1></div>
         <div class="contenedor" >
             <% //Busqueda por ID del usuario a buscar
+                        String Doc=request.getAttribute("IdMedico").toString();
+                        System.out.println(Doc);
                         String id=request.getAttribute("id").toString();//El que obtengo del serlevt     
                         String fecha=request.getAttribute("Fecha").toString();//El que obtengo del serlevt     
                         System.out.println("Id obtenido:"+id);                   
@@ -229,8 +244,9 @@
                 <th>Cada</th>
                 <th>Días</th>
             </tr>
-             <% pst = con.getConexion().prepareStatement("Select * from Receta where IdPaciente='"+id+"' "
-                     + "and Fecha='"+fecha+"'");
+             <% 
+                 pst = con.getConexion().prepareStatement("select *from Receta where IdMedico='"+Doc+"'  and Fecha='"+fecha+"' "
+                         + "and IdPaciente='"+id+"'");
                 rs=pst.executeQuery();
                 while(rs.next()){  %>
             <tr>
@@ -243,8 +259,14 @@
                 <td><%=rs.getString("Cada")%></td>
                 <td><%=rs.getString("Dias")%></td>
             </tr>
-            <% } %>              
+            <% } %> 
         </table>
+        <form method="post" action="newjsp.jsp" target="_black">
+            <input type="text" name="Fecha" id="fecha" value="<%=fecha%>" style="display: none">
+            <input type="text" name="ID" value="<%=id%>"  style="display: none">
+                <input type="text" name="Doctor" id="Doc" value="<%=Doc%>" style="display: none">
+                <input type="submit" class="input1" value="Imprimir Receta">
+        </form>
         </div>
     </body>
     <script>
