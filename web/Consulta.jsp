@@ -517,9 +517,9 @@ select:focus {
             
             <br><br><label id="cabeza" >Signos Vitales</label><br>            
             <label>Peso</label>
-            <input type="text" name="peso"  value="0" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
+            <input type="text" name="peso"  value="0" placeholder="Kilogramos" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
             &emsp;&emsp;&emsp;<label>Estatura</label>
-            <input type="text" name="talla" value="1" id="multiplicador" onkeyUp=" return decimalTalla(this);" onChange="multiplicar();">
+            <input type="text" name="talla" value="1" placeholder="Centimetros" id="multiplicador" onkeyUp=" return decimalTalla(this);" onChange="multiplicar();">
             &emsp;&emsp;&emsp;<label>IMC</label>
             <input type="text" name="imc" id="resultado" disabled><br>          
             <label>Temperatura</label>

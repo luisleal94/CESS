@@ -791,7 +791,7 @@ public class Consulta extends Conexion{
     
     public boolean referencias(String pediatra,String Ginecologia,String Gastro,String Neuro,String Trauma,
             String Endocri,String Geriatria,String Urolo,String Otorri,String Gene,String Psiqui,String Cardio,
-            String Olfta,String Neomo,String Nefro,String Hemato,String Vascular,String inmuno,String id){
+            String Olfta,String Neomo,String Nefro,String Hemato,String Vascular,String inmuno,String id,String Medico){
         Calendar calender = Calendar.getInstance();
         String fecha;
         int dia=calender.get(Calendar.DAY_OF_MONTH);
@@ -801,8 +801,8 @@ public class Consulta extends Conexion{
         PreparedStatement pst=null;
         try{
             String consulta="insert into Referencia(Pediatra,Ginecologia,Gastro,Neurolo,Trauma,Endocri,Geriatria,"
-                    + "Urolo,Otorri,Genetica,Psiqui,Cardio,Olfta,Neomo,Nefro,Hemato,Vascular,Inmuno,Fecha,IdPaciente)"
-                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Urolo,Otorri,Genetica,Psiqui,Cardio,Olfta,Neomo,Nefro,Hemato,Vascular,Inmuno,Fecha,IdMedico,IdPaciente)"
+                    + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, pediatra);
             pst.setString(2,Ginecologia);
@@ -823,7 +823,8 @@ public class Consulta extends Conexion{
             pst.setString(17,Vascular);
             pst.setString(18,inmuno);
             pst.setString(19,fecha);
-            pst.setString(20, id);
+            pst.setString(20,Medico);
+            pst.setString(21, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             

@@ -231,6 +231,102 @@
                 <textarea class="area" id="area5" cols="150" rows="5" disabled></textarea>
             </div>
         </div>
+            <div class="contenedor">
+                <label>Se refirio a:</label><br>
+                
+                <%
+                    pst = con.getConexion().prepareStatement("select *from Referencia where IdPaciente='"+id+"' and Fecha='"+fecha+"' and IdMedico='"+Doc+"'");
+                    rs=pst.executeQuery();
+                    while(rs.next()){ %>
+                    <label>Pediatría</label>
+                    <%if(rs.getString("Pediatra")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    
+                    <label>Ginecología</label>
+                    <%if(rs.getString("Ginecologia")==null){ %>
+                        <input type="text" value="No">
+                        <% }else{%><input type="text" value="Si"><%} %><br>                
+                    
+                    <label>Gastroenterología</label>
+                    <%if(rs.getString("Gastro")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>   
+                    
+                    <label>Neurología</label>
+                    <%if(rs.getString("Neurolo")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %> <br>   
+                    
+                    <label>Tramatología</label>
+                    <%if(rs.getString("Trauma")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %> 
+                    
+                    <label>Endocrinología</label>
+                    <%if(rs.getString("Endocri")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %> <br>   
+                    
+                    <label>Geriatría</label>
+                    <%if(rs.getString("Geriatria")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %> 
+                    
+                    <label>Urología</label>
+                    <%if(rs.getString("Urolo")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %><br>   
+                    
+                    <label>Otorrinología</label>
+                    <%if(rs.getString("Otorri")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    
+                    <label>Genética</label>
+                    <%if(rs.getString("Genetica")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %><br>   
+                    
+                    <label>Psiquiatría</label>
+                    <%if(rs.getString("Psiqui")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    
+                    <label>Cardiología</label>
+                    <%if(rs.getString("Cardio")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %><br>
+                    
+                    <label>Oftalmología</label>
+                    <%if(rs.getString("Olfta")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    
+                    <label>Neumología</label>
+                    <%if(rs.getString("Neomo")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %><br>
+                    
+                    <label>Nefrología</label>
+                    <%if(rs.getString("Nefro")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    
+                    <label>Hematología</label>
+                    <%if(rs.getString("Hemato")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %><br>
+                    <label>Vascular periférico</label>
+                    <%if(rs.getString("Vascular")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    <label>Inmuno-alergia</label>
+                    <%if(rs.getString("Inmuno")==null){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="Si"><%} %>
+                    <%   }  %>
+            </div>
             <div class="titulo"><h1>Medicamento Recetado</h1></div>
         <div id="contiene_tabla">
             <table id="tabla">
