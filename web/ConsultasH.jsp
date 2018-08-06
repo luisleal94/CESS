@@ -102,6 +102,17 @@
                 text-align: center;
                 text-decoration: underline;
             }
+            #boton2{
+                margin-left:5%; 
+                background: orange;
+                text-decoration: none;
+                width:25%;
+                border-radius:5px;
+                cursor: pointer;
+            }
+            #boton2:hover{
+                background:#f15f00;
+            }
         </style>
     </head>
     <body>
@@ -118,8 +129,8 @@
         %>
         <div class="Estadistico_Peso">
             <form method="post" action="Grafica.jsp" target="_black">
-                <input type="text" name="Id" value="<%=id%>">
-                <input type="submit" value="Estadístico de Peso corporal">
+                <input type="text" name="Id" value="<%=id%>" style="display: none">
+                <input type="submit" id="boton2" value="Estadístico de Peso corporal">
             </form>
         </div>
         <div class="contiene_tabla">

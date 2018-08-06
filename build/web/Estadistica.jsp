@@ -71,27 +71,24 @@
             </form>
         </div>
         <div class="datos" >
-            <% //Busqueda por nombre del usuario a buscar
-                String res=request.getParameter("Busqueda");  
-                //String res2=request.getParameter("noBus"); 
+            <% //Busqueda por nombre del usuario a buscar                
                 String Tipo=request.getParameter("Tipo");
                 String Valor=request.getParameter("Valor");
                 String Rango1=request.getParameter("Rango1");
                 String Rango2=request.getParameter("Rango2");
-                String sql="",sql2="",parametro="Si"; 
-                System.out.println(res);
-                if(res.equals("Si")){
+                String sql="",sql2=""; 
+                System.out.println("Valor:"+Valor);
+                if(Tipo==null){
+                     sql="Select *from Consulta where Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
+                    sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
+                }
+                else{
                     sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";
                     sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";
                     System.out.println("Entro");
                 }
-                else{
-                    //System.out.println(res);
-                    sql="Select *from Consulta where Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
-                    sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
-                }
                 System.out.println(Tipo+" "+ Valor);
-                System.out.println(res+sql);
+                System.out.println(sql);
                 Conexion con= new Conexion();
                 PreparedStatement pst;
                 ResultSet rs;

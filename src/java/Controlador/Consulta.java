@@ -1,10 +1,16 @@
 package Controlador;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.codec.digest.DigestUtils;
+import servlet.Respaldo;
 /**
  *
  * @author luis
@@ -834,8 +840,29 @@ public class Consulta extends Conexion{
         }
         return false;
     }
+    
+    /*public boolean respaldo(){
+        try{
+            Process P=Runtime.getRuntime().exec("mysqldump -u root -p1234 CESS");
+            InputStream is=P.getInputStream();
+         
+            FileOutputStream fos= new FileOutputStream("Respaldo.sql");
+            byte[] buffer = new byte[10000];
+            int leido=is.read(buffer);
+            while(leido>0){
+                fos.write(buffer,0,leido);
+                leido=is.read(buffer);
+            }
+            fos.close();
+            
+        }catch(IOException ex){
+            Logger.getLogger(Respaldo.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return false;
+    }*/
     /*public static void main(String[] args){
         Consulta re= new Consulta();
+        //re.respaldo();
         //re.GenerarConsulta("7","Dolor","Pecho","Fiebre","No","No","No","Reposo","Joel","180.5","Espontanea","Lucero","Urgencia","12354","Medicina","25");
         //re.ActualizaConta("karina94","123","23");
         //re.Receta("1","2","3","4","5","6","8","9","10","45");

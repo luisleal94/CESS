@@ -18,14 +18,13 @@ function addRow() {
     row.insertCell(1).innerHTML= myName.value;
 	
     row.insertCell(2).innerHTML= dosis.value;
-	row.insertCell(3).innerHTML= forma.value;
-	row.insertCell(4).innerHTML= unidades.value;
-	row.insertCell(5).innerHTML= via.value;
-	row.insertCell(6).innerHTML= presentacionn.value;
-	row.insertCell(7).innerHTML= piezas.value;
-	row.insertCell(8).innerHTML= cadad.value;
-	row.insertCell(9).innerHTML= diass.value;
-
+    row.insertCell(3).innerHTML= forma.value;
+    row.insertCell(4).innerHTML= unidades.value;
+    row.insertCell(5).innerHTML= via.value;
+    row.insertCell(6).innerHTML= presentacionn.value;
+    row.insertCell(7).innerHTML= piezas.value;
+    row.insertCell(8).innerHTML= cadad.value;
+    row.insertCell(9).innerHTML= diass.value;
 }
 
 function deleteRow(obj) {

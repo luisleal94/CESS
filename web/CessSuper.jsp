@@ -40,6 +40,9 @@
         <title>JSP Page</title>
     </head>
     <body onload="nobackbutton();">
+        <div id="Contenedor">
+		<div id="carga"></div>
+	</div>
         <div id="titulo">
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
         </div>        
@@ -82,6 +85,17 @@
               <div class="text4">Consulta</div>
             </div></a>
         </div>
-            
+            <div id="respaldo">
+                <form action="Respaldo" method="post">
+                    <input type="submit" id="respal" value="Respaldar base de datos">
+                </form>
+            </div>
+        <script type="text/javascript">
+		window.onload= function(){
+			var Contenedor=document.getElementById('Contenedor');
+			Contenedor.style.visibility ='hidden';
+			Contenedor.style.opacity='0';
+		}
+	</script>
     </body>
 </html>

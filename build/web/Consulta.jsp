@@ -484,7 +484,11 @@ select:focus {
                 </form>
             </div>
        <% } }//Busqueda por nombre del usuario a buscar %>
-        <!--Mando el parametro ID del paciente que encontre-->            
+        <!--Mando el parametro ID del paciente que encontre--> 
+        <form method="post" action="Grafica.jsp" target="_black">
+                <input type="text" name="Id" id="Paciente" style="display: none">
+                <input type="submit" id="boton1" value="Estadístico de Peso corporal">
+        </form>
     <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
            
@@ -511,7 +515,7 @@ select:focus {
             &emsp;&emsp;<label>Costo de Consulta</label>
             <input type="text" name="Costo" onkeyUp=" return decimales(this);"> 
             
-            <br><br><label id="cabeza" >Signos Vitales</label><br>
+            <br><br><label id="cabeza" >Signos Vitales</label><br>            
             <label>Peso</label>
             <input type="text" name="peso"  value="0" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
             &emsp;&emsp;&emsp;<label>Estatura</label>
@@ -646,6 +650,7 @@ select:focus {
     <script>
 		var x = document.getElementById("id").value;
                 document.getElementById("ID").value=x;
+                document.getElementById("Paciente").value=x;
 		 
                 var med=document.getElementById("Medic").value;
                 document.getElementById("Doc").value=med; 

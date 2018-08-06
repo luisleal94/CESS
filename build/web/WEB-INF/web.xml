@@ -64,6 +64,10 @@
         <servlet-name>Eliminar</servlet-name>
         <servlet-class>servlet.Eliminar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Respaldo</servlet-name>
+        <servlet-class>servlet.Respaldo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>Eliminar</servlet-name>
         <url-pattern>/Eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Respaldo</servlet-name>
+        <url-pattern>/Respaldo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
