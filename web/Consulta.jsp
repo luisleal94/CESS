@@ -429,11 +429,11 @@ select:focus {
             <div id="buscar">
                 <form action="" method="post">
                     <label id="label">Nombre</label>
-                    <input type="text" name="nombre">
+                    <input type="text" name="nombre" required>
                     <label id="label">Apellido Paterno</label>                
-                    <input id="Cajas"type="text" name="apellidoP">&emsp;&emsp;
+                    <input id="Cajas"type="text" name="apellidoP" required>&emsp;&emsp;
                     <label id="label">Apellido Materno</label>                
-                    <input id="Cajas" type="text" name="apellidoM"><br>
+                    <input id="Cajas" type="text" name="apellidoM" required><br>
                     <div class="botones">
                         <input type="submit" value="Buscar"> 
                     </div>                    
@@ -463,6 +463,10 @@ select:focus {
                         <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
                     </div>
                 </form>
+                <form method="post" action="Grafica.jsp" target="_black">
+                    <input type="text" name="Id" id="Paciente" style="display: none">
+                    <input type="submit" id="boton1" value="Estadístico de Peso corporal">
+                </form>
             </div>
             <% }                        
         }else{
@@ -485,10 +489,6 @@ select:focus {
             </div>
        <% } }//Busqueda por nombre del usuario a buscar %>
         <!--Mando el parametro ID del paciente que encontre--> 
-        <form method="post" action="Grafica.jsp" target="_black">
-                <input type="text" name="Id" id="Paciente" style="display: none">
-                <input type="submit" id="boton1" value="Estadístico de Peso corporal">
-        </form>
     <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
            
@@ -509,25 +509,25 @@ select:focus {
             
             <input name="IdDoctor" value="<%=user%>" style="display: none">
             &emsp;<label>Folio de Arancel</label>            
-            <input type="text" name="folio">            
+            <input type="text" name="folio" required>            
             <input type="text" id="ID" name="id" style="display: none">
             <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">
             &emsp;&emsp;<label>Costo de Consulta</label>
-            <input type="text" name="Costo" onkeyUp=" return decimales(this);"> 
+            <input type="text" name="Costo" onkeyUp=" return decimales(this);" required> 
             
             <br><br><label id="cabeza" >Signos Vitales</label><br>            
             <label>Peso</label>
-            <input type="text" name="peso"  value="0" placeholder="Kilogramos" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();">
+            <input type="text" name="peso"  value="0" placeholder="Kilogramos" id="multiplicando" onkeyUp=" return decimalPeso(this);" onChange="multiplicar();" required>
             &emsp;&emsp;&emsp;<label>Estatura</label>
-            <input type="text" name="talla" value="1" placeholder="Centimetros" id="multiplicador" onkeyUp=" return decimalTalla(this);" onChange="multiplicar();">
+            <input type="text" name="talla" value="1" placeholder="Centimetros" id="multiplicador" onkeyUp=" return decimalTalla(this);" onChange="multiplicar();" required>
             &emsp;&emsp;&emsp;<label>IMC</label>
             <input type="text" name="imc" id="resultado" disabled><br>          
             <label>Temperatura</label>
-            <input type="text" name="temp" onkeyUp=" return decimalTemp(this);">
+            <input type="text" name="temp" onkeyUp=" return decimalTemp(this);" required>
             &emsp;&emsp;&emsp;<label>Frecuencia Cardiaca</label>
-            <input type="text" name="fc"><br>
+            <input type="text" name="fc" required><br>
             <label>Frecuencia Respiratoria</label>
-            <input type="text" name="fr">
+            <input type="text" name="fr" required>
             &emsp;&emsp;&emsp;<label>Presión Arterial</label>
             <input type="text" name="PresionArterial"><br>
             <div class="areatexto">
@@ -540,7 +540,7 @@ select:focus {
             </div>
             <div class="ui-widget">
                 <label for="tags">Diagnostico </label>
-                <input id="tags" name="Diagnos">
+                <input id="tags" name="Diagnos" required>
            </div>          
             <div class="areatexto">
                 <label>Estudios</label><br>
@@ -595,7 +595,7 @@ select:focus {
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="Trauma" value="1" id="checkbox9">
-                                <label for="checkbox9">Tramatología</label></td>
+                                <label for="checkbox9">Traumatología</label></td>
                             <td><input type="checkbox" name="Endocri" value="1" id="checkbox6">
                                 <label for="checkbox6">Endocrinología</label></td>
                             <td><input type="checkbox" name="Geriatria" value="1" id="checkbox7">

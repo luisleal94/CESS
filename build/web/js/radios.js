@@ -177,3 +177,43 @@ function mostrarBus(){
 function ocultarBus(){
     document.getElementById("MuestraBusqueda").style.display="none";
 }
+
+function mostrarTetano(){
+    document.getElementById("MuestraTetano").style.display="block";
+}
+
+function ocultarTetano(){
+    document.getElementById("MuestraTetano").style.display="none";
+}
+
+function mostrarSaram(){
+    document.getElementById("MuestraSaram").style.display="block";
+}
+
+function ocultarSaram(){
+    document.getElementById("MuestraSaram").style.display="none";
+}
+
+function mostrarRubeo(){
+    document.getElementById("MuestraRubeo").style.display="block";
+}
+
+function ocultarRubeo(){
+    document.getElementById("MuestraRubeo").style.display="none";
+}
+
+function mostrarAnti(){
+    document.getElementById("MuestraANTI").style.display="block";
+}
+
+function ocultarAnti(){
+    document.getElementById("MuestraANTI").style.display="none";
+}
+
+function mostrarAnticon(){
+    document.getElementById("MuestraAnti").style.display="block";
+}
+
+function ocultarAnticon(){
+    document.getElementById("MuestraAnti").style.display="none";
+}

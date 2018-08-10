@@ -1,0 +1,51 @@
+.contiendeTa{
+    position: relative;
+    background: #ecfdf4;
+    width: 100%;
+    font-size:15px;
+    margin-left:25%;
+    margin-right: 30px; 
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.tabla2{
+    /*background: orange;*/
+    margin-right: 5%; 
+    margin-left: 5%; 
+}
+
+input[type=text]{
+    width: 85%;
+    height: 10%;
+    padding:5px;
+    margin: 0px;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid ;
+    border-color: rgba(0,0,255,0.3);
+    background-color:white;
+}
+
+#myTableData {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#myTableData td, #myTableData th {
+    border: 1px solid #ddd;
+    padding: 2px;
+}
+/*
+#myTableData tr:nth-child(even){background-color: #f2f2f2;}
+*/
+#myTableData tr:hover{background-color: #ddd;}
+
+#myTableData th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

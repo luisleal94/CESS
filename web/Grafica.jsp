@@ -23,20 +23,20 @@
         <%
             String idPaciente=request.getParameter("Id");
             System.out.println(idPaciente);
-            DefaultCategoryDataset data= new DefaultCategoryDataset();
+            DefaultCategoryDataset line_chart_dataset= new DefaultCategoryDataset();
             Conexion con= new Conexion();
             PreparedStatement pst;
             ResultSet rs;
             pst = con.getConexion().prepareStatement("select Peso,Fecha from ExploracionF where IdPaciente='"+idPaciente+"'");
             rs=pst.executeQuery();
             while(rs.next()){
-                //data.setValue(rs.getFloat(0),rs.getString("Fecha"),rs.getString("Fecha")+"="+rs.getFloat(0));
-                data.setValue(rs.getFloat(1),rs.getString("Fecha"),rs.getString("Fecha")+"="+rs.getFloat(1));
+                //data.setValue(rs.getFloat(1),rs.getString("Fecha"),rs.getString("Fecha")+"="+rs.getFloat(1));
+                line_chart_dataset.addValue(rs.getFloat(1),"Peso",rs.getString("Fecha"));
                 System.out.println(rs.getFloat("Peso"));
                 System.out.println(rs.getDate("Fecha"));
             }
-            JFreeChart grafico=ChartFactory.createBarChart("Grafico del Peso Corporal","Peso","Fecha",data,PlotOrientation.VERTICAL,true,true,true);
-            response.setContentType("image/JPGE");
+            JFreeChart grafico=ChartFactory.createLineChart("Grafico del Peso Corporal","Fecha","Peso Kg",line_chart_dataset,PlotOrientation.VERTICAL,true,true,false);
+            response.setContentType("image/jp");
             OutputStream sa=response.getOutputStream();
             ChartUtilities.writeChartAsJPEG(sa,grafico,600,600);
         %>

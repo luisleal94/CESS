@@ -74,11 +74,13 @@ public class registrarCon extends HttpServlet {
         System.out.println(formato.format(IMC));
         System.out.println(NombrePaci);
         System.out.println(Especialidad);
+        String band="";
         if(canali.equals("No")){
             ResGabi="Ninguno";
             Reslabora="Ninguno";
         }       
         else{
+            band="Si";
             if(gabinete.equals("No")){
                 ResGabi="Ninguno";
             }
@@ -93,6 +95,7 @@ public class registrarCon extends HttpServlet {
             && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
                     Nefro, Hemato, Vascular, inmuno,id,idDoc)){
             request.setAttribute("id",id);
+            request.setAttribute("band",band);
             request.getRequestDispatcher("Receta.jsp").forward(request, response);
         }else{
             response.sendRedirect("CessSuper.jsp");

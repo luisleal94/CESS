@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b2900cc-861c-4951-ac54-5a161c058a25">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="204"/>
+	<property name="ireport.y" value="85"/>
 	<parameter name="Fecha" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -43,9 +43,7 @@ FROM
      `Consulta` Consulta,
      `PERSONAL` PERSONAL,
      `Receta` Receta
-where Receta.`IdPaciente`=$P{Paciente} and
-Receta.`Fecha`=$P{Fecha} and
-Receta.`IdMedico` = $P{Medico} and
+where 
 PERSONAL.`ID_USER`=$P{Medico} and
 Consulta.`Fecha`=$P{Fecha} and
 Consulta.`IdPaciente`=$P{Paciente} and
@@ -82,302 +80,118 @@ Consulta.`IdMedico`=$P{Medico}]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<image>
-				<reportElement x="15" y="0" width="96" height="68" uuid="72a68fff-c2c0-4f72-af94-a211a703703f"/>
-				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/UV.jpeg"]]></imageExpression>
-			</image>
-			<image>
 				<reportElement x="443" y="0" width="91" height="79" uuid="90678cbc-03e5-48dc-821b-5b3023a87fc2"/>
 				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
 			</image>
-			<textField>
-				<reportElement x="183" y="20" width="171" height="20" uuid="cfad90c6-c024-4cea-b43e-1c766a5140fc"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_Especialidad}]]></textFieldExpression>
-			</textField>
+			<image>
+				<reportElement x="27" y="0" width="83" height="66" uuid="581f9e4c-b9fa-42ab-97d7-e6cd503a8ccf"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="158" y="0" width="55" height="20" uuid="05a48e39-81db-42b4-94e1-d832d22b2160"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="146" y="20" width="267" height="46" uuid="b898ead2-f59d-4e38-8815-b972775230c7"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Médico]]></text>
+				<text><![CDATA[Centro de Estudios y Servicios de Salud Orden Médica de análisis clínicos]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="158" y="48" width="55" height="20" uuid="ba3e1bf5-5ee4-4812-8eba-7cd095b56808"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Cédula]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="276" y="0" width="84" height="20" uuid="e2eb707a-4f69-4742-9197-08c07e896fbb"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="213" y="48" width="100" height="20" uuid="d141bea2-410b-4f99-9e26-f26910566580"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="213" y="0" width="63" height="20" uuid="2ad2ab94-855b-4965-ade0-56762c7a5f0d"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
-			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="26" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="146" y="11" width="323" height="20" uuid="cb243015-2a79-4769-aa43-9d39fd1c03e1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Consulta_Nombre}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="369" y="23" width="47" height="20" uuid="8373bb90-5094-4fa9-98b9-f50f67cdf224"/>
-				<text><![CDATA[Dosis]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="427" y="23" width="60" height="20" uuid="765b3eb2-87a1-43ac-a20d-f098b623477d"/>
-				<text><![CDATA[Cada]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="79" y="23" width="68" height="20" uuid="a3b0a128-e44f-4383-ac85-f429f57655e1"/>
-				<text><![CDATA[Farmacia]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="2" y="23" width="77" height="20" uuid="1e73d5a9-9ef1-4c6b-8dcd-2abfaed9932e"/>
-				<text><![CDATA[Medicamento]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="147" y="23" width="60" height="20" uuid="ba137814-37d6-4575-906a-b9980d324922"/>
-				<text><![CDATA[Unidades]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="487" y="23" width="70" height="20" uuid="6849ff17-08c7-414c-a223-37449951d33a"/>
-				<text><![CDATA[Días]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="202" y="23" width="76" height="20" uuid="e893f57a-6687-46bb-880c-0d5a02105611"/>
-				<text><![CDATA[Administración]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="295" y="23" width="71" height="20" uuid="9a27a506-dc4f-4f2f-8cb6-424da9284a51"/>
-				<text><![CDATA[Presentación]]></text>
+				<reportElement x="1" y="11" width="128" height="20" uuid="bb5575a6-9274-46c4-bc9b-0bb64ab9ef71"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nombre del Paciente]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="352" splitType="Stretch">
+		<band height="239" splitType="Stretch">
 			<textField>
-				<reportElement x="425" y="0" width="60" height="20" uuid="a9e04ef9-e2ff-4305-b86d-80da487688b4"/>
-				<textFieldExpression><![CDATA[$F{Receta_Cada}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="145" y="0" width="60" height="20" uuid="bf35f4a8-28d0-4b27-89db-069730407df6"/>
-				<textFieldExpression><![CDATA[$F{Receta_Unidades}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="495" y="0" width="60" height="20" uuid="06424176-6b69-49bc-aef0-c284e0b8fdb7"/>
-				<textFieldExpression><![CDATA[$F{Receta_Dias}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="0" width="77" height="20" uuid="783d0909-d6f5-4a2e-99df-501ad8a8dd6e"/>
-				<textFieldExpression><![CDATA[$F{Receta_Medicamento}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="77" y="0" width="68" height="20" uuid="4500879d-2696-428b-894b-791345245ffa"/>
-				<textFieldExpression><![CDATA[$F{Receta_Farmacia}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="367" y="0" width="47" height="20" uuid="9cfff512-93fd-47cd-b32d-f457df1b9b47"/>
-				<textFieldExpression><![CDATA[$F{Receta_Dosis}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="296" y="0" width="71" height="20" uuid="c78bcfa4-2ca1-4d4b-a2c1-362053cb36e0"/>
-				<textFieldExpression><![CDATA[$F{Receta_Presentacion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="213" y="0" width="78" height="20" uuid="ba5981c6-b6d5-4b54-87dd-5cf6298e9eaf"/>
-				<textFieldExpression><![CDATA[$F{Receta_Administracion}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="27" y="303" width="519" height="1" uuid="ef4cf4bc-6e60-41d0-a3da-4b25bbeceddf"/>
-			</line>
-			<staticText>
-				<reportElement x="12" y="314" width="200" height="20" uuid="f6e9d000-d71e-4ef0-a760-5fbce01028bd"/>
-				<text><![CDATA[Centro de Estudio y Servicios de Salud]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="287" y="314" width="267" height="30" uuid="f9fca9e3-399e-477e-9445-f43d50ffe10b"/>
-				<text><![CDATA[Carmen Serdan N° 147 Casi esq. Mina. Veracruz, Ver. C.P. 91700 Tel: 932-49-78]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="14" y="251" width="128" height="20" uuid="ea817bd7-6bf8-4dc3-961d-6dd991e7d5b1"/>
-				<text><![CDATA[Estudios de gabinete]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="15" y="281" width="128" height="20" uuid="d15ec0d2-63d2-478d-96d5-8c5c42fd4afb"/>
-				<text><![CDATA[Estudios de laboratorio]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="157" y="251" width="280" height="20" uuid="96ab589b-b159-47f2-8d86-c57f42ecc545"/>
-				<textFieldExpression><![CDATA[$F{Consulta_Gabinete}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="160" y="281" width="282" height="20" uuid="4637c8f9-940e-475c-ba26-68fcd69ce542"/>
+				<reportElement x="0" y="104" width="352" height="37" uuid="a2c93e95-c615-49a7-9520-a4187483ef1f"/>
 				<textFieldExpression><![CDATA[$F{Consulta_Laboratorio}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="78" y="211" width="68" height="20" uuid="e58101a1-6e63-4317-a18f-383a413c0b46"/>
-				<text><![CDATA[Farmacia]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="486" y="211" width="70" height="20" uuid="9d1f8aa6-ff13-489c-b310-dae773446f6c"/>
-				<text><![CDATA[Días]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="426" y="211" width="60" height="20" uuid="22d9e971-4891-4482-bb8c-ed8969cb6bc8"/>
-				<text><![CDATA[Cada]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="211" width="77" height="20" uuid="9d638684-d52b-4d6d-b816-d10f2940b84e"/>
-				<text><![CDATA[Medicamento]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="201" y="211" width="76" height="20" uuid="c9a68c89-5163-47f8-aa6b-a7811f8cce13"/>
-				<text><![CDATA[Administración]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="146" y="211" width="60" height="20" uuid="53b46094-0df9-44b5-801f-04564f3a3c4b"/>
-				<text><![CDATA[Unidades]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="368" y="211" width="47" height="20" uuid="3a3c1da6-fb2f-4943-98b8-09aa35976561"/>
-				<text><![CDATA[Dosis]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="294" y="211" width="71" height="20" uuid="171d572d-6ca3-41ef-934e-23e5a6e75c2e"/>
-				<text><![CDATA[Presentación]]></text>
+				<reportElement x="1" y="84" width="128" height="20" uuid="9f6458b6-8234-4317-98ef-341924a05d9d"/>
+				<text><![CDATA[Estudios de laboratorio]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="426" y="231" width="60" height="20" uuid="d293dae3-c999-4b90-b491-c1a5b46d26eb"/>
-				<textFieldExpression><![CDATA[$F{Receta_Cada}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="78" y="231" width="68" height="20" uuid="7f20a0a8-d315-4da3-96b1-f44d517763b6"/>
-				<textFieldExpression><![CDATA[$F{Receta_Farmacia}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="297" y="231" width="71" height="20" uuid="574ac798-3a98-457d-bcd7-bec420995e38"/>
-				<textFieldExpression><![CDATA[$F{Receta_Presentacion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="368" y="231" width="47" height="20" uuid="31ef352e-2487-4f90-b2c1-d7fb844d207f"/>
-				<textFieldExpression><![CDATA[$F{Receta_Dosis}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="1" y="231" width="77" height="20" uuid="6c3cc59f-7b6d-405b-9d8e-dd1a7af1bb22"/>
-				<textFieldExpression><![CDATA[$F{Receta_Medicamento}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="146" y="231" width="60" height="20" uuid="f9bc347f-83ff-438b-a7e5-1c341b64d78a"/>
-				<textFieldExpression><![CDATA[$F{Receta_Unidades}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="486" y="231" width="60" height="20" uuid="c47c2a42-5d4d-47bd-b519-2086767aef98"/>
-				<textFieldExpression><![CDATA[$F{Receta_Dias}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="214" y="231" width="78" height="20" uuid="861d22e1-2ce4-4a3b-a543-baf4779371be"/>
-				<textFieldExpression><![CDATA[$F{Receta_Administracion}]]></textFieldExpression>
+				<reportElement x="3" y="30" width="466" height="42" uuid="cce1f0e9-a4af-4d62-9961-bf5e1f81e810"/>
+				<textFieldExpression><![CDATA[$F{Consulta_Gabinete}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="176" y="132" width="55" height="20" uuid="cf0bf2b0-3d99-44ce-abdf-951317456a0e"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Cédula]]></text>
+				<reportElement x="1" y="0" width="128" height="20" uuid="bfc294b5-6ba7-4702-9b83-5ac36e6577f0"/>
+				<text><![CDATA[Estudios de gabinete]]></text>
 			</staticText>
-			<image>
-				<reportElement x="455" y="98" width="91" height="79" uuid="5474660e-146d-4c63-838d-e776a20acb62"/>
-				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
-			</image>
-			<textField>
-				<reportElement x="284" y="92" width="84" height="20" uuid="e9e020ce-31ea-415d-96ee-e45cd31eaeb8"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
-			</textField>
-			<image>
-				<reportElement x="15" y="93" width="96" height="68" uuid="e56ed6ea-a915-4e71-abf5-5ea2155dcf11"/>
-				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/UV.jpeg"]]></imageExpression>
-			</image>
-			<textField>
-				<reportElement x="221" y="92" width="63" height="20" uuid="097e5a85-8cf2-4d1a-b2d8-b47d926c93c7"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
-			</textField>
+			<line>
+				<reportElement x="352" y="178" width="183" height="1" uuid="8fa4b56b-d578-457e-bafc-d0e6c37b9a02"/>
+			</line>
 			<staticText>
-				<reportElement x="160" y="92" width="55" height="20" uuid="c87e951a-0dac-427f-9eb9-e234bae8ddfe"/>
+				<reportElement x="325" y="190" width="55" height="20" uuid="05a48e39-81db-42b4-94e1-d832d22b2160"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Médico]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="112" width="171" height="20" uuid="c1ec7646-53aa-4a72-8342-36472c0a7451"/>
+				<reportElement x="443" y="190" width="84" height="20" uuid="e2eb707a-4f69-4742-9197-08c07e896fbb"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{PERSONAL_Especialidad}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="231" y="132" width="100" height="20" uuid="4e011e90-4781-4040-857b-3d7e1fae0768"/>
+				<reportElement x="380" y="190" width="63" height="20" uuid="2ad2ab94-855b-4965-ade0-56762c7a5f0d"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="360" y="210" width="55" height="20" uuid="ba3e1bf5-5ee4-4812-8eba-7cd095b56808"/>
 				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cédula]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="210" width="100" height="20" uuid="d141bea2-410b-4f99-9e26-f26910566580"/>
+				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="70" y="177" width="77" height="20" uuid="cb78bf0a-8535-4d1c-aa4f-09018e04573a"/>
-				<text><![CDATA[Paciente]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="144" y="177" width="187" height="20" uuid="85f8d129-c827-4b7e-95d6-9fe432c4fadd"/>
-				<textFieldExpression><![CDATA[$F{Consulta_Nombre}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="146" y="61" width="282" height="20" uuid="a2c93e95-c615-49a7-9520-a4187483ef1f"/>
-				<textFieldExpression><![CDATA[$F{Consulta_Laboratorio}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="1" y="61" width="128" height="20" uuid="9f6458b6-8234-4317-98ef-341924a05d9d"/>
-				<text><![CDATA[Estudios de laboratorio]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="143" y="31" width="280" height="20" uuid="cce1f0e9-a4af-4d62-9961-bf5e1f81e810"/>
-				<textFieldExpression><![CDATA[$F{Consulta_Gabinete}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="31" width="128" height="20" uuid="bfc294b5-6ba7-4702-9b83-5ac36e6577f0"/>
-				<text><![CDATA[Estudios de gabinete]]></text>
-			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="23" splitType="Stretch"/>
+		<band height="75" splitType="Stretch">
+			<line>
+				<reportElement x="13" y="31" width="519" height="1" uuid="ef4cf4bc-6e60-41d0-a3da-4b25bbeceddf"/>
+			</line>
+			<staticText>
+				<reportElement x="278" y="32" width="267" height="30" uuid="f9fca9e3-399e-477e-9445-f43d50ffe10b"/>
+				<text><![CDATA[Carmen Serdan N° 147 Casi esq. Mina. Veracruz, Ver. C.P. 91700 Tel: 932-49-78]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="42" width="200" height="20" uuid="f6e9d000-d71e-4ef0-a760-5fbce01028bd"/>
+				<text><![CDATA[Centro de Estudio y Servicios de Salud]]></text>
+			</staticText>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch"/>
+		<band height="46" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="17" splitType="Stretch"/>

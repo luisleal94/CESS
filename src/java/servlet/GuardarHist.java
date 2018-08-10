@@ -144,9 +144,13 @@ public class GuardarHist extends HttpServlet {
         String legumbre=request.getParameter("legum");
         
         /*Imnunizacion*/
+        String ResTetano=request.getParameter("ResTetano");
         String tetano=request.getParameter("tetano");
+        String ResSaram=request.getParameter("ResSaram");
         String sarampion=request.getParameter("sarampion");
+        String ResRubeo=request.getParameter("ResRubeo");
         String rubeola=request.getParameter("rubeola");
+        String ResANTI=request.getParameter("ResANTI");
         String hepatitis=request.getParameter("hepatitis");
         
         /*Vicios*/
@@ -216,6 +220,10 @@ public class GuardarHist extends HttpServlet {
         String Valor1=request.getParameter("Valor1");
         String Valor2=request.getParameter("Valor2");
         
+        if(ResTetano.equals("No")){ tetano="No"; }
+        if(ResSaram.equals("No")){ sarampion="No"; }
+        if(rubeola.equals("No")){ rubeola="No";}
+        if(ResANTI.equals("No")){ hepatitis="No"; } 
         if(metodo.equals("No")){
             NombreAnticon="Ninguno";
         }

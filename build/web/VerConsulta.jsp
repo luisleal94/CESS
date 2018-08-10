@@ -198,34 +198,39 @@
                         rs=pst.executeQuery();
                         while(rs.next()){
             %>
-            <div class="titulo"><h2>Consulta</h2></div> 
             <input type="text" id="exploracion" value="<%=rs.getString("ExploracionF")%>" style="display: none">
             <input type="text" id="padecimiento" value="<%=rs.getString("Padecimiento")%>" style="display: none">
-            <label>Diagnóstico</label>
-            <input type="text" id="diagnostico" value="<%=rs.getString("Diagnostico")%>" disabled>
+            <input type="text" id="diagnostico" value="<%=rs.getString("Diagnostico")%>" style="display: none">
             <input type="text" id="estudios" value="<%=rs.getString("Estudios")%>" style="display: none">
             <input type="text" id="Laboratorio" value="<%=rs.getString("Laboratorio")%>" style="display: none">
             <input type="text" id="Gabinete" value="<%=rs.getString("Gabinete")%>" style="display: none">
             <input type="text" id="Tratamiento" value="<%=rs.getString("Tratamiento")%>" style="display: none">
-            <% } %>            
-            <br><label>Exploración Física</label>
-            <div class="textarea">
-                <textarea class="area" id="area1" cols="150" rows="5" disabled></textarea>
-            </div>
+            <% } %>   
+            <div class="titulo"><h2>Consulta</h2></div> 
             <br><label>Padecimiento Actual</label>
             <div class="textarea">
                 <textarea class="area" id="area2" cols="150" rows="5" disabled></textarea>
             </div>
+            <br><label>Exploración Física</label>
+            <div class="textarea">
+                <textarea class="area" id="area1" cols="150" rows="5" disabled></textarea>
+            </div>
+            <br><label>Diagnóstico</label>
+            <div class="textarea">
+                <textarea class="area" id="area6" cols="150" rows="5" disabled></textarea>
+            </div>
             <br><label>Estudios</label>
             <input type="text" id="estudio" disabled>
-            <br><label>Laboratorio</label>
-            <div class="textarea">
-                <textarea class="area" id="area3" cols="150" rows="5" disabled></textarea>
-            </div>
-            <br><label>Gabinete</label>
-            <div class="textarea">
-                <textarea class="area" id="area4" cols="150" rows="5" disabled></textarea>
-            </div>
+            <section id="seccion1" style="display: none;">
+                <br><label>Laboratorio</label>
+                <div class="textarea">
+                    <textarea class="area" id="area3" cols="150" rows="5" disabled></textarea>
+                </div>
+                <br><label>Gabinete</label>
+                <div class="textarea">
+                    <textarea class="area" id="area4" cols="150" rows="5" disabled></textarea>
+                </div>
+            </section>
             <br><label>Tratamiento</label>
             <div class="textarea">
                 <textarea class="area" id="area5" cols="150" rows="5" disabled></textarea>
@@ -381,5 +386,12 @@
         
         var f = document.getElementById("Tratamiento").value;
         document.getElementById("area5").value=f;
+        
+        var g=document.getElementById("diagnostico").value;
+        document.getElementById("area6").value=g;
+        var res="Si";
+        if(c==res){
+            document.getElementById("seccion1").style.display="block";
+        }
     </script>
 </html>

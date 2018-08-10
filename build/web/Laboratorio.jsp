@@ -1,36 +1,28 @@
+<%-- 
+    Document   : Laboratorio
+    Created on : 10/08/2018, 07:12:44 AM
+    Author     : luis
+--%>
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@page import="net.sf.jasperreports.engine.*"%>
 <%@page import="net.sf.jasperreports.view.JasperViewer"%>
 <%@page import="javax.servlet.ServletResponse" %>
 <%@page import="Controlador.Conexion"%>
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Autocomplete - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-</head>
-<body>
-
-    <%
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Estudios</title>
+    </head>
+    <body>
+        <%
         Conexion con= new Conexion();
-        
         String IdPaciente=request.getParameter("ID");
         String Medico=request.getParameter("Doctor");
         String fecha=request.getParameter("Fecha");
-        //String IdPaciente=(String)request.getAttribute("id");
-        //String Medico=(String)request.getAttribute("Doctor");
-        //String fecha=(String)request.getAttribute("Fecha");
-        System.out.println(IdPaciente);
-        System.out.println(Medico);
-        System.out.println(fecha);
-        
-        File reporfile=new File(application.getRealPath("Recet.jasper"));
+        File reporfile=new File(application.getRealPath("Receta2.jasper"));
         Map parameter =new HashMap();     
         
         parameter.put("Paciente",new String(IdPaciente));        
@@ -43,6 +35,6 @@
         outputstream.write(bytes,0,bytes.length);
         outputstream.flush();
         outputstream.close();
-    %>
-</body>
+        %>
+    </body>
 </html>

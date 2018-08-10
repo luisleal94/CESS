@@ -247,14 +247,46 @@
 			
                         <div class="bloque">
                             <label id="titulo2">INMUNIZACIONES (FECHAS)</label><br>
-				<label>ANTITETÁNICA</label>&emsp;                           
-                                <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required>                                
+				<label>ANTITETÁNICA</label>&emsp;   
+                                <div>
+                                    <input type="radio" id="siTeta" name="ResTetano" value="Si" onclick="mostrarTetano()">
+                                    <label for="siTeta" class="label">Si</label>
+                                    <input type="radio" id="noTeta" name="ResTetano" value="No" onclick="ocultarTetano()" checked>
+                                    <label for="noTeta" class="label">No</label>
+				</div>
+                                <section id="MuestraTetano" style="display: none" class="seccion">
+                                    <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                </section>                                                                
 				&emsp;&emsp;&emsp;<label>ANTISARAMPIÓN</label>&emsp;&emsp;
-                                <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required><br>				
+                                <div>
+                                    <input type="radio" id="siSaram" name="ResSaram" value="Si" onclick="mostrarSaram()">
+                                    <label for="siSaram" class="label">Si</label>
+                                    <input type="radio" id="noSaram" name="ResSaram" value="No" onclick="ocultarSaram()" checked>
+                                    <label for="noSaram" class="label">No</label>
+				</div>
+                                <section id="MuestraSaram" style="display: none" class="seccion">
+                                    <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                </section>                                				
 				<label>RUBÉOLA</label>&emsp;&emsp;
-                                <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required>
+                                <div>
+                                    <input type="radio" id="siRubeo" name="ResRubeo" value="Si" onclick="mostrarRubeo()">
+                                    <label for="siRubeo" class="label">Si</label>
+                                    <input type="radio" id="noRubeo" name="ResRubeo" value="No" onclick="ocultarRubeo()" checked>
+                                    <label for="noRubeo" class="label">No</label>
+				</div>
+                                <section id="MuestraRubeo" style="display: none" class="seccion">
+                                    <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                </section>                                
                                 &emsp;&emsp;&emsp;<label>ANTI HBS</label>
-				<input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" required> <!--Nuevo agregado-->
+                                <div>
+                                    <input type="radio" id="siANTI" name="ResANTI" value="Si" onclick="mostrarAnti()">
+                                    <label for="siANTI" class="label">Si</label>
+                                    <input type="radio" id="noANTI" name="ResANTI" value="No" onclick="ocultarAnti()" checked>
+                                    <label for="noANTI" class="label">No</label>
+				</div>
+                                <section id="MuestraANTI" style="display: none" class="seccion">
+                                    <input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                </section>
 			</div>
 
 			<div class="bloque">
@@ -312,11 +344,11 @@
                                         <input type="radio" id="noPre" name="proteccion" value="No" onclick="ocultarProte()" checked> 
                                         <label for="noPre" class="label">No</label>		  			                                 
                                         &emsp;&emsp;&emsp;&emsp;<label>¿Usas Método Anticonceptivo?</label>		  			
-                                        <input type="radio" id="siMet" name="anticonceptivo" value="Si" onclick="mostrarAnti()">
+                                        <input type="radio" id="siMet" name="anticonceptivo" value="Si" onclick="mostrarAnticon()">
                                         <label for="siMet" class="label">Si</label>                                            
-                                        <input type="radio" id="noMet" name="anticonceptivo" value="No" onclick="ocultarAnti()" checked> 
+                                        <input type="radio" id="noMet" name="anticonceptivo" value="No" onclick="ocultarAnticon()" checked> 
                                         <label for="noMet" class="label">No</label>  
-                                        <section id="muestraAnti" style="display: none;" class="seccion">
+                                        <section id="MuestraAnti" style="display: none;" class="seccion">
                                             <label>¿Cual o Cuales?</label>
                                             <input type="text" name="NombreAnticon">					
                                         </section>
@@ -378,7 +410,7 @@
   			<label for="no4" class="label">No</label>
   			<section id="muestra3" style="display: none;" class="seccion">  			
                                 <div class="boton">
-                                    <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow()">
+                                    <input type="button" id="add" class="input" value="Agregar Cirugía" onclick="Javascript:addRow()">
                                 </div>
                                 <div class="contiene_tabla" align="center">
                                     <table class="table" id="myTableData">
@@ -477,7 +509,7 @@
   				<label>¿Con qué frecuencia?</label>
   				<input type="text" name="freEs">
   			</section>
-  			<br><label>¿Tienes dearrea?</label>
+  			<br><label>¿Tienes dirrea?</label>
   			<input type="radio" id="si11" name="diarrea" value="Si" onclick="mostrarDia()">
 		  	<label for="si11" class="label">Si</label>
 	  		<input type="radio" id="no11" name="diarrea" value="No" onclick="ocultarDia()" checked> 

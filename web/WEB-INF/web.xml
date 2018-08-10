@@ -68,6 +68,10 @@
         <servlet-name>Respaldo</servlet-name>
         <servlet-class>servlet.Respaldo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuardaReceta2</servlet-name>
+        <servlet-class>servlet.GuardaReceta2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>Respaldo</servlet-name>
         <url-pattern>/Respaldo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardaReceta2</servlet-name>
+        <url-pattern>/GuardaReceta2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

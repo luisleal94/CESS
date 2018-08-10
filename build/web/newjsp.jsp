@@ -18,24 +18,20 @@
 <body>
 
     <%
-        //Calendar calender = Calendar.getInstance();
-        /*int dia=calender.get(Calendar.DAY_OF_MONTH);
-        int mes=(calender.get(Calendar.MONTH))+1;
-        int anio=calender.get(Calendar.YEAR);
-        fecha=anio+"-"+mes+"-"+dia;*/
-        
         Conexion con= new Conexion();
         
         String IdPaciente=request.getParameter("ID");
         String Medico=request.getParameter("Doctor");
         String fecha=request.getParameter("Fecha");
+        //String IdPaciente=(String)request.getAttribute("id");
+        //String Medico=(String)request.getAttribute("Doctor");
+        //String fecha=(String)request.getAttribute("Fecha");
         System.out.println(IdPaciente);
         System.out.println(Medico);
         System.out.println(fecha);
         
         File reporfile=new File(application.getRealPath("Recet.jasper"));
-        Map parameter =new HashMap();        
-     
+        Map parameter =new HashMap();     
         
         parameter.put("Paciente",new String(IdPaciente));        
         parameter.put("Medico",new String(Medico));      
