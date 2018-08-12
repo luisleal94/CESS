@@ -39,7 +39,11 @@ public class registrarCon extends HttpServlet {
         
         String Vascular=request.getParameter("Vascular");
         String inmuno=request.getParameter("inmuno");
-        
+        String ResRefe=request.getParameter("ResRefe");
+        String OtraRefe=request.getParameter("OtraRefe");
+        if(ResRefe.equals("No")){
+            OtraRefe="No";
+        }
         System.out.println(pediatra);
         System.out.println(Trauma);
         /***********************************/
@@ -74,28 +78,33 @@ public class registrarCon extends HttpServlet {
         System.out.println(formato.format(IMC));
         System.out.println(NombrePaci);
         System.out.println(Especialidad);
-        String band="";
+        String band1="";
+        String band2="";
         if(canali.equals("No")){
             ResGabi="Ninguno";
             Reslabora="Ninguno";
         }       
         else{
-            band="Si";
             if(gabinete.equals("No")){
                 ResGabi="Ninguno";
+            }else{
+                band1="Si";
             }
             if(laboratorio.equals("No")){
                 Reslabora="Ninguno";
-            }
+            }else{
+                band2="Si";
+            }   
         }
         System.out.println(medico);
         Consulta con= new Consulta();
         if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad,idDoc)
             && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)
             && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
-                    Nefro, Hemato, Vascular, inmuno,id,idDoc)){
+                    Nefro, Hemato, Vascular, inmuno,id,OtraRefe,idDoc)){
             request.setAttribute("id",id);
-            request.setAttribute("band",band);
+            request.setAttribute("band1",band1);
+            request.setAttribute("band2",band2);
             request.getRequestDispatcher("Receta.jsp").forward(request, response);
         }else{
             response.sendRedirect("CessSuper.jsp");

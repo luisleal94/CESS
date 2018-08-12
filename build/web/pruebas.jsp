@@ -27,135 +27,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <style>
-input[type=text] {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #145a32 ;
-    transition: 0.4s;
-}
-
-#datos {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-right: 150px;
-    margin-left: 100px;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    background: #e1edfa ;
-}
-
-#buscar{
-    background: #e1edfa ;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    margin-right: 150px;
-    margin-left: 100px;
-    border-radius: 5px;
-    text-align: left;
-}
-
-#label{
-    padding: 5px;
-}
-
-#boton1{
-    background: #154360 ;
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    width: 15%;
-}
-
-#boton0{
-    background: #ec7063;
-    margin:10px;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 5px;
-    color: white;
-}
-
-#boton0:hover{
-    background: #ec7063;
-    margin:10px;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 5px;
-    color: white;
-    transition: 0.3s;
-}
-
-a{
-    text-decoration: none;
-    color:  white;
-}
-
-#boton1:hover{
-    background: #2e86c1;
-    transition:0.3s;
-}
-
-#link{
-    text-decoration: none;
-    padding: 3px;
-    display: inline-block;
-    background:  #1798cc ;
-    font-weight:700; 
-    color: white;
-    border-radius: 3px;
-}
-
-#link:hover{
-    text-decoration: none;
-    padding: 3px;
-    display: inline-block;
-    background:#10688c;
-    font-weight:700; 
-    color: white;
-    border-radius: 3px;
-    transition: 0.3s;
-}
-
-form{
-    text-align: center;
-}
-
-#Cajas{
-    width: 25%;
-    padding: 12px 20px;
-    margin-left:0px;
-    /*display: inline-block;*/
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-#Cajas:focus {
-      border:2px solid  #85c1e9;
-}
-</style>
+        <script type="text/javascript" src="js/radios.js"></script>
+        <link rel="stylesheet" href="css/Estadistica.css">
+        <link rel="stylesheet" href="css/BuscaConsulta.css">
+        <title>CESS</title>
         <style>
             head,body{
                background-image: url(img/jj.png);
@@ -165,15 +40,27 @@ form{
         <script type="text/javascript" src="js/NoBack.js"></script>
     </head>
     <body onload="nobackbutton();">
-        <a id="link" href="CessSuper.jsp">Regresar</a>
+        <a id="link" href="CessSuper.jsp">Menú principal</a>
         <div id="buscar">
             <form action="" method="post">
-                <!--<label id="label">Nombre</label>
-                <input id="Cajas" type="text" name="nombre">-->
-                <label id="label">Apellido Paterno</label>                
-                <input id="Cajas"type="text" name="apellidoP">&emsp;&emsp;
-                <label id="label">Apellido Materno</label>                
-                <input id="Cajas" type="text" name="apellidoM"><br>
+                <label id="label">Buscar por:</label>
+                <div id="contiene_tabla2">                    
+                        <div class="checkbox">
+                            <table id="tabla2">                        
+                                <tr>
+                                    <td><input type="radio" id="si1" name="Tipo" value="Nombre">
+                                        <label for="si1" class="label">Nombre (s)</label></td>
+                                    <td><input type="radio" id="si2" name="Tipo" value="Apellido_P">
+                                        <label for="si2" class="label">Apellido Paterno</label></td>  
+                                    <td><input type="radio" id="si3" name="Tipo" value="Apellido_M">
+                                        <label for="si3" class="label">Apellido Materno</label></td>
+                                    <td><input type="radio" id="si4" name="Tipo" value="Curp">
+                                        <label for="si4" class="label">CURP</label></td>
+                                </tr>                       
+                            </table>
+                        </div>
+                    </div>
+                <input id="Cajas" type="text" name="dato">
                 <input type="submit" value="Buscar"> 
                 <div id="boton0" ><a href="historial.jsp">Mostrar tabla</a></div>
             </form>
@@ -181,15 +68,20 @@ form{
         
       <% //Busqueda por nombre del usuario a buscar
         //String Nombre=request.getParameter("nombre");
-        String apellidoP=request.getParameter("apellidoP");
-        String apellidoM=request.getParameter("apellidoM");
+        String Tipo=request.getParameter("Tipo");
+        String Valor=request.getParameter("dato");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        //pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+Nombre+"'");
-        pst = con.getConexion().prepareStatement("Select * from Pacientes where Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
+        String SQL="";
+        if(Tipo==null){
+            SQL="Select *from Pacientes where Nombre='"+Valor+"'";
+        }else{
+            SQL="Select * from Pacientes where "+Tipo+"='"+Valor+"'";
+        }
+        System.out.println(SQL+Tipo);
+        pst = con.getConexion().prepareStatement(SQL);
         rs=pst.executeQuery();
-       
         while(rs.next()){
     %>
         <div id="datos"> 

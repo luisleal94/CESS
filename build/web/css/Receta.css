@@ -1,0 +1,175 @@
+head,body{
+               background-image: url(img/uu.png);
+               font-family: 'Roboto', sans-serif;
+            }
+             .cabecera{
+                font-size:7px; 
+                text-align: center;
+             }
+             .receta{
+                margin-left:2%;
+                margin-right: 2%;
+                background: #f2f4f5;
+                padding: 5px;
+                border-radius: 5px;
+                padding-left: 3%;
+             }
+             
+             .medicamento{
+                margin: 10px;                
+             }
+             
+             .texto{
+                width: 20%;
+                height: 10%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: none;
+                border-bottom: 2px solid ;
+                border-color: rgba(0,0,255,0.3);
+                background:none;
+            }
+            
+            .area{
+                max-width: 95%;
+                resize: none;
+                font-family: 'roboto';
+            }
+            
+            #link{
+                margin-bottom: 5px;
+                text-decoration: none;
+                padding: 3px;
+                display: inline-block;
+                background:  #1798cc ;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+            }
+
+            #link:hover{
+                text-decoration: none;
+                padding: 3px;
+                display: inline-block;
+                background:#10688c;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+                transition: 0.3s;
+            }
+            
+            .contiendeTa{
+                position: relative;
+                background: #ecfdf4;
+                width: 100%;
+                font-size:15px;
+                margin-left:25%;
+                margin-right: 30px; 
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .tabla2{
+                margin-right: 5%; 
+                margin-left: 5%; 
+            }
+
+            .texto2{
+                width: 85%;
+                height: 10%;
+                padding:5px;
+                margin: 0px;
+                display: inline-block;
+                border: none;
+                border-bottom: 2px solid ;
+                border-color: rgba(0,0,255,0.3);
+                background-color:white;
+            }
+
+            #myTableData {
+                font-family: sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            #myTableData td, #myTableData th {
+                border: 1px solid #ddd;
+                padding: 2px;
+            }
+            /*
+            #myTableData tr:nth-child(even){background-color: #f2f2f2;}
+            */
+            #myTableData tr:hover{background-color: #ddd;}
+
+            #myTableData th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+            .boton{               
+                margin-left: 35%;
+                margin-top: 15px;
+                margin-bottom:20px; 
+            }
+            .input1{              
+               height:35px; 
+               border: none;
+               background: #418994;
+               color: white;
+               font-family: roboto;
+               font-weight: 400;
+               font-size: 20px;
+               border-radius: 5px;
+            }
+            .input2{              
+               height:35px; 
+               border: none;
+               background:  #fd551f;
+               color: white;
+               font-family: roboto;
+               font-weight: 400;
+               font-size: 20px;
+               border-radius: 5px;
+            }
+            
+            .input1:hover{ background: #2b5960;}    
+            .input2:hover{ background:  #d52e20;} 
+            .boton2{
+                background:  #d02523 ;
+                color: white;
+                border: none;
+                width:30px;
+                height:30px;
+                border-radius: 5px;
+                font-size: 15px;
+                margin-left:1%;
+            }
+            .boton2:hover{background: #f13304;}
+            .imprimir{
+                margin-left: 42%;
+                 margin-bottom: 20px;
+            }
+            .doctor{
+                background:rgba( 62, 141, 193 ,0.5);
+                margin-left:5px; 
+                margin-right: 20px;
+                padding:5px;     
+            }
+            #cortos{
+                text-align: center;
+                width: 10%;
+                height: 10%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: none;
+                border-bottom: 2px solid ;
+                border-color: rgba(0,0,255,0.3);
+                background:none;
+            }
+            #buscar{               
+                margin-left: 2%;
+            }

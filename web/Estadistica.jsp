@@ -49,9 +49,7 @@
                                     <td><input type="radio" id="si1" name="Tipo" value="Tipo" onclick="mostrarEsta()">
                                         <label for="si1" class="label">Tipo de Personoal</label></td>
                                     <td><input type="radio" id="si2" name="Tipo" value="Demanda" onclick="mostrarEsta()">
-                                        <label for="si2" class="label">Demanda</label></td>                        
-                                    <!--<td><input type="radio" id="si3" name="Tipo" value="Medico" onclick="mostrarEsta()">
-                                        <label for="si3" class="label">Medico</label></td>-->
+                                        <label for="si2" class="label">Demanda</label></td> 
                                     <td><input type="radio" id="si4" name="Tipo" value="Especialidad" onclick="mostrarEsta()">
                                         <label for="si4" class="label">Especialidad</label></td> 
                                 </tr>                       
@@ -139,11 +137,4 @@
                 <%  } %>
         </div>           
     </body>
-    <script language="JavaScript">
-		$('#myForm input').on('change', function() {
-     		//alert($('input[name=Busqueda]:checked', '#myForm').val()); 
-                document.getElementById("caja").value=$('input[name=Busqueda]:checked', '#myForm').val();
-  		});
-              
-	</script>
 </html>

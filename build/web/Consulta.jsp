@@ -4,6 +4,7 @@
     Author     : luis
 --%>
 
+<%@page import="org.jfree.chart.JFreeChart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Conexion"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -28,356 +29,15 @@
 %>
 <!DOCTYPE html>
 <html>
+    <head>
     <style>
-input[type=text] {
-    width: 16%;
-    height: 10%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: none;
-    border-bottom: 2px solid ;
-    border-color: rgba(0,0,255,0.3);
-    background-color:white;
-    border-radius: 4px;
-}
-
-input:focus {
-    border-bottom:2px solid  #236087 ;
-    background-color: white ;
-    transition:0.5s; 
-}
-
-input[type=submit] {
-    width: 100px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #145a32 ;
-    transition: 0.4s;
-}
-
-input[type=button] {
-    width: 100px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=button]:hover {
-    background-color: #145a32 ;
-    transition: 0.4s;
-}
-
-.datos {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-right: 30px;
-    margin-left: 30px;
-    padding-top:0px;
-    padding-left:2%; 
-    background:white;
-    border: 2px solid #85c1e9;
-    border-radius: 10px;
-}
-
-.datos2 {
-    margin-left:3px;
-    margin-right: 3px;
-    padding-top:3%;
-    padding-left:20px;  
-    background:white;
-    border: 2px solid #85c1e9;
-    border-radius: 10px;
-}
-
-.label{
-    margin:15px;
-}
-#buscar{
-    background: #e1edfa ;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    margin-right: 150px;
-    margin-left: 100px;
-    border-radius: 5px;
-    text-align: left;
-}
-
-#label{
-    padding:10px;
-}
-
-#boton1{
-    background: #154360 ;
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    width: 20%;
-}
-
-#boton0{
-    background: #ec7063;
-    margin:10px;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 5px;
-    color: white;
-}
-
-#boton0:hover{
-    background: #ec7063;
-    margin:10px;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 5px;
-    color: white;
-    transition: 0.3s;
-}
-
-a{
-    text-decoration: none;
-    color:  white;
-}
-
-.h2{
-    text-align: center;
-    color:  #525354;
-}
-
-.botones{
-    text-align: center;
-    margin-bottom:10px;
-    padding: 10px;
-}
-#boton1:hover{
-    background: #2e86c1;
-    transition:0.3s;
-}
-
-#link{
-    text-decoration: none;
-    padding: 3px;
-    display: inline-block;
-    background:  #1798cc ;
-    font-weight:700; 
-    color: white;
-    border-radius: 3px;
-}
-
-#link:hover{
-    text-decoration: none;
-    padding: 3px;
-    display: inline-block;
-    background:#10688c;
-    font-weight:700; 
-    color: white;
-    border-radius: 3px;
-    transition: 0.3s;
-}
-
-.area{
-    max-width: 95%;
-    resize: none;
-    font-family: 'roboto';
-}
-
-.area:focus{
-    border:2px solid #58ade5;
-    transition:0.5s; 
-}
-.areatexto{
-    margin-top: 15px; 
-    padding: 10px;
-    text-align: left;
-    font-weight: 400;
-    color: #203942;
-    font-size: 18px;
-}
-
-.doctor{
-    background:rgba( 62, 141, 193 ,0.5);
-    margin-left:5px; 
-    margin-right: 20px;
-    padding:5px; 
-}
-
-input[type="radio"]{
-    display: none;
-}
-
-.label{
-	color: #212f3d;
-	/*background: rgba(0,0,0,0.1);*/
-	padding: 5px 15px 5px 51px;
-	display: inline-block;
-	position: relative;
-	font-size: 1em;
-	border-radius: 3px;
-	cursor: pointer;
-	-webkit-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	transition: all 0.3s ease;
-}
-
-.label:hover{
-	background: rgba( 46, 134, 193 ,0.8);
-}
-
-.label:before{
-	content: "";
-	width: 17px;
-	height: 17px;
-	display: inline-block;
-	background:none;
-	border: 3px solid #0074D9;
-	border-radius: 50%;
-	position: absolute;
-	left: 17px;
-	top: 3px;
-}
-
- input[type="radio"]:checked + label{
-	padding: 5px 15px;
-	background:#0074D9;
-	border-radius: 2px;
-	color: white;
-}
-
- input[type="radio"]:checked + label:before{
-	display: none;
-}
-
-.checkbox label {
-  cursor: pointer;
-  color:  #1b4f72;
-  position: relative;
-  padding: 5px 15px 5px 51px;
-  font-size: 1em;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease; 
-}
-
-.checkbox label:hover {
-  background: rgba( 52, 152, 219, 0.2); }
-
-.checkbox label:before {
-  content: "";
-  
-  width: 17px;
-  height: 17px;
-  position: absolute;
-  left: 15px;
-  border-radius: 50%;
-  background: none;
-  border: 3px solid  #2874a6; 
-}
-
-.checkbox label:before {
-  border-radius: 3px; 
-}
-
-.checkbox input[type="checkbox"] {
-  display: none; 
-}
-
-.checkbox input[type="checkbox"]:checked + label:before {
-  display: none; 
-}
-
-.checkbox input[type="checkbox"]:checked + label {
-  background: #3498db;
-  color: #fff;
-  padding: 5px 15px; 
-}
-
-.seccion{
-    margin: 15px;
-    padding: 15px;
-}
-
-#contiene_tabla2{
-    margin-top: 0px;
-    margin-left: 5%;
-    position: relative;
-    margin-right: 5%;
-}
-#tabla2{
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 0px;
-}
-
-#tabla2 td, #tabla2 th{
-    border:none;
-    padding: 8px;
-    position: relative;
-}
-
-#tabla2 th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    color: white;
-}
-
-#tags{
-    width: 80%;
-    height:30px;
-    border-radius: 10px;
-    border: 1px solid #aed6f1;
-    padding: 5px;
-}
-
-#tags:focus{
-    border:0.8px solid  #236087 ;
-    transition:0.5s; 
-}
-#cabeza{
-    padding: 10px;
-    margin-left:40%; 
-}
-.especialidad{
-    padding: 12px;
-    margin-left: 5%;
-}
-
-select{
-      background: white;
-      width: 300px;
-      height: 30px;
-      padding: 5px;
-      border:1px solid  #abb2b9;
-      cursor: pointer;
-      color: #2874a6;
-}
-
-select:focus {
-      border:1px solid  #85c1e9;
-}
-</style>
-        <style>
-            head,body{
-               background-image: url(img/jj.png);
+        head,body{
+            background-image: url(img/jj.png);
                font-family: 'Roboto', sans-serif;
             }
         </style>
-         <link rel="stylesheet" href="css/Personal.css">
-    <head>
+        <link rel="stylesheet" href="css/Personal.css">
+        <link rel="stylesheet" href="css/EstiloConsulta.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
@@ -388,6 +48,8 @@ select:focus {
         <script type="text/javascript" src="js/Validacion.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+        <script src="http://code.highcharts.com/modules/exporting.js"></script>
         <script>
             $( function() {
               var availableTags = new Array();
@@ -414,6 +76,45 @@ select:focus {
 		  r = (peso/Math.pow(estatura,2)).toFixed(2);
 		  document.getElementById("resultado").value = r;
 		}
+            var config = {};
+            var pesos=[];
+            var array2=[];
+            var x=0;
+            var fechas=[];
+            function getFormData(){
+                var i=0;
+                $('input#Masa').each(function () {
+                 config[this.name] = this.value;
+                 pesos[i]=this.value;
+                 x=parseFloat(pesos[i]);
+                 array2.push(x);
+                 i++;
+                });
+                $('input#Fecha').each(function () {
+                config[this.name] = this.value;
+                    fechas.push(this.value);
+                    i++;
+                });
+                $('#grafica').highcharts({
+                  title:{
+                  text:'Grafica de Peso corporal'
+                },
+                xAxis:{
+                  categories:fechas
+                },
+                  yAxis:{
+                  title:'Kilogramos Kg'
+                },plotLines:[{value:0,with:1,color:'#808080'}],
+                  tooltip:{
+                  valueSuffix:'Kg'},
+                legend:{
+                  layout:'vertical',align:'right',verticalAlign:'middle',borderWith:0
+                },
+                series:[{
+                  name:'Peso',data:array2 
+                  }]//Datos ---- name:'Peso',data:[25,23,21]
+                });
+            }
         </script>
         <title>CESS</title>
     </head>
@@ -440,13 +141,18 @@ select:focus {
                 </form>
             </div>   
             
-            <% String nombre=request.getParameter("nombre");      
+            <%String paciente=""; 
+            float [] pesos= new float[20];
+            String [] fec=new String[20];
+            int i=0;
+            String nombre=request.getParameter("nombre");      
             String apellidoP=request.getParameter("apellidoP");
             String apellidoM=request.getParameter("apellidoM");
             pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+                paciente=rs.getString("idPacientes");
                 %> 
                 <div class="datos">
                 <div class="h2"><h2>Paciente</h2> </div>
@@ -463,13 +169,21 @@ select:focus {
                         <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
                     </div>
                 </form>
-                <form method="post" action="Grafica.jsp" target="_black">
-                    <input type="text" name="Id" id="Paciente" style="display: none">
-                    <input type="submit" id="boton1" value="Estadístico de Peso corporal">
-                </form>
             </div>
-            <% }                        
-        }else{
+            <form method="post">
+            <% }
+            pst = con.getConexion().prepareStatement("select  Peso,Fecha from ExploracionF where IdPaciente='"+paciente+"'");
+            rs=pst.executeQuery();
+            while(rs.next()){
+                pesos[i]=rs.getFloat("Peso");
+                fec[i]=rs.getString("Fecha");
+                 System.out.println(pesos[i]);%>
+                <input type="text" id="Masa" name="array" value="<%=pesos[i]%>" style="display: none;">
+                <input type="text" id="Fecha" name="array2" value="<%=fec[i]%>" style="display: none;">
+            <% } %>
+                <button type="button" id="boton1" onclick="getFormData();">Estadístico de Peso corporal"</button>
+            </form>
+        <% }else{
             pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
             rs=pst.executeQuery();
             while(rs.next()){
@@ -489,6 +203,8 @@ select:focus {
             </div>
        <% } }//Busqueda por nombre del usuario a buscar %>
         <!--Mando el parametro ID del paciente que encontre--> 
+        <div id="grafica">
+        </div>
     <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
            
@@ -577,8 +293,7 @@ select:focus {
             <div class="areatexto">
                 <label>Tratamiento</label><br>
                 <textarea name="tratamiento" class="area" cols="150" rows="5" autofocus></textarea>
-            </div>           
-            
+            </div>         
             <div id="contiene_tabla2">
                 <label>Referir a:</label>
                 <div class="checkbox">
@@ -631,6 +346,14 @@ select:focus {
                         </tr>
                     </table>
                 </div>
+                <label>Otra referencia</label>
+                    <input type="radio" id="siRefe" name="ResRefe" value="Si" onclick="mostrarRere()">
+                    <label for="siRefe" class="label">Si</label>
+                    <input type="radio" id="noRefe" name="ResRefe" value="No" onclick="ocultarRefe()" checked>
+                    <label for="noRefe" class="label">No</label>
+                    <section id="OtraRefe" style="display: none;">
+                        <input name="OtraRefe" type="text" width="200px">
+                    </section>
             </div><br>
             <div class="doctor">
                 <label>Medico Tratante</label>

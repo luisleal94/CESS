@@ -31,14 +31,28 @@
      PERSONAL.`NOMBRE` AS PERSONAL_NOMBRE,
      PERSONAL.`Especialidad` AS PERSONAL_Especialidad,
      PERSONAL.`APELLIDO` AS PERSONAL_APELLIDO,
-     PERSONAL.`Cedula` AS PERSONAL_Cedula     
+     PERSONAL.`Cedula` AS PERSONAL_Cedula,
+     Pacientes.`idPacientes` AS Pacientes_idPacientes,
+     Pacientes.`fecha` AS Pacientes_fecha,
+     Pacientes.`Nombre` AS Pacientes_Nombre,
+     Pacientes.`Apellido_P` AS Pacientes_Apellido_P,
+     Pacientes.`Apellido_M` AS Pacientes_Apellido_M,
+     Pacientes.`Edad` AS Pacientes_Edad,
+     Pacientes.`telefono` AS Pacientes_telefono,
+     Pacientes.`Ocupacion` AS Pacientes_Ocupacion,
+     Pacientes.`EstadoC` AS Pacientes_EstadoC,
+     Pacientes.`Domicilio` AS Pacientes_Domicilio,
+     Pacientes.`Curp` AS Pacientes_Curp,
+     Pacientes.`Genero` AS Pacientes_Genero,
+     Pacientes.`Historial` AS Pacientes_Historial
 FROM
-     `PERSONAL` PERSONAL,
-     `Receta` Receta
-where Receta.`IdPaciente`=$P{Paciente} and
-Receta.`Fecha`=$P{Fecha} and
-Receta.`IdMedico` = $P{Medico} and
-PERSONAL.`ID_USER`=$P{Medico}]]>
+     `Pacientes` Pacientes INNER JOIN `Receta` Receta ON Pacientes.`idPacientes` = Receta.`IdPaciente`,
+     `PERSONAL` PERSONAL
+WHERE
+     Receta.`IdPaciente` = $P{Paciente}
+     and Receta.`Fecha` = $P{Fecha}
+     and Receta.`IdMedico` = $P{Medico}
+     and PERSONAL.`ID_USER` = $P{Medico}]]>
 	</queryString>
 	<field name="Receta_idReceta" class="java.lang.Integer"/>
 	<field name="Receta_Medicamento" class="java.lang.String"/>
@@ -58,11 +72,24 @@ PERSONAL.`ID_USER`=$P{Medico}]]>
 	<field name="PERSONAL_Especialidad" class="java.lang.String"/>
 	<field name="PERSONAL_APELLIDO" class="java.lang.String"/>
 	<field name="PERSONAL_Cedula" class="java.lang.String"/>
+	<field name="Pacientes_idPacientes" class="java.lang.Integer"/>
+	<field name="Pacientes_fecha" class="java.lang.String"/>
+	<field name="Pacientes_Nombre" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_P" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_M" class="java.lang.String"/>
+	<field name="Pacientes_Edad" class="java.lang.Integer"/>
+	<field name="Pacientes_telefono" class="java.lang.String"/>
+	<field name="Pacientes_Ocupacion" class="java.lang.String"/>
+	<field name="Pacientes_EstadoC" class="java.lang.String"/>
+	<field name="Pacientes_Domicilio" class="java.lang.String"/>
+	<field name="Pacientes_Curp" class="java.lang.String"/>
+	<field name="Pacientes_Genero" class="java.lang.String"/>
+	<field name="Pacientes_Historial" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="102" splitType="Stretch">
+		<band height="145" splitType="Stretch">
 			<image>
 				<reportElement x="443" y="0" width="91" height="79" uuid="139706b4-fedb-4bd4-95e9-ea2431d33d7f"/>
 				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
@@ -72,7 +99,7 @@ PERSONAL.`ID_USER`=$P{Medico}]]>
 				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="15" y="92" width="519" height="1" uuid="84d3ee13-21c3-4a89-9976-bf03e807269a"/>
+				<reportElement x="15" y="93" width="519" height="1" uuid="84d3ee13-21c3-4a89-9976-bf03e807269a"/>
 			</line>
 			<staticText>
 				<reportElement x="119" y="28" width="284" height="51" uuid="d16ef149-d269-4abb-8f0e-27735a886810"/>
@@ -81,6 +108,25 @@ PERSONAL.`ID_USER`=$P{Medico}]]>
 				</textElement>
 				<text><![CDATA[ Centro de Estudios y Servios de Salud Receta Médica]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="77" y="108" width="76" height="20" uuid="04e6b1e5-874c-44cb-a4e7-15400c4ad6fd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Pacientes_Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="108" width="77" height="20" uuid="ec4d1c09-0e1a-4c42-9c17-f7a6df2fab1b"/>
+				<text><![CDATA[Paciente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="153" y="108" width="100" height="20" uuid="cd0b6e74-13d2-4e19-a673-98c9968924fa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_P}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="253" y="108" width="100" height="20" uuid="c8a90c60-8853-48a4-9eea-e87fc037c31c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_M}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>

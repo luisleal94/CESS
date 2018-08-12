@@ -23,131 +23,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="js/NoBack.js"></script>
+        <link rel="stylesheet" href="css/BuscaConsulta.css">
         <title>CESS</title>
-                <style>
-                    head,body{
-               background-image: url(img/jj.png);
-               font-family: 'Roboto', sans-serif;
-            }
-            
-            input[type=text] {
-                width: 50%;
-                padding: 12px 20px;
-                margin: 8px 0;
-                display: inline-block;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
-
-            input[type=submit] {
-                width: 100px;
-                background-color: #4CAF50;
-                color: white;
-                padding: 14px 20px;
-                margin: 8px 0;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-
-            input[type=submit]:hover {
-                background-color: #145a32 ;
-                transition: 0.4s;
-            }
-
-            
-            #buscar{
-                background: #e1edfa ;
-                margin-top: 10px;
-                margin-bottom: 30px;
-                margin-right: 150px;
-                margin-left: 100px;
-                border-radius: 5px;
-                text-align: left;
-            }
-
-            #label{
-                padding: 5px;
-            }            
-
-            a{
-                text-decoration: none;
-                color:  white;
-            }
-
-            #boton1:hover{
-                background: #2e86c1;
-                transition:0.3s;
-            }
-
-            #link{
-                text-decoration: none;
-                padding: 3px;
-                display: inline-block;
-                background:  #1798cc ;
-                font-weight:700; 
-                color: white;
-                border-radius: 3px;
-            }
-
-            #link:hover{
-                text-decoration: none;
-                padding: 3px;
-                display: inline-block;
-                background:#10688c;
-                font-weight:700; 
-                color: white;
-                border-radius: 3px;
-                transition: 0.3s;
-            }
-
-            form{
-                text-align: center;
-            }
-            #contiene_tabla{
-                margin-left: 15%;
-                position: relative;
-                margin-right: 15%;
-            }
-            #tabla{
-                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-                margin-top: 5%;
-            }
-            #tabla td, #tabla th{
-                border: 1px solid #ddd;
-                padding: 8px;
-                position: relative;
-                text-align: center;
-            }
-
-            #tabla tr:nth-child(even){background-color: #f2f2f2;}
-
-            #tabla tr:hover {background-color: #ddd;}
-
-            #tabla th {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                text-align: center;
-                background-color: #54adfc;
-                color: white;
-            }
-            #Cajas{
-                width: 20%;
-                padding: 12px 20px;
-                margin-left:0px;
-                /*display: inline-block;*/
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
-
-            #Cajas:focus {
-                  border:2px solid  #85c1e9;
-            }
-            </style>
     </head>
     <body onload="nobackbutton();">
         <a id="link" href="CessAdmin.jsp">Regresar</a>
@@ -170,8 +47,6 @@
         PreparedStatement pst;
         ResultSet rs;
         pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
-        //pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
-        //pst = con.getConexion().prepareStatement("Select * from Pacientes where Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
         rs=pst.executeQuery();
         String IdPaciente="";
         while(rs.next()){

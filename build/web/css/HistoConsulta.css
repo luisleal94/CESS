@@ -1,0 +1,83 @@
+head,body{
+               background-image: url(img/jj.png);
+               font-family: 'Roboto', sans-serif;
+            }
+            .titulo{                
+                font-family: roboto;
+                text-align: center;
+                padding: 5px;
+                color:  #212f3d ;
+            }
+            .contiene_tabla{
+                margin-left: 10%;
+                position: relative;
+                margin-right: 10%;
+            }
+            .tabla{
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 5%;
+            }
+
+            .tabla td, #tabla th{
+                border: 1px solid #ddd;
+                padding: 8px;
+                position: relative;
+                text-align: center;
+            }
+
+            .tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+            .tabla tr:hover {background-color: #ddd;}
+
+            .tabla th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: #54adfc;
+                color: white;
+            }
+            #link{
+            text-decoration: none;
+            padding: 3px;
+            display: inline-block;
+            background:  #1798cc ;
+            font-weight:700; 
+            color: white;
+            border-radius: 3px;
+            }
+
+            #link:hover{
+                text-decoration: none;
+                padding: 3px;
+                display: inline-block;
+                background:#10688c;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+                transition: 0.3s;
+            }
+            input[type=submit]{
+                width: 50%;
+                height: 10%;
+                padding: 10px 18px;
+                margin: 0px 0;
+                display: inline-block;
+                border: none;               
+                background:none;
+                color: #294c4f;
+                text-align: center;
+                text-decoration: underline;
+            }
+            #boton2{
+                margin-left:5%; 
+                background: orange;
+                text-decoration: none;
+                width:25%;
+                border-radius:5px;
+                cursor: pointer;
+            }
+            #boton2:hover{
+                background:#f15f00;
+            }

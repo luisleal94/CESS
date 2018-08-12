@@ -23,9 +23,6 @@
         String IdPaciente=request.getParameter("ID");
         String Medico=request.getParameter("Doctor");
         String fecha=request.getParameter("Fecha");
-        //String IdPaciente=(String)request.getAttribute("id");
-        //String Medico=(String)request.getAttribute("Doctor");
-        //String fecha=(String)request.getAttribute("Fecha");
         System.out.println(IdPaciente);
         System.out.println(Medico);
         System.out.println(fecha);

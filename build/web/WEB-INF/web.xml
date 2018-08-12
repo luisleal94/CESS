@@ -53,10 +53,6 @@
         <servlet-class>servlet.BuscarSintoma</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>enviar</servlet-name>
-        <servlet-class>servlet.enviar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CabiaContra</servlet-name>
         <servlet-class>servlet.CabiaContra</servlet-class>
     </servlet>
@@ -123,10 +119,6 @@
     <servlet-mapping>
         <servlet-name>BuscarSintoma</servlet-name>
         <url-pattern>/BuscarSintoma</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>enviar</servlet-name>
-        <url-pattern>/enviar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CabiaContra</servlet-name>

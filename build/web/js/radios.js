@@ -217,3 +217,11 @@ function mostrarAnticon(){
 function ocultarAnticon(){
     document.getElementById("MuestraAnti").style.display="none";
 }
+
+function mostrarRere(){
+    document.getElementById("OtraRefe").style.display="block";
+}
+
+function ocultarRefe(){
+    document.getElementById("OtraRefe").style.display="none";
+}
