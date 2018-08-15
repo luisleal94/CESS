@@ -46,20 +46,54 @@
                         <div class="checkbox">
                             <table id="tabla2">                        
                                 <tr>
-                                    <td><input type="radio" id="si1" name="Tipo" value="Tipo" onclick="mostrarEsta()">
+                                    <td><input type="radio" id="si1" name="Tipo" value="Tipo" onclick="mostrarPersonal()">
                                         <label for="si1" class="label">Tipo de Personoal</label></td>
-                                    <td><input type="radio" id="si2" name="Tipo" value="Demanda" onclick="mostrarEsta()">
+                                    <td><input type="radio" id="si2" name="Tipo" value="Demanda" onclick="mostrarDemanda()">
                                         <label for="si2" class="label">Demanda</label></td> 
-                                    <td><input type="radio" id="si4" name="Tipo" value="Especialidad" onclick="mostrarEsta()">
-                                        <label for="si4" class="label">Especialidad</label></td> 
+                                    <td><input type="radio" id="si4" name="Tipo" value="Especialidad" onclick="mostrarGeneral()">
+                                        <label for="si4" class="label">Medico General</label></td>
+                                    <td><input type="radio" id="si20" name="Tipo" value="Especialidad" onclick="mostrarEspecial()">
+                                        <label for="si20" class="label">Especialidad</label></td>
                                 </tr>                       
                             </table>
                         </div>
                     </div> 
-                    <section id="muestraEs" style="display: none" class="seccion">
-                        <label>Dato:</label>
-                        <input type="text" name="Valor">
-                    </section>
+                <section id="muestraEs" style="display: none" class="seccion">
+                        <table id="tabla2">                        
+                            <tr>
+                                <td><input type="radio" id="si5" name="Valor" value="Estudiante">
+                                    <label for="si5" class="label">Estudiante</label></td>
+                                <td><input type="radio" id="si6" name="Valor" value="Poblacion Abierta">
+                                    <label for="si6" class="label">Población Abierta</label></td> 
+                                <td><input type="radio" id="si7" name="Valor" value="FESAPAUV">
+                                    <label for="si7" class="label">FESAPAUV</label></td>
+                                <td><input type="radio" id="si8" name="Valor" value="SETSUV">
+                                    <label for="si8" class="label">SETSUV</label></td>
+                            </tr>                       
+                        </table>
+                </section>
+                <!-----    Seccion para demanda  --->
+                <section id="muestraDem" style="display: none" class="seccion">
+                        <table id="tabla2">                        
+                            <tr>
+                                <td><input type="radio" id="si9" name="Valor" value="Programada">
+                                    <label for="si9" class="label">Programada</label></td>
+                                <td><input type="radio" id="si10" name="Valor" value="Espontanea">
+                                    <label for="si10" class="label">Espontánea</label></td> 
+                                <td><input type="radio" id="si11" name="Valor" value="Urgencia">
+                                    <label for="si11" class="label">Urgencia</label></td>
+                            </tr>                       
+                        </table>
+                </section>
+                <!------------ Seccion medico  -------------->
+                <section id="muestraMedi" style="display: none" class="seccion">
+                    <label>Especialidad:</label>
+                    <input type="text" name="Valor" id="MedicoGen"> 
+                </section>
+                <section id="muestraEspe" style="display: none" class="seccion">
+                    <label>Especialidad:</label>
+                    <input type="text" name="val" id="Especifico">
+                </section>                
                 </section><br>                
                 <p1>De</p1>
                 <input type="date" id="fecha" name="Rango1">
@@ -77,8 +111,14 @@
                 String sql="",sql2=""; 
                 System.out.println("Valor:"+Valor);
                 if(Tipo==null){
-                     sql="Select *from Consulta where Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
+                    sql="Select *from Consulta where Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
                     sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
+                } 
+                if(Valor==""){
+                    String Val=request.getParameter("val");
+                    System.out.println("Entro 2: "+Val);
+                    sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Val+"'";
+                    sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Val+"'";
                 }
                 else{
                     sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";

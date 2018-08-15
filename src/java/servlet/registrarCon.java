@@ -101,7 +101,7 @@ public class registrarCon extends HttpServlet {
         if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad,idDoc)
             && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)
             && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
-                    Nefro, Hemato, Vascular, inmuno,id,OtraRefe,idDoc)){
+                    Nefro, Hemato, Vascular, inmuno,id,idDoc,OtraRefe)){
             request.setAttribute("id",id);
             request.setAttribute("band1",band1);
             request.setAttribute("band2",band2);

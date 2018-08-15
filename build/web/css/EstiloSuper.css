@@ -32,35 +32,29 @@ head, body {
 	position: absolute;
 	width: 18%;
 	top: 180px;
-	left: 1%;
+	left: 5%;
 }
 
 .container2 {
 	position: absolute;
 	width: 18%;
 	top: 180px;
-	left: 41%;
+	left: 50%;
 }
 
 .container3 {
 	position: absolute;
 	width: 18%;
         top: 180px;
-	left: 21%;
+	left:28%;
 }
 
-.container4 {
-	position: absolute;
-	width: 18%;
-	top: 180px;
-	left: 81%;
-}
 
 .container5 {
 	position: absolute;
 	width: 18%;
 	top: 180px;
-	left: 61%;
+	left: 72%;
 }
 
 .image1 {
@@ -81,11 +75,6 @@ head, body {
   height: auto;
 }
 
-.image4 {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
 .image5 {
   display: block;
@@ -135,20 +124,6 @@ head, body {
   transition: .3s ease;
 }
 
-.overlay4 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  opacity: .70;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  -webkit-transform:scale(0);
-  transition: .3s ease;
-}
-
 .overlay5 {
   position: absolute;
   bottom: 0;
@@ -172,10 +147,6 @@ head, body {
 }
 
 .container3:hover .overlay3 {
-  transform: scale(1)
-}
-
-.container4:hover .overlay4 {
   transform: scale(1)
 }
 

@@ -338,3 +338,18 @@ select{
 select:focus {
       border:1px solid  #85c1e9;
 }
+
+#botonP{
+    background: #1d9946;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    width: 20%;
+    color:white;
+}
+
+#botonP:hover{
+    background: #0c732e;
+    transition: 0.5s;
+}

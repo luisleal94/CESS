@@ -78,13 +78,6 @@
               <div class="text2">Pacientes</div>
             </div></a>
         </div>
-            
-        <div class="container4">
-            <img src="img/consulta.png" width="268" height="289"; alt="Avatar" class="image4">
-            <a href="Consulta.jsp"> <div class="overlay4">
-              <div class="text4">Consulta</div>
-            </div></a>
-        </div>
             <div id="respaldo">
                 <form action="Respaldo" method="post">
                     <input type="submit" id="respal" value="Respaldar base de datos">

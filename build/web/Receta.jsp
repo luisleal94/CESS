@@ -161,10 +161,10 @@
                             <input type="submit" class="input1"  value="Imprimir" onclick="this.form.action='GuardaReceta2',this.disabled=true"><!--onclick="javascript:cambia_de_pagina();"-->
                         </div>   
                         <section class="boton" id="bandera" style="display: none;">
-                            <input type="submit" class="input1"  value="Imprimir ordern de análisis de laboratorio" onclick=this.form.action="Laboratorio.jsp">
+                            <input type="submit" class="input1"  value="Imprimir ordern de análisis de gabinete" onclick=this.form.action="Gabinete.jsp">
                         </section>  
                         <section class="boton" id="bandera2" style="display: none;">
-                            <input type="submit" class="input1"  value="Imprimir ordern de análisis de gabinete" onclick=this.form.action="Gabinete.jsp">
+                            <input type="submit" class="input1"  value="Imprimir ordern de análisis de laboratorio" onclick=this.form.action="Laboratorio.jsp">
                         </section>  
                     </form>                   
                 </div>

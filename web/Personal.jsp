@@ -28,6 +28,7 @@
 	<title>CESS</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/Personal.css">	
+        <script type="text/javascript" src="js/radios.js"></script>
         <script type="text/javascript" src="js/Validacion.js"></script>
         
         <style>
@@ -47,7 +48,15 @@
 		    <input class="input1" type="text" name="apellido" placeholder="Apellidos" required><br>
 		    <input class="input1" type="password" name="pass" placeholder="Contraseña" required>
 		    <input class="input1" type="text" name="tele" placeholder="Teléfono" onkeyUp="return Telefono(this)" required><br>		   
-		    <input class="input1" type="text" name="Especialidad" placeholder="Especialidad" required><br>
+		    <div>
+			<input type="radio" id="Profe" name="General" value="Si" onclick="ocultarEspe()" checked>
+			<label for="Profe" class="label">Médico General</label>
+			<input type="radio" id="Espe" name="General" value="No" onclick="mostrarEspe()">
+                        <label for="Espe" class="label">Especialista</label><br>
+                        <section id="MuestraEspecialista" style="display: none">
+                            <input class="input1" type="text" name="Especialidad" placeholder="Especialidad">
+                        </section>
+                    </div><br>
                     <input class="input1" type="text" name="Cedula" placeholder="Cedula O Pre Cedula" required><br>
 		   	<div>
 				<input type="radio" id="super" name="gerar" value="Super" checked>

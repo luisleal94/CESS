@@ -31,11 +31,14 @@ public class registrarPersonal extends HttpServlet {
         String apellido=request.getParameter("apellido");
         String pass=request.getParameter("pass");
         String tele=request.getParameter("tele");
-        //String domi=request.getParameter("domicilio");
+        String Profesion=request.getParameter("General");
         String espe=request.getParameter("Especialidad");
         String cedula=request.getParameter("Cedula");
         String gerar=request.getParameter("gerar");
         String user=request.getParameter("user");
+        if(Profesion.equals("Si")){
+            espe="Medico General";
+        }
         
         Consulta con= new Consulta();  
         String usuario="";

@@ -166,9 +166,35 @@ function ocultarMujer(genero){
     }
 }
 
-function mostrarEsta(){
+function mostrarPersonal(){
 	document.getElementById("muestraEs").style.display="block";
+        document.getElementById("muestraDem").style.display="none";
+        document.getElementById("muestraMedi").style.display="none";
+        document.getElementById("muestraEspe").style.display="none";
 }
+
+function mostrarDemanda(){
+    document.getElementById("muestraEs").style.display="none";
+    document.getElementById("muestraMedi").style.display="none";
+    document.getElementById("muestraEspe").style.display="none";
+    document.getElementById("muestraDem").style.display="block";
+}
+
+function mostrarGeneral(){
+    document.getElementById("muestraEs").style.display="none";
+    document.getElementById("muestraDem").style.display="none";
+    document.getElementById("muestraMedi").style.display="none";
+    document.getElementById("muestraEspe").style.display="none";
+    document.getElementById("MedicoGen").value="Medico General";
+}
+
+function mostrarEspecial(){
+    document.getElementById("muestraEs").style.display="none";
+    document.getElementById("muestraDem").style.display="none";
+    document.getElementById("muestraMedi").style.display="none";
+    document.getElementById("muestraEspe").style.display="block";
+}
+
 
 function mostrarBus(){
     document.getElementById("MuestraBusqueda").style.display="block";
@@ -224,4 +250,12 @@ function mostrarRere(){
 
 function ocultarRefe(){
     document.getElementById("OtraRefe").style.display="none";
+}
+
+function mostrarEspe(){
+    document.getElementById("MuestraEspecialista").style.display="block";
+}
+
+function ocultarEspe(){
+    document.getElementById("MuestraEspecialista").style.display="none";
 }

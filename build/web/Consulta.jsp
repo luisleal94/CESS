@@ -46,6 +46,7 @@
         <script type="text/javascript" src="js/NoBack.js"></script>
         <script type="text/javascript" src="js/Confirmacion.js"></script>
         <script type="text/javascript" src="js/Validacion.js"></script>
+        <script type="text/javascript" src="js/ValidaForm.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
@@ -181,7 +182,7 @@
                 <input type="text" id="Masa" name="array" value="<%=pesos[i]%>" style="display: none;">
                 <input type="text" id="Fecha" name="array2" value="<%=fec[i]%>" style="display: none;">
             <% } %>
-                <button type="button" id="boton1" onclick="getFormData();">Estadístico de Peso corporal"</button>
+            <button type="button" id="botonP" onclick="getFormData(),this.disabled=true">Estadístico de Peso corporal"</button>
             </form>
         <% }else{
             pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
@@ -225,11 +226,11 @@
             
             <input name="IdDoctor" value="<%=user%>" style="display: none">
             &emsp;<label>Folio de Arancel</label>            
-            <input type="text" name="folio" required>            
+            <input type="text" id="Folio" name="folio" required>            
             <input type="text" id="ID" name="id" style="display: none">
             <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">
             &emsp;&emsp;<label>Costo de Consulta</label>
-            <input type="text" name="Costo" onkeyUp=" return decimales(this);" required> 
+            <input type="text" id="Precio" name="Costo" onkeyUp=" return decimales(this);" required> 
             
             <br><br><label id="cabeza" >Signos Vitales</label><br>            
             <label>Peso</label>
@@ -239,20 +240,20 @@
             &emsp;&emsp;&emsp;<label>IMC</label>
             <input type="text" name="imc" id="resultado" disabled><br>          
             <label>Temperatura</label>
-            <input type="text" name="temp" onkeyUp=" return decimalTemp(this);" required>
+            <input type="text" name="temp" id="Temperatura" onkeyUp=" return decimalTemp(this);" required>
             &emsp;&emsp;&emsp;<label>Frecuencia Cardiaca</label>
-            <input type="text" name="fc" required><br>
+            <input type="text" name="fc" id="FC" required><br>
             <label>Frecuencia Respiratoria</label>
-            <input type="text" name="fr" required>
+            <input type="text" name="fr" id="FR" required>
             &emsp;&emsp;&emsp;<label>Presión Arterial</label>
-            <input type="text" name="PresionArterial"><br>
+            <input type="text" id="Presion" name="PresionArterial"><br>
             <div class="areatexto">
                 <label>Padecimiento Actual</label><br>
-                <textarea name="padeci" class="area" cols="150" rows="5" autofocus></textarea>
+                <textarea name="padeci" id="Padecimiento" class="area" cols="150" rows="5" autofocus></textarea>
             </div>
             <div class="areatexto">
                 <label>Exploración Física</label><br>
-                <textarea name="exploracion" class="area" cols="150" rows="5" autofocus></textarea>
+                <textarea name="exploracion" id="Exploracion" class="area" cols="150" rows="5" autofocus></textarea>
             </div>
             <div class="ui-widget">
                 <label for="tags">Diagnostico </label>
@@ -292,7 +293,7 @@
             </div>
             <div class="areatexto">
                 <label>Tratamiento</label><br>
-                <textarea name="tratamiento" class="area" cols="150" rows="5" autofocus></textarea>
+                <textarea name="tratamiento" id="Tratamiento" class="area" cols="150" rows="5" autofocus></textarea>
             </div>         
             <div id="contiene_tabla2">
                 <label>Referir a:</label>
@@ -365,7 +366,7 @@
             </div>  
               
             <div class="botones" >                
-                <input id="boton1" type="button" onclick="confirmation()" value="Guardar Consulta y Receta">                          
+                <input id="boton1" type="button" onclick="ValidaForm()" value="Guardar Consulta y Receta">                          
             </div>                
         </form>
     </div>    
