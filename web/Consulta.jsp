@@ -18,6 +18,7 @@
     String NOMBRE="";
     String Especialidad="";
     String user="";
+    String Nombre="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
@@ -152,7 +153,7 @@
             pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
             rs=pst.executeQuery();
             while(rs.next()){
-                String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+                Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
                 paciente=rs.getString("idPacientes");
                 %> 
                 <div class="datos">
@@ -188,7 +189,7 @@
             pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
             rs=pst.executeQuery();
             while(rs.next()){
-                String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
+                Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
             %>
             <div class="datos">
             <div class="h2"><h2>Paciente</h2> </div>
@@ -224,11 +225,11 @@
                     <option value="Urgencia">Urgencia</option>                    
                 </select><br>
             
-            <input name="IdDoctor" value="<%=user%>" style="display: none">
+            <input name="IdDoctor" value="<%=user%>" style="display: none;">
             &emsp;<label>Folio de Arancel</label>            
             <input type="text" id="Folio" name="folio" required>            
-            <input type="text" id="ID" name="id" style="display: none">
-            <input type="text" id="NombreCompleto" name="NombrePaci" style="display: none">
+            <input type="text" id="ID" name="id" style="display: none;">
+            <input type="text" name="NombrePaci" value="<%=Nombre%>" style="display: none;">
             &emsp;&emsp;<label>Costo de Consulta</label>
             <input type="text" id="Precio" name="Costo" onkeyUp=" return decimales(this);" required> 
             
@@ -358,10 +359,10 @@
             </div><br>
             <div class="doctor">
                 <label>Medico Tratante</label>
-                <input type="text" name="medico" id="Medic" value="<% out.println(NOMBRE);%>" disabled style="color:#063452">
+                <input type="text" name="medico" id="Medic" value="<%=NOMBRE%>" disabled style="color:#063452">
                 <label>Cédula</label>
                 <input type="text" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
-                <input type="text" name="Doctor" id="Doc" style="display: none">
+                <input type="text" name="Doctor" value="<%=NOMBRE%>" style="display: none">
                 <input type="text" name="Especialidad" value="<%=Especialidad%>" style="display: none">
             </div>  
               
@@ -375,11 +376,6 @@
 		var x = document.getElementById("id").value;
                 document.getElementById("ID").value=x;
                 document.getElementById("Paciente").value=x;
-		 
-                var med=document.getElementById("Medic").value;
-                document.getElementById("Doc").value=med; 
-                
-                var Nom=document.getElementById("NombreCom").value;
-                document.getElementById("NombreCompleto").value=Nom;             
+		var Nom=document.getElementById("NombreCom").value;
     </script>
 </html>

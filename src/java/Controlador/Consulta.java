@@ -75,29 +75,7 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-    
-    public boolean Eliminar(String id){
-        PreparedStatement pst=null; 
-        try{
-            String consulta="Delete from Pacientes where idPacientes= ?";
-            pst=getConexion().prepareStatement(consulta);
-            pst.setString(1, id); 
-            if(pst.executeUpdate()==1){
-                return true;
-            }
-        }catch(Exception e){
-             System.out.println("Error "+e);
-        }finally{
-            try{
-                if(getConexion()!=null) getConexion().close();
-                if(pst!=null) pst.close();
-            }catch(Exception e){
-                System.out.println("Error "+e);
-            }
-        }
-        return false;
-    }
-    
+        
     public boolean ActualizaConta(String user,String pass,String id){
         PreparedStatement pst=null;       
         try{
@@ -168,7 +146,7 @@ public class Consulta extends Conexion{
     }
     
     //Metodo para registrar historial    
-    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String Presion,String id){
+    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String Presion,String id,String Doc){
         PreparedStatement pst=null;
         Calendar calender = Calendar.getInstance();
         String fecha;
@@ -178,7 +156,7 @@ public class Consulta extends Conexion{
         fecha=anio+"-"+mes+"-"+dia;
         try{
             String consulta="insert into ExploracionF(Peso,Talla,IMC,FrecuenciaC,FrecuenciaR,Temperatura,"
-                    + "PresionArterial,Fecha,IdPaciente) values(?,?,?,?,?,?,?,?,?)";
+                    + "PresionArterial,Fecha,IdPaciente,IdMedico) values(?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             
             pst.setString(1,peso);
@@ -190,6 +168,7 @@ public class Consulta extends Conexion{
             pst.setString(7,Presion);
             pst.setString(8,fecha);
             pst.setString(9,id);
+            pst.setString(10,Doc);
             
             if(pst.executeUpdate()==1){
                 return true;
@@ -585,6 +564,31 @@ public class Consulta extends Conexion{
             pst.setString(16, id);
             pst.setString(17, doc);
             
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean EliminaCon(String Id,String Medico,String fecha){
+        PreparedStatement pst=null;
+         try{
+            String consulta="Delete from Consulta where IdPaciente=? and IdMedico=? and Fecha=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, Id);
+            pst.setString(2,Medico);
+            pst.setString(3, fecha);
             if(pst.executeUpdate()==1){
                 return true;
             }             

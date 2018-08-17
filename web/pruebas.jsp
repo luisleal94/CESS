@@ -102,7 +102,6 @@
             <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    
             <input type="submit" id="boton1" value="Historia Clínica" onclick=this.form.action="PasarParamentros">
             <input type="submit" id="boton1" value="Consultas" onclick=this.form.action="HistoConsulta">
-            <input type="submit" id="boton1" value="Eliminar" onclick=this.form.action="Eliminar">
          </form>
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            

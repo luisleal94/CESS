@@ -28,10 +28,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
          <link rel="stylesheet" href="css/HistoConsulta.css">
+         <script type="text/javascript" src="js/NoBack.js"></script>
         <title>CESS</title>
     </head>
-    <body>
-       
+    <body onload="nobackbutton();">
+        <div id="contien_link">
+            <a id="link" href="historial.jsp">Regresar</a>
+        </div>
         <div class="titulo"><h1>Consultas Realizadas</h1></div>        
         <% //Busqueda por ID del usuario a buscar
                     String id=request.getAttribute("id").toString();//El que obtengo del serlevt                   
@@ -60,7 +63,8 @@
                     <input type="text" name="IdMedico" value="<%=rs.getString("IdMedico")%>" style="display: none">
                     <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">
                     <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
-                    <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">                              
+                    <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">
+                    <input type="submit" id="link3" value="Eliminar" onclick=this.form.action="EliminaCon">
                     </form>
                 </td>
             </tr>

@@ -76,7 +76,8 @@ public class registrarCon extends HttpServlet {
         double IMC=Double.parseDouble(peso)/(altura*altura);
         DecimalFormat formato= new DecimalFormat("#.00");
         System.out.println(formato.format(IMC));
-        System.out.println(NombrePaci);
+        System.out.println("Paciente:"+NombrePaci+" Id: "+id);
+        System.out.println("Medico:"+medico+" Id: "+idDoc);
         System.out.println(Especialidad);
         String band1="";
         String band2="";
@@ -99,7 +100,7 @@ public class registrarCon extends HttpServlet {
         System.out.println(medico);
         Consulta con= new Consulta();
         if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad,idDoc)
-            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id)
+            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id,idDoc)
             && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
                     Nefro, Hemato, Vascular, inmuno,id,idDoc,OtraRefe)){
             request.setAttribute("id",id);

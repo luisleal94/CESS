@@ -6,15 +6,11 @@
 package servlet;
 
 import Controlador.Conexion;
-import Controlador.Consulta;
-import java.io.*;
-import java.util.*;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
-import javax.servlet.ServletResponse;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,14 +18,14 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
  *
  * @author luis
  */
-public class GuardaReceta2 extends HttpServlet {
+public class OrdenGabi extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,47 +39,21 @@ public class GuardaReceta2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       // PrintWriter out = response.getWriter();
-        Conexion con= new Conexion();
-        
-        String valor=request.getParameter("Valor");
-        System.out.println("Valor:"+valor);
+        //PrintWriter out = response.getWriter();
         String id=request.getParameter("ID");
         String IdMedico=request.getParameter("Doctor");
         String fecha=request.getParameter("Fecha");
-        
-        if(valor!=""){
-            int Q=Integer.parseInt(valor);
-            int res=Q*9;
-            int a=0;
-            String [] inputQ=new String[res];
-            for(int i=1;i<Q+1;i++){
-                for(int j=0;j<9;j++){
-                    inputQ[a]=request.getParameter("id"+i+(j+1));
-                    a+=1;
-                }
-            }
-            a=0;            
-            for(int j=0;j<Q;j++){
-                System.out.println(inputQ[a]+" " +inputQ[a+1]+" "+inputQ[a+2]);
-                System.out.println(inputQ[a+3]+" " +inputQ[a+4]+" "+inputQ[a+5]);
-                System.out.println(inputQ[a+6]+" " +inputQ[a+7]+" "+inputQ[a+8]);
-                new Consulta().Receta(inputQ[a],inputQ[a+1],inputQ[a+2],inputQ[a+3], 
-                        inputQ[a+4], inputQ[a+5],inputQ[a+6],inputQ[a+7],inputQ[a+8],IdMedico,id);
-                System.out.println();   
-                a+=9;
-            }
-            //System.out.println(a); 
-        }
-       
-        String path = getServletContext().getRealPath("/Recet_1.jasper");
+        Conexion con= new Conexion();
+        String path = getServletContext().getRealPath("/Gabinete.jasper");
         Map parameter =new HashMap();  
-        File reporfile=new File(getServletContext().getRealPath("/Recet_1.jasper"));
+        File reporfile=new File(getServletContext().getRealPath("/Gabinete.jasper"));
+        
         parameter.put("Paciente",new String(id));        
         parameter.put("Medico",new String(IdMedico));      
         parameter.put("Fecha",new String(fecha));
         System.out.println(path);
         byte[] bytes;
+        
         try {
             bytes = JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
             response.setContentType("application/pdf");

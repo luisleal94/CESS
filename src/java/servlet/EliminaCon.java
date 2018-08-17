@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import Controlador.Consulta;
@@ -17,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class Eliminar extends HttpServlet {
+public class EliminaCon extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,14 +27,18 @@ public class Eliminar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
         String id=request.getParameter("id");
+        String Medico=request.getParameter("IdMedico");
+        String fecha=request.getParameter("Fecha");
         Consulta con= new Consulta();
-        if(con.Eliminar(id)){
-            response.sendRedirect("pruebas.jsp");  
+        if(con.EliminaCon(id, Medico, fecha)){
+            //response.sendRedirect("historial.jsp"); Primera opcion, No muy conveniente
+            request.setAttribute("id",id);
+            request.getRequestDispatcher("ConsultasH.jsp").forward(request, response);
         }else{
-            response.sendRedirect("inicio.jsp");  
+            response.sendRedirect("inicio.jsp");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

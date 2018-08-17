@@ -27,7 +27,7 @@
         System.out.println(Medico);
         System.out.println(fecha);
         
-        File reporfile=new File(application.getRealPath("Recet.jasper"));
+        File reporfile=new File(application.getRealPath("Recet_1.jasper"));
         Map parameter =new HashMap();     
         
         parameter.put("Paciente",new String(IdPaciente));        

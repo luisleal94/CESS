@@ -92,7 +92,7 @@
                 </section>
                 <section id="muestraEspe" style="display: none" class="seccion">
                     <label>Especialidad:</label>
-                    <input type="text" name="val" id="Especifico">
+                    <input type="text" name="Val" id="Especifico">
                 </section>                
                 </section><br>                
                 <p1>De</p1>
@@ -103,29 +103,31 @@
             </form>
         </div>
         <div class="datos" >
-            <% //Busqueda por nombre del usuario a buscar                
+            <% //Busqueda por nombre del usuario a buscar 
+                String Val="";
                 String Tipo=request.getParameter("Tipo");
                 String Valor=request.getParameter("Valor");
                 String Rango1=request.getParameter("Rango1");
                 String Rango2=request.getParameter("Rango2");
+                Val=request.getParameter("Val");
                 String sql="",sql2=""; 
                 System.out.println("Valor:"+Valor);
                 if(Tipo==null){
                     sql="Select *from Consulta where Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
                     sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"'";
-                } 
-                if(Valor==""){
-                    String Val=request.getParameter("val");
-                    System.out.println("Entro 2: "+Val);
-                    sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Val+"'";
-                    sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Val+"'";
                 }
                 else{
-                    sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";
-                    sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";
-                    System.out.println("Entro");
+                    if(Valor==""){
+                        System.out.println("Val: "+Val);
+                        sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Val+"'";
+                        sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Val+"'";
+                    }else{
+                        System.out.println("Entro en else");
+                        sql="SELECT * FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";
+                        sql2="SELECT count(*) as Total,sum(Costo) as Costo FROM Consulta WHERE Fecha BETWEEN '"+Rango1+"' AND '"+Rango2+"' and "+Tipo+"='"+Valor+"'";
+                    }
                 }
-                System.out.println(Tipo+" "+ Valor);
+                System.out.println(Tipo+" "+ Valor + Val);
                 System.out.println(sql);
                 Conexion con= new Conexion();
                 PreparedStatement pst;

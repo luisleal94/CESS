@@ -22,7 +22,7 @@ head,body{
 
             .tabla td, #tabla th{
                 border: 1px solid #ddd;
-                padding: 8px;
+                padding: 5px;
                 position: relative;
                 text-align: center;
             }
@@ -51,8 +51,24 @@ head,body{
             #link:hover{
                 text-decoration: none;
                 padding: 3px;
-                display: inline-block;
                 background:#10688c;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+                transition: 0.3s;
+            }
+            #link3{
+                text-decoration: none;
+                padding: 3px;
+                background: #e96121;
+                font-weight:700; 
+                color: white;
+                border-radius: 3px;
+            }
+            #link3:hover{
+                text-decoration: none;
+                padding: 3px;
+                background: #f03822;
                 font-weight:700; 
                 color: white;
                 border-radius: 3px;

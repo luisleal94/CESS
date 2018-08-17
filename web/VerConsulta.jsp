@@ -47,29 +47,27 @@
                         PreparedStatement pst;
                         ResultSet rs;     
                         pst = con.getConexion().prepareStatement("Select * from ExploracionF where IdPaciente='"+id+"' and"
-                                + " Fecha='"+fecha+"'");
+                                + " Fecha='"+fecha+"' and IdMedico='"+Doc+"'");
                         rs=pst.executeQuery();
                         while(rs.next()){  %>
-                        <div class="titulo"><h2>Signos Vitales</h2></div>                       
-                        <label>Peso</label>
-                        <input type="text" value="<%=rs.getString("Peso")%>">
-                        <label>Estatura</label>
-                        <input type="text" value="<%=rs.getString("Talla")%>" >
-                        <br><label>IMC</label>
-                        <input type="text" value="<%=rs.getString("IMC")%>">
-                        <br><label>Frecuencia Cardiaca</label>
-                        <input type="text"  value="<%=rs.getString("FrecuenciaC")%>">
-                        <label>Frecuencia Respiratoria</label>
-                        <input type="text"  value="<%=rs.getString("FrecuenciaR")%>">
-                        <label>Temperatura</label>
-                        <input type="text"  value="<%=rs.getString("Temperatura")%>"> 
-                        <label>Presion Arterial</label>
-                        <input type="text" value="<%=rs.getString("PresionArterial")%>">
-                        
-                        
+                            <div class="titulo"><h2>Signos Vitales</h2></div>                       
+                            <label>Peso</label>
+                            <input type="text" value="<%=rs.getString("Peso")%>">
+                            <label>Estatura</label>
+                            <input type="text" value="<%=rs.getString("Talla")%>" >
+                            <br><label>IMC</label>
+                            <input type="text" value="<%=rs.getString("IMC")%>">
+                            <br><label>Frecuencia Cardiaca</label>
+                            <input type="text"  value="<%=rs.getString("FrecuenciaC")%>">
+                            <label>Frecuencia Respiratoria</label>
+                            <input type="text"  value="<%=rs.getString("FrecuenciaR")%>">
+                            <label>Temperatura</label>
+                            <input type="text"  value="<%=rs.getString("Temperatura")%>"> 
+                            <label>Presion Arterial</label>
+                            <input type="text" value="<%=rs.getString("PresionArterial")%>">                        
                       <% }                                       
                           pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"' and"
-                                + " Fecha='"+fecha+"'");
+                                + " Fecha='"+fecha+"' and IdMedico='"+Doc+"'");
                         rs=pst.executeQuery();
                         while(rs.next()){
             %>
@@ -240,9 +238,10 @@
         <form method="post" action="newjsp.jsp" target="_black">
             <input type="text" name="Fecha" id="fecha" value="<%=fecha%>" style="display: none">
             <input type="text" name="ID" value="<%=id%>"  style="display: none">
-                <input type="text" name="Doctor" id="Doc" value="<%=Doc%>" style="display: none">
-                <input type="submit" class="input1" value="Imprimir Receta">
+            <input type="text" name="Doctor" id="Doc" value="<%=Doc%>" style="display: none">
+            <input type="submit" class="input1" value="Imprimir Receta">
         </form>
+        
         </div>
     </body>
     <script>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9ed6795-aa5c-4584-8f47-bcb5acb0fb50">
-	<property name="ireport.zoom" value="1.1"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="396" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36d928d9-2ba5-4aae-bd77-ed446cefd711">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="Fecha" class="java.lang.String">
@@ -45,10 +45,10 @@ FROM
      `Consulta` Consulta,
      `PERSONAL` PERSONAL
 where
-      PERSONAL.`ID_USER`=$P{Medico} and
-      Consulta.`Fecha`=$P{Fecha} and
-      Consulta.`IdPaciente`=$P{Paciente} and
-      Consulta.`IdMedico`=$P{Medico}]]>
+PERSONAL.`ID_USER`=$P{Medico} and
+Consulta.`Fecha`=$P{Fecha} and
+Consulta.`IdPaciente`=$P{Paciente} and
+Consulta.`IdMedico`=$P{Medico}]]>
 	</queryString>
 	<field name="Consulta_idConsulta" class="java.lang.Integer"/>
 	<field name="Consulta_Fecha" class="java.sql.Date"/>
@@ -81,110 +81,93 @@ where
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="112" splitType="Stretch">
 			<image>
-				<reportElement x="440" y="0" width="91" height="79" uuid="1b53695a-e9e3-48a7-91d7-669e01919a7f"/>
-				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="13" y="0" width="83" height="66" uuid="5b921810-cd07-4896-a79e-f6679c695741"/>
+				<reportElement x="14" y="0" width="83" height="66" uuid="76bbddc2-e4fc-46de-b30c-d45460004e47"/>
 				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
 			</image>
+			<image>
+				<reportElement x="457" y="0" width="91" height="79" uuid="a3ba7e65-e467-4e26-9718-31e844ccc615"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="139" y="20" width="267" height="46" uuid="5291d31a-7ccf-4e96-8442-06ca1a931d65"/>
+				<reportElement x="160" y="20" width="267" height="46" uuid="579181f6-d53e-4d2c-afbd-4951a086ca94"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Centro de Estudios y Servicios de Salud Orden Médica de análisis clínicos]]></text>
 			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
-			<textField>
-				<reportElement x="130" y="27" width="155" height="20" uuid="5956e4eb-461b-41f4-a7f8-8b9408895ec9"/>
+			<line>
+				<reportElement x="29" y="89" width="519" height="1" uuid="739c45e5-a78b-4865-87e1-e5c7e9a84dc6"/>
+			</line>
+			<staticText>
+				<reportElement x="25" y="98" width="68" height="13" uuid="a1e760af-e2cf-489c-8770-db72aad69e39"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font isBold="true"/>
 				</textElement>
+				<text><![CDATA[Paciente :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="98" width="179" height="14" uuid="774a923e-b264-4307-b84f-a7ac9b0c1a5a"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Consulta_Nombre}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="27" width="130" height="20" uuid="9e10c026-e087-4172-b1c3-0093465b9af2"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Nombre del Paciente:]]></text>
-			</staticText>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="180" splitType="Stretch">
+	</title>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="130" height="20" uuid="206f655b-ba95-487f-86af-96321cf8f049"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="25" y="0" width="135" height="14" uuid="a6e82521-03e0-486d-9fb0-f2eb12c190c0"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Estidios de Gabinete:]]></text>
+				<text><![CDATA[Estudios clínicos:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="0" width="213" height="32" uuid="50ce922d-d29b-4728-9d63-51f9370ab0c3"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
+				<reportElement x="160" y="0" width="206" height="37" uuid="9c414851-c0d3-458e-b1d7-d2501fc4e217"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Consulta_Gabinete}]]></textFieldExpression>
 			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="91" splitType="Stretch">
+			<line>
+				<reportElement x="397" y="17" width="175" height="1" uuid="a8c9551c-af2e-42bb-98fc-f5b137d9f8f6"/>
+			</line>
 			<textField>
-				<reportElement x="406" y="52" width="130" height="20" uuid="574c678b-3d1b-4212-b9ad-e55be18509ea"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{Consulta_Medico}]]></textFieldExpression>
+				<reportElement x="397" y="18" width="81" height="12" uuid="64e7ba4e-e8dc-4c6b-9af9-ca899d2de55b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="18" width="94" height="12" uuid="b430c44b-82c8-4d35-9cbb-4c506567b4fd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="343" y="52" width="61" height="20" uuid="a8018e1a-3cbb-4266-97d7-70585f582455"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="413" y="30" width="55" height="14" uuid="3209fb60-b7e6-480b-859d-80278e8d24b9"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Médico:]]></text>
+				<text><![CDATA[Cédula: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="420" y="72" width="100" height="20" uuid="5ecb14c2-42a8-4f06-b4c0-1d8e8c96bdbf"/>
+				<reportElement x="468" y="30" width="100" height="14" uuid="a17d968b-1dc8-4db4-aa45-604c8aaff1e3"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="343" y="72" width="51" height="20" uuid="cc74f08f-6b3b-4610-b595-8e9517a557ab"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Cédula]]></text>
-			</staticText>
 			<line>
-				<reportElement x="343" y="41" width="177" height="1" uuid="73a03d9d-5d5a-4b73-ad30-522f5da36708"/>
-			</line>
-			<line>
-				<reportElement x="4" y="149" width="519" height="1" uuid="fcdb1292-56a1-4c6c-9c20-b30c15e63aef"/>
+				<reportElement x="13" y="51" width="535" height="1" uuid="5f48a250-f210-4a04-a5c7-20532a945858"/>
 			</line>
 			<staticText>
-				<reportElement x="4" y="160" width="200" height="20" uuid="4b1e2640-95e1-4458-8ede-d539a5063b3b"/>
+				<reportElement x="27" y="59" width="200" height="20" uuid="ccddce81-e2d5-4551-8554-ea1cb29bf162"/>
 				<text><![CDATA[Centro de Estudio y Servicios de Salud]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="269" y="150" width="267" height="30" uuid="c3adc5b7-048b-4cef-8f38-6e05927b6d93"/>
+				<reportElement x="276" y="52" width="272" height="30" uuid="d1661574-9543-4f10-a9e0-746135a6b6e1"/>
 				<text><![CDATA[Carmen Serdan N° 147 Casi esq. Mina. Veracruz, Ver. C.P. 91700 Tel: 932-49-78]]></text>
 			</staticText>
 		</band>
-	</detail>
-	<columnFooter>
-		<band height="21" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="28" splitType="Stretch"/>
 	</pageFooter>
-	<summary>
-		<band height="27" splitType="Stretch"/>
-	</summary>
 </jasperReport>

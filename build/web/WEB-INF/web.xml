@@ -17,10 +17,6 @@
         <servlet-class>servlet.registrarP</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>consultah</servlet-name>
-        <servlet-class>servlet.consultah</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>GuardarHist</servlet-name>
         <servlet-class>servlet.GuardarHist</servlet-class>
     </servlet>
@@ -57,16 +53,24 @@
         <servlet-class>servlet.CabiaContra</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Eliminar</servlet-name>
-        <servlet-class>servlet.Eliminar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Respaldo</servlet-name>
         <servlet-class>servlet.Respaldo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GuardaReceta2</servlet-name>
         <servlet-class>servlet.GuardaReceta2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminaCon</servlet-name>
+        <servlet-class>servlet.EliminaCon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrdenLabora</servlet-name>
+        <servlet-class>servlet.OrdenLabora</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrdenGabi</servlet-name>
+        <servlet-class>servlet.OrdenGabi</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
@@ -83,10 +87,6 @@
     <servlet-mapping>
         <servlet-name>registrarP</servlet-name>
         <url-pattern>/registrarP</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>consultah</servlet-name>
-        <url-pattern>/consultah</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GuardarHist</servlet-name>
@@ -125,16 +125,24 @@
         <url-pattern>/CabiaContra</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Eliminar</servlet-name>
-        <url-pattern>/Eliminar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Respaldo</servlet-name>
         <url-pattern>/Respaldo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GuardaReceta2</servlet-name>
         <url-pattern>/GuardaReceta2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminaCon</servlet-name>
+        <url-pattern>/EliminaCon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrdenLabora</servlet-name>
+        <url-pattern>/OrdenLabora</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrdenGabi</servlet-name>
+        <url-pattern>/OrdenGabi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
