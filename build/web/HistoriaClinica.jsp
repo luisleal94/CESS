@@ -45,7 +45,8 @@
 	</div>
             <div class="datosPaciente">
                 <% //Busqueda por ID del usuario a buscar
-                   String id=(String)request.getAttribute("id");//El que obtengo del serlevt                   
+                   String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
+                   int Edad=(int)request.getAttribute("Edad");//El que obtengo del serlevt 
                    if(id==null){
                        response.sendRedirect("inicio.jsp"); 
                    }
@@ -76,7 +77,7 @@
 		&emsp;&emsp;<label>Domicilio</label>                
                 &emsp;<input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
                 &emsp;&emsp;<label>Edad</label>  
-                &emsp;<input type="text" name="Edad" value="<%=rs.getString("Edad")%>" style="color:#063452" disabled>
+                &emsp;<input type="text" name="Edad" value="<%=Edad%>" style="color:#063452" disabled>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
@@ -84,7 +85,8 @@
         
 	<div class="formulario">
             <form class="formula" method="post" action="GuardarHist" >
-                <input type="text" value="<%=id%>" name="id" style="display: none"><br>                
+                <input type="text" value="<%=id%>" name="id" style="display: none"><br>
+                <input type="text" value="<%=Edad%>" name="Edad" style="display: none"><br>
                 <input type="text" id="sexo" name="sexo" style="display: none"><br>
 		<label id="titulo1">Antecedentes Heredofamiliares</label>
 		<div class="contiene_tabla" align="center">
@@ -360,13 +362,13 @@
                     <section id="mujer">
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
 			<label>Menarca</label>
-			<input type="text" name="menarca" required>
+			<input type="text" name="menarca">
 			<label>Duración</label>
-			<input type="text" name="duracion" required><br>
+			<input type="text" name="duracion"><br>
 			<label>Dismenorrea</label>
-			<input type="text" name="dolorM" required>
+			<input type="text" name="dolorM">
 			<label>¿Te obliga a tomar medicamentos?</label>
-			<input type="text" name="MedicaM" required><br>
+			<input type="text" name="MedicaM"><br>
 			<label>Embarazos</label>
 			<div>
                             <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()">

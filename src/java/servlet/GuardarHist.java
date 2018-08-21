@@ -33,7 +33,8 @@ public class GuardarHist extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String id=request.getParameter("id");        
+        String id=request.getParameter("id");    
+        String Edad=request.getParameter("Edad");    
         String sexo=request.getParameter("sexo");
         
         String abueloP0=request.getParameter("AbueloP0");
@@ -289,7 +290,7 @@ public class GuardarHist extends HttpServlet {
             }
             //System.out.println(a);            
         }
-      
+        new Consulta().Acutaliza_estatus(id);
         if(sexo.equals("Femenino")){         
             if(embara.equals("Si")){                
                 if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
@@ -312,10 +313,12 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Madre0,Madre1,Madre2,Madre3,Madre4,Madre5,Madre6,Madre7,Madre8,Madre9,Madre10,id,6)
                                     && new Consulta().AbueloPa(Hermanos0,Hermanos1,Hermanos2,Hermanos3,Hermanos4,Hermanos5,Hermanos6,Hermanos7,Hermanos8,Hermanos9,Hermanos10,id,5)
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
-                                request.setAttribute("id",id);                                
+                                request.setAttribute("id",id);       
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }
                                              
@@ -339,9 +342,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Hermanos0,Hermanos1,Hermanos2,Hermanos3,Hermanos4,Hermanos5,Hermanos6,Hermanos7,Hermanos8,Hermanos9,Hermanos10,id,5)
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }
                     }
@@ -368,9 +373,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }
                                                
@@ -396,9 +403,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                 
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }                       
                     }
@@ -425,9 +434,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }
                                               
@@ -451,9 +462,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                 
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }                       
                     }
@@ -479,9 +492,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                 
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }                                              
                     }else{ //Si cirujia                       
@@ -505,9 +520,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                               
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }                       
                     }
@@ -534,9 +551,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }                                               
             }else{ //Si cirujia
@@ -560,9 +579,11 @@ public class GuardarHist extends HttpServlet {
                                     && new Consulta().AbueloPa(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
                                 
                                 request.setAttribute("id",id);
+                                request.setAttribute("Edad",Edad); 
                                 request.getRequestDispatcher("Consulta.jsp").forward(request, response);
                                 //response.sendRedirect("Consulta.jsp");
                             }else{
+                                System.out.println("No se registro");
                                 response.sendRedirect("inicio.jsp");
                             }                       
             }

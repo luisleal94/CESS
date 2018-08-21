@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,17 +25,21 @@ public class registrarP extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        Calendar calender = Calendar.getInstance();
+        int anio=calender.get(Calendar.YEAR);
         String nombre=request.getParameter("nombre");
         String apellidop=request.getParameter("apellido1");
         String apellidom=request.getParameter("apellido2"); 
-        String edad=request.getParameter("edad");
+        String Anio=request.getParameter("Anio");
+        String Mes=request.getParameter("mes");
+        String Dia=request.getParameter("dia");
         String tele=request.getParameter("telefono");
         String domi=request.getParameter("domicilio");
         String Ecivil=request.getParameter("estado_civil");
         String ocu=request.getParameter("ocupacion");
         String curp=request.getParameter("curp");
         String sexo=request.getParameter("sexo");
-        
+        int Edad=anio-Integer.parseInt(Anio);
         String curp2="";
         Consulta con= new Consulta();
         Conexion conecta= new Conexion();
@@ -50,7 +55,7 @@ public class registrarP extends HttpServlet {
             //System.out.println(curp2);
                 if(curp2.equals("")){
                     //System.out.println("No hay pacientes similares");
-                    if(con.reg_paciente(nombre,apellidop,apellidom,edad,tele,ocu,Ecivil,domi,curp,sexo)){       
+                    if(con.reg_paciente(nombre,apellidop,apellidom,Anio,Mes,Dia,tele,ocu,Ecivil,domi,curp,sexo)){       
                     String id="";
                     try {                
                         pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
@@ -58,15 +63,17 @@ public class registrarP extends HttpServlet {
                         while(rs.next()){
                             id=rs.getString("idPacientes");
                         }
-                        //System.out.println(id);
-                        request.setAttribute("id",id);               
+                        System.out.println(id);
+                        request.setAttribute("id",id);       
+                        request.setAttribute("Edad",Edad);       
                         request.getRequestDispatcher("HistoriaClinica.jsp").forward(request, response);
-                        System.out.println("Se registro de nuevo");
+                       
                     } catch (Exception ex) {
                         System.out.println("Error 1: "+ex);                        
                     }                 
                     //System.out.println("Registrado");
                     }else{  
+                        System.out.println("No se registro correctamente");
                         response.sendRedirect("inicio.jsp");
                     }
                 }else{                  

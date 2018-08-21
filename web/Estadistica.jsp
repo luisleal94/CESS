@@ -47,7 +47,7 @@
                             <table id="tabla2">                        
                                 <tr>
                                     <td><input type="radio" id="si1" name="Tipo" value="Tipo" onclick="mostrarPersonal()">
-                                        <label for="si1" class="label">Tipo de Personoal</label></td>
+                                        <label for="si1" class="label">Tipo de Personal</label></td>
                                     <td><input type="radio" id="si2" name="Tipo" value="Demanda" onclick="mostrarDemanda()">
                                         <label for="si2" class="label">Demanda</label></td> 
                                     <td><input type="radio" id="si4" name="Tipo" value="Especialidad" onclick="mostrarGeneral()">

@@ -144,7 +144,7 @@
                                     <th>&nbsp;</th>
                                     <th><b>Nombre</b></th>
                                     <th><b>F.farmaceutica</b></th>
-                                    <th><b>Unidades</b></th>                                       
+                                    <th><b>Unidades (mg/ml)</b></th>                                       
                                     <th><b>Via</b></th>
                                     <th><b>Presentacion</b></th>
                                     <th><b>Pzas</b></th>

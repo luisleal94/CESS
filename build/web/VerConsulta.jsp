@@ -62,9 +62,10 @@
                             <label>Frecuencia Respiratoria</label>
                             <input type="text"  value="<%=rs.getString("FrecuenciaR")%>">
                             <label>Temperatura</label>
-                            <input type="text"  value="<%=rs.getString("Temperatura")%>"> 
+                            <input type="text"  value="<%=rs.getString("Temperatura")%>"><br>
                             <label>Presion Arterial</label>
-                            <input type="text" value="<%=rs.getString("PresionArterial")%>">                        
+                            <input type="text" value="<%=rs.getString("Diastolica")%>">/
+                            <input type="text" value="<%=rs.getString("Asistolica")%>">
                       <% }                                       
                           pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"' and"
                                 + " Fecha='"+fecha+"' and IdMedico='"+Doc+"'");
@@ -202,8 +203,12 @@
                     <label>Inmuno-alergia</label>
                     <%if(rs.getString("Inmuno")==null){ %>
                         <input type="text" value="No">
-                    <% }else{%><input type="text" value="Si"><%} %>
-                    <%   }  %>
+                        <% }else{%><input type="text" value="Si"><%} %><br>
+                    <label>Otro</label>
+                    <%if(rs.getString("Otra").equals("No")){ %>
+                        <input type="text" value="No">
+                    <% }else{%><input type="text" value="<%=rs.getString("Otra")%>">
+                    <% } }%>
             </div>
             <div class="titulo"><h1>Medicamento Recetado</h1></div>
         <div id="contiene_tabla">

@@ -44,16 +44,16 @@ public class OrdenGabi extends HttpServlet {
         String IdMedico=request.getParameter("Doctor");
         String fecha=request.getParameter("Fecha");
         Conexion con= new Conexion();
-        String path = getServletContext().getRealPath("/Gabinete.jasper");
+        
+        String path = getServletContext().getRealPath("/Receta2.jasper");
         Map parameter =new HashMap();  
-        File reporfile=new File(getServletContext().getRealPath("/Gabinete.jasper"));
+        File reporfile=new File(getServletContext().getRealPath("/Receta2.jasper"));
         
         parameter.put("Paciente",new String(id));        
         parameter.put("Medico",new String(IdMedico));      
         parameter.put("Fecha",new String(fecha));
         System.out.println(path);
         byte[] bytes;
-        
         try {
             bytes = JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
             response.setContentType("application/pdf");

@@ -58,7 +58,7 @@ function EdadCorrecta(variable){
         if (isNaN(Numer)){
             return "";
         }
-        if(Numer<121){
+        if(Numer>0){
         	return Numer;	
         }
        	else{

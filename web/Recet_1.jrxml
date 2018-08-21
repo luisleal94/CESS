@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="396" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="584708e5-729b-4af3-9df8-9bdbbdc45e2e">
-	<property name="ireport.zoom" value="10.091249923988471"/>
-	<property name="ireport.x" value="3158"/>
-	<property name="ireport.y" value="1366"/>
+	<property name="ireport.zoom" value="1.6500000000000121"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="Paciente" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -162,7 +162,7 @@ WHERE
 					<rightPen lineWidth="1.5"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<text><![CDATA[Farmacia]]></text>
+				<text><![CDATA[F.Farmacéutica]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="473" y="0" width="98" height="12" uuid="f7c0d297-b53b-40c4-aa67-4da5d855c47b"/>
@@ -227,18 +227,6 @@ WHERE
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Receta_Administracion}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="112" y="21" width="27" height="13" uuid="8acc8a66-21c8-4fca-94ea-030468c9bf5e"/>
-				<box>
-					<pen lineWidth="1.0" lineStyle="Double"/>
-					<topPen lineWidth="1.0" lineStyle="Double"/>
-					<leftPen lineWidth="0.0" lineStyle="Double"/>
-					<bottomPen lineWidth="1.0" lineStyle="Double"/>
-					<rightPen lineWidth="0.0" lineStyle="Double"/>
-				</box>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{Receta_Dosis}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="138" y="21" width="32" height="13" uuid="c474aca9-cd20-4a87-a0ed-436fc05fe3d0"/>
 				<box>
@@ -302,11 +290,11 @@ WHERE
 			<textField>
 				<reportElement x="351" y="0" width="122" height="20" uuid="400f29f7-7034-49ac-a8b0-1f85636c93ed"/>
 				<box>
-					<pen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
-					<topPen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
-					<leftPen lineStyle="Double" lineColor="#A399B2"/>
-					<bottomPen lineStyle="Double" lineColor="#A399B2"/>
-					<rightPen lineWidth="0.0" lineStyle="Double" lineColor="#A399B2"/>
+					<pen lineWidth="0.5" lineStyle="Dashed" lineColor="#A399B2"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#A399B2"/>
+					<leftPen lineStyle="Dashed" lineColor="#A399B2"/>
+					<bottomPen lineStyle="Dashed" lineColor="#A399B2"/>
+					<rightPen lineWidth="0.25" lineStyle="Double" lineColor="#A399B2"/>
 				</box>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Receta_Unidades}]]></textFieldExpression>
@@ -346,6 +334,18 @@ WHERE
 				</box>
 				<text><![CDATA[]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="112" y="21" width="27" height="13" uuid="8acc8a66-21c8-4fca-94ea-030468c9bf5e"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Receta_Dosis}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>

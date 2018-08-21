@@ -56,7 +56,8 @@ public class registrarCon extends HttpServlet {
         String temp=request.getParameter("temp");
         String fc=request.getParameter("fc");
         String fr=request.getParameter("fr");
-        String presion=request.getParameter("PresionArterial");
+        String sistolica=request.getParameter("Sistolica");
+        String diastolica=request.getParameter("Diastolica");
         String padeci=request.getParameter("padeci");
         String explo=request.getParameter("exploracion");
         String diagnos=request.getParameter("Diagnos");
@@ -100,7 +101,7 @@ public class registrarCon extends HttpServlet {
         System.out.println(medico);
         Consulta con= new Consulta();
         if(con.GenerarConsulta(id, explo, padeci, diagnos, canali, ResGabi, Reslabora, tratamiento, medico,costo,tipo,NombrePaci,Demanda,folio,Especialidad,idDoc)
-            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, presion, id,idDoc)
+            && new Consulta().historial_fisica(peso, talla,formato.format(IMC), temp, fr, fc, sistolica,diastolica, id,idDoc)
             && new Consulta().referencias(pediatra, Ginecologia, Gastro, Neuro, Trauma, Endocri, Geriatria, Urolo, Otorri, Gene, Psiqui, Cardio, Olfta, Neomo, 
                     Nefro, Hemato, Vascular, inmuno,id,idDoc,OtraRefe)){
             request.setAttribute("id",id);

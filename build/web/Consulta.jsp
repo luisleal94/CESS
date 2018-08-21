@@ -4,6 +4,7 @@
     Author     : luis
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page import="org.jfree.chart.JFreeChart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Conexion"%>
@@ -11,6 +12,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
 <%
+    Calendar calender = Calendar.getInstance();
+    int anio=calender.get(Calendar.YEAR);
     HttpSession sesion=request.getSession(false); //Sesion  
     //Obtengo atributo    
     String usuario=(String)sesion.getAttribute("Usuario");
@@ -19,6 +22,7 @@
     String Especialidad="";
     String user="";
     String Nombre="";
+    String edad="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
@@ -81,6 +85,10 @@
             var config = {};
             var pesos=[];
             var array2=[];
+            var array3=[];
+            var array4=[];
+            var dias=[]; 
+            var sis=[];
             var x=0;
             var fechas=[];
             function getFormData(){
@@ -91,7 +99,7 @@
                  x=parseFloat(pesos[i]);
                  array2.push(x);
                  i++;
-                });
+                });               
                 $('input#Fecha').each(function () {
                 config[this.name] = this.value;
                     fechas.push(this.value);
@@ -117,6 +125,47 @@
                   }]//Datos ---- name:'Peso',data:[25,23,21]
                 });
             }
+            function PresionArterial(){
+                var i=0;
+                $('input#Diasto').each(function () {
+                 config[this.name] = this.value;
+                 dias[i]=this.value;
+                 x=parseFloat(dias[i]);
+                 array3.push(x);
+                 i++;
+                });
+                $('input#Sisto').each(function () {
+                 config[this.name] = this.value;
+                 sis[i]=this.value;
+                 x=parseFloat(sis[i]);
+                 array4.push(x);
+                 i++;
+                });
+                $('input#Fecha').each(function () {
+                config[this.name] = this.value;
+                    fechas.push(this.value);
+                    i++;
+                });
+                $('#PresionArte').highcharts({
+                  title:{
+                  text:'Grafica de Presion Arterial'
+                },
+                xAxis:{
+                  categories:fechas
+                },
+                  yAxis:{
+                  title:'Valores'
+                },plotLines:[{value:0,with:1,color:'#808080'}],
+                  tooltip:{
+                  valueSuffix:''},
+                legend:{
+                  layout:'vertical',align:'right',verticalAlign:'middle',borderWith:0
+                },
+                series:[{
+                  name:'Diastolica',data:array3},
+                  {name:'Sistolica',data:array4}]//Datos ---- name:'Peso',data:[25,23,21]
+                });
+            }
         </script>
         <title>CESS</title>
     </head>
@@ -125,6 +174,7 @@
         
         <% 
         String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
+        String Edad=(String)request.getAttribute("Edad");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
@@ -146,6 +196,8 @@
             <%String paciente=""; 
             float [] pesos= new float[20];
             String [] fec=new String[20];
+            float [] diastolica=new float[20];
+            float [] sistolica=new float[20];
             int i=0;
             String nombre=request.getParameter("nombre");      
             String apellidoP=request.getParameter("apellidoP");
@@ -155,6 +207,7 @@
             while(rs.next()){
                 Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
                 paciente=rs.getString("idPacientes");
+                edad=rs.getString("Anio");
                 %> 
                 <div class="datos">
                 <div class="h2"><h2>Paciente</h2> </div>
@@ -163,7 +216,7 @@
                     <label id="titulos">Nombre</label>
                     <input type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;&emsp;<label id="titulos">Edad</label>
-                    <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" >   
+                    <input  type="text" name="Edad" value="<%=anio-Integer.parseInt(edad)%>" disabled style="color: #273746" >   
                     &emsp;&emsp;<label>Genero</label>
                     <input type="text" name="Sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746">
                     <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">                                    
@@ -174,16 +227,21 @@
             </div>
             <form method="post">
             <% }
-            pst = con.getConexion().prepareStatement("select  Peso,Fecha from ExploracionF where IdPaciente='"+paciente+"'");
+            pst = con.getConexion().prepareStatement("select  Peso,Diastolica,Asistolica,Fecha from ExploracionF where IdPaciente='"+paciente+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 pesos[i]=rs.getFloat("Peso");
                 fec[i]=rs.getString("Fecha");
-                 System.out.println(pesos[i]);%>
+                diastolica[i]=rs.getFloat("Diastolica");
+                sistolica[i]=rs.getFloat("Asistolica");
+                System.out.println(pesos[i]);%>
                 <input type="text" id="Masa" name="array" value="<%=pesos[i]%>" style="display: none;">
                 <input type="text" id="Fecha" name="array2" value="<%=fec[i]%>" style="display: none;">
+                <input type="text" id="Diasto" name="array2" value="<%=diastolica[i]%>" style="display: none;">
+                <input type="text" id="Sisto" name="array2" value="<%=sistolica[i]%>" style="display: none;">
             <% } %>
             <button type="button" id="botonP" onclick="getFormData(),this.disabled=true">Estadístico de Peso corporal"</button>
+            <button type="button" id="botonP" onclick="PresionArterial(),this.disabled=true">Estadístico de Presión Arterial"</button>
             </form>
         <% }else{
             pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
@@ -198,7 +256,7 @@
                     <label id="titulos">Nombre</label>
                     <input  type="text" id="NombreCom" name="Nombre" value="<%=Nombre%>">   
                     &emsp;&emsp;<label id="titulos">Edad</label>
-                    <input  type="text" name="Edad" value="<%=rs.getString("Edad")%>">   
+                    <input  type="text" name="Edad" value="<%=Edad%>">   
                     &emsp;&emsp;<label>Genero</label>
                     <input  type="text" name="Sexo" value="<%=rs.getString("Genero")%>">                  
                 </form>
@@ -206,6 +264,8 @@
        <% } }//Busqueda por nombre del usuario a buscar %>
         <!--Mando el parametro ID del paciente que encontre--> 
         <div id="grafica">
+        </div>
+        <div id="PresionArte">
         </div>
     <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
@@ -247,7 +307,8 @@
             <label>Frecuencia Respiratoria</label>
             <input type="text" name="fr" id="FR" required>
             &emsp;&emsp;&emsp;<label>Presión Arterial</label>
-            <input type="text" id="Presion" name="PresionArterial"><br>
+            <input type="text" id="Presion" name="Sistolica" placeholder="Sistolica">/
+            <input type="text" id="Presion" name="Diastolica" placeholder="Diastólica"><br>
             <div class="areatexto">
                 <label>Padecimiento Actual</label><br>
                 <textarea name="padeci" id="Padecimiento" class="area" cols="150" rows="5" autofocus></textarea>

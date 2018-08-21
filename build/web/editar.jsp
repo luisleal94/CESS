@@ -40,7 +40,6 @@
                     <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("Nombre")%>">
 		    <label>Apellido Paterno</label><input class="input1" type="text" name="apellidoP" value="<%=rs.getString("Apellido_P")%>">
                     <label>Apellido Materno</label><input class="input1" type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>">
-                    <label>Edad</label><input class="input1" type="text" name="edad" value="<%=rs.getString("Edad")%>">
                     <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>">
 		    <label>Ocupación</label><input class="input1" type="text" name="ocupa" value="<%=rs.getString("Ocupacion")%>">
                     <label>Estado Civil</label><input class="input1" type="text" name="Estado" value="<%=rs.getString("EstadoC")%>">
@@ -56,13 +55,12 @@
             nombre=request.getParameter("nombre");//Obtengo el parametro del texbox
             apellidop=request.getParameter("apellidoP");
             apellidom=request.getParameter("apellidoM");
-            edad=request.getParameter("edad");
             tele=request.getParameter("tele");
             ocu=request.getParameter("ocupa");
             estado=request.getParameter("Estado");
             domi=request.getParameter("Domi");
             if(nombre!=null){
-                pst = con.getConexion().prepareStatement("update Pacientes set Nombre='"+nombre+"',Apellido_P='"+apellidop+"',Apellido_M='" + apellidom +"',Edad='"+edad+"',telefono='"+tele+"',"
+                pst = con.getConexion().prepareStatement("update Pacientes set Nombre='"+nombre+"',Apellido_P='"+apellidop+"',Apellido_M='" + apellidom +"',telefono='"+tele+"',"
                 + "Ocupacion='"+ocu+"',EstadoC='"+estado+"',Domicilio='"+domi+"'" +"where idPacientes='"+id+"'");
                 pst.executeUpdate();
                 response.sendRedirect("pruebas.jsp");

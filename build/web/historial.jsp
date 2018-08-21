@@ -4,6 +4,7 @@
     Author     : luis
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page import="Controlador.Conexion"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
@@ -11,9 +12,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+    Calendar calender = Calendar.getInstance();
+    int anio=calender.get(Calendar.YEAR);
     HttpSession sesion=request.getSession(false); //Sesion
     //Obtengo atributo
-    
     String usuario=(String)sesion.getAttribute("Usuario");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
@@ -66,7 +68,7 @@
                 <td><%=rs.getString("Nombre")%></td>
                 <td><%=rs.getString("Apellido_P")%></td>
                 <td><%=rs.getString("Apellido_M")%></td>
-                <td><%=rs.getString("Edad")%></td>
+                <td><%=anio-Integer.parseInt(rs.getString("Anio"))%></td>
                 <td><%=rs.getString("Telefono")%></td>
                 <td>         
                     <form action="" method="post">

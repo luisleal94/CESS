@@ -100,7 +100,7 @@ public class Consulta extends Conexion{
     }
     
     //Metodo para registrar pacientes
-    public boolean reg_paciente(String nombre,String apellidoP,String apellidoM,String edad,String tele,
+    public boolean reg_paciente(String nombre,String apellidoP,String apellidoM,String Anio,String Mes,String Dia,String tele,
         String ocupacion,String EstadoC,String domicilio,String curp,String genero){
         Calendar calender = Calendar.getInstance();
         String fecha;
@@ -113,21 +113,23 @@ public class Consulta extends Conexion{
          PreparedStatement pst=null;
          
          try{
-            String consulta="insert into Pacientes(fecha,Nombre,Apellido_P,Apellido_M,Edad,telefono,"
-                    + "Ocupacion,EstadoC,Domicilio,Curp,Genero,Historial) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            String consulta="insert into Pacientes(fecha,Nombre,Apellido_P,Apellido_M,Anio,Mes,Dia,telefono,"
+                    + "Ocupacion,EstadoC,Domicilio,Curp,Genero,Historial) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, fecha);
             pst.setString(2, nombre);
             pst.setString(3, apellidoP);
             pst.setString(4, apellidoM);
-            pst.setString(5, edad);
-            pst.setString(6, tele);
-            pst.setString(7, ocupacion);
-            pst.setString(8, EstadoC);
-            pst.setString(9, domicilio);
-            pst.setString(10, curp.toUpperCase()); //La covierto a mayuscula
-            pst.setString(11, genero);
-            pst.setString(12, status);
+            pst.setString(5, Anio);
+            pst.setString(6, Mes);
+            pst.setString(7, Dia);
+            pst.setString(8, tele);
+            pst.setString(9, ocupacion);
+            pst.setString(10, EstadoC);
+            pst.setString(11, domicilio);
+            pst.setString(12, curp.toUpperCase()); //La covierto a mayuscula
+            pst.setString(13, genero);
+            pst.setString(14, status);
             if(pst.executeUpdate()==1){
                 return true;
             }
@@ -145,8 +147,56 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean Acutaliza_estatus(String id){
+        PreparedStatement pst=null;
+        String x="1";
+        try{
+             String consulta="update Pacientes set Historial=? where idPacientes=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, x);
+            pst.setString(2, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean RegistroIncorrecto(){
+        PreparedStatement pst=null;
+        String valor="0";
+        try{
+             String consulta="delete from Pacientes where Historial=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, valor);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
     //Metodo para registrar historial    
-    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String Presion,String id,String Doc){
+    public boolean historial_fisica(String peso,String talla,String imc,String tem,String FR,String FC,String sistolica,String diastolica,String id,String Doc){
         PreparedStatement pst=null;
         Calendar calender = Calendar.getInstance();
         String fecha;
@@ -156,7 +206,7 @@ public class Consulta extends Conexion{
         fecha=anio+"-"+mes+"-"+dia;
         try{
             String consulta="insert into ExploracionF(Peso,Talla,IMC,FrecuenciaC,FrecuenciaR,Temperatura,"
-                    + "PresionArterial,Fecha,IdPaciente,IdMedico) values(?,?,?,?,?,?,?,?,?,?)";
+                    + "Diastolica,Asistolica,Fecha,IdPaciente,IdMedico) values(?,?,?,?,?,?,?,?,?,?,?)";
             pst=getConexion().prepareStatement(consulta);
             
             pst.setString(1,peso);
@@ -165,10 +215,11 @@ public class Consulta extends Conexion{
             pst.setString(4,FR);
             pst.setString(5,FC);
             pst.setString(6,tem);
-            pst.setString(7,Presion);
-            pst.setString(8,fecha);
-            pst.setString(9,id);
-            pst.setString(10,Doc);
+            pst.setString(7,sistolica);
+            pst.setString(8,diastolica);
+            pst.setString(9,fecha);
+            pst.setString(10,id);
+            pst.setString(11,Doc);
             
             if(pst.executeUpdate()==1){
                 return true;
@@ -767,10 +818,10 @@ public class Consulta extends Conexion{
             pst.setString(1, nombre);
             pst.setString(2, farmacia);
             pst.setString(3, unidad);
-            pst.setString(4, via);
-            pst.setString(5, presenta);
-            pst.setString(6, pieza);
-            pst.setString(7, dosis);
+            pst.setString(4, dosis);
+            pst.setString(5, via);
+            pst.setString(6, presenta);
+            pst.setString(7, pieza);
             pst.setString(8, cada);
             pst.setString(9, dias);
             pst.setString(10, fecha);

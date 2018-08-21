@@ -374,6 +374,18 @@ head, body {
     transition: all .5s;
 }
 
+.Numero{ display: inline-block;}
+
+.Inputfecha{
+    width:15%;
+    background-color:  #f1f6f7 ;
+    padding: .5rem;
+    margin: .5rem 0;
+    border: none;
+    border-bottom: solid #C8C8C8 .2rem;
+    transition: all .5s;
+}
+
 .input1:focus{border-bottom: solid #273746 .2rem;}
 
 .enter1,.enter2{

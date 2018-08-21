@@ -4,6 +4,7 @@
     Author     : luis
 --%>
 
+<%@page import="Controlador.Consulta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -22,7 +23,9 @@
             response.sendRedirect("CessSuper.jsp"); 
         }
     }
-    
+    System.out.println("Entro");
+    Consulta con= new Consulta();
+    con.RegistroIncorrecto();
 %>
 <!DOCTYPE html>
 <html>
@@ -78,7 +81,12 @@
 		    <input class="input1" type="text" name="nombre" placeholder="Nombre" required>
 		    <input class="input1" type="text" name="apellido1" placeholder="Apellido Paterno" required><br>
 		    <input class="input1" type="text" name="apellido2" placeholder="Apelllido Materno" required>
-		    <input class="input1" type="text" name="edad" placeholder="Edad" onkeyUp="return Edad(this)" required><br>
+                    <label>Fecha de nacimiento</label>
+                    <section class="Numero">
+                        <input class="Inputfecha" type="text" name="Anio" placeholder="Año" onkeyUp="return Edad(this)" required>
+                        <input class="Inputfecha" type="text" name="mes" placeholder="Mes" onkeyUp="return Edad(this)" required>
+                        <input class="Inputfecha" type="text" name="dia" placeholder="Dia" onkeyUp="return Edad(this)" required><br>
+                    </section>
                     <input class="input1" type="text" name="telefono" placeholder="Telefono"  onkeyUp="return Telefono(this)" required>
 		    <input class="input1" type="text" name="domicilio" placeholder="Domicilio" required ><br>
                     <label>Estado Civil</label>

@@ -4,12 +4,15 @@
     Author     : luis
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Conexion"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
 <%
+    Calendar calender = Calendar.getInstance();
+    int anio=calender.get(Calendar.YEAR);
     //Obtengo atributo
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
@@ -96,7 +99,7 @@
             <label id="titulos">Apellido Materno</label>
             <input type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" disabled style="color: #273746"><br>
             <label id="titulos">Edad</label>
-            <input type="text" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746"><br>
+            <input type="text" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746"><br>
             <label id="titulos">Teléfono</label>
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746"><br>       
             <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    
