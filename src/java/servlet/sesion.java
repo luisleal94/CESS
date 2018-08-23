@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -95,8 +96,16 @@ public class sesion extends HttpServlet {
             sesion.setAttribute("Usuario", usuario);
             response.sendRedirect("inicio.jsp");*/
         }else{
-            System.out.println("Usuario no encontrado");
-            response.sendRedirect("index.jsp");
+            out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+            out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+            out.println("<script>");
+            out.println("$(document).ready(function(){");
+            out.println("swal ('Oops','Usuario o contraseña incorrecta','error')");
+            out.println("});");
+            out.println("</script>");
+            RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+            rd.include(request, response);
+            //response.sendRedirect("index.jsp");
         }
     }
 

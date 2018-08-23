@@ -23,6 +23,7 @@
     String user="";
     String Nombre="";
     String edad="";
+    String band="";
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }
@@ -170,39 +171,23 @@
         <title>CESS</title>
     </head>
     <body onload="nobackbutton();">
-        <a id="link" href="inicio.jsp">Regresar</a>        
+        <a id="link" href="inicio.jsp">Menú principal</a>        
         
         <% 
         String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
         String Edad=(String)request.getAttribute("Edad");
+        band=(String)request.getAttribute("band");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        if(id==null){ %>
-            <div id="buscar">
-                <form action="" method="post">
-                    <label id="label">Nombre</label>
-                    <input type="text" name="nombre" required>
-                    <label id="label">Apellido Paterno</label>                
-                    <input id="Cajas"type="text" name="apellidoP" required>&emsp;&emsp;
-                    <label id="label">Apellido Materno</label>                
-                    <input id="Cajas" type="text" name="apellidoM" required><br>
-                    <div class="botones">
-                        <input type="submit" value="Buscar"> 
-                    </div>                    
-                </form>
-            </div>   
-            
-            <%String paciente=""; 
+        if(band=="1"){
+            String paciente=""; 
             float [] pesos= new float[20];
             String [] fec=new String[20];
             float [] diastolica=new float[20];
             float [] sistolica=new float[20];
             int i=0;
-            String nombre=request.getParameter("nombre");      
-            String apellidoP=request.getParameter("apellidoP");
-            String apellidoM=request.getParameter("apellidoM");
-            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
@@ -210,7 +195,7 @@
                 edad=rs.getString("Anio");
                 %> 
                 <div class="datos">
-                <div class="h2"><h2>Paciente</h2> </div>
+                <div class="h2"><h2>Paciente 2</h2> </div>
                 <form action="" method="post" target="_black">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
                     <label id="titulos">Nombre</label>
@@ -250,7 +235,7 @@
                 Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
             %>
             <div class="datos">
-            <div class="h2"><h2>Paciente</h2> </div>
+            <div class="h2"><h2>Paciente 3</h2> </div>
                 <form action="" method="post">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
                     <label id="titulos">Nombre</label>

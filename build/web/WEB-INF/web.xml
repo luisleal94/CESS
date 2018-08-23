@@ -72,6 +72,10 @@
         <servlet-name>OrdenGabi</servlet-name>
         <servlet-class>servlet.OrdenGabi</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PasaConsulta</servlet-name>
+        <servlet-class>servlet.PasaConsulta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>OrdenGabi</servlet-name>
         <url-pattern>/OrdenGabi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PasaConsulta</servlet-name>
+        <url-pattern>/PasaConsulta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

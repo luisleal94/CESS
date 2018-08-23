@@ -5,7 +5,8 @@
 --%>
 
 <%@page import="Controlador.Consulta"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%> 
 
 <%
     //Obtengo atributo
@@ -30,7 +31,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
          <link rel="stylesheet" href="css/estilo2.css">         
          <script type="text/javascript" src="js/Validacion.js"></script>
@@ -65,13 +67,13 @@
 </div>
 <div class="container3">
   <img src="img/historial.png" width="268" height="289"; alt="Avatar" class="image3">
-  <a href="Receta.jsp"><div class="overlay3">
+  <a href="PreReceta.jsp"><div class="overlay3">
     <div class="text3">Receta Médica</div>
   </div></a>
 </div>
 <div class="container4">
   <img src="img/consulta.png" width="268" height="289"; alt="Avatar" class="image4">
-  <a href="Consulta.jsp"> <div class="overlay4">
+  <a href="PreConsulta.jsp"> <div class="overlay4">
     <div class="text4">Consulta</div>
   </div></a>
 </div>        

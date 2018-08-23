@@ -15,7 +15,7 @@ public class registrarCon extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        request.setCharacterEncoding("UTF-8");
         /**************************************/       
         String pediatra=request.getParameter("pediatra");
         String Ginecologia=request.getParameter("Ginecologia");

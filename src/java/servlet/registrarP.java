@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ public class registrarP extends HttpServlet {
        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         Calendar calender = Calendar.getInstance();
         int anio=calender.get(Calendar.YEAR);
@@ -45,7 +47,7 @@ public class registrarP extends HttpServlet {
         Conexion conecta= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        
+        System.out.println(nombre+apellidom);
         try {                
             pst=conecta.getConexion().prepareStatement("Select * from Pacientes where Curp='"+curp+"'");
             rs=pst.executeQuery();
@@ -73,12 +75,28 @@ public class registrarP extends HttpServlet {
                     }                 
                     //System.out.println("Registrado");
                     }else{  
+                        out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                        out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                        out.println("<script>");
+                        out.println("$(document).ready(function(){");
+                        out.println("swal ('Oops','Error en el registro','error')");
+                        out.println("});");
+                        out.println("</script>");
                         System.out.println("No se registro correctamente");
                         response.sendRedirect("inicio.jsp");
                     }
-                }else{                  
-                    //System.out.println("Paciente Repetido");                     
-                    response.sendRedirect("inicio.jsp");  
+                }else{
+                    out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+                    out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+                    out.println("<script>");
+                    out.println("$(document).ready(function(){");
+                    out.println("swal ('Oops','Paciente repedito','error')");
+                    out.println("});");
+                    out.println("</script>");
+                    //System.out.println("Paciente Repetido");       
+                    RequestDispatcher rd=request.getRequestDispatcher("inicio.jsp");
+                    rd.include(request, response);
+                    //response.sendRedirect("inicio.jsp");  
                 }
             } catch (Exception ex) {
                 System.out.println("Error 2: "+ex);

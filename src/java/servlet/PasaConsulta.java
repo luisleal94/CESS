@@ -5,27 +5,18 @@
  */
 package servlet;
 
-import Controlador.Conexion;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
  *
  * @author luis
  */
-public class OrdenGabi extends HttpServlet {
+public class PasaConsulta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,33 +30,25 @@ public class OrdenGabi extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //PrintWriter out = response.getWriter();
-        String id=request.getParameter("ID");
-        String IdMedico=request.getParameter("Doctor");
-        String fecha=request.getParameter("Fecha");
-        Conexion con= new Conexion();
+        PrintWriter out = response.getWriter();
+        String Tipo=request.getParameter("Tipo");  
+        String id=request.getParameter("id");  
+        String Edad=request.getParameter("Edad");   
+        String band="1";
+        System.out.println(id+" "+band+" "+Tipo);
         
-        String path = getServletContext().getRealPath("/Receta3.jasper");
-        Map parameter =new HashMap();  
-        File reporfile=new File(getServletContext().getRealPath("/Receta3.jasper"));
-        
-        parameter.put("Paciente",new String(id));        
-        parameter.put("Medico",new String(IdMedico));      
-        parameter.put("Fecha",new String(fecha));
-        System.out.println(path);
-        byte[] bytes;
-        try {
-            bytes = JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
-            response.setContentType("application/pdf");
-            response.setContentLength(bytes.length);
-            ServletOutputStream outputstream=response.getOutputStream();
-            outputstream.write(bytes,0,bytes.length);
-            outputstream.flush();
-            outputstream.close();
-        } catch (JRException ex) {
-            Logger.getLogger(GuardaReceta2.class.getName()).log(Level.SEVERE, null, ex);
-             System.out.println("Error: "+ex);
+        if(Tipo.equals("1")){
+            request.setAttribute("id",id);
+            request.setAttribute("band",band);
+            request.setAttribute("Edad",Edad); 
+            request.getRequestDispatcher("Consulta.jsp").forward(request, response);
+        }else{
+            request.setAttribute("id",id);
+            request.setAttribute("band",band);
+            request.setAttribute("Edad",Edad); 
+            request.getRequestDispatcher("Receta.jsp").forward(request, response);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

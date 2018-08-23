@@ -24,7 +24,7 @@
     cedula=(String)sesion.getAttribute("Cedula");
     NOMBRE=(String)sesion.getAttribute("Nombre");
     String IdMedico=(String)sesion.getAttribute("IDUSER");
-    String IDPac="";
+    String IDPac="",band="",edad="";
 %>
 <!DOCTYPE html>
 <html>
@@ -62,28 +62,13 @@
         String id=(String)request.getAttribute("id");//El que obtengo del serlevt 
         String res=(String)request.getAttribute("band1");
         String res2=(String)request.getAttribute("band2");
+        band=(String)request.getAttribute("band");
         System.out.println(res);
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        if(id==null){ %>
-            <div id="buscar">
-                <form action="" method="post">
-                    <label id="label">Nombre</label>
-                    <input type="text" class="texto"  name="nombre">&emsp;&emsp;
-                    <label id="label">Apellido Paterno</label>                
-                    <input id="Cajas" class="texto" type="text" name="apellidoP"><br>
-                    <label id="label">Apellido Materno</label>                
-                    <input id="Cajas" class="texto" type="text" name="apellidoM"><br>
-                    <input class="input1" type="submit" value="Buscar" style="border:none"> 
-                </form>
-            </div>
-        
-            <%String nombre=request.getParameter("nombre");
-            String apellidoP=request.getParameter("apellidoP");
-            String apellidoM=request.getParameter("apellidoM");
-            pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
-            //pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"'");
+        if(band=="1"){
+            pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
             rs=pst.executeQuery();
             while(rs.next()){
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
@@ -95,7 +80,7 @@
                     &emsp;&emsp;<label id="titulos">Nombre</label>
                     <input type="text" class="texto" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label  id="titulos">Edad</label>
-                    <input type="text" class="texto" id="cortos" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" ><br>                    
+                    <input type="text" class="texto" id="cortos" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746" ><br>                    
                     <label id="titulos">Genero</label>
                     <input type="text" class="texto" id="cortos" name="sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Fecha</label>
@@ -110,14 +95,14 @@
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
                 IDPac=rs.getString("idPacientes");
             %>
-            <div class="h2"><h2>Paciente</h2> </div>
+            <div class="h2"><h2>Paciente 2</h2> </div>
                 <form action="" method="post">
                     <label id="titulos">ID</label>
                     <input type="text" class="texto" id="id" name="id" value="<%=rs.getString("idPacientes")%>">                  
                     &emsp;&emsp;<label id="titulos">Nombre</label>
                     <input type="text" class="texto" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Edad</label>
-                    <input type="text" class="texto" id="cortos" name="edad" value="<%=rs.getString("Edad")%>" disabled style="color: #273746" ><br>                    
+                    <input type="text" class="texto" id="cortos" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746" ><br>                    
                     <label id="titulos">Genero</label>
                     <input type="text" class="texto" id="cortos" name="sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Fecha</label>

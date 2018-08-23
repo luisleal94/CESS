@@ -11,6 +11,8 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="java.util.Calendar"%>
 <%
+    Calendar calender = Calendar.getInstance();
+    int anio=calender.get(Calendar.YEAR);
     //Obtengo atributo
     HttpSession sesion=request.getSession(false); //Sesion    
     String usuario=(String)sesion.getAttribute("Usuario");
@@ -66,7 +68,7 @@
 		<label>Domicilio</label>                
                 <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
                 <label>Edad</label>  
-                <input type="text" name="Edad" value="<%=rs.getString("Edad")%>" style="color:#063452" disabled>
+                <input type="text" name="Edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" style="color:#063452" disabled>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
@@ -424,7 +426,7 @@
                                         <section id="muestraA" class="seccion">
                                             <label>Edad de inicio</label>
                                             <input type="text" name="inicio1" value="<%=res3%>" id="number" disabled>	
-                                            &emsp;&emsp;&emsp;<label>¿Qué cantidad de bebida ingieres?</label>
+                                            &emsp;&emsp;&emsp;<label>¿Cuántos cigarros al día?</label>
                                             <input type="text" name="cantidad1" value="<%=res4%>" disabled>			
                                         </section>  
                                     <% }  %>

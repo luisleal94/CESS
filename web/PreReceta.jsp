@@ -1,6 +1,6 @@
 <%-- 
-    Document   : BuscaConsulta
-    Created on : 29/06/2018, 11:13:29 AM
+    Document   : PreReceta
+    Created on : 22/08/2018, 08:16:59 AM
     Author     : luis
 --%>
 
@@ -16,9 +16,15 @@
     int anio=calender.get(Calendar.YEAR);
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
+    String gerarquia=(String)sesion.getAttribute("Gerarquia");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }    
+    else{
+        if(gerarquia.equals("Super")){
+            response.sendRedirect("CessSuper.jsp"); 
+        }
+    }
 %>
 
 <!DOCTYPE html>
@@ -36,7 +42,7 @@
         <a id="link" href="CessAdmin.jsp">Regresar</a>
         <div id="buscar">
             <form action="" method="post">
-                <label id="label">Buscar por:</label>
+                <label id="label">Buscar paciente por:</label>
                 <div id="contiene_tabla2">                    
                         <div class="checkbox">
                             <table id="tabla2">                        
@@ -59,6 +65,7 @@
         </div>
         <% //Busqueda por nombre del usuario a buscar
         String Nombre="";
+        int Edad;
         String Tipo=request.getParameter("Tipo");
         String Valor=request.getParameter("dato");
         Conexion con= new Conexion();
@@ -74,19 +81,22 @@
         pst = con.getConexion().prepareStatement(SQL);
         rs=pst.executeQuery();
         while(rs.next()){ Nombre=rs.getString("Nombre")+" "+ rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+        Edad=anio-Integer.parseInt(rs.getString("Anio"));
     %>
         <div id="datos"> 
         <h2>Paciente</h2>
          <form  action="" method="post">
+            <input type="text" name="Tipo" value="2" style="display: none">
             <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">
             <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
+            <input type="text" name="Edad" value="<%=Edad%>" style="display: none">
             <label id="titulos">Nombre</label>
             <input type="text" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" ><br>
             <label id="titulos">Edad</label>
             <input type="text" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746"><br>
             <label id="titulos">CURP</label>
             <input type="text" name="tele" value="<%=rs.getString("Curp")%>" disabled style="color: #273746"><br>
-            <input type="submit" id="boton1" value="Consultas" onclick=this.form.action="HistoConsulta">
+            <input type="submit" id="boton1" value="Generar Receta" onclick=this.form.action="PasaConsulta">
          </form>
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            

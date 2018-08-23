@@ -4,6 +4,7 @@
     Author     : luis
 --%>
 
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Conexion"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -11,6 +12,8 @@
 <%@page import="java.sql.Connection"%>
 <%
     //Obtengo atributo
+    Calendar calender = Calendar.getInstance();
+    int anio=calender.get(Calendar.YEAR);
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
     if(usuario==null){
@@ -23,6 +26,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" src="js/NoBack.js"></script>
+        <script type="text/javascript" src="js/radios.js"></script>
+        <link rel="stylesheet" href="css/BuscaConsulta.css">
+        <link rel="stylesheet" href="css/Estadistica.css">
         <link rel="stylesheet" href="css/BuscaConsulta.css">
         <title>CESS</title>
     </head>
@@ -30,55 +36,60 @@
         <a id="link" href="CessAdmin.jsp">Regresar</a>
         <div id="buscar">
             <form action="" method="post">
-                <label id="label">Nombre</label>
-                <input id="Cajas" type="text" name="nombre">
-                <label id="label">Apellido Paterno</label>                
-                <input id="Cajas"type="text" name="apellidoP">
-                <label id="label">Apellido Materno</label>                
-                <input id="Cajas" type="text" name="apellidoM"><br>
-                <input type="submit" value="Buscar">                
+                <label id="label">Buscar por:</label>
+                <div id="contiene_tabla2">                    
+                        <div class="checkbox">
+                            <table id="tabla2">                        
+                                <tr>
+                                    <td><input type="radio" id="si1" name="Tipo" value="Nombre">
+                                        <label for="si1" class="label">Nombre (s)</label></td>
+                                    <td><input type="radio" id="si2" name="Tipo" value="Apellido_P">
+                                        <label for="si2" class="label">Apellido Paterno</label></td>  
+                                    <td><input type="radio" id="si3" name="Tipo" value="Apellido_M">
+                                        <label for="si3" class="label">Apellido Materno</label></td>
+                                    <td><input type="radio" id="si4" name="Tipo" value="Curp">
+                                        <label for="si4" class="label">CURP</label></td>
+                                </tr>                       
+                            </table>
+                        </div>
+                    </div>
+                <input id="Cajas" type="text" name="dato">
+                <input type="submit" value="Buscar">
             </form>
         </div>
         <% //Busqueda por nombre del usuario a buscar
-        String nombre=request.getParameter("nombre");
-        String apellidoP=request.getParameter("apellidoP");
-        String apellidoM=request.getParameter("apellidoM");
+        String Nombre="";
+        String Tipo=request.getParameter("Tipo");
+        String Valor=request.getParameter("dato");
         Conexion con= new Conexion();
         PreparedStatement pst;
         ResultSet rs;
-        pst = con.getConexion().prepareStatement("Select * from Pacientes where Nombre='"+nombre+"' and Apellido_P='"+apellidoP+"' and Apellido_M='"+apellidoM+"'");
-        rs=pst.executeQuery();
-        String IdPaciente="";
-        while(rs.next()){
-            IdPaciente=rs.getString("idPacientes");            
+        String SQL="";
+        if(Tipo==null){
+            SQL="Select *from Pacientes where Nombre='"+Valor+"'";
+        }else{
+            SQL="Select * from Pacientes where "+Tipo+"='"+Valor+"'";
         }
-        
-        pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+IdPaciente+"'");
-        rs=pst.executeQuery();%>
-        <div id="contiene_tabla">
-            <table id="tabla">
-                <tr>
-                    <th>Fecha de Consulta</th>
-                    <th>Médico Tratante</th> 
-                    <th>Especialidad</th> 
-                    <th>Opciones</th>
-                </tr>
-                 <%  while(rs.next()){  %>
-                <tr>
-                    <td><%=rs.getString("Fecha")%></td>
-                    <td><%=rs.getString("Medico")%></td>
-                    <td><%=rs.getString("Especialidad")%></td>
-                    <td>         
-                        <form action="" method="post">
-                        <input type="text" name="IdMedico" value="<%=rs.getString("IdMedico")%>" style="display: none">
-                        <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">
-                        <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
-                        <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">                              
-                        </form>
-                    </td>
-                </tr>
-                <% } %>              
-            </table>
-        </div>        
+        System.out.println(SQL+Tipo);
+        pst = con.getConexion().prepareStatement(SQL);
+        rs=pst.executeQuery();
+        while(rs.next()){ Nombre=rs.getString("Nombre")+" "+ rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");
+    %>
+        <div id="datos"> 
+        <h2>Paciente</h2>
+         <form  action="" method="post">
+            <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">
+            <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
+            <label id="titulos">Nombre</label>
+            <input type="text" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" ><br>
+            <label id="titulos">Edad</label>
+            <input type="text" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746"><br>
+            <label id="titulos">CURP</label>
+            <input type="text" name="tele" value="<%=rs.getString("Curp")%>" disabled style="color: #273746"><br>
+            <input type="submit" id="boton1" value="Consultas" onclick=this.form.action="HistoConsulta">
+         </form>
+        </div>
+        <!--Mando el parametro ID del paciente que encontre-->            
+    <% } %>        
     </body>
 </html>

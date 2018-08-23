@@ -134,9 +134,20 @@ head,body{
                font-size: 20px;
                border-radius: 5px;
             }
+            .input4{              
+               height:35px; 
+               border: none;
+               background: #f7390a;
+               color: white;
+               font-family: roboto;
+               font-weight: 400;
+               font-size: 20px;
+               border-radius: 5px;
+            }
             
             .input1:hover{ background: #2b5960;}    
             .input2:hover{ background:  #d52e20;} 
+            .input4:hover{ background: #d70505;} 
             .boton2{
                 background:  #d02523 ;
                 color: white;

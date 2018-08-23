@@ -17,7 +17,7 @@ public class EdicionPaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        request.setCharacterEncoding("UTF-8");
         String id=request.getParameter("id");
         request.setAttribute("id",id);
         request.getRequestDispatcher("editar.jsp").forward(request, response);

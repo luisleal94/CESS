@@ -44,6 +44,7 @@ public class GuardaReceta2 extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        // PrintWriter out = response.getWriter();
+       request.setCharacterEncoding("UTF-8");
         Conexion con= new Conexion();
         
         String valor=request.getParameter("Valor");

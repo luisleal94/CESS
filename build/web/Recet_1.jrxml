@@ -37,14 +37,16 @@
      Pacientes.`Nombre` AS Pacientes_Nombre,
      Pacientes.`Apellido_P` AS Pacientes_Apellido_P,
      Pacientes.`Apellido_M` AS Pacientes_Apellido_M,
-     Pacientes.`Edad` AS Pacientes_Edad,
      Pacientes.`telefono` AS Pacientes_telefono,
      Pacientes.`Ocupacion` AS Pacientes_Ocupacion,
      Pacientes.`EstadoC` AS Pacientes_EstadoC,
      Pacientes.`Domicilio` AS Pacientes_Domicilio,
      Pacientes.`Curp` AS Pacientes_Curp,
      Pacientes.`Genero` AS Pacientes_Genero,
-     Pacientes.`Historial` AS Pacientes_Historial
+     Pacientes.`Historial` AS Pacientes_Historial,
+     Pacientes.`Anio` AS Pacientes_Anio,
+     Pacientes.`Mes` AS Pacientes_Mes,
+     Pacientes.`Dia` AS Pacientes_Dia
 FROM
      `Pacientes` Pacientes INNER JOIN `Receta` Receta ON Pacientes.`idPacientes` = Receta.`IdPaciente`,
      `PERSONAL` PERSONAL
@@ -77,7 +79,6 @@ WHERE
 	<field name="Pacientes_Nombre" class="java.lang.String"/>
 	<field name="Pacientes_Apellido_P" class="java.lang.String"/>
 	<field name="Pacientes_Apellido_M" class="java.lang.String"/>
-	<field name="Pacientes_Edad" class="java.lang.Integer"/>
 	<field name="Pacientes_telefono" class="java.lang.String"/>
 	<field name="Pacientes_Ocupacion" class="java.lang.String"/>
 	<field name="Pacientes_EstadoC" class="java.lang.String"/>
@@ -85,6 +86,9 @@ WHERE
 	<field name="Pacientes_Curp" class="java.lang.String"/>
 	<field name="Pacientes_Genero" class="java.lang.String"/>
 	<field name="Pacientes_Historial" class="java.lang.String"/>
+	<field name="Pacientes_Anio" class="java.lang.Integer"/>
+	<field name="Pacientes_Mes" class="java.lang.String"/>
+	<field name="Pacientes_Dia" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

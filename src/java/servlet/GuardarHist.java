@@ -32,7 +32,7 @@ public class GuardarHist extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+        request.setCharacterEncoding("UTF-8");
         String id=request.getParameter("id");    
         String Edad=request.getParameter("Edad");    
         String sexo=request.getParameter("sexo");
@@ -223,7 +223,7 @@ public class GuardarHist extends HttpServlet {
         
         if(ResTetano.equals("No")){ tetano="No"; }
         if(ResSaram.equals("No")){ sarampion="No"; }
-        if(rubeola.equals("No")){ rubeola="No";}
+        if(ResRubeo.equals("No")){ rubeola="No";}
         if(ResANTI.equals("No")){ hepatitis="No"; } 
         if(metodo.equals("No")){
             NombreAnticon="Ninguno";
