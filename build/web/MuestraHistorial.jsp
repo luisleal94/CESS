@@ -412,7 +412,7 @@
                                     <%
                                         if(rs.getString("Toma").equals("Si")){%>
                                         <section id="muestraA" class="seccion">
-                                            <label>¿A qué edad empezaste a ingerir alcohól?</label>
+                                            <label>¿A qué edad empezaste a ingerir alcohol?</label>
                                             <input type="text" name="inicio1" value="<%=res1%>" disabled>	
                                             &emsp;&emsp;<label>¿Qué cantidad de bebida ingieres?</label>
                                             <input type="text" name="cantidad1" value="<%=res2%>" disabled>			

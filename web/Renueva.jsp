@@ -13,8 +13,18 @@
     //Obtengo atributo
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
-    if(usuario!=null){
+    String Nombre=(String)sesion.getAttribute("Nombre");
+    if(usuario==null){
         response.sendRedirect("index.jsp"); 
+    }
+    else{
+        String gerarquia=(String)sesion.getAttribute("Gerarquia");
+        if(gerarquia.equals("Admin")){
+            response.sendRedirect("CessAdmin.jsp"); 
+        }
+        if(gerarquia.equals("usuario")){
+            response.sendRedirect("inicio.jsp"); 
+        }
     }
 %>
 <!DOCTYPE html>
@@ -31,7 +41,7 @@
         </style>
     </head>
     <body>
-        <a id="link" href="index.jsp">Salir</a>
+        <a id="link" href="MostrarPersonal.jsp">Salir</a>
         <div id="buscar">
             <form action="" method="post">
                 <label id="label">Username</label>

@@ -100,6 +100,8 @@
             <input type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" disabled style="color: #273746"><br>
             <label id="titulos">Edad</label>
             <input type="text" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746"><br>
+            <label id="titulos">CURP</label>
+            <input type="text" name="Curp" value="<%=rs.getString("Curp")%>" disabled style="color: #273746"><br>
             <label id="titulos">Teléfono</label>
             <input type="text" name="tele" value="<%=rs.getString("telefono")%>" disabled style="color: #273746"><br>       
             <div id="boton1" ><a href="editar.jsp?id=<%=rs.getString("idPacientes")%>">Actualizar datos</a></div>    

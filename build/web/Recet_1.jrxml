@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="396" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="584708e5-729b-4af3-9df8-9bdbbdc45e2e">
 	<property name="ireport.zoom" value="1.6500000000000121"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="30"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="Paciente" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -108,7 +108,7 @@ WHERE
 			<staticText>
 				<reportElement x="117" y="35" width="284" height="51" uuid="d16ef149-d269-4abb-8f0e-27735a886810"/>
 				<textElement textAlignment="Center">
-					<font size="14"/>
+					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[ Centro de Estudios y Servios de Salud Receta Médica]]></text>
 			</staticText>
@@ -139,6 +139,18 @@ WHERE
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_M}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="421" y="97" width="68" height="14" uuid="f4c4eded-818c-424f-a45d-957f5c2e45e0"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="489" y="97" width="82" height="14" uuid="5a2357c8-2880-4041-b01a-bc0598478999"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Receta_Fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -195,7 +207,7 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="35" splitType="Stretch">
+		<band height="57" splitType="Stretch">
 			<textField>
 				<reportElement x="169" y="0" width="182" height="20" uuid="abd8ab34-fed6-4cb6-ba69-c2f574b84b35"/>
 				<box>
@@ -294,11 +306,11 @@ WHERE
 			<textField>
 				<reportElement x="351" y="0" width="122" height="20" uuid="400f29f7-7034-49ac-a8b0-1f85636c93ed"/>
 				<box>
-					<pen lineWidth="0.5" lineStyle="Dashed" lineColor="#A399B2"/>
-					<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#A399B2"/>
-					<leftPen lineStyle="Dashed" lineColor="#A399B2"/>
-					<bottomPen lineStyle="Dashed" lineColor="#A399B2"/>
-					<rightPen lineWidth="0.25" lineStyle="Double" lineColor="#A399B2"/>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#A399B2"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#A399B2"/>
+					<leftPen lineStyle="Solid" lineColor="#A399B2"/>
+					<bottomPen lineStyle="Solid" lineColor="#A399B2"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#A399B2"/>
 				</box>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Receta_Unidades}]]></textFieldExpression>
@@ -396,6 +408,13 @@ WHERE
 			<line>
 				<reportElement x="359" y="29" width="175" height="1" uuid="569c7f97-1bc2-4b30-a655-0d8eaf6765a9"/>
 			</line>
+			<staticText>
+				<reportElement x="15" y="54" width="58" height="12" uuid="767a1dbc-5af1-4cf2-9bd7-25b5514340d9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referir a:]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>

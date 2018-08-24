@@ -146,10 +146,10 @@
                             <input type="submit" class="input1"  value="Imprimir" onclick="this.form.action='GuardaReceta2',this.disabled=true"><!--onclick="javascript:cambia_de_pagina();"-->
                         </div>   
                         <section class="boton" id="bandera" style="display: none;">
-                            <input type="submit" class="input1"  value="Imprimir ordern de análisis de gabinete" onclick=this.form.action="OrdenGabi">
+                            <input type="submit" class="input1"  value="Imprimir orden de análisis de gabinete" onclick=this.form.action="OrdenGabi">
                         </section>  
                         <section class="boton" id="bandera2" style="display: none;">
-                            <input type="submit" class="input1"  value="Imprimir ordern de análisis de laboratorio" onclick=this.form.action="OrdenLabora" target="_blanck">
+                            <input type="submit" class="input1"  value="Imprimir orden de análisis de laboratorio" onclick=this.form.action="OrdenLabora" target="_blanck">
                         </section>  
                     </form>                   
                 </div>

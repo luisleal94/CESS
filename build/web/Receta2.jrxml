@@ -111,10 +111,22 @@ Consulta.`IdMedico`=$P{Medico}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Consulta_Nombre}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="425" y="88" width="68" height="20" uuid="d0862544-ac7d-41ed-a17f-f2433eda9c08"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="493" y="88" width="79" height="20" uuid="50d6cb42-f086-4177-985b-f8f88f37bb02"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Receta_Fecha}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>
-		<band height="33" splitType="Stretch">
+		<band height="48" splitType="Stretch">
 			<staticText>
 				<reportElement x="15" y="2" width="135" height="14" uuid="058aff10-b29d-40ce-a04d-ce6708e980fb"/>
 				<textElement textAlignment="Center">
@@ -123,7 +135,7 @@ Consulta.`IdMedico`=$P{Medico}]]>
 				<text><![CDATA[Estudios clínicos:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="2" width="162" height="31" uuid="243afc03-488a-4a03-8f72-b4d69b5b72cc"/>
+				<reportElement x="150" y="16" width="162" height="31" uuid="243afc03-488a-4a03-8f72-b4d69b5b72cc"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Consulta_Laboratorio}]]></textFieldExpression>
 			</textField>

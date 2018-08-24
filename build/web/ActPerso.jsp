@@ -36,7 +36,8 @@
             rs=pst.executeQuery();
             while(rs.next()){
                 %>
-                <form id="formulario" action="" method="post">                    
+                <form id="formulario" action="ActualizaPer" method="post">                    
+                    <input class="input1" type="text" name="Id" value="<%=rs.getString("ID_USER")%>">
                     <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("NOMBRE")%>">
 		    <label>Apellidos</label><input class="input1" type="text" name="apellido" value="<%=rs.getString("APELLIDO")%>">
                     <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>">
@@ -52,27 +53,11 @@
 			<label for="user" class="label">Médico</label>
 			</div> 
                     <div class="boton">
-		      <input class="enter1" type="submit" value="Guardar">                      
+		      <input class="enter1" type="submit" value="Guardar">
+                      <a class="enter1" href="Renueva.jsp">Cambiar contraseña</a>
 		    </div>
 	  	</form>
-                <%
-            }
-
-            String nombre,apellido,tele,cedula,user,especialidad,Gerarquia;
-            nombre=request.getParameter("nombre");//Obtengo el parametro del texbox
-            apellido=request.getParameter("apellido");           
-            tele=request.getParameter("tele");
-            cedula=request.getParameter("cedula");
-            user=request.getParameter("username");
-            especialidad=request.getParameter("especialidad");
-            Gerarquia=request.getParameter("gerar");
-            if(nombre!=null){
-                pst = con.getConexion().prepareStatement("update PERSONAL set NOMBRE='"+nombre+"',APELLIDO='"+apellido+"',telefono='"+tele+"',"
-                + "Cedula='"+cedula+"',Username='"+user+"',Especialidad='"+especialidad+"', Gerarquia='"+Gerarquia+"' where ID_USER='"+id+"'");
-                pst.executeUpdate();
-                response.sendRedirect("MostrarPersonal.jsp");               
-            }
-        %>            
+                <%  }    %>            
 	</div>
     </body>
 </html>

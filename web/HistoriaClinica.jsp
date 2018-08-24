@@ -257,7 +257,7 @@
                                     <label for="noTeta" class="label">No</label>
 				</div>
                                 <section id="MuestraTetano" style="display: none" class="seccion">
-                                    <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                    <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>                                                                
 				&emsp;&emsp;&emsp;<label>ANTISARAMPIÓN</label>&emsp;&emsp;
                                 <div>
@@ -267,7 +267,7 @@
                                     <label for="noSaram" class="label">No</label>
 				</div>
                                 <section id="MuestraSaram" style="display: none" class="seccion">
-                                    <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                    <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>                                				
 				<label>RUBÉOLA</label>&emsp;&emsp;
                                 <div>
@@ -277,7 +277,7 @@
                                     <label for="noRubeo" class="label">No</label>
 				</div>
                                 <section id="MuestraRubeo" style="display: none" class="seccion">
-                                    <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                    <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>                                
                                 &emsp;&emsp;&emsp;<label>ANTI HBS</label>
                                 <div>
@@ -287,7 +287,7 @@
                                     <label for="noANTI" class="label">No</label>
 				</div>
                                 <section id="MuestraANTI" style="display: none" class="seccion">
-                                    <input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha" >
+                                    <input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>
 			</div>
 
@@ -301,7 +301,7 @@
 	  				<label for="no" class="label">No</label>
 				</div>
 	  			<section id="muestraA" style="display: none" class="seccion">
-	  				<label>¿A qué edad empezaste a ingerir alcohól?</label>
+	  				<label>¿A qué edad empezaste a ingerir alcohol?</label>
 					<input type="text" name="inicio1">	
 					<label>¿Qué cantidad de bebida ingieres?</label>
 					<input type="text" name="cantidad1">			

@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/Personal.css">
+        <script type="text/javascript" src="js/Validacion.js"></script>
         <title>CESS</title>
         <style>
             head,body{
@@ -22,6 +23,7 @@
         </style>
     </head>
     <body>
+        <a id="link" href="historial.jsp">Regresar</a>
         <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left:39%; color: #00A99D;">Datos del Paciente</p>
         <br><br>
         <div id="contenido">
@@ -36,37 +38,27 @@
             rs=pst.executeQuery();
             while(rs.next()){
                 %>
-                <form id="formulario" action="" method="post">                    
-                    <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("Nombre")%>">
-		    <label>Apellido Paterno</label><input class="input1" type="text" name="apellidoP" value="<%=rs.getString("Apellido_P")%>">
-                    <label>Apellido Materno</label><input class="input1" type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>">
-                    <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>">
-		    <label>Ocupación</label><input class="input1" type="text" name="ocupa" value="<%=rs.getString("Ocupacion")%>">
-                    <label>Estado Civil</label><input class="input1" type="text" name="Estado" value="<%=rs.getString("EstadoC")%>">
-                    <label>Domicilio</label><input class="input1" type="text" name="Domi" value="<%=rs.getString("Domicilio")%>">
+                <form id="formulario" action="ActualizaPac" method="post">      
+                    <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
+                    <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("Nombre")%>" required>
+                    <label>Apellido Paterno</label><input class="input1" type="text" name="apellidoP" value="<%=rs.getString("Apellido_P")%>" required>
+                    <label>Apellido Materno</label><input class="input1" type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" required>
+                    <label>Fecha de nacimiento</label>
+                    <section class="Numero">
+                        <input class="Inputfecha" type="text" name="Anio" value="<%=rs.getString("Anio")%>" onkeyUp="return Edad(this)" required>
+                        <input class="Inputfecha" type="text" name="mes" value="<%=rs.getString("Mes")%>" onkeyUp="return Edad(this)" required>
+                        <input class="Inputfecha" type="text" name="dia" value="<%=rs.getString("Dia")%>" onkeyUp="return Edad(this)" required><br>
+                    </section>
+                    <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>" required>
+		    <label>Ocupación</label><input class="input1" type="text" name="ocupa" value="<%=rs.getString("Ocupacion")%>" required>
+                    <label>Estado Civil</label><input class="input1" type="text" name="Estado" value="<%=rs.getString("EstadoC")%>" required>
+                    <label>Domicilio</label><input class="input1" type="text" name="Domi" value="<%=rs.getString("Domicilio")%>" required>
+                    <label>Curp</label><input class="input1" type="text" name="Curp" value="<%=rs.getString("Curp")%>" required>
                     <div class="boton">
 		      <input class="enter1" type="submit" value="Guardar">                      
 		    </div>
 	  	</form>
-                <%
-            }
-
-            String nombre,apellidop,apellidom,edad,tele,ocu,estado,domi;
-            nombre=request.getParameter("nombre");//Obtengo el parametro del texbox
-            apellidop=request.getParameter("apellidoP");
-            apellidom=request.getParameter("apellidoM");
-            tele=request.getParameter("tele");
-            ocu=request.getParameter("ocupa");
-            estado=request.getParameter("Estado");
-            domi=request.getParameter("Domi");
-            if(nombre!=null){
-                pst = con.getConexion().prepareStatement("update Pacientes set Nombre='"+nombre+"',Apellido_P='"+apellidop+"',Apellido_M='" + apellidom +"',telefono='"+tele+"',"
-                + "Ocupacion='"+ocu+"',EstadoC='"+estado+"',Domicilio='"+domi+"'" +"where idPacientes='"+id+"'");
-                pst.executeUpdate();
-                response.sendRedirect("pruebas.jsp");
-               
-            }
-        %>            
+                <% }  %>            
 	</div>
     </body>
 </html>

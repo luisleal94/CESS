@@ -75,7 +75,38 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-        
+    
+    public boolean ActualizaPersonal(String nombre,String apellido,String tele,String cedula,
+            String user,String especialidad,String Gerarquia,String Id){
+        PreparedStatement pst=null;       
+        try{
+            String consulta="update PERSONAL set NOMBRE=?,APELLIDO=?,telefono=?,Cedula=?,Username=?,"
+                    + "Especialidad=?,Gerarquia=?  where ID_USER=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, nombre);
+            pst.setString(2, apellido);
+            pst.setString(3, tele);     
+            pst.setString(4, cedula);
+            pst.setString(5, user.toUpperCase());
+            pst.setString(6, especialidad);
+            pst.setString(7, Gerarquia);
+            pst.setString(8, Id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }
+        }catch(Exception e){
+             System.err.println("Error"+e);
+        }finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.err.println("Error"+e);
+            }
+        }
+        return false;
+    }
+    
     public boolean ActualizaConta(String user,String pass,String id){
         PreparedStatement pst=null;       
         try{
@@ -110,7 +141,7 @@ public class Consulta extends Conexion{
         fecha=anio+"-"+mes+"-"+dia;
         System.out.println(fecha);
         String status="0";
-         PreparedStatement pst=null;
+        PreparedStatement pst=null;
          
          try{
             String consulta="insert into Pacientes(fecha,Nombre,Apellido_P,Apellido_M,Anio,Mes,Dia,telefono,"
@@ -147,6 +178,41 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean ActualizaPac(String nombre,String apellidoP,String apellidoM,String telefono,
+            String ocupacion,String EstadoC,String Domicilio,String curp,String Anio,String Mes,String Dia,String id){
+        PreparedStatement pst=null;
+        try{
+             String consulta="update Pacientes set Nombre=?, Apellido_P=?, Apellido_M=?,Anio=?,Mes=?,Dia=?,telefono=?,Ocupacion=?,"
+                     + "EstadoC=?,Domicilio=?,Curp=? where idPacientes=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, nombre);
+            pst.setString(2, apellidoP);
+            pst.setString(3, apellidoM);
+            pst.setString(4, Anio);
+            pst.setString(5, Mes);
+            pst.setString(6, Dia);
+            pst.setString(7, telefono);
+            pst.setString(8, ocupacion);
+            pst.setString(9, EstadoC);
+            pst.setString(10, Domicilio);
+            pst.setString(11, curp);
+            pst.setString(12, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
     public boolean Acutaliza_estatus(String id){
         PreparedStatement pst=null;
         String x="1";

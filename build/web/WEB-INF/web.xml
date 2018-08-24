@@ -76,6 +76,14 @@
         <servlet-name>PasaConsulta</servlet-name>
         <servlet-class>servlet.PasaConsulta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizaPac</servlet-name>
+        <servlet-class>servlet.ActualizaPac</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizaPer</servlet-name>
+        <servlet-class>servlet.ActualizaPer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -151,6 +159,14 @@
     <servlet-mapping>
         <servlet-name>PasaConsulta</servlet-name>
         <url-pattern>/PasaConsulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizaPac</servlet-name>
+        <url-pattern>/ActualizaPac</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizaPer</servlet-name>
+        <url-pattern>/ActualizaPer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
