@@ -58,24 +58,23 @@
                 %>
 		<label >Nombre</label>
                 <input type="text" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
-                
-		<label >Fecha</label>
-                <input type="text" name="fecha" value="<%=rs.getString("fecha")%>" style="color:#063452" disabled>
-		<label>Estado Civil</label>
-                <input type="text" name="estado" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
-		<label>Ocupacion</label>
-                <input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
+		&emsp;<label>Estado Civil</label>
+                <input type="text" name="estado" id="Mediano" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled>
+		&emsp;<label>Ocupacion</label>
+                <input type="text" name="Ocupacion" id="Large" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled><br>
 		<label>Domicilio</label>                
-                <input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
-                <label>Edad</label>  
-                <input type="text" name="Edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" style="color:#063452" disabled>
+                <input type="text" name="Domicilio" id="Large" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
+                &emsp;<label>Edad</label>  
+                <input type="text" name="Edad" id="number" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" style="color:#063452" disabled>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
+                &emsp;<label>Actualización</label>
+                <input type="text" name="fecha" id="Mediano" value="<%=rs.getString("fecha")%>" style="color:#063452" disabled>
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
 	</div>
         <!--<div style="margin: 15px;"><a id="link" href="inicio.jsp">Inicio</a></div>-->
 	<div class="formulario">
-            <form class="formula" method="post" action="GuardarHist" >
+            <form class="formula" method="post" action="" >
                 <%String ID=id;%>
                 <input type="text" value="<%=id%>" name="id" style="display: none"><br>
                 <input type="text" id="sexo" name="sexo" style="display: none"><br>		
@@ -643,6 +642,10 @@
                         <% }%>
                     </div>
                 </div>
+                        <%if(gerarquia.equals("Admin")||gerarquia.equals("Super")){  %>
+                             <input type="submit" id="boton" value="Actualizar Historial" onclick=this.form.action="EditarHis">
+                        <%  } %>
+                        <!--<input type="submit" id="boton" value="Actualizar Historial" onclick=this.form.action="EditarHis">-->
 	</form>
 	</div>
     </body>

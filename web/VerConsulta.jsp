@@ -64,8 +64,8 @@
                             <label>Temperatura</label>
                             <input type="text"  value="<%=rs.getString("Temperatura")%>"><br>
                             <label>Presion Arterial</label>
-                            <input type="text" value="<%=rs.getString("Diastolica")%>">/
-                            <input type="text" value="<%=rs.getString("Asistolica")%>">
+                            <input type="text" id="Corto" value="<%=rs.getString("Diastolica")%>">/
+                            <input type="text" id="Corto" value="<%=rs.getString("Asistolica")%>">
                       <% }                                       
                           pst = con.getConexion().prepareStatement("Select * from Consulta where IdPaciente='"+id+"' and"
                                 + " Fecha='"+fecha+"' and IdMedico='"+Doc+"'");

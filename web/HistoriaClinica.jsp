@@ -14,6 +14,7 @@
     //Obtengo atributo
     HttpSession sesion=request.getSession(false); //Sesion    
     String usuario=(String)sesion.getAttribute("Usuario");
+    String NOMBRE=(String)sesion.getAttribute("Nombre");
     String gerarquia="";
     String cedula="";
     if(usuario==null){
@@ -71,13 +72,13 @@
 		&emsp;&emsp;<label >Fecha</label>
                 &emsp;<input type="text" name="fecha" value="<%=fecha%>" style="color:#063452" disabled>
 		&emsp;&emsp;<label>Estado Civil</label>
-                &emsp;<input type="text" name="estado" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
+                &emsp;<input type="text" name="estado" id="Mediano" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
 		<label>Ocupacion</label>
-                &emsp;<input type="text" name="Ocupacion" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
+                &emsp;<input type="text" name="Ocupacion" id="Large" value="<%= rs.getString("Ocupacion") %>" style="color:#063452" disabled>
 		&emsp;&emsp;<label>Domicilio</label>                
-                &emsp;<input type="text" name="Ocupacion" value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
+                &emsp;<input type="text" name="Ocupacion" id="Large"  value="<%=rs.getString("Domicilio")%>" style="color:#063452" disabled>
                 &emsp;&emsp;<label>Edad</label>  
-                &emsp;<input type="text" name="Edad" value="<%=Edad%>" style="color:#063452" disabled>
+                &emsp;<input type="text" name="Edad" id="number" value="<%=Edad%>" style="color:#063452" disabled>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
@@ -584,13 +585,14 @@
                 </div>
 		<div id="medico">
 			<label>Medico Tratante</label>
-                        <input type="text" name="medico" value="<% out.println(usuario);%>" disabled style="color:#063452">
+                        <input type="text" name="medico" value="<%=NOMBRE%>" disabled style="color:#063452">
+                        <input type="text" name="Doctor" value="<%=NOMBRE%>" style="display: none">
                         <label>Cédula</label>
                         <input type="text" name="medico" value="<% out.println(cedula);%>" disabled style="color:#063452">
 		</div>
                 <div style="margin: 25px;" >
                      <a id="boton" href="inicio.jsp">Regresar</a>
-                      <input id="boton" type="submit" value="Generar Consulta" onclick="confirmation()">                    
+                    <input id="boton" type="submit" value="Generar Consulta" onclick="confirmation()">                    
                 </div>
 	</form>
 	</div>

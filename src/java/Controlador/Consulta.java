@@ -305,6 +305,7 @@ public class Consulta extends Conexion{
         return false;
     }
    
+    /*************************************************************************************************/
     public boolean historial_NoPato(String aseo,String bucal,String ropa,String lacteos,String prote,
             String verdura,String legum,String cereal,String id){
         PreparedStatement pst=null;
@@ -339,6 +340,40 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean historial_NoPato2(String aseo,String bucal,String ropa,String lacteos,String prote,
+            String verdura,String legum,String cereal,String id){
+        PreparedStatement pst=null;
+        try{
+             String consulta="update NoPatologicos set Aseo=?,Cepillado=?,Ropa=?,Lacteos=?,Proteinas=?,"
+                    + "Verduras=?,Cereales=?,Legumbres=? where idPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, aseo);
+            pst.setString(2, bucal);
+            pst.setString(3, ropa);
+            pst.setString(4,lacteos);
+            pst.setString(5, prote);           
+            pst.setString(6, verdura);
+            pst.setString(7, cereal);
+            pst.setString(8, legum);
+            pst.setString(9, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*---------------------------------------------------------------------------------------------------*/
+    
     public boolean historial_Imnume(String tetano,String saram,String rubeola,String hepatitis,String id){
         PreparedStatement pst=null;
         
@@ -369,7 +404,35 @@ public class Consulta extends Conexion{
         return false;
     }
     
-    
+    public boolean historial_Imnume2(String tetano,String saram,String rubeola,String hepatitis,String id){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="update Inmune set Tetano=?,Sarampion=?,Rubeola=?,hepatitis=? where idPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, tetano);
+            pst.setString(2, saram);
+            pst.setString(3, rubeola);
+            pst.setString(4, hepatitis);
+            pst.setString(5, id);
+           
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*----------------------------------------------------------------------------------------------------*/
     public boolean historial_Sistema1(String estoma,String Vomi,String tos,String pecho,
             String ejercicio,String cabeza,String id){
         PreparedStatement pst=null;
@@ -404,6 +467,40 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean historial_Sistema12(String estoma,String Vomi,String tos,String pecho,
+            String ejercicio,String cabeza,String id){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="update Sistema1 set DolorEstomago=?,Nauseas=?,Tos=?,"
+                + "DolorPecho=?,Fatiga=?,DolorCabeza=? where idPaciente=?";
+            
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, estoma);
+            pst.setString(2, Vomi);          
+            pst.setString(3, tos);
+            pst.setString(4, pecho);            
+            pst.setString(5, ejercicio);
+            pst.setString(6, cabeza);
+            pst.setString(7, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*----------------------------------------------------------------------------------------------------*/
+    
     public boolean historial_Sistema1_2(String id,String estre,String diarrea,String tex1,String text2,String text3){
         PreparedStatement pst=null;
         try{
@@ -433,6 +530,36 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean historial_Sistema1_22(String id,String estre,String diarrea,String tex1,String text2,String text3){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update Sistema1_2 set Estreñimiento=?,Diarrea=?,Otros2=?,"
+                    + "Otros3=?,Otros4=? where IdPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, estre);
+            pst.setString(2, diarrea);
+            pst.setString(3, tex1);
+            pst.setString(4, text2);
+            pst.setString(5, text3);
+            pst.setString(6, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*---------------------------------------------------------------------------------------------*/
+    //No se utiliza esta funcion 
     public boolean historial_resSistema1_2(String frecEs,String FrecDia,String id){
         PreparedStatement pst=null;
         try{
@@ -458,6 +585,8 @@ public class Consulta extends Conexion{
         }
         return false;
     }    
+    
+    /*---------------------------------------------------------------------------------------------*/
     
     public boolean historial_Vicio(String toma,String fuma,String rela,String id){
         PreparedStatement pst=null;
@@ -487,6 +616,33 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean historial_Vicio2(String toma,String fuma,String rela,String id){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="update VIcios set Fuma=?,Toma=?,Relaciones=? where idPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, fuma);
+            pst.setString(2, toma);
+            pst.setString(3, rela);
+            pst.setString(4, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*-----------------------------------------------------------------------------------------------*/
     
     public boolean ResVicio(String resT,String resT2,String resF,String resF2,String resR1,String resR2,
             String resR3,String metodo,String id){
@@ -524,6 +680,41 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean ResVicio2(String resT,String resT2,String resF,String resF2,String resR1,String resR2,
+            String resR3,String metodo,String id){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="update ResVicios set EdadInicio=?,CantidadAlco=?,EdadFum=?,CigarrosDia=?,"
+                    + "EdadRela=?,NoParejas=?,Proteccion=?,Anticonceptivo=? where IdPaciente=?";
+           
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, resT);
+            pst.setString(2, resT2);
+            pst.setString(3, resF);
+            pst.setString(4, resF2);
+            pst.setString(5, resR1);
+            pst.setString(6, resR2);
+            pst.setString(7, resR3);
+            pst.setString(8, metodo);
+            pst.setString(9, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*-----------------------------------------------------------------------------------------------------*/
     public boolean Patologicos(String combe,String cirujia,String alergia,String diabetes,String hiper,String texto,String id){
         PreparedStatement pst=null;
         
@@ -555,7 +746,37 @@ public class Consulta extends Conexion{
         return false;
     }
     
-    
+    public boolean Patologicos2(String combe,String cirujia,String alergia,String diabetes,String hiper,String texto,String id){
+        PreparedStatement pst=null;
+        
+        try{
+            String consulta="update Patologicos set Combe=?,Cirujia=?,Alergia=?,Diabetico=?,Hipertenso=?,"
+                    + "OtrosPato=? where idPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, combe);
+            pst.setString(2, cirujia);
+            pst.setString(3, alergia);
+            pst.setString(4, diabetes);
+            pst.setString(5, hiper);
+            pst.setString(6, texto);
+            pst.setString(7, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*--------------------------------------------------------------------------*/
     public boolean ResPatolo(String cuandoDA,String medicDA,String compliDA,String cuandoHI,String medicHI,String compliHI,
             String id){
         PreparedStatement pst=null;
@@ -588,6 +809,37 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean ResPatolo2(String cuandoDA,String medicDA,String compliDA,String cuandoHI,String medicHI,String compliHI,
+            String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update ResPatologicos set FechaDia=?,MedicamentoDia=?,ComplicacionesDia=?,CuandoHi=?,"
+                    + "MedicamentoHi=?,CompliHip=? where idPacientes=?";
+            pst=getConexion().prepareStatement(consulta);            
+            pst.setString(1, cuandoDA);
+            pst.setString(2, medicDA);
+            pst.setString(3, compliDA);
+            pst.setString(4, cuandoHI);
+            pst.setString(5, medicHI);
+            pst.setString(6, compliHI);            
+            pst.setString(7, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*-------------------------------------------------------------------------------*/
     public boolean Ginecologo(String menarca,String duracion,String dolor,String medica,String Embarazo,String id){
         PreparedStatement pst=null;
         try{
@@ -617,6 +869,34 @@ public class Consulta extends Conexion{
         return false;
     }
    
+    public boolean Ginecologo2(String menarca,String duracion,String dolor,String medica,String Embarazo,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update Ginecologo set Menarca=?,Duracion=?,Dolor=?,Medicamentos=?,Embarazo=? where IdPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, menarca);
+            pst.setString(2, duracion);
+            pst.setString(3, dolor);
+            pst.setString(4, medica);
+            pst.setString(5, Embarazo);
+            pst.setString(6, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*---------------------------------------------------------------------------------*/
     public boolean ResGineco(String Gestas,String Partos,String Abortos,String Cesareas,String Compli,String ultRe,String id){
         PreparedStatement pst=null;
         try{
@@ -646,6 +926,36 @@ public class Consulta extends Conexion{
         }
        return false; 
     }
+    
+    public boolean ResGineco2(String Gestas,String Partos,String Abortos,String Cesareas,String Compli,String ultRe,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update ResGineco set Gestas=?,Partos=?,Abortos=?,Cesareas=?,Complicaciones=?,UltimaRegla=? where IdPaciente=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, Gestas);
+            pst.setString(2,Partos);
+            pst.setString(3, Abortos);
+            pst.setString(4, Cesareas);
+            pst.setString(5, Compli);
+            pst.setString(6, ultRe);
+            pst.setString(7, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*-------------------------------------------------------------------------------------*/
       
     public boolean GenerarConsulta(String id,String ExploF,String padeci,String diagnos,String Estudios,String gabine,String labora,String tratamiento,String medico
                     ,String Costo,String Tipo,String Nombre,String Demanda,String folio,String Especialidad,String doc){
@@ -749,7 +1059,7 @@ public class Consulta extends Conexion{
         }
         return nombre;
     }
-    
+    /*------------------------------------------------------------------------------*/
     public boolean AbueloPa(String Viv,String DM,String hta, String neoplas,String obesi,String tbp,
             String cardio,String alergi,String formac,String toxico,String cancer,String id,int tipo){
         PreparedStatement pst=null;
@@ -817,6 +1127,73 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean AbueloPa2(String Viv,String DM,String hta, String neoplas,String obesi,String tbp,
+            String cardio,String alergi,String formac,String toxico,String cancer,String id,int tipo){
+        PreparedStatement pst=null;
+        try{
+            String consulta="";
+            if(tipo==1){
+                consulta="update AbueloPa set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            if(tipo==2){
+                consulta="update AbuelaPa set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            } 
+            if(tipo==3){
+                consulta="update AbueloMa set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            if(tipo==4){
+                consulta="update AbuelaMa set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            if(tipo==5){
+                consulta="update Hermanos set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            if(tipo==6){
+                consulta="update Madre set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            if(tipo==7){
+                consulta="update Padre set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            if(tipo==8){
+                consulta="update Tios set Vive=?,DM=?,HTA=?,Neoplasia=?,Obesidad=?,TBP=?,Cardiopatias=?,"
+                    + "Alergias=?,Formaciones=?,Toxicomanias=?,Cancer=? where IdPaciente=?";
+            }
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1,Viv);
+            pst.setString(2,DM);
+            pst.setString(3,hta);
+            pst.setString(4,neoplas);
+            pst.setString(5,obesi);
+            pst.setString(6,tbp);
+            pst.setString(7,cardio);
+            pst.setString(8,alergi);
+            pst.setString(9,formac);
+            pst.setString(10,toxico);
+            pst.setString(11,cancer);
+            pst.setString(12,id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*----------------------------------------------------------------------------------*/
     public boolean Cirujia(String fecha,String Motivo,String Causa,String id){
         PreparedStatement pst=null;
         try{

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,15 +6,20 @@
  */
 package servlet;
 
+import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,7 +41,7 @@ public class Respaldo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        //PrintWriter out = response.getWriter();
         Calendar calender = Calendar.getInstance();
         String fecha;
         int dia=calender.get(Calendar.DAY_OF_MONTH);
@@ -45,16 +51,42 @@ public class Respaldo extends HttpServlet {
         try{
             Process P=Runtime.getRuntime().exec("mysqldump -u root -p1234 CESS");
             InputStream is=P.getInputStream();
-         
-            FileOutputStream fos= new FileOutputStream("Respaldo"+fecha+".sql");
-            byte[] buffer = new byte[10000];
+            
+            String foo = request.getServletContext().getRealPath("/") + "Respaldo.sql";
+            File file = new File (foo);
+            FileOutputStream fos= new FileOutputStream (file); //Segunda opcion
+            byte[] buffer = new byte[1024];
             int leido=is.read(buffer);
             while(leido>0){
                 fos.write(buffer,0,leido);
                 leido=is.read(buffer);
             }
+            
+            fos.flush();
             fos.close();
-            response.sendRedirect("CessSuper.jsp");  
+            
+            /*out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+            out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+            out.println("<script>");
+            out.println("$(document).ready(function(){");
+            out.println("swal ('Correcto','Actualización exitosa','success')");
+            out.println("});");
+            out.println("</script>");
+            RequestDispatcher rd=request.getRequestDispatcher("CessSuper.jsp");
+            rd.include(request, response);*/
+            
+            response.setContentType("text/plain");
+            response.setHeader("Content-Disposition","attachment;filename=Respaldo.sql");
+            
+            ServletOutputStream sos = response.getOutputStream ();
+            FileInputStream fis = new FileInputStream (file);
+            buffer = new byte [1024];
+            
+            while (fis.read(buffer) > 0){
+                sos.write(buffer);
+            }
+            
+            sos.close ();
         }catch(IOException ex){
             Logger.getLogger(Respaldo.class.getName()).log(Level.SEVERE,null,ex);
         }

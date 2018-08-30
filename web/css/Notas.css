@@ -22,6 +22,18 @@ head,body{
                 /*text-align: center;*/
                 text-decoration: underline;
             }
+            #Corto{
+                width: 5%;
+                height: 10%;
+                padding:5px 10px;
+                margin: 0px 0;
+                display: inline-block;
+                border: none;               
+                background:none;
+                color: #294c4f;
+                /*text-align: center;*/
+                text-decoration: underline;
+            }
             .titulo{
                 font-family: roboto;
                 text-align: center;
@@ -121,4 +133,15 @@ head,body{
                font-size: 20px;
                border-radius: 5px;
                cursor:pointer;
+            }
+            .Centro{
+                background:  #d81f1f;
+                margin-left:10%; 
+                width: 80%;
+                height:100%; 
+            }
+            #Boton1{
+                border:none;
+                width: 10%;
+                height: 15px;
             }

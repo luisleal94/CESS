@@ -5,10 +5,8 @@
  */
 package servlet;
 
-import Controlador.Consulta;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class ActualizaPer extends HttpServlet {
+public class EditarHis extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,41 +30,13 @@ public class ActualizaPer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        String nombre,apellido,tele,cedula,user,especialidad,Gerarquia,Id;
-        nombre=request.getParameter("nombre");//Obtengo el parametro del texbox
-        apellido=request.getParameter("apellido");           
-        tele=request.getParameter("tele");
-        cedula=request.getParameter("cedula");
-        user=request.getParameter("username");
-        especialidad=request.getParameter("especialidad");
-        Gerarquia=request.getParameter("gerar");
-        Id=request.getParameter("Id");
-        Consulta co= new Consulta();
         
-        if(co.ActualizaPersonal(nombre, apellido, tele, cedula, user, especialidad, Gerarquia, Id)){
-            out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-            out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-            out.println("<script>");
-            out.println("$(document).ready(function(){");
-            out.println("swal ('Correcto','Actualización exitosa','success')");
-            out.println("});");
-            out.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("MostrarPersonal.jsp");
-            rd.include(request, response);
-        }else{
-            out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
-            out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
-            out.println("<script>");
-            out.println("$(document).ready(function(){");
-            out.println("swal ('Correcto','Error en la actualización','error')");
-            out.println("});");
-            out.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("MostrarPersonal.jsp");
-            rd.include(request, response);
-        }
-        
+        String id=request.getParameter("id");
+        String Genero=request.getParameter("Genero");
+        request.setAttribute("id",id);
+        request.setAttribute("Genero",Genero);
+        request.getRequestDispatcher("ActualizaHis.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -48,15 +48,16 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
-        <script type="text/javascript" src="js/radios.js"></script> 
+        <script type="text/javascript" src="js/radios.js"></script>
+        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/highcharts.js"></script>
+	<script type="text/javascript" src="js/exporting.js"></script>  
         <script type="text/javascript" src="js/NoBack.js"></script>
         <script type="text/javascript" src="js/Confirmacion.js"></script>
         <script type="text/javascript" src="js/Validacion.js"></script>
         <script type="text/javascript" src="js/ValidaForm.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="http://code.highcharts.com/highcharts.js"></script>
-        <script src="http://code.highcharts.com/modules/exporting.js"></script>
         <script>
             $( function() {
               var availableTags = new Array();
@@ -90,7 +91,7 @@
             var array4=[];
             var dias=[]; 
             var sis=[];
-            var x=0;
+            var x=0,chart,char2;
             var fechas=[];
             function getFormData(){
                 var i=0;
@@ -106,10 +107,18 @@
                     fechas.push(this.value);
                     i++;
                 });
-                $('#grafica').highcharts({
+                /*$('#grafica').highcharts({
                   title:{
                   text:'Grafica de Peso corporal'
-                },
+                }*/
+                chart = new Highcharts.Chart({
+                chart: {
+		renderTo: 'grafica',
+                defaultSeriesType: 'line'
+		},
+		title: {
+                    text: 'Grafica de Peso Corporal'
+		},
                 xAxis:{
                   categories:fechas
                 },
@@ -147,10 +156,15 @@
                     fechas.push(this.value);
                     i++;
                 });
-                $('#PresionArte').highcharts({
-                  title:{
-                  text:'Grafica de Presion Arterial'
-                },
+                
+                char2=new Highcharts.Chart({
+                chart: {
+                    renderTo: 'PresionArte',
+                    defaultSeriesType: 'line'
+		},
+                title: {
+                    text: 'Grafica de Presión Arterial'
+		},
                 xAxis:{
                   categories:fechas
                 },

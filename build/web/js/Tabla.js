@@ -7,7 +7,7 @@ function addRow() {
   var row = table.insertRow(rowCount);
 
   row.insertCell(0).innerHTML= '<input type="button" value = " X " onClick="Javacsript:deleteRow(this)">';
-  row.insertCell(1).innerHTML= '<input class="BotonTa" type="text" id=idQ'+rowCount+'1 name=idQ'+rowCount+'1 >'; //myName.value;
+  row.insertCell(1).innerHTML= '<input class="BotonTa" placeholder="DD/MM/AA" type="text" id=idQ'+rowCount+'1 name=idQ'+rowCount+'1 >'; //myName.value;
   row.insertCell(2).innerHTML= '<input class="BotonTa" type="text" id=idQ'+rowCount+'2 name=idQ'+rowCount+'2 >';
   row.insertCell(3).innerHTML= '<input class="BotonTa" type="text" id=idQ'+rowCount+'3 name=idQ'+rowCount+'3 >';
   document.getElementById("Valor").value=rowCount;
@@ -22,7 +22,7 @@ function addRow2() {
   var row = table.insertRow(rowCount);
 
   row.insertCell(0).innerHTML= '<input type="button" value = " X " onClick="Javacsript:deleteRow2(this)">';
-  row.insertCell(1).innerHTML= '<input class="BotonTa" type="text" id=idA'+rowCount+'1 name=idA'+rowCount+'1 >'; //myName.value;
+  row.insertCell(1).innerHTML= '<input class="BotonTa" placeholder="DD/MM/AA" type="text" id=idA'+rowCount+'1 name=idA'+rowCount+'1 >'; //myName.value;
   row.insertCell(2).innerHTML= '<input class="BotonTa" type="text" id=idA'+rowCount+'2 name=idA'+rowCount+'2 >';
   document.getElementById("Valor2").value=rowCount;
 }

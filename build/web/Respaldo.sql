@@ -39,7 +39,7 @@ CREATE TABLE `AbuelaMa` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHe1` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `AbuelaMa` (
 
 LOCK TABLES `AbuelaMa` WRITE;
 /*!40000 ALTER TABLE `AbuelaMa` DISABLE KEYS */;
-INSERT INTO `AbuelaMa` VALUES (14,'Vive',NULL,NULL,'Neoplasia',NULL,'TBP','Cardiopatias','Alergias',NULL,NULL,'Cancer',11);
+INSERT INTO `AbuelaMa` VALUES (14,'on',NULL,'on',NULL,'on','on',NULL,NULL,'on',NULL,'on',11),(15,'Vive',NULL,NULL,'Neoplasia',NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',13),(16,NULL,'DM',NULL,'Neoplasia',NULL,NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',16),(17,'Vive','DM','HTA',NULL,NULL,NULL,NULL,'Alergias',NULL,'Toxicomanias',NULL,17),(18,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,NULL,'Cancer',18),(19,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,NULL,NULL,19),(20,NULL,'DM',NULL,NULL,'Obesidad',NULL,NULL,NULL,NULL,'Toxicomanias',NULL,20),(21,'Vive',NULL,NULL,NULL,NULL,'TBP',NULL,'Alergias',NULL,'Toxicomanias',NULL,21),(22,'Vive','DM',NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones',NULL,NULL,22),(23,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',29),(24,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,'Toxicomanias',NULL,30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `AbuelaMa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,7 +76,7 @@ CREATE TABLE `AbuelaPa` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo2` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `AbuelaPa` (
 
 LOCK TABLES `AbuelaPa` WRITE;
 /*!40000 ALTER TABLE `AbuelaPa` DISABLE KEYS */;
-INSERT INTO `AbuelaPa` VALUES (14,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,'Cardiopatias',NULL,'Mal formaciones','Toxicomanias','Cancer',11);
+INSERT INTO `AbuelaPa` VALUES (14,'on',NULL,NULL,NULL,'on',NULL,NULL,'on','on','on',NULL,11),(15,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,'Cardiopatias',NULL,'Mal formaciones','Toxicomanias','Cancer',13),(16,NULL,'DM','HTA',NULL,NULL,'TBP',NULL,NULL,NULL,'Toxicomanias',NULL,16),(17,NULL,'DM',NULL,'Neoplasia',NULL,NULL,'Cardiopatias',NULL,NULL,'Toxicomanias','Cancer',17),(18,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,'Cardiopatias',NULL,'Mal formaciones','Toxicomanias',NULL,18),(19,'Vive','DM',NULL,NULL,'Obesidad',NULL,'Cardiopatias',NULL,'Mal formaciones','Toxicomanias','Cancer',19),(20,'Vive',NULL,NULL,NULL,'Obesidad',NULL,'Cardiopatias',NULL,NULL,'Toxicomanias',NULL,20),(21,NULL,'DM',NULL,NULL,'Obesidad',NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',21),(22,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones',NULL,NULL,22),(23,NULL,'DM',NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',29),(24,NULL,'DM',NULL,NULL,NULL,NULL,'Cardiopatias',NULL,NULL,'Toxicomanias',NULL,30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `AbuelaPa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +113,7 @@ CREATE TABLE `AbueloMa` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo3` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `AbueloMa` (
 
 LOCK TABLES `AbueloMa` WRITE;
 /*!40000 ALTER TABLE `AbueloMa` DISABLE KEYS */;
-INSERT INTO `AbueloMa` VALUES (14,NULL,'DM',NULL,NULL,'Obesidad','TBP',NULL,'Alergias',NULL,'Toxicomanias','Cancer',11);
+INSERT INTO `AbueloMa` VALUES (14,NULL,'on',NULL,'on',NULL,'on',NULL,'on',NULL,'on','on',11),(15,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',13),(16,NULL,NULL,'HTA','Neoplasia','Obesidad',NULL,'CardiopatÃ­as',NULL,NULL,'Toxicomanias',NULL,16),(17,'Vive','DM',NULL,NULL,'Obesidad','TBP',NULL,'Alergias','Mal formaciones',NULL,'Cancer',17),(18,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,NULL,'Cancer',18),(19,NULL,'DM',NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',19),(20,'Vive','DM',NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',20),(21,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,'CardiopatÃ­as',NULL,'Mal formaciones',NULL,'Cancer',21),(22,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',22),(23,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,'Alergias',NULL,'Toxicomanias',NULL,29),(24,NULL,NULL,'HTA',NULL,NULL,NULL,'Cardiopatías',NULL,NULL,NULL,'Cancer',30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `AbueloMa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +150,7 @@ CREATE TABLE `AbueloPa` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo4` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `AbueloPa` (
 
 LOCK TABLES `AbueloPa` WRITE;
 /*!40000 ALTER TABLE `AbueloPa` DISABLE KEYS */;
-INSERT INTO `AbueloPa` VALUES (14,'Vive',NULL,'HTA',NULL,'Obesidad',NULL,'Cardiopatias',NULL,NULL,'Toxicomanias','Cancer',11);
+INSERT INTO `AbueloPa` VALUES (14,'on',NULL,NULL,'on',NULL,'on',NULL,'on',NULL,'on',NULL,11),(15,'Vive','DM',NULL,'Neoplasia',NULL,'TBP',NULL,'Alergias',NULL,'Toxicomanias','Cancer',13),(16,'Vive',NULL,'HTA','Neoplasia','Obesidad','TBP','Cardiopatias','Alergias','Mal formaciones',NULL,NULL,16),(17,'Vive',NULL,'HTA',NULL,NULL,NULL,'Cardiopatias',NULL,'Mal formaciones','Toxicomanias',NULL,17),(18,'Vive',NULL,'HTA',NULL,'Obesidad',NULL,'Cardiopatias','Alergias','Mal formaciones',NULL,'Cancer',18),(19,'Vive',NULL,'HTA',NULL,'Obesidad',NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',19),(20,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,NULL,'Cancer',20),(21,'Vive','DM',NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',21),(22,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',22),(23,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',29),(24,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,'Alergias',NULL,NULL,'Cancer',30),(25,'on','on','on','on','on','on','on','on','on','on','on',32);
 /*!40000 ALTER TABLE `AbueloPa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,6 +191,30 @@ LOCK TABLES `Alergias` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `CIE10`
+--
+
+DROP TABLE IF EXISTS `CIE10`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CIE10` (
+  `ID` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `Diagnostico` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Grupo` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CIE10`
+--
+
+LOCK TABLES `CIE10` WRITE;
+/*!40000 ALTER TABLE `CIE10` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CIE10` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Cirujias`
 --
 
@@ -206,7 +230,7 @@ CREATE TABLE `Cirujias` (
   PRIMARY KEY (`idCirujias`),
   KEY `IdPacQ_idx` (`IdPaciente`),
   CONSTRAINT `IdPacQ` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,6 +239,7 @@ CREATE TABLE `Cirujias` (
 
 LOCK TABLES `Cirujias` WRITE;
 /*!40000 ALTER TABLE `Cirujias` DISABLE KEYS */;
+INSERT INTO `Cirujias` VALUES (1,'12/12/2002','APENDICITIS','cirujia interna',13),(2,'25/02/2002','apendice','cirujia interna',21),(3,'24/12/20','Apendice','Cirujia interna',32),(4,'02/02/2002','apendice','apendicectomÃ­a',11);
 /*!40000 ALTER TABLE `Cirujias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,10 +269,8 @@ CREATE TABLE `Consulta` (
   `Especialidad` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `IdPaciente` int(11) NOT NULL,
   `IdMedico` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idConsulta`),
-  KEY `PacienteCons_idx` (`IdPaciente`),
-  CONSTRAINT `PacienteCons` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  PRIMARY KEY (`idConsulta`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +279,7 @@ CREATE TABLE `Consulta` (
 
 LOCK TABLES `Consulta` WRITE;
 /*!40000 ALTER TABLE `Consulta` DISABLE KEYS */;
-INSERT INTO `Consulta` VALUES (21,'2018-08-03','Ematomas en la piel','Dolores abdominales y del brazo derecho','Colera no especificado','No','Ninguno','Ninguno','Domir 8 horas y beber 2 litros de agua al dia','Concepcion Leal Silva',65.5,'Poblacion Abierta','Lucero cedillo Lopez','Programada','458qw','Medico General',11,25),(22,'2018-08-03','Ronchas en la piel','Dolores estomacales y palpitaciones en el ojo','Fiebre paratifoidea a','No','Ninguno','Ninguno','Reposo absoluto por tres dias','Luis Francisco lopez',20,'Estudiante','Lucero cedillo Lopez','Programada','1245as','Medico General',11,22);
+INSERT INTO `Consulta` VALUES (54,'2018-08-19','Ojos irritados y exploracion nasal','Fiebre alta y dolores abdominales','Fiebre paratifoidea c','No','Ninguno','Ninguno','Beber 3 litros de agua al dia, no explonerse al sol y no realizar ejercicios ','karina  Utrera Gomez',120,'SETSUV','Amayrani Hernandez Sampiery','Urgencia','as12457','Medicina Plastica',13,23),(55,'2018-08-19','Fiebre alta ','Hematoma en la pierna izquierda','Colera debido a vibrio cholerae o1, biotipo cholerae','No','Ninguno','Ninguno','Dormir y evitar exponerse al sol','Sergio Bolivar Huerta',65.5,'Estudiante','Lucero cedillo Lopez','Programada','qs4512','Medico General',11,31),(56,'2018-08-20','dfsdkfjskjdhf','alksfjdlskjflksd','Amebiasis, no especificada','Si','copro','Ninguno','desperacitaciÃ³n y no comer picante, lacteos, y carnes rojas durante el tratamiento.','Gonzalo Sosa Malaga',120,'Estudiante','alberto Jimenez Espindola','Programada','q1234569','Urologo',16,32),(57,'2018-08-20','Ronchas en la piel, especificamente en los brazos y cuellos','Dolores de cabeza y fiebre alta','Fiebre por mordedura de rata','Si','Analisis de sangre RMX','Ninguno','No exponerse al sol y evitar ejercicios intensos','karina  Utrera Gomez',65.5,'Poblacion Abierta','Eduardo Jovany Rosas  Leal','Espontanea','qs4512','Cirugia Plastica',17,23),(58,'2018-08-21','Extremidades con salpullido ','Dolor de cabeza e irritacion en los ojos','Herpes zoster con otros compromisos del sistema nervioso','Si','Ninguno','Placas costado RTH y MGJ','Reposar por dos dias en casa sin salir a exposicion del sol','Jose Luis  Rosas Leal',65.5,'Poblacion Abierta','Cristian Gimenez Mendez','Urgencia','qs4512','Medico General',18,24),(59,'2018-08-21','Ojos irritados','Fiebre alta','Fiebre por mordedura de rata','No','Ninguno','Ninguno','Evitar contacto con personas y no estar en lugares frios ','Joel Hernandez Pacheco',24,'FESAPAUV','Karen Matinez Santiago','Programada','zs1202','Medicina Familiar',19,28),(60,'2018-08-21','Ojos irritados ','Dolores de cabeza','Colera debido a vibrio cholerae o1, biotipo cholerae','No','Ninguno','Ninguno','No exponerse al sol','eduardo barron vega',98,'Poblacion Abierta','Kairane Leal Godinez','Espontanea','qs4512','traumatologia',20,29),(61,'2018-08-21','Tos con flemas y pecho congestionado ','Dolores de cabeza y taquicardia ','Fiebre paratifoidea, no especificada','Si','Ninguno','Ultrasonido en el abdomen ','No exponerse al sol y evitar realizar trabajos forzosos ','zaira eunice montes osorio',60.5,'Poblacion Abierta','Lucero Cedillo Lopez','Urgencia','az1245','gastroenterologa',21,30),(62,'2018-08-21','Diarrea y vomito abundante','Dolores estomacales e inflamacion','Fiebre paratifoidea c','Si','Analisis de RTH y de Euclajoma','Ninguno','Beber mucha agua y no comer irritantes','karina  Utrera Gomez',250,'FESAPAUV','Lucero Cedillo Lopez','Programada','qs4512','Cirugia Plastica',11,23),(63,'2018-08-22','Pecho congestionado y fiebre alta ','Dolores de cabeza agudos','Herpes zoster diseminado','No','Ninguno','Ninguno','Reposar en casa durante 3 dias sin evitar exponerse al sol.','karina  Utrera Gomez',33.5,'Estudiante','Lucero Cedillo Lopez','Programada','As201822','Cirugia Plastica',11,23),(64,'2018-08-22','Dolores de cabeza agudos ','Fiebre alta y escurrimiento nasal','Fiebre por mordedura de rata','No','Ninguno','Ninguno','Estar en cama durante 3 dias','Gonzalo Sosa Malaga',36,'FESAPAUV','Javier Mendez Campos','Espontanea','zs1202','Urologo',22,32),(65,'2018-08-22','Ojos irritados y pecho congestionado ','Dolores de cabeza agúdos ','Fiebre por mordedura de rata, no especificada','No','Ninguno','Ninguno','Beber mucha agua, no exponerse al sol ','karina  Utrera Gomez',33.5,'Poblacion Abierta','Luis Francisco Medina Cortéz','Espontanea','zs1202','Cirugia Plastica',29,23),(66,'2018-08-22','El brazo derecho  esta ligeramente desplazado del musculo esquícialo ','Diarrea con dilatación de instestinos','Herpes zoster con otros compromisos del sistema nervioso','Si','Ninguno','Rayos DTH y Ultrasonido tipo A+','Evitar realizar ejercicios con demasiado peso','Sergio Bolivar Huerta',84,'Poblacion Abierta','Alberto Silva Castañeda','Programada','as11205','Medico General',30,31),(67,'2018-08-23','anginas inflamadas','presenta problemas respiratorios','Amigdalitis aguda','Si','exudado faringeo','Rx torax','evitar comer irritantes.','Gonzalo Sosa Malaga',150,'Estudiante','Rubén Elvira Covarrubias','Programada','Q1234567','Urologo',32,32),(68,'2018-08-28','Ojos irritados y ronchas en la mejilla','Dolores de cabeza y estomacales','Fiebre por mordedura de rata','No','Ninguno','Ninguno','Tomar agua y no exponerse al sol','karina  Utrera Gomez',35,'Estudiante','Lucero Cedillo Lopez','Programada','qs0212','Cirugia Plastica',11,23);
 /*!40000 ALTER TABLE `Consulta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,13 +298,15 @@ CREATE TABLE `ExploracionF` (
   `FrecuenciaC` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `FrecuenciaR` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
   `Temperatura` float DEFAULT NULL,
-  `PresionArterial` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Diastolica` float DEFAULT NULL,
+  `Asistolica` float DEFAULT NULL,
   `Fecha` date DEFAULT NULL,
   `IdPaciente` int(11) NOT NULL,
+  `IdMedico` int(11) DEFAULT NULL,
   PRIMARY KEY (`idExploracionF`),
   KEY `Paciente1_idx` (`IdPaciente`),
   CONSTRAINT `Paciente1` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +315,7 @@ CREATE TABLE `ExploracionF` (
 
 LOCK TABLES `ExploracionF` WRITE;
 /*!40000 ALTER TABLE `ExploracionF` DISABLE KEYS */;
-INSERT INTO `ExploracionF` VALUES (18,72.5,168,25.69,'120/120','120/80',36.5,'120/180','2018-08-03',11),(19,68.5,170,23.7,'120/120','120/80',36.5,'120/180','2018-08-03',11);
+INSERT INTO `ExploracionF` VALUES (55,68.5,177,21.86,'120/120','120/80',36.5,119,79,'2018-08-19',13,23),(56,77.5,170,26.82,'120/120','120/80',36.5,140,90,'2018-08-19',11,31),(57,85,170,29.41,'40','60',36.5,110,70,'2018-08-20',16,32),(58,68.54,173,22.9,'70','80',36.5,120,90,'2018-08-20',17,23),(59,72.5,170,25.09,'120','80',36.5,90,120,'2018-08-21',18,24),(60,65.5,165,24.06,'60','80',36.5,120,78,'2018-08-21',19,28),(61,72,168,25.51,'80','90',36.5,120,90,'2018-08-21',20,29),(62,70.8,172,23.93,'80','60',36.5,90,80,'2018-08-21',21,30),(63,70.2,170,24.29,'60','80',37.5,120,80,'2018-08-21',11,23),(64,71.5,170,24.74,'80','60',37.2,90,80,'2018-08-22',11,23),(65,65.8,166,23.88,'60','80',37.5,79,120,'2018-08-22',22,32),(66,72,168,25.51,'80','60',37,118,70,'2018-08-22',29,23),(67,70,178,22.09,'60','80',36.5,119,80,'2018-08-22',30,31),(68,80,190,22.16,'60','40',36,120,80,'2018-08-23',32,32),(69,65.5,170,22.66,'60','80',36.5,135,80,'2018-08-28',11,23);
 /*!40000 ALTER TABLE `ExploracionF` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,7 +337,7 @@ CREATE TABLE `Ginecologo` (
   PRIMARY KEY (`idGinecologo`),
   KEY `Paciente7_idx` (`IdPaciente`),
   CONSTRAINT `Paciente7` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +346,7 @@ CREATE TABLE `Ginecologo` (
 
 LOCK TABLES `Ginecologo` WRITE;
 /*!40000 ALTER TABLE `Ginecologo` DISABLE KEYS */;
-INSERT INTO `Ginecologo` VALUES (5,'si','5 dias ','si','si, en ocaciones','Si',11);
+INSERT INTO `Ginecologo` VALUES (5,'si','5 dias ','si','si, en ocaciones','No',11),(6,'si','5 dias','severa','si, en ocaciones','No',13),(7,'si','5 dias','aguda','si, en ocaciones','Si',19),(8,'si, a los 5','cada tres dias','Severa','si, en ocaciones','No',20);
 /*!40000 ALTER TABLE `Ginecologo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -349,7 +374,7 @@ CREATE TABLE `Hermanos` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo5` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,7 +383,7 @@ CREATE TABLE `Hermanos` (
 
 LOCK TABLES `Hermanos` WRITE;
 /*!40000 ALTER TABLE `Hermanos` DISABLE KEYS */;
-INSERT INTO `Hermanos` VALUES (14,'Vive','DM',NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',11);
+INSERT INTO `Hermanos` VALUES (14,'on',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'on','on','on',11),(15,'Vive','DM','HTA','Neoplasia',NULL,NULL,'Cardiopatias',NULL,NULL,'Toxicomanias','Cancer',13),(16,NULL,NULL,NULL,'Neoplasia',NULL,'TBP',NULL,NULL,NULL,NULL,'Cancer',16),(17,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones','Toxicomanias','Cancer',17),(18,'Vive',NULL,NULL,NULL,NULL,NULL,'Cardiopatias',NULL,NULL,NULL,'Cancer',18),(19,NULL,'DM',NULL,NULL,NULL,NULL,'Cardiopatias',NULL,NULL,NULL,'Cancer',19),(20,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,'Toxicomanias',NULL,20),(21,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,NULL,NULL,NULL,21),(22,'Vive',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',22),(23,'Vive',NULL,NULL,NULL,NULL,NULL,'Cardiopatias',NULL,'Mal formaciones',NULL,'Cancer',29),(24,'Vive',NULL,NULL,NULL,NULL,'TBP',NULL,'Alergias',NULL,NULL,'Cancer',30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `Hermanos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +404,7 @@ CREATE TABLE `Inmune` (
   PRIMARY KEY (`idInmune`),
   KEY `IdPaciente_idx` (`idPaciente`),
   CONSTRAINT `IdPaci` FOREIGN KEY (`idPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -388,7 +413,7 @@ CREATE TABLE `Inmune` (
 
 LOCK TABLES `Inmune` WRITE;
 /*!40000 ALTER TABLE `Inmune` DISABLE KEYS */;
-INSERT INTO `Inmune` VALUES (14,'02/02/1995','15/02/1987','12/03/2002','12/12/1994',11);
+INSERT INTO `Inmune` VALUES (14,'01/08/2013','No','No','No',11),(15,'25/02/1995','No','10/05/1998','No',13),(16,'No','No','No','No',16),(17,'No','No','No','No',17),(18,'02/02/1995','No','No','No',18),(19,'No','No','No','No',19),(20,'02/02/1995','26/01/1952','No','No',20),(21,'No','No','No','No',21),(22,'02/02/1995','15/02/1987','12/03/2002','No',22),(23,'No','No','12/03/2002','No',29),(24,'No','No','No','No',30),(25,'10/05/2001','19/04/2005','10/08/2018','23/05/2018',32);
 /*!40000 ALTER TABLE `Inmune` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -416,7 +441,7 @@ CREATE TABLE `Madre` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo6` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -425,7 +450,7 @@ CREATE TABLE `Madre` (
 
 LOCK TABLES `Madre` WRITE;
 /*!40000 ALTER TABLE `Madre` DISABLE KEYS */;
-INSERT INTO `Madre` VALUES (14,'Vive',NULL,NULL,'Neoplasia',NULL,'TBP',NULL,NULL,'Mal formaciones','Toxicomanias','Cancer',11);
+INSERT INTO `Madre` VALUES (14,'on',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'on',11),(15,'Vive','DM','HTA',NULL,NULL,'TBP','Cardiopatias','Alergias',NULL,'Toxicomanias','Cancer',13),(16,'Vive',NULL,NULL,NULL,'Obesidad','TBP',NULL,'Alergias',NULL,NULL,NULL,16),(17,'Vive','DM',NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones','Toxicomanias','Cancer',17),(18,'Vive',NULL,NULL,NULL,'Obesidad',NULL,'Cardiopatias',NULL,'Mal formaciones','Toxicomanias',NULL,18),(19,NULL,NULL,NULL,'Neoplasia',NULL,NULL,NULL,NULL,'Mal formaciones',NULL,NULL,19),(20,'Vive',NULL,NULL,NULL,NULL,NULL,'Cardiopatias',NULL,NULL,'Toxicomanias',NULL,20),(21,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',21),(22,'Vive',NULL,NULL,NULL,NULL,NULL,NULL,'Alergias',NULL,NULL,NULL,22),(23,NULL,'DM',NULL,NULL,NULL,NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',29),(24,'Vive',NULL,NULL,NULL,NULL,NULL,'Cardiopatias',NULL,NULL,'Toxicomanias',NULL,30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `Madre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,7 +475,7 @@ CREATE TABLE `NoPatologicos` (
   PRIMARY KEY (`idNoPatologicos`),
   KEY `IdPaciente_idx` (`idPaciente`),
   CONSTRAINT `IdPaciente` FOREIGN KEY (`idPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -459,7 +484,7 @@ CREATE TABLE `NoPatologicos` (
 
 LOCK TABLES `NoPatologicos` WRITE;
 /*!40000 ALTER TABLE `NoPatologicos` DISABLE KEYS */;
-INSERT INTO `NoPatologicos` VALUES (14,7,3,7,4,5,6,7,7,11);
+INSERT INTO `NoPatologicos` VALUES (14,7,3,7,7,7,7,5,7,11),(15,7,2,2,4,5,6,7,7,13),(16,7,3,7,7,7,7,7,7,16),(17,7,1,7,7,5,7,6,2,17),(18,7,2,7,7,7,7,7,7,18),(19,4,1,7,4,5,7,6,7,19),(20,7,2,7,7,7,7,7,7,20),(21,7,2,7,7,5,6,4,7,21),(22,7,3,7,7,7,7,7,7,22),(23,7,2,7,7,7,7,7,7,29),(24,7,3,7,7,7,7,7,7,30),(25,7,3,7,7,7,7,7,7,32);
 /*!40000 ALTER TABLE `NoPatologicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,7 +506,7 @@ CREATE TABLE `PERSONAL` (
   `Username` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `Especialidad` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`ID_USER`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -490,7 +515,7 @@ CREATE TABLE `PERSONAL` (
 
 LOCK TABLES `PERSONAL` WRITE;
 /*!40000 ALTER TABLE `PERSONAL` DISABLE KEYS */;
-INSERT INTO `PERSONAL` VALUES (21,'Joel','Hermida Torres','21232f297a57a5a743894a0e4a801fc3','9398958','Admin','12021175','JHER','Medico General'),(22,'Luis Francisco','lopez','81dc9bdb52d04dc20036dbd8313ed055','9398958','Super','7897897897','LUISF','Medico General'),(23,'karina ','Utrera Gomez','21232f297a57a5a743894a0e4a801fc3','2292190703','usuario','124578969','KARINA94','Medicina Plastica'),(24,'Jose Luis ','Rosas Leal','21232f297a57a5a743894a0e4a801fc3','2299113949','usuario','124578965','LUISLEAL','Medico General'),(25,'Concepcion','Leal Silva','1896a3bf730516dd643ba67b4c447d36','9398958','usuario','7897897897','CONLS','Medico General'),(27,'Jose Manuel','Cartas Sanchez','caf1a3dfb505ffed0d024130f58c5cfa','2291437312','Admin','12021175','MCARTAS','Medico General');
+INSERT INTO `PERSONAL` VALUES (21,'Joel','Hermida Torres','21232f297a57a5a743894a0e4a801fc3','9398958','usuario','12021175','JHER','Medico General'),(22,'Luis Francisco','lopez','81dc9bdb52d04dc20036dbd8313ed055','9398958','Super','7897897897','LUISF','Medico General'),(23,'karina ','Utrera Gomez','21232f297a57a5a743894a0e4a801fc3','2292190703','usuario','124578969','KARINA94','Cirugia Plastica'),(24,'Jose Luis ','Rosas Leal','1896a3bf730516dd643ba67b4c447d36','2299113949','Admin','124578965','LUISLEAL','Medico General'),(25,'Concepcion','Leal Silva','1896a3bf730516dd643ba67b4c447d36','9398958','usuario','7897897897','CONLS','Medico General'),(27,'Jose Manuel','Cartas Sanchez','21232f297a57a5a743894a0e4a801fc3','2291437312','Admin','12021175','MCARTAS','Medico General'),(28,'Joel','Hernandez Pacheco','81dc9bdb52d04dc20036dbd8313ed055','2291145812','usuario','1008717','JHERNANDEZ','Medicina Familiar'),(29,'eduardo','barron vega','21232f297a57a5a743894a0e4a801fc3','2299112233','usuario','001122334','EBARRO','traumatologia'),(30,'zaira eunice','montes osorio','21232f297a57a5a743894a0e4a801fc3','1122334455','usuario','01245687','ZMONTES','gastroenterología'),(31,'Sergio','Bolivar Huerta','21232f297a57a5a743894a0e4a801fc3','1558458','usuario','12021175','SERGIOBO ','Medico General'),(32,'Gonzalo','Sosa Malaga','81dc9bdb52d04dc20036dbd8313ed055','2741234567','usuario','157389','GSOSA','Urologo'),(33,'Alberto ','Villamil Cruz','81dc9bdb52d04dc20036dbd8313ed055','1234567890','usuario','148695','AVILLAMIL','Cardiología'),(34,'jorge alberto','Ochoa Armenta','202cb962ac59075b964b07152d234b70','2747432114','usuario','1548726','JOCHOA','Medico General');
 /*!40000 ALTER TABLE `PERSONAL` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -507,16 +532,18 @@ CREATE TABLE `Pacientes` (
   `Nombre` varchar(45) CHARACTER SET utf8 NOT NULL,
   `Apellido_P` varchar(45) CHARACTER SET utf8 NOT NULL,
   `Apellido_M` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `Edad` int(11) NOT NULL,
+  `Anio` int(11) NOT NULL,
+  `Mes` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `Dia` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(20) CHARACTER SET utf8 NOT NULL,
   `Ocupacion` varchar(45) CHARACTER SET utf8 NOT NULL,
   `EstadoC` varchar(45) CHARACTER SET utf8 NOT NULL,
-  `Domicilio` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `Domicilio` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Curp` varchar(45) CHARACTER SET utf8 NOT NULL,
   `Genero` varchar(45) CHARACTER SET utf8 NOT NULL,
   `Historial` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idPacientes`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,7 +552,7 @@ CREATE TABLE `Pacientes` (
 
 LOCK TABLES `Pacientes` WRITE;
 /*!40000 ALTER TABLE `Pacientes` DISABLE KEYS */;
-INSERT INTO `Pacientes` VALUES (11,'2018-8-3','Lucero','cedillo','Lopez',25,'2868470','Maestro en Redes y Telecomunicaciones','Casado','And. Dr. Vicente F. Melo # 27','CASM791022HVZRNN08','Femenino','0');
+INSERT INTO `Pacientes` VALUES (11,'2018-8-3','Lucero','Cedillo','Lopez',1994,'05','24','2292868470','Maestro en Redes y Telecomunicaciones','Casado','And. Dr. Vicente F. Melo # 27','CASM791022HVZRNN08','Femenino','1'),(13,'2018-8-7','Amayrani','Hernandez','Sampiery',1992,'09','16','2291437312','Estudiante','Soltero','And. Dr. Vicente F. Melo # 27','AM125SAMP785','Femenino','1'),(16,'2018-8-20','alberto','Jimenez','Espindola',1980,'12','01','1234567890','albaÃ±il','Union Libre','Calle Adalberto Tejeda # 10','JIEA830815HVZMSL03','Masculino','1'),(17,'2018-8-20','Eduardo Jovany','Rosas ','Leal',2002,'11','24','2291437312','Estudiante','Soltero','Fraccionamiento Costa Verde No. 316','ROLL940909HVZSLS01','Masculino','1'),(18,'2018-8-21','Cristian','Gimenez','Mendez',1997,'13','03','2291437312','Maestro en Redes y Telecomunicaciones','Soltero','Calle Adalberto Tejeda # 10','CASM791022HVZRNN55','Masculino','1'),(19,'2018-8-21','Karen','Matinez','Santiago',1999,'05','03','2299131909','Maestro en Redes y Telecomunicaciones','Union Libre','Avenida JB Lobos, Unidad Habitacional, el coyol','JIEA830815HVZMSL05','Femenino','1'),(20,'2018-8-21','Kairane','Leal','Godinez',1980,'12','08','2291437314','Estudiante','Soltero','Fraccionamiento Costa Verde No. 316','ROLL940909HVZSLS12','Femenino','1'),(21,'2018-8-21','Lucero','Cedillo','Lopez',2005,'9','9','2291437312','Maestro en Redes y Telecomunicaciones','Soltero','And. Dr. Vicente F. Melo # 27','CASM791022HVZRNN01','Masculino','1'),(22,'2018-8-22','Javier','Mendez','Campos',1970,'12','8','2292264486','Capitan de Navio','Soltero','Avenida JB Lobos, Unidad Habitacional, el coyol','ROLL940909HVZSLS00','Masculino','1'),(29,'2018-8-22','Luis Francisco','Medina','Cortez',1992,'8','15','2291437312','Estudiante','Soltero','And. Dr. Vicente F. Melo # 27','CASM791022HVZRNN00','Masculino','1'),(30,'2018-8-22','Alberto','Silva','Castañeda',2002,'1','10','2291437312','Maestro en Redes y Telecomunicaciones','Soltero','And. Dr. Vicente F. Melo # 27','KEN940303HVZSLS12','Masculino','1'),(32,'2018-8-23','Rubén','Elvira','Covarrubias',1990,'9','24','1234567890','Albañil','Casado','lerdo de tejada # 1102','ELCR900824HVZVVB01','Masculino','1');
 /*!40000 ALTER TABLE `Pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -553,7 +580,7 @@ CREATE TABLE `Padre` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo7` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -562,7 +589,7 @@ CREATE TABLE `Padre` (
 
 LOCK TABLES `Padre` WRITE;
 /*!40000 ALTER TABLE `Padre` DISABLE KEYS */;
-INSERT INTO `Padre` VALUES (14,'Vive','DM',NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones','Toxicomanias','Cancer',11);
+INSERT INTO `Padre` VALUES (14,'on','on',NULL,'on','on',NULL,'on',NULL,'on',NULL,NULL,11),(15,'Vive',NULL,'HTA',NULL,NULL,'TBP','CardiopatÃ­as',NULL,'Mal formaciones','Toxicomanias','Cancer',13),(16,NULL,NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,NULL,NULL,NULL,16),(17,'Vive',NULL,NULL,NULL,NULL,'TBP',NULL,NULL,NULL,NULL,'Cancer',17),(18,'Vive',NULL,NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',18),(19,NULL,NULL,NULL,'Neoplasia',NULL,NULL,NULL,NULL,'Mal formaciones',NULL,NULL,19),(20,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,NULL,'Alergias',NULL,'Toxicomanias','Cancer',20),(21,'Vive',NULL,NULL,NULL,NULL,NULL,'CardiopatÃ­as',NULL,NULL,'Toxicomanias',NULL,21),(22,'Vive',NULL,NULL,NULL,NULL,'TBP',NULL,NULL,'Mal formaciones',NULL,'Cancer',22),(23,NULL,'DM',NULL,NULL,'Obesidad',NULL,'Cardiopatías',NULL,NULL,NULL,NULL,29),(24,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `Padre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -585,7 +612,7 @@ CREATE TABLE `Patologicos` (
   PRIMARY KEY (`idPatologicos`),
   KEY `Paciente5_idx` (`IdPaciente`),
   CONSTRAINT `Paciente5` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -594,7 +621,7 @@ CREATE TABLE `Patologicos` (
 
 LOCK TABLES `Patologicos` WRITE;
 /*!40000 ALTER TABLE `Patologicos` DISABLE KEYS */;
-INSERT INTO `Patologicos` VALUES (14,'Negativo','No','No','No','No','Ninguno',11);
+INSERT INTO `Patologicos` VALUES (14,'Negativo','No','No','No','No','Ninguno',11),(15,'Positivo','Si','No','No','Si','Inchazon en la piel por exposicion al sol',13),(16,'Negativo','No','No','No','No','Ninguno',16),(17,'Negativo','No','No','No','No','Ninguno',17),(18,'Negativo','No','No','No','No','Ninguno',18),(19,'Negativo','No','No','Si','No','Ninguno',19),(20,'Negativo','No','No','No','No','Ninguno',20),(21,'Negativo','Si','No','No','No','Ninguno',21),(22,'Positivo','No','No','Si','No','Ninguno',22),(23,'Negativo','No','No','No','No','Ninguno',29),(24,'Negativo','No','No','No','No','Ninguno',30),(25,'Positivo','No','No','No','Si','Ninguno',32);
 /*!40000 ALTER TABLE `Patologicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -622,7 +649,7 @@ CREATE TABLE `Receta` (
   PRIMARY KEY (`idReceta`),
   KEY `IdPacReceta_idx` (`IdPaciente`),
   CONSTRAINT `IdPacReceta` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -631,7 +658,7 @@ CREATE TABLE `Receta` (
 
 LOCK TABLES `Receta` WRITE;
 /*!40000 ALTER TABLE `Receta` DISABLE KEYS */;
-INSERT INTO `Receta` VALUES (30,'Paracetamol','Genolamab','1 caja','oral','tableta','15 tabletas','1 tableta','8 horas','5','2018-08-03',11,25),(31,'Tempra','Similares','2 cajas','oral','capsula','15 capsulas','1 capsula','12 horas','15 ','2018-08-03',11,25),(33,'omeprazon','simi','1 caja','oral','tableta','15','1 pastilla','8 horas','5','2018-08-03',11,21);
+INSERT INTO `Receta` VALUES (70,'Creatina','similares','70 gramos','oral','capsula','70 capsulas','5 gramos','24 horas','15','2018-08-20',16,23),(71,'Cicaplast','Xalxocotl','166.6 mg','oral','tabletas','1 frasco','1 tableta','8 horas','8','2018-08-20',16,23),(72,'Ciprofloxacino','butilescopolamina','70 gramos','oral','capsula','70 capsulas','1 capsula','8 hrs','15','2018-08-21',18,24),(73,'Buscapina fem','Boehringer','20 mg','oral','tabletas','10 ','1 tableta','8 horas','15','2018-08-21',19,28),(74,'Creatina','similares','70 gramos','oral','polvo','1 frasco','5 gramos','24 horas','15','2018-08-21',20,29),(75,'Celecoxib','Avivia Pharma','200 mg','oral','capsula','10 capsulas','2 capsulas ','12 hrs','5','2018-08-21',21,30),(76,'Buscapina fem','Boehringer','400 mg','oral','tableta','10 tabletas','1 tableta','8 horas','8','2018-08-21',21,30),(77,'Treda','Genomalab','10 mg','oral','tabletas','15 tabletas','1 tableta','8 horas','10','2018-08-21',11,23),(78,'Vermox','Phermalife','500 ml','oral','liquida','1 frasco','15 ml','12 horas','15','2018-08-21',11,23),(79,'Eurecin','Ecocin','10 mg','oral','capsula','5 capsulas','1 capsula','12 hrs','15','2018-08-22',11,23),(80,'Creatina','similares','70 gramos','oral','capsula','70 capsulas','5 gramos','24 horas','15','2018-08-22',21,23),(81,'Val Cal','Vanquish','500 mg','oral','Efervecentes','10 pastillas','2 efervecentes ','12 hrs','8','2018-08-22',22,32),(82,'captopril','psidium guajava','200 mg','oral','capsula','15 capsulas','1 capsula','8 horas','15','2018-08-22',29,23),(83,'Creatina','similares','70 gramos','oral','capsula','70 capsulas','5 gramos','24 horas','15','2018-08-22',30,31),(84,'flanax','naproxeno sodico','550 mg','oral','tabletas','12','1 tableta','8 hrs','4','2018-08-23',32,32),(85,'isodine bucofaringeo','iodopovina','120 ml','oral','solucion','1 frasco','hacer gargaras','antes de comer','5 dias','2018-08-23',32,32),(86,'graneodin','benzocaina','10 mg','oral','pastillas','24 ','1 pastilla','molestias','3','2018-08-23',32,32),(87,'captopril','butilescopolamina','70 gramos','oral','capsula','70 capsulas','5 gramos','24 horas','15','2018-08-28',11,23);
 /*!40000 ALTER TABLE `Receta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -663,11 +690,13 @@ CREATE TABLE `Referencia` (
   `Vascular` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Inmuno` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `Fecha` date DEFAULT NULL,
+  `IdMedico` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Otra` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   `IdPaciente` int(11) NOT NULL,
   PRIMARY KEY (`idReferencia`),
   KEY `IdPaRefe_idx` (`IdPaciente`),
   CONSTRAINT `IdPaRefe` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -676,7 +705,7 @@ CREATE TABLE `Referencia` (
 
 LOCK TABLES `Referencia` WRITE;
 /*!40000 ALTER TABLE `Referencia` DISABLE KEYS */;
-INSERT INTO `Referencia` VALUES (9,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-03',11),(10,'1','1','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-03',11);
+INSERT INTO `Referencia` VALUES (46,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','1',NULL,'2018-08-19','23','No',13),(47,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-19','31','Dermatologia',11),(48,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-20','32','No',16),(49,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-20','23','Dermatologia',17),(50,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,'1','1',NULL,NULL,'2018-08-21','24','No',18),(51,'1',NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-21','28','No',19),(52,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-21','29','Dermatologia',20),(53,'1',NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,'2018-08-21','30','No',21),(54,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1','1',NULL,NULL,NULL,'2018-08-21','23','No',11),(55,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,'1','2018-08-22','23','No',11),(56,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,'1',NULL,NULL,NULL,'1','2018-08-22','32','No',22),(57,NULL,NULL,'1',NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-22','23','No',29),(58,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-22','31','No',30),(59,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-23','32','No',32),(60,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,NULL,NULL,'2018-08-28','23','No',11);
 /*!40000 ALTER TABLE `Referencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -699,7 +728,7 @@ CREATE TABLE `ResGineco` (
   PRIMARY KEY (`idResGineco`),
   KEY `Genecologo_idx` (`IdPaciente`),
   CONSTRAINT `Genecologo` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -708,7 +737,7 @@ CREATE TABLE `ResGineco` (
 
 LOCK TABLES `ResGineco` WRITE;
 /*!40000 ALTER TABLE `ResGineco` DISABLE KEYS */;
-INSERT INTO `ResGineco` VALUES (2,'1','1','0','0','a la anestecia','05/12/1996',11);
+INSERT INTO `ResGineco` VALUES (2,'5','3','1','1','si, anestesia','05/08/2018',11),(3,'1','0','1','0','si, anestesia','05/12/1996',19);
 /*!40000 ALTER TABLE `ResGineco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -731,7 +760,7 @@ CREATE TABLE `ResPatologicos` (
   PRIMARY KEY (`idResPatologicos`),
   KEY `Patologicos_idx` (`idPacientes`),
   CONSTRAINT `PacientePato` FOREIGN KEY (`idPacientes`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -740,6 +769,7 @@ CREATE TABLE `ResPatologicos` (
 
 LOCK TABLES `ResPatologicos` WRITE;
 /*!40000 ALTER TABLE `ResPatologicos` DISABLE KEYS */;
+INSERT INTO `ResPatologicos` VALUES (1,'','','','desde la adolecencia','captopril','si, en ocaciones dolores de cabeza',13),(2,'desde los 14','insulina','no','','','',19),(3,'','','','','','',21),(4,'desde los 14','insulina','insuficiencia renal','','','',22),(5,'','','','','','',32),(6,'','','','desde los 15','captopril','no, solo dolres de cabeza',32);
 /*!40000 ALTER TABLE `ResPatologicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -764,7 +794,7 @@ CREATE TABLE `ResVicios` (
   PRIMARY KEY (`idResVicios`),
   KEY `IdPac_idx` (`IdPaciente`),
   CONSTRAINT `IdPa` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -773,7 +803,7 @@ CREATE TABLE `ResVicios` (
 
 LOCK TABLES `ResVicios` WRITE;
 /*!40000 ALTER TABLE `ResVicios` DISABLE KEYS */;
-INSERT INTO `ResVicios` VALUES (14,'','','','','18','1','No','condon femenino',11);
+INSERT INTO `ResVicios` VALUES (14,'18','ocasional','','','','','No','Ninguno',11),(15,'desde los 18','1 copa a la semana','','','a los 23','1 ','No','Ninguno',13),(16,'25','ocasional','18','7','20','18','Si','Ninguno',16),(17,'','','','','','','No','Ninguno',17),(18,'','','','','','','No','Ninguno',18),(19,'18','1 copa a la semana','','','19','1','No','Uretra',19),(20,'desde los 18','2 copas al dia por 7 dias','','','','','No','Ninguno',21),(21,'','','','','15','4','No','Ninguno',22),(22,'','','15','1 cigarro','','','No','Ninguno',29),(23,'','','','','','','No','Ninguno',30),(24,'25','MODERADA','18','7','18','18','Si','Ninguno',32),(25,'18','ocasional','','','','','No','Ninguno',11),(26,'18','ocasional','','','','','No','Ninguno',11);
 /*!40000 ALTER TABLE `ResVicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -796,7 +826,7 @@ CREATE TABLE `Sistema1` (
   PRIMARY KEY (`idSistema1`),
   KEY `Paciente2_idx` (`IdPaciente`),
   CONSTRAINT `Paciente2` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -805,7 +835,7 @@ CREATE TABLE `Sistema1` (
 
 LOCK TABLES `Sistema1` WRITE;
 /*!40000 ALTER TABLE `Sistema1` DISABLE KEYS */;
-INSERT INTO `Sistema1` VALUES (14,'No','No','No','No','No','No',11);
+INSERT INTO `Sistema1` VALUES (14,'No','No','No','No','No','No',11),(15,'No','No','Si','Si','Si','Si',13),(16,'No','No','Si','No','No','No',16),(17,'No','No','Si','No','No','No',17),(18,'No','Si','Si','Si','Si','Si',18),(19,'Si','No','Si','No','Si','Si',19),(20,'Si','No','Si','No','Si','Si',20),(21,'No','No','No','No','No','No',21),(22,'No','No','Si','Si','Si','Si',22),(23,'No','No','No','No','Si','Si',29),(24,'No','No','No','No','No','No',30),(25,'Si','No','No','No','Si','Si',32);
 /*!40000 ALTER TABLE `Sistema1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -827,7 +857,7 @@ CREATE TABLE `Sistema1_2` (
   PRIMARY KEY (`idSistema1_2`),
   KEY `Paciente3_idx` (`IdPaciente`),
   CONSTRAINT `Paciente3` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -836,7 +866,7 @@ CREATE TABLE `Sistema1_2` (
 
 LOCK TABLES `Sistema1_2` WRITE;
 /*!40000 ALTER TABLE `Sistema1_2` DISABLE KEYS */;
-INSERT INTO `Sistema1_2` VALUES (14,'No','No',11,'Ninguno','No','No');
+INSERT INTO `Sistema1_2` VALUES (14,'No','No',11,'Ninguno','No','No'),(15,'No','No',13,'Ninguno','No','No'),(16,'No','No',16,'Ninguno','No','No'),(17,'No','No',17,'Ninguno','No','No'),(18,'cada dos meses','No',18,'Ninguno','No','Calambres regulares en la pierna derecha'),(19,'cada dos semanas','cada 2 veces al mes',19,'Ninguno','No','No'),(20,'No','No',20,'Ninguno','No','No'),(21,'No','No',21,'Ninguno','No','No'),(22,'No','No',22,'Ninguno','No','No'),(23,'No','No',29,'Ninguno','No','No'),(24,'No','No',30,'Ninguno','No','No'),(25,'No','No',32,'Ninguno','No','No');
 /*!40000 ALTER TABLE `Sistema1_2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -864,7 +894,7 @@ CREATE TABLE `Tios` (
   PRIMARY KEY (`idFamiliares`),
   KEY `IdPHeredo_idx` (`IdPaciente`),
   CONSTRAINT `IdPHeredo8` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -873,7 +903,7 @@ CREATE TABLE `Tios` (
 
 LOCK TABLES `Tios` WRITE;
 /*!40000 ALTER TABLE `Tios` DISABLE KEYS */;
-INSERT INTO `Tios` VALUES (14,'Vive',NULL,NULL,'Neoplasia',NULL,'TBP','Cardiopatias',NULL,NULL,'Toxicomanias','Cancer',11);
+INSERT INTO `Tios` VALUES (14,NULL,'on',NULL,NULL,'on',NULL,NULL,NULL,'on',NULL,'on',11),(15,NULL,'DM',NULL,NULL,'Obesidad',NULL,'Cardiopatias','Alergias','Mal formaciones','Toxicomanias','Cancer',13),(16,'Vive',NULL,NULL,'Neoplasia','Obesidad','TBP','Cardiopatias','Alergias',NULL,'Toxicomanias',NULL,16),(17,'Vive',NULL,NULL,NULL,NULL,NULL,'Cardiopatias','Alergias','Mal formaciones',NULL,NULL,17),(18,NULL,'DM',NULL,NULL,NULL,'TBP',NULL,'Alergias',NULL,'Toxicomanias',NULL,18),(19,'Vive',NULL,NULL,NULL,'Obesidad',NULL,NULL,NULL,'Mal formaciones',NULL,'Cancer',19),(20,'Vive',NULL,NULL,NULL,NULL,NULL,NULL,'Alergias',NULL,NULL,'Cancer',20),(21,NULL,'DM',NULL,NULL,NULL,NULL,'Cardiopatias',NULL,'Mal formaciones',NULL,NULL,21),(22,'Vive',NULL,NULL,NULL,NULL,NULL,NULL,'Alergias',NULL,NULL,'Cancer',22),(23,'Vive',NULL,NULL,'Neoplasia',NULL,NULL,'Cardiopatias','Alergias',NULL,NULL,NULL,29),(24,NULL,NULL,'HTA',NULL,NULL,NULL,'Cardiopatias',NULL,NULL,NULL,NULL,30),(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,32);
 /*!40000 ALTER TABLE `Tios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -893,7 +923,7 @@ CREATE TABLE `VIcios` (
   PRIMARY KEY (`idVIcios`),
   KEY `IdPac_idx` (`IdPaciente`),
   CONSTRAINT `IdPac` FOREIGN KEY (`IdPaciente`) REFERENCES `Pacientes` (`idPacientes`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -902,7 +932,7 @@ CREATE TABLE `VIcios` (
 
 LOCK TABLES `VIcios` WRITE;
 /*!40000 ALTER TABLE `VIcios` DISABLE KEYS */;
-INSERT INTO `VIcios` VALUES (14,'No','No','Si',11);
+INSERT INTO `VIcios` VALUES (14,'No','No','No',11),(15,'Si','No','Si',13),(16,'Si','Si','Si',16),(17,'No','No','No',17),(18,'No','No','No',18),(19,'Si','No','Si',19),(20,'No','No','No',20),(21,'Si','No','No',21),(22,'No','No','Si',22),(23,'No','Si','No',29),(24,'No','No','No',30),(25,'No','No','No',32);
 /*!40000 ALTER TABLE `VIcios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -941,4 +971,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-08-05 14:54:47
+-- Dump completed on 2018-08-29 19:04:08

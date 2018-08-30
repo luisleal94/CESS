@@ -184,7 +184,7 @@ public class GuardarHist extends HttpServlet {
         String medicHI=request.getParameter("medicHI");
         String compliHI=request.getParameter("compliHI");        
         
-         /*Sistema 1,2*/
+        /*Sistema 1,2*/
         String estomago=request.getParameter("estomago");
         String estre=request.getParameter("estre");
         String freEs=request.getParameter("freEs");//Respuesta de estreñimiento
@@ -290,7 +290,7 @@ public class GuardarHist extends HttpServlet {
             }
             //System.out.println(a);            
         }
-        new Consulta().Acutaliza_estatus(id);
+        new Consulta().Acutaliza_estatus(id);//Esto solo da un 1 si se realiza el historial correcto
         if(sexo.equals("Femenino")){         
             if(embara.equals("Si")){                
                 if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){
