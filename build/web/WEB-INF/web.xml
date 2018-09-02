@@ -92,6 +92,10 @@
         <servlet-name>HistorialNuevo</servlet-name>
         <servlet-class>servlet.HistorialNuevo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Importar</servlet-name>
+        <servlet-class>servlet.Importar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>HistorialNuevo</servlet-name>
         <url-pattern>/HistorialNuevo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Importar</servlet-name>
+        <url-pattern>/Importar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

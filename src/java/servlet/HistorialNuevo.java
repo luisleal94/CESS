@@ -146,9 +146,9 @@ public class HistorialNuevo extends HttpServlet {
         String legumbre=request.getParameter("legum");
         
         /*Imnunizacion*/
-        String ResTetano=request.getParameter("ResTetano");
+        //String ResTetano=request.getParameter("ResTetano");
         String tetano=request.getParameter("tetano");
-        String ResSaram=request.getParameter("ResSaram");
+        //String ResSaram=request.getParameter("ResSaram");
         String sarampion=request.getParameter("sarampion");
         String ResRubeo=request.getParameter("ResRubeo");
         String rubeola=request.getParameter("rubeola");
@@ -163,16 +163,16 @@ public class HistorialNuevo extends HttpServlet {
         String cantidad=request.getParameter("cantidad1"); //Cuanto beb
         String inicioF=request.getParameter("inicio2"); //Inicio de fumar
         String cantidadF=request.getParameter("cantidad2"); //Cuanto fuma
-        String parejas=request.getParameter("parejas");
         String inicioR=request.getParameter("inicio3"); //Inicio de relaciones
+        String parejas=request.getParameter("parejas");       
         String protec=request.getParameter("proteccion");
         String metodo=request.getParameter("anticonceptivo");        
         String NombreAnticon=request.getParameter("NombreAnticon");
+        System.out.println(inicio+cantidad+inicioF+cantidadF+parejas+inicioR+protec+NombreAnticon);
         
-        String Toma=request.getParameter("Cigarro");
-        String Bebe=request.getParameter("Alcol");
+        String Beber=request.getParameter("Beber");
+        String Fumar=request.getParameter("Fumar");
         String Relaciones=request.getParameter("Relaciones");
-        
         /*Patologicos*/
         String combe=request.getParameter("combe");
         String cirujia=request.getParameter("ciru");
@@ -229,13 +229,13 @@ public class HistorialNuevo extends HttpServlet {
         String Valor1=request.getParameter("Valor1");
         String Valor2=request.getParameter("Valor2");
         
-        if(ResTetano.equals("No")){ tetano="No"; }
-        if(ResSaram.equals("No")){ sarampion="No"; }
-        if(ResRubeo.equals("No")){ rubeola="No";}
-        if(ResANTI.equals("No")){ hepatitis="No"; } 
-        if(metodo.equals("No")){
+        //if(ResTetano.equals("No")){ tetano="No"; }
+        //if(ResSaram.equals("No")){ sarampion="No"; }
+        //if(ResRubeo.equals("No")){ rubeola="No";}
+        //if(ResANTI.equals("No")){ hepatitis="No"; } 
+        /*if(NombreAnticon.equals("")){
             NombreAnticon="Ninguno";
-        }
+        }*/
         if(estre.equals("No")){
             freEs="No";
         }
@@ -422,7 +422,7 @@ public class HistorialNuevo extends HttpServlet {
                             }                            
                         }
                     }else{//Fuma
-                        if(Toma.equals("Si")||Bebe.equals("Si")||Relaciones.equals("Si")){
+                        if(Beber.equals("Si")||Fumar.equals("Si")||Relaciones.equals("Si")){
                             if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){
                             System.out.println("Entro 4");
                             if(new Consulta().historial_NoPato2(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
@@ -789,13 +789,13 @@ public class HistorialNuevo extends HttpServlet {
                             }                            
                         }
                     }else{//Fuma
-                        if(Toma.equals("Si")||Bebe.equals("Si")||Relaciones.equals("Si")){
+                        if(Beber.equals("Si")||Fumar.equals("Si")||Relaciones.equals("Si")){
                             if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){
                             System.out.println("Entro 13");
                             if(new Consulta().historial_NoPato2(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)
                                     && new Consulta().historial_Imnume2(tetano, sarampion, rubeola, hepatitis, id)
                                     && new Consulta().historial_Sistema12(estomago, vomito, tos, pecho, ejercicio, cabeza, id)
-                                    && new Consulta().historial_Vicio2(toma, fuma, relacion, id)
+                                    &&new Consulta().historial_Vicio2(toma, fuma, relacion, id)
                                     &&new Consulta().ResVicio2(inicio,cantidad,inicioF,cantidadF,inicioR,parejas,protec,NombreAnticon, id)
                                     && new Consulta().Ginecologo2(menarca, duracionM, dolorM, MedicaM, embara, id)  
                                     &&new Consulta().Patologicos2(combe,cirujia, alergia, diabetes, hiper,textoP, id)
@@ -807,7 +807,8 @@ public class HistorialNuevo extends HttpServlet {
                                     && new Consulta().AbueloPa2(Padre0,Padre1,Padre2,Padre3,Padre4,Padre5,Padre6,Padre7,Padre8,Padre9,Padre10,id,7)
                                     && new Consulta().AbueloPa2(Madre0,Madre1,Madre2,Madre3,Madre4,Madre5,Madre6,Madre7,Madre8,Madre9,Madre10,id,6)
                                     && new Consulta().AbueloPa2(Hermanos0,Hermanos1,Hermanos2,Hermanos3,Hermanos4,Hermanos5,Hermanos6,Hermanos7,Hermanos8,Hermanos9,Hermanos10,id,5)
-                                    && new Consulta().AbueloPa2(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)){                
+                                    && new Consulta().AbueloPa2(Tios0,Tios1,Tios2,Tios3,Tios4,Tios5,Tios6,Tios7,Tios8,Tios9,Tios10,id,8)
+                                    ){                
                                 out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
                                 out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
                                 out.println("<script>");
@@ -1149,7 +1150,7 @@ public class HistorialNuevo extends HttpServlet {
                             }                            
                         }
                     }else{//Fuma
-                        if(Toma.equals("Si")||Bebe.equals("Si")||Relaciones.equals("Si")){
+                        if(Beber.equals("Si")||Fumar.equals("Si")||Relaciones.equals("Si")){
                             if(cirujia.equals("No")&&alergia.equals("No")&&diabetes.equals("No")&&hiper.equals("No")){
                             System.out.println("Entro 22");
                             if(new Consulta().historial_NoPato2(aseo, bucal, ropa, leche,carne, verdura, legumbre, cereal, id)

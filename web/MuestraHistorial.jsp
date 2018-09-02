@@ -424,7 +424,7 @@
                                     <% if(rs.getString("Fuma").equals("Si")){  %>
                                         <section id="muestraA" class="seccion">
                                             <label>Edad de inicio</label>
-                                            <input type="text" name="inicio1" value="<%=res3%>" id="number" disabled>	
+                                            <input type="text" name="inicio1" value="<%=res3%>" disabled>	
                                             &emsp;&emsp;&emsp;<label>¿Cuántos cigarros al día?</label>
                                             <input type="text" name="cantidad1" value="<%=res4%>" disabled>			
                                         </section>  
@@ -434,7 +434,7 @@
                                     <%if(rs.getString("Relaciones").equals("Si")){ %>
                                         <section id="muestraA" class="seccion">
                                             <label>Edad de inicio</label>
-                                            <input type="text" name="inicio1" value="<%=res5%>" id="number" disabled>	
+                                            <input type="text" name="inicio1" value="<%=res5%>" disabled>	
                                             &emsp;&emsp;&emsp;<label>Número de parejas</label>
                                             <input type="text" name="cantidad1" value="<%=res6%>" id="number" disabled>
                                             <br><label>Protección</label>
@@ -477,10 +477,10 @@
                                         <input type="text" name="inicio1" value="<%=rs.getString("Abortos")%>" id="number" disabled>
                                         &emsp;&emsp;<label>Cesareas</label>
                                         <input type="text" name="inicio1" value="<%=rs.getString("Cesareas")%>" id="number" disabled>
-                                        &emsp;&emsp;<label>Complicaciones</label>
-                                        <input type="text" name="inicio1" value="<%=rs.getString("Complicaciones")%>" id="number" disabled>
+                                        <br><label>Complicaciones</label>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("Complicaciones")%>" disabled>
                                         <label>Ultima regla</label>
-                                        <input type="text" name="inicio1" value="<%=rs.getString("UltimaRegla")%>" id="number" disabled>
+                                        <input type="text" name="inicio1" value="<%=rs.getString("UltimaRegla")%>" disabled>
                                     <% } %>
                                     </section>
                                 </section>
@@ -609,7 +609,7 @@
                         <label>¿Tienes con frecuencia dolores de estomago?</label>
                         <input type="text" name="inicio1" value="<%=DolorEsto%>" id="number" disabled>
                         &emsp;&emsp;<label>¿Tienes estreñimiento?</label>
-                        <input type="text" name="inicio1" value="<%=Estre%>" id="number" disabled>
+                        <input type="text" name="inicio1" value="<%=Estre%>" disabled>
                         <br><label>Padece Diarrea</label>
                         <input type="text" name="inicio1" value="<%=Diarrea%>" id="number" disabled>
                         &emsp;&emsp;<label>Náuseas o Vómito</label>

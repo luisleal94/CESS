@@ -685,7 +685,7 @@ public class Consulta extends Conexion{
         PreparedStatement pst=null;
         
         try{
-            String consulta="update ResVicios set EdadInicio=?,CantidadAlco=?,EdadFum=?,CigarrosDia=?,"
+            String consulta="Update ResVicios set EdadInicio=?,CantidadAlco=?,EdadFum=?,CigarrosDia=?,"
                     + "EdadRela=?,NoParejas=?,Proteccion=?,Anticonceptivo=? where IdPaciente=?";
            
             pst=getConexion().prepareStatement(consulta);
@@ -712,7 +712,8 @@ public class Consulta extends Conexion{
                 System.out.println("Error "+e);
             }
         }
-        return false;
+        //System.out.println("Llego");
+        return true;
     }
     /*-----------------------------------------------------------------------------------------------------*/
     public boolean Patologicos(String combe,String cirujia,String alergia,String diabetes,String hiper,String texto,String id){
@@ -1360,8 +1361,9 @@ public class Consulta extends Conexion{
         }
         return false;
     }*/
-    /*public static void main(String[] args){
-        Consulta re= new Consulta();
+    //public static void main(String[] args){
+        //Consulta re= new Consulta();
+        //System.out.println(re.ResVicio2("1","No","No","No","No","No","No","No", "11"));
         //re.respaldo();
         //re.GenerarConsulta("7","Dolor","Pecho","Fiebre","No","No","No","Reposo","Joel","180.5","Espontanea","Lucero","Urgencia","12354","Medicina","25");
         //re.ActualizaConta("karina94","123","23");
