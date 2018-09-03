@@ -8,6 +8,22 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion=request.getSession(false);
+    String usuario=(String)sesion.getAttribute("Usuario");
+    if(usuario==null){
+        response.sendRedirect("index.jsp"); 
+    }
+    else{
+        String gerarquia=(String)sesion.getAttribute("Gerarquia");
+        if(gerarquia.equals("Admin")){
+            response.sendRedirect("CessAdmin.jsp"); 
+        }
+        if(gerarquia.equals("usuario")){
+            response.sendRedirect("inicio.jsp"); 
+        }
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

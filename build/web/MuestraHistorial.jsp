@@ -611,9 +611,9 @@
                         &emsp;&emsp;<label>¿Tienes estreñimiento?</label>
                         <input type="text" name="inicio1" value="<%=Estre%>" disabled>
                         <br><label>Padece Diarrea</label>
-                        <input type="text" name="inicio1" value="<%=Diarrea%>" id="number" disabled>
-                        &emsp;&emsp;<label>Náuseas o Vómito</label>
-                        <input type="text" name="inicio1" value="<%=Nauseas%>" id="number" disabled>
+                        <input type="text" name="inicio1" value="<%=Diarrea%>"  disabled>
+                        &emsp;<label>Náuseas o Vómito</label>
+                        <input type="text" name="inicio1" value="<%=Nauseas%>" disabled>
                         <br><label>Otros padecimientos</label>&emsp;&emsp;
                         <%if(otros3.equals("No")){  %> <label>Ninguno</label> <%  }else{ %> 
                             <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros3%></textarea>

@@ -96,6 +96,10 @@
         <servlet-name>Importar</servlet-name>
         <servlet-class>servlet.Importar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Valida</servlet-name>
+        <servlet-class>servlet.Valida</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>Importar</servlet-name>
         <url-pattern>/Importar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Valida</servlet-name>
+        <url-pattern>/Valida</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

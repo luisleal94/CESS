@@ -1,10 +1,16 @@
 <%-- 
-    Document   : Carga
-    Created on : 29/08/2018, 06:07:10 PM
+    Document   : Restaura
+    Created on : 2/09/2018, 05:22:07 PM
     Author     : luis
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String User=(String)request.getAttribute("User");
+    if(User==null){
+        response.sendRedirect("index.jsp"); 
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,26 +46,7 @@
                 border-radius: 5px;
                 cursor: pointer;
             }
-            #link{
-                text-decoration: none;
-                padding: 3px;
-                display: inline-block;
-                background:  #1798cc ;
-                font-weight:700; 
-                color: white;
-                border-radius: 3px;
-            }
-
-            #link:hover{
-                text-decoration: none;
-                padding: 3px;
-                display: inline-block;
-                background:#10688c;
-                font-weight:700; 
-                color: white;
-                border-radius: 3px;
-                transition: 0.3s;
-            }
+            
         </style>
          <style>
             head,body{
@@ -67,18 +54,14 @@
                 font-family: 'Roboto', sans-serif;
             }           
         </style>
-        <title>Configuracion</title>
+        <title>Configuración</title>
     </head>
     <body>
-        <a id="link" href="index.jsp">Inicio</a>
-        <h1>Identificación</h1>
         <div class="Centro">
-            <form method="POST" action="Valida">
-                <input type="text" name="User" class="texto"  placeholder="Usuario" required="true">
-                <input type="password" name="Pass" class="texto" placeholder="Password" required="true">
-                <input type="submit" value="Entrar" id="Boton1"> 
+            <form method="POST" enctype="multipart/form-data" action="Importar">
+                <input type="file" name="Archivo" class="file">
+                <button id="Boton1">Cargar base de datos</button>
             </form>
-           
         </div>
     </body>
 </html>

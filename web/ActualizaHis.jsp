@@ -126,7 +126,7 @@
 				<%if(rs.getString("Toxicomanias")!=null){ %> <td><input type="checkbox" name="AbueloP9" checked ><br></td> <% }  
                                   else{ %><td><input type="checkbox" name="AbueloP9" ><br></td><%  }%>  
                                 <%if(rs.getString("Cancer")!=null){ %> <td><input type="checkbox" name="AbueloP10" checked ><br></td> <% }  
-                                  else{ %><td><input type="checkbox" name="AbueloP9"><br></td><%  } }%>
+                                  else{ %><td><input type="checkbox" name="AbueloP10"><br></td><%  } }%>
                             </tr>
                             <% 
                                 pst = con.getConexion().prepareStatement("select *from AbuelaPa where IdPaciente='"+ID+"'");
@@ -156,7 +156,7 @@
 				<%if(rs.getString("Toxicomanias")!=null){ %> <td><input type="checkbox" name="AbuelaP9" checked ><br></td> <% }  
                                   else{ %><td><input type="checkbox" name="AbuelaP9"><br></td><%  }%>  
                                 <%if(rs.getString("Cancer")!=null){ %> <td><input type="checkbox" name="AbuelaP10" checked ><br></td> <% }  
-                                  else{ %><td><input type="checkbox" name="AbuelaP9"><br></td><%  } }%>
+                                  else{ %><td><input type="checkbox" name="AbuelaP10"><br></td><%  } }%>
                             </tr>
                             <% 
                                 pst = con.getConexion().prepareStatement("select *from AbueloMa where IdPaciente='"+ID+"'");
@@ -351,25 +351,25 @@
 			<label id="titulo2">Hábitos Higienicos</label>
 			<div class="bloque" align="center">
                             <label>Aseo Corporal</label>
-                            <input type="text" name="aseo" id="number" value="<%=rs.getString("Aseo")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                            <input type="text" name="aseo" id="number" value="<%=rs.getString("Aseo")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
                             &emsp;&emsp;<label>Aseo Bucal</label>
-                            &emsp;&emsp;<input type="text" name="bucal" id="number" value="<%=rs.getString("Cepillado")%>" onkeyUp="return ValNumero2(this);"><label>/ 3</label>
+                            &emsp;&emsp;<input type="text" name="bucal" id="number" value="<%=rs.getString("Cepillado")%>" onkeyUp="return ValNumero2(this);" required><label>/ 3</label>
                             &emsp;&emsp;<label>Cambio de ropa</label>
-                            <input type="text" name="ropa" id="number" value="<%=rs.getString("Ropa")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                            <input type="text" name="ropa" id="number" value="<%=rs.getString("Ropa")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 			</div>
 		
 			<div class="bloque" align="center">
                             <label id="titulo2">Hábitos Alimenticios</label>
                             <label>Lácteos</label>
-                            <input type="text" name="leche" id="number" value="<%=rs.getString("Lacteos")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                            <input type="text" name="leche" id="number" value="<%=rs.getString("Lacteos")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
                             &emsp;&emsp;<label>Proteínas</label>
-                            &emsp;&emsp;<input type="text" name="carne" id="number" value="<%=rs.getString("Proteinas")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>                
+                            &emsp;&emsp;<input type="text" name="carne" id="number" value="<%=rs.getString("Proteinas")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>                
                             &emsp;&emsp;<label>Verduras</label>
-                            &emsp;&emsp;<input type="text" name="verduras" id="number" value="<%=rs.getString("Verduras")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                            &emsp;&emsp;<input type="text" name="verduras" id="number" value="<%=rs.getString("Verduras")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
                             &emsp;&emsp;<label>Cereales</label>
-                            &emsp;&emsp;<input type="text" name="cereal" id="number" value="<%=rs.getString("Cereales")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                            &emsp;&emsp;<input type="text" name="cereal" id="number" value="<%=rs.getString("Cereales")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
                             &emsp;&emsp;<label>Leguminosas</label>
-                            &emsp;&emsp;<input type="text" name="legum" id="number" value="<%=rs.getString("Legumbres")%>" onkeyUp="return ValNumero(this);"><label>/ 7</label>
+                            &emsp;&emsp;<input type="text" name="legum" id="number" value="<%=rs.getString("Legumbres")%>" onkeyUp="return ValNumero(this);" required><label>/ 7</label>
 			</div>
                     <% } %> 
                     <div class="bloque">
@@ -423,9 +423,9 @@
                                 rs=pst.executeQuery(); 
                                 while(rs.next()){
                             %>			
-                                   <input type="text" name="Beber" value="<%=rs.getString("Toma")%>">
-                                   <input type="text" name="Fumar" value="<%=rs.getString("Fuma")%>">
-                                   <input type="text" name="Relaciones" value="<%=rs.getString("Relaciones")%>">
+                                   <input type="text" name="Beber" value="<%=rs.getString("Toma")%>" style="display: none">
+                                   <input type="text" name="Fumar" value="<%=rs.getString("Fuma")%>" style="display: none">
+                                   <input type="text" name="Relaciones" value="<%=rs.getString("Relaciones")%>" style="display: none">
                                     <label>Bebidas alcohólicas</label>
                                     <%if(rs.getString("Toma").equals("Si")){%>
                                     <input type="text" name="alcol" value="<%=rs.getString("Toma")%>" id="number"> 
@@ -450,7 +450,7 @@
                                             <input type="text" name="cantidad1">			
                                         </section> 
                                     <% } %>
-                                    <br><label>Fumas</label> 
+                                    <br><label>Fuma</label> 
                                     <% if(rs.getString("Fuma").equals("Si")){  %>
                                     <input type="text" name="fuma" value="<%=rs.getString("Fuma")%>" id="number">
                                         <section id="muestraA" class="seccion">
@@ -473,9 +473,9 @@
                                             <input type="text" name="cantidad2">
                                         </section>
                                     <% } %>
-                                    <br><label>Relaciones Sexuales</label> 
-                                    <input type="text" name="rela" value="<%=rs.getString("Relaciones")%>" id="number" style="display: none">
+                                    <br><label>Relaciones Sexuales</label>                                     
                                     <%if(rs.getString("Relaciones").equals("Si")){ %>
+                                    <input type="text" name="rela" value="<%=rs.getString("Relaciones")%>" id="number">
                                         <section id="muestraA" class="seccion">
                                             <label>Edad de inicio</label>
                                             <input type="text" name="inicio3" value="<%=res5%>" id="number">	
@@ -542,7 +542,7 @@
                         <% } %>
                         <label>Embarazos</label>
                         <% if(embarazo.equals("No")){  %>
-                        <input type="text" name="embara" value="<%=embarazo%>" id="number" style="display: none">
+                        <input type="text" name="embara" value="<%=embarazo%>" id="number">
                         <div>
                             <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()">
                             <label for="si3" class="label">Si</label>
@@ -582,7 +582,7 @@
                                         <br><label>Complicaciones</label>
                                         <input type="text" name="CompliEmba" value="<%=rs.getString("Complicaciones")%>">
                                         <label>Ultima regla</label>
-                                        <input type="text" name="UltimaRe" value="<%=rs.getString("UltimaRegla")%>">
+                                        <input type="text" name="UltimaRe" value="<%=rs.getString("UltimaRegla")%>" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA">
                                     <% } %>
                                     </section>
                         <% }%>
@@ -716,7 +716,7 @@
 		  		<input type="text" name="compliHI">		  		
   			</section>  
                         <% }else {  %>  
-                            <input type="text" id="number" name="hiper" value="Si" style="display: none;">
+                            <input type="text" id="number" name="hiper" value="Si"  >
                             <label>Desde cuando</label>
                             <input type="text" name="cuandoHI" value="<%=CuandoHi%>">
                             &emsp;&emsp;<label>Medicamento</label>
@@ -780,7 +780,7 @@
 	  		<input type="radio" id="no9" name="estomago" value="No"> 
 	  		<label for="no9" class="label">No</label><br><% }%>
   			<label>¿Tienes estreñimiento?</label>
-                        <%if(Estre.equals("No")) { %>
+                        <%if(Estre.equals("No") ||Estre==null) { %>
   			<input type="radio" id="si10" name="estre" value="Si" onclick="mostrarEs()">
 		  	<label for="si10" class="label">Si</label>
 	  		<input type="radio" id="no10" name="estre" value="No" onclick="ocultarEs()" checked> 
@@ -789,10 +789,10 @@
   				<label>¿Con qué frecuencia?</label>
   				<input type="text" name="freEs">
   			</section>
-                        <% }else{ %><input type="text" name="estre" value="Si"> 
+                        <% }else{ %><input type="text" name="estre" value="Si" id="number"> 
                             <input type="text" name="freEs" value="<%=Estre%>"> <% } %>
   			<br><label>¿Tienes dirrea?</label>
-                        <%if(Diarrea.equals("No")){  %> 
+                        <%if(Diarrea.equals("No")||Diarrea.equals("")){  %> 
   			<input type="radio" id="si11" name="diarrea" value="Si" onclick="mostrarDia()">
 		  	<label for="si11" class="label">Si</label>
 	  		<input type="radio" id="no11" name="diarrea" value="No" onclick="ocultarDia()" checked> 
@@ -801,8 +801,8 @@
   				<label>¿Con qué frecuencia?</label>
   				<input type="text" name="freDea">
   			</section>
-                        <% }else{ %><input type="text" name="diarrea" value="Si">
-                            <input type="text" name="freEs" value="<%=Diarrea%>"><%} %>
+                        <% }else{ %><input type="text" name="diarrea" value="Si" id="number">
+                            <input type="text" name="freDea" value="<%=Diarrea%>"><%} %>
   			<br><label>¿Tienes náuseas y/o vómito?</label>
                         <%if(Nauseas.equals("No")){%>
   			<input type="radio" id="si12" name="vomito" value="Si">
@@ -852,8 +852,8 @@
 		  	<label for="si16" class="label">Si</label>
 	  		<input type="radio" id="no16" name="pecho" value="No"> 
 	  		<label for="no16" class="label">No</label><% } %>
-                        <br><label>Otros</label>
-                        <%if(otros4.equals("No")){ %> 
+                        <br><label>Otros</label><br>
+                        <%if(otros4.equals("No")|| otros4==null){ %> 
 		  	<input type="radio" id="siOtros4" name="otros4" value="Si" onclick="mostrarOtros4()">
 		  	<label for="siOtros4" class="label">Si</label>
 	  		<input type="radio" id="noOtros4" name="otros4" value="No" onclick="ocultarOtros4()" checked> 
@@ -892,7 +892,7 @@
 	  		<input type="radio" id="no20" name="dolCab" value="No"> 
 	  		<label for="no20" class="label">No</label>
                         <% } %>
-                        <br><label>Otros</label>
+                        <br><label>Otros</label><br>
                         <%if(otros2.equals("Ninguno")){ %>
 		  	<input type="radio" id="siOtros2" name="otros2" value="Si" onclick="mostrarOtros2()">
 		  	<label for="siOtros2" class="label">Si</label>
