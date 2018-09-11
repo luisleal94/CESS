@@ -5,8 +5,9 @@ function ValidaForm(){
 	var Talla=document.getElementById('multiplicador').value;
 	var Temp=document.getElementById('Temperatura').value;
 	var FC=document.getElementById('FC').value;
-	var FR=document.getElementById('FR'),value;
-	var Presion=document.getElementById('Presion');
+	var FR=document.getElementById('FR').value;
+	var Sistolica=document.getElementById('Sistolica').value;
+        var Diastolica=document.getElementById('Diastolica').value;
 	var Padecimiento=document.getElementById('Padecimiento').value;
 	var Exploracion=document.getElementById('Exploracion').value;
 	var tags=document.getElementById('tags').value;
@@ -34,17 +35,37 @@ function ValidaForm(){
 		return false;
 	}
 	if(FC == null || FC.length == 0){
-		alert('El campo Frecuencia cardiaca no debe ir vacío');
+		alert('El campo frecuencia cardica no debe ir vacío');
 		return false;
 	}
+        if(parseFloat(FC)<60 || parseFloat(FC)>100){
+            alert('Parametros incorrectos en la frecuencia cardica: '+parseFloat(FC));
+            return false;
+        }
 	if(FR == null || FR.length == 0){
             alert('El campo Frecuencia respiratorio no debe ir vacío');
             return false;
 	}
-	if(Presion == null || Presion.length == 0){
-		alert('El campo Presión no debe ir vacío');
+        if(parseFloat(FR)<13 || parseFloat(FR)>40){
+            alert('Parametros incorrectos en la frecuencia respiratoria: '+parseFloat(FR));
+            return false;
+        }
+        if(Sistolica == null || Sistolica.length == 0){
+		alert('El parametro Sistolico no debe ir vacío');
 		return false;
 	}
+        if(parseFloat(Sistolica)<110 || parseFloat(Sistolica)>200){
+            alert('Parametros incorrectos en el parametro Sistolico: '+parseFloat(Sistolica));
+            return false;
+        }
+	if(Diastolica == null || Diastolica.length == 0){
+		alert('El parametro diastolico no debe ir vacío');
+		return false;
+	}
+        if(parseFloat(Diastolica)<60 || parseFloat(Diastolica)>90){
+            alert('Parametros incorrectos en el parametro diastolico: '+parseFloat(Diastolica));
+            return false;
+        }
 	if(Padecimiento == null || Padecimiento.length == 0){
 		alert('El campo Padecimiento no debe ir vacío');
 		return false;

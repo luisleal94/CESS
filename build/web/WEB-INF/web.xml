@@ -100,6 +100,10 @@
         <servlet-name>Valida</servlet-name>
         <servlet-class>servlet.Valida</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ImportarCIE10</servlet-name>
+        <servlet-class>servlet.ImportarCIE10</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>Valida</servlet-name>
         <url-pattern>/Valida</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImportarCIE10</servlet-name>
+        <url-pattern>/ImportarCIE10</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

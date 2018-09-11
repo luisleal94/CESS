@@ -57,7 +57,7 @@
                      while(rs.next()){
                 %>
 		<label >Nombre</label>
-                <input type="text" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
+                <input type="text" name="Nombre" id="Principal" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
 		&emsp;<label>Estado Civil</label>
                 <input type="text" name="estado" id="Mediano" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled>
 		&emsp;<label>Ocupacion</label>
@@ -68,7 +68,7 @@
                 <input type="text" name="Edad" id="number" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" style="color:#063452" disabled>
                 <input type="text" id="genero" name="sexo" value="<%=rs.getString("Genero")%>" style="display: none;">
                 &emsp;<label>Actualización</label>
-                <input type="text" name="fecha" id="Mediano" value="<%=rs.getString("fecha")%>" style="color:#063452" disabled>
+                <input type="text" name="fecha" id="Principal" value="<%=rs.getString("fecha")%>" style="color:#063452" disabled>
                 <%genero=rs.getString("Genero"); %>
                 <% } %>  
 	</div>
@@ -378,13 +378,13 @@
                         <div class="bloque">
 				<label id="titulo2">INMUNIZACIONES (FECHAS)</label>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>ANTITETÁNICA</label>
-				<input type="text" name="tetano" value="<%=rs.getString("Tetano")%>"disabled>
+				<input type="text" id="Principal" name="tetano" value="<%=rs.getString("Tetano")%>"disabled>
 				&emsp;&emsp;&emsp;&emsp;<label>ANTISARAMPIÓN</label>
-				<input type="text" name="sarampion" value="<%=rs.getString("Sarampion")%>"disabled><br>
+				<input type="text" id="Principal" name="sarampion" value="<%=rs.getString("Sarampion")%>"disabled><br>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>RUBÉOLA</label>
-				<input type="text" name="rubeola" value="<%=rs.getString("Rubeola")%>"disabled>				
+				<input type="text" id="Principal" name="rubeola" value="<%=rs.getString("Rubeola")%>"disabled>				
                                 &emsp;&emsp;&emsp;&emsp;<label>ANTI HBS</label>
-				<input type="text" name="hepatitis" value="<%=rs.getString("hepatitis")%>"disabled> <!--Nuevo agregado-->
+				<input type="text" id="Principal" name="hepatitis" value="<%=rs.getString("hepatitis")%>"disabled> <!--Nuevo agregado-->
 			</div>
                         <% } %>
 			<div class="bloque">                          
@@ -412,9 +412,9 @@
                                         if(rs.getString("Toma").equals("Si")){%>
                                         <section id="muestraA" class="seccion">
                                             <label>¿A qué edad empezaste a ingerir alcohol?</label>
-                                            <input type="text" name="inicio1" value="<%=res1%>" disabled>	
+                                            <input type="text" id="Principal" name="inicio1" value="<%=res1%>" disabled>	
                                             &emsp;&emsp;<label>¿Qué cantidad de bebida ingieres?</label>
-                                            <input type="text" name="cantidad1" value="<%=res2%>" disabled>			
+                                            <input type="text" id="Principal" name="cantidad1" value="<%=res2%>" disabled>			
                                         </section>   
                                         
                                     <%  }
@@ -424,9 +424,9 @@
                                     <% if(rs.getString("Fuma").equals("Si")){  %>
                                         <section id="muestraA" class="seccion">
                                             <label>Edad de inicio</label>
-                                            <input type="text" name="inicio1" value="<%=res3%>" disabled>	
+                                            <input type="text" id="Principal" name="inicio1" value="<%=res3%>" disabled>	
                                             &emsp;&emsp;&emsp;<label>¿Cuántos cigarros al día?</label>
-                                            <input type="text" name="cantidad1" value="<%=res4%>" disabled>			
+                                            <input type="text" id="Principal" name="cantidad1" value="<%=res4%>" disabled>			
                                         </section>  
                                     <% }  %>
                                     <br><label>Relaciones Sexuales</label> 
@@ -434,13 +434,13 @@
                                     <%if(rs.getString("Relaciones").equals("Si")){ %>
                                         <section id="muestraA" class="seccion">
                                             <label>Edad de inicio</label>
-                                            <input type="text" name="inicio1" value="<%=res5%>" disabled>	
+                                            <input type="text" id="Principal" name="inicio1" value="<%=res5%>" disabled>	
                                             &emsp;&emsp;&emsp;<label>Número de parejas</label>
-                                            <input type="text" name="cantidad1" value="<%=res6%>" id="number" disabled>
+                                            <input type="text" id="Principal" name="cantidad1" value="<%=res6%>" id="number" disabled>
                                             <br><label>Protección</label>
                                             <input type="text" name="cantidad1" value="<%=res7%>" id="number" disabled>
                                             &emsp;&emsp;&emsp;<label>Anticonceptivo</label>
-                                            <input type="text" name="cantidad1" value="<%=res8%>" disabled>
+                                            <input type="text" id="Principal" name="cantidad1" value="<%=res8%>" disabled>
                                         </section>
                                     
                                     <% }  %>
@@ -456,15 +456,15 @@
                                 while(rs.next()){ %>
                                 <section id="muestraA" class="seccion">
                                     <label>Menarca</label>
-                                    <input type="text" name="inicio1" value="<%=rs.getString("Menarca")%>" disabled>	
+                                    <input type="text"  id="Principal"name="inicio1" value="<%=rs.getString("Menarca")%>" disabled>	
                                     &emsp;&emsp;<label>Duración</label>
-                                    <input type="text" name="cantidad1" value="<%=rs.getString("Duracion")%>" disabled>                                   
+                                    <input type="text" id="Principal" name="cantidad1" value="<%=rs.getString("Duracion")%>" disabled>                                   
                                     &emsp;&emsp;<label>Dolor</label>
-                                    <input type="text" name="cantidad1" value="<%=rs.getString("Dolor")%>" disabled>
+                                    <input type="text" id="Principal" name="cantidad1" value="<%=rs.getString("Dolor")%>" disabled>
                                     <br><label>Medicamentos</label>
-                                    <input type="text" name="cantidad1" value="<%=rs.getString("Medicamentos")%>" disabled>
+                                    <input type="text" id="Principal" name="cantidad1" value="<%=rs.getString("Medicamentos")%>" disabled>
                                     &emsp;&emsp;<label>Embarazo</label>
-                                    <input type="text" name="cantidad1" value="<%=rs.getString("Embarazo")%>" id="number" disabled>
+                                    <input type="text" id="Principal" name="cantidad1" value="<%=rs.getString("Embarazo")%>" id="number" disabled>
                                     <section id="muestraA" class="seccion">
                                     <%  pst = con.getConexion().prepareStatement("select *from ResGineco where IdPaciente='"+ID+"'");
                                         rs=pst.executeQuery(); 
@@ -478,9 +478,9 @@
                                         &emsp;&emsp;<label>Cesareas</label>
                                         <input type="text" name="inicio1" value="<%=rs.getString("Cesareas")%>" id="number" disabled>
                                         <br><label>Complicaciones</label>
-                                        <input type="text" name="inicio1" value="<%=rs.getString("Complicaciones")%>" disabled>
+                                        <input type="text" id="Principal" name="inicio1" value="<%=rs.getString("Complicaciones")%>" disabled>
                                         <label>Ultima regla</label>
-                                        <input type="text" name="inicio1" value="<%=rs.getString("UltimaRegla")%>" disabled>
+                                        <input type="text" id="Principal" name="inicio1" value="<%=rs.getString("UltimaRegla")%>" disabled>
                                     <% } %>
                                     </section>
                                 </section>
@@ -500,7 +500,7 @@
                             hipertenso=rs.getString("Hipertenso");
                             otros=rs.getString("OtrosPato");  %>
                             <label>Combe</label>
-                            <input type="text" name="inicio1" value="<%=rs.getString("Combe")%>" disabled>                           
+                            <input type="text" name="inicio1" id="Principal" value="<%=rs.getString("Combe")%>" disabled>                           
                         <% } 
                             pst = con.getConexion().prepareStatement("select *from ResPatologicos  where IdPacientes='"+ID+"'");
                             rs=pst.executeQuery(); 
@@ -557,20 +557,20 @@
                            if(diabetico.equals("Si")){ %>
                            <br><label>Diabetes</label><br>
                             <label>Desde cuando</label>
-                            <input type="text" name="inicio1" value="<%=fechadia%>" disabled>
+                            <input type="text" id="Principal" name="inicio1" value="<%=fechadia%>" disabled>
                             &emsp;&emsp;<label>Medicamento para controlarse</label>
-                            <input type="text" name="inicio1" value="<%=medicDia%>" disabled>
+                            <input type="text" id="Principal" name="inicio1" value="<%=medicDia%>" disabled>
                             <br><label>Complicaciones</label>
-                            <input type="text" name="inicio1" value="<%=CompliDia%>" disabled>                            
+                            <input type="text" id="Principal" name="inicio1" value="<%=CompliDia%>" disabled>                            
                             <% }else{ %><br><label>Diabetes: No</label><br>   <% }
                            if(hipertenso.equals("Si")){ %>
                            <br><label>Hipertensión</label><br>
                             <label>Desde cuando</label>
-                            <input type="text" name="inicio1" value="<%=CuandoHi%>" disabled>
+                            <input type="text" id="Principal" name="inicio1" value="<%=CuandoHi%>" disabled>
                             &emsp;&emsp;<label>Medicamento</label>
-                            <input type="text" name="inicio1" value="<%=Medica%>" disabled>
+                            <input type="text" id="Principal" name="inicio1" value="<%=Medica%>" disabled>
                             <br><label>Complicaciones</label>
-                            <input type="text" name="inicio1" value="<%=CompliHi%>" disabled>                          
+                            <input type="text" id="Principal" name="inicio1" value="<%=CompliHi%>" disabled>                          
                             <% }else{ %><br><label>Hipertensión: No</label><br>  <%}
                            if(otros.equals("Ninguno")){ %>
                            &emsp;&emsp;<br><label>Otros Padecimientos</label>
@@ -609,11 +609,11 @@
                         <label>¿Tienes con frecuencia dolores de estomago?</label>
                         <input type="text" name="inicio1" value="<%=DolorEsto%>" id="number" disabled>
                         &emsp;&emsp;<label>¿Tienes estreñimiento?</label>
-                        <input type="text" name="inicio1" value="<%=Estre%>" disabled>
+                        <input type="text" id="Principal" name="inicio1" value="<%=Estre%>" disabled>
                         <br><label>Padece Diarrea</label>
-                        <input type="text" name="inicio1" value="<%=Diarrea%>"  disabled>
+                        <input type="text"  id="Principal" name="inicio1" value="<%=Diarrea%>" disabled>
                         &emsp;<label>Náuseas o Vómito</label>
-                        <input type="text" name="inicio1" value="<%=Nauseas%>" disabled>
+                        <input type="text" name="inicio1" value="<%=Nauseas%>" id="number" disabled>
                         <br><label>Otros padecimientos</label>&emsp;&emsp;
                         <%if(otros3.equals("No")){  %> <label>Ninguno</label> <%  }else{ %> 
                             <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros3%></textarea>

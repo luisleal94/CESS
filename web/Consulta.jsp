@@ -56,8 +56,10 @@
         <script type="text/javascript" src="js/Confirmacion.js"></script>
         <script type="text/javascript" src="js/Validacion.js"></script>
         <script type="text/javascript" src="js/ValidaForm.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script> Estos son los que hacen el ajar-->
+        <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
         <script>
             $( function() {
               var availableTags = new Array();
@@ -209,7 +211,7 @@
                 edad=rs.getString("Anio");
                 %> 
                 <div class="datos">
-                <div class="h2"><h2>Paciente 2</h2> </div>
+                <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post" target="_black">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
                     <label id="titulos">Nombre</label>
@@ -249,7 +251,7 @@
                 Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
             %>
             <div class="datos">
-            <div class="h2"><h2>Paciente 3</h2> </div>
+            <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post">
                     <input type="text" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">
                     <label id="titulos">Nombre</label>
@@ -302,12 +304,12 @@
             <label>Temperatura</label>
             <input type="text" name="temp" id="Temperatura" onkeyUp=" return decimalTemp(this);" required>
             &emsp;&emsp;&emsp;<label>Frecuencia Cardiaca</label>
-            <input type="text" name="fc" id="FC" required><br>
+            <input type="text" name="fc" id="FC"  onkeyUp=" return decimalFC(this);" required><br>
             <label>Frecuencia Respiratoria</label>
             <input type="text" name="fr" id="FR" required>
             &emsp;&emsp;&emsp;<label>Presión Arterial</label>
-            <input type="text" id="Presion" name="Sistolica" placeholder="Sistolica">/
-            <input type="text" id="Presion" name="Diastolica" placeholder="Diastólica"><br>
+            <input type="text" id="Sistolica" name="Sistolica" placeholder="Sistolica">/
+            <input type="text" id="Diastolica" name="Diastolica" placeholder="Diastólica"><br>
             <div class="areatexto">
                 <label>Padecimiento Actual</label><br>
                 <textarea name="padeci" id="Padecimiento" class="area" cols="150" rows="5" autofocus></textarea>

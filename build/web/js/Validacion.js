@@ -159,6 +159,18 @@ function validaTemp(valor) {
     }
 }
 
+function validaFc(valor){
+    Numer=valor;
+    if(Numer[0]=='-'){
+        return "";
+    }
+    var RE = /^\d*\.?\d*$/;
+    if (RE.test(valor)) {
+            return valor;
+    }else {
+        return "";
+    }
+}
 function decimales(Control){
 	//Control.value=decimal(Control.value);
 	Control.value=validateDecimal(Control.value);
@@ -179,6 +191,9 @@ function decimalTemp(Control){
 	Control.value=validaTemp(Control.value);
 }
 
+function decimalFC(Control){
+    Control.value=validaFc(Control.value);
+}
 function IsNumeric(valor){ 
     var log=valor.length; var sw="S"; 
     for (x=0; x<log; x++) 

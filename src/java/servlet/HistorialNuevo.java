@@ -226,8 +226,54 @@ public class HistorialNuevo extends HttpServlet {
         String CompliEmba=request.getParameter("CompliEmba");
         String UltimaRe=request.getParameter("UltimaRe");    
         
-        String Valor1=request.getParameter("Valor1");
-        String Valor2=request.getParameter("Valor2");
+        
+        String Cirujias=request.getParameter("CantidadC");
+        String Alergias=request.getParameter("CantidadA");
+        System.out.println("Cantidad: "+Cirujias+" Alergias:"+Alergias);
+        if(Cirujias!=""){
+            int Q=Integer.parseInt(Cirujias);
+            int res=Q*3;
+            int a=0;
+            String [] IdC=new String[res];
+            String [] Fechas=new String[res];
+            String [] Motivos=new String[res];
+            String [] Tipo=new String[res];
+            for(int i=0;i<Q;i++){
+                //for(int j=0;j<3;j++){
+                    IdC[i]=request.getParameter("Id"+i);
+                    Fechas[i]=request.getParameter("Fechas"+i);
+                    Motivos[i]=request.getParameter("Motivo"+i);
+                    Tipo[i]=request.getParameter("Tipo"+i);
+            }
+            a=0; 
+            for(int i=0;i<Q;i++){
+                System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]+" "+Tipo[i]);
+                new Consulta().Cirujia2(Fechas[i],Motivos[i],Tipo[i],IdC[i]);
+            }            
+            //System.out.println(a);  
+        }
+        
+        if(Alergias!=null){
+            int A=Integer.parseInt(Alergias);
+            int res=A*3;
+            String [] IdC=new String[res];
+            String [] Fechas=new String[res];
+            String [] Motivos=new String[res];
+            for(int i=0;i<A;i++){
+                //for(int j=0;j<3;j++){
+                    IdC[i]=request.getParameter("AID"+i);
+                    Fechas[i]=request.getParameter("AFecha"+i);
+                    Motivos[i]=request.getParameter("ACausa"+i);
+            }
+            for(int i=0;i<A;i++){
+                System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
+                new Consulta().Alergia2(Fechas[i],Motivos[i],IdC[i]);
+            }            
+            //System.out.println(a);  
+        }
+        
+        //String Valor1=request.getParameter("Valor1");
+        //String Valor2=request.getParameter("Valor2");
         
         //if(ResTetano.equals("No")){ tetano="No"; }
         //if(ResSaram.equals("No")){ sarampion="No"; }
@@ -254,10 +300,10 @@ public class HistorialNuevo extends HttpServlet {
         if(otros2.equals("No")){
             texto2="No";
         }
-        System.out.println("Valor1: "+Valor1);
-        System.out.println("Valor2: "+Valor2);        
+        //System.out.println("Valor1: "+Valor1);
+        //System.out.println("Valor2: "+Valor2);        
         
-        if(Valor1!=""){
+        /*if(Valor1!=""){
             int Q=Integer.parseInt(Valor1);
             int res=Q*3;
             int a=0;
@@ -270,14 +316,14 @@ public class HistorialNuevo extends HttpServlet {
             }
             a=0;            
             for(int j=0;j<Q;j++){
-                //System.out.println(inputQ[a]+" " +inputQ[a+1]+" "+inputQ[a+2]);
-                new Consulta().Cirujia(inputQ[a],inputQ[a+1],inputQ[a+2],id);
-                //System.out.println();   
+                System.out.println(inputQ[a]+" " +inputQ[a+1]+" "+inputQ[a+2]);
+                //new Consulta().Cirujia(inputQ[a],inputQ[a+1],inputQ[a+2],id);
+                System.out.println();   
                 a+=3;
             }
             //System.out.println(a);  
         }
-        
+        /*
         if(Valor2!=""){            
             int A=Integer.parseInt(Valor2);
             int res=A*2;
@@ -297,8 +343,10 @@ public class HistorialNuevo extends HttpServlet {
                 a+=2;
             }
             //System.out.println(a);            
-        }
+        }*/
         
+        
+        new Consulta().Acutaliza_Fecha(id);
         if(sexo.equals("Femenino")){ 
             if(embara.equals("Si")){    
                 if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){

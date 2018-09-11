@@ -59,8 +59,12 @@
     <body>
         <div class="Centro">
             <form method="POST" enctype="multipart/form-data" action="Importar">
-                <input type="file" name="Archivo" class="file">
+                <input type="file" name="Archivo" class="file" required>
                 <button id="Boton1">Cargar base de datos</button>
+            </form><br>
+            <form method="POST" enctype="multipart/form-data" action="ImportarCIE10">
+                <input type="file" name="Archivo" class="file" required>
+                <button id="Boton1">Cargar tabla</button>
             </form>
         </div>
     </body>

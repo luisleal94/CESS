@@ -60,7 +60,7 @@
                      while(rs.next()){
                 %>
 		<label >Nombre</label>
-                &emsp;<input type="text" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
+                &emsp;<input type="text" name="Nombre" id="Principal" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
                 <% 
                 Calendar calender = Calendar.getInstance();
                 String fecha;
@@ -70,7 +70,7 @@
                 fecha=dia+" / "+mes+" / "+anio;
                 %>
 		&emsp;&emsp;<label >Fecha</label>
-                &emsp;<input type="text" name="fecha" value="<%=fecha%>" style="color:#063452" disabled>
+                &emsp;<input type="text" name="fecha" id="Large" value="<%=fecha%>" style="color:#063452" disabled>
 		&emsp;&emsp;<label>Estado Civil</label>
                 &emsp;<input type="text" name="estado" id="Mediano" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled><br>
 		<label>Ocupacion</label>
@@ -258,7 +258,7 @@
                                     <label for="noTeta" class="label">No</label>
 				</div>
                                 <section id="MuestraTetano" style="display: none" class="seccion">
-                                    <input type="text" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <input type="text" id="Principal" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>                                                                
 				&emsp;&emsp;&emsp;<label>ANTISARAMPIÓN</label>&emsp;&emsp;
                                 <div>
@@ -268,7 +268,7 @@
                                     <label for="noSaram" class="label">No</label>
 				</div>
                                 <section id="MuestraSaram" style="display: none" class="seccion">
-                                    <input type="text" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <input type="text" id="Principal" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>                                				
 				<label>RUBÉOLA</label>&emsp;&emsp;
                                 <div>
@@ -278,7 +278,7 @@
                                     <label for="noRubeo" class="label">No</label>
 				</div>
                                 <section id="MuestraRubeo" style="display: none" class="seccion">
-                                    <input type="text" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <input type="text" id="Principal" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>                                
                                 &emsp;&emsp;&emsp;<label>ANTI HBS</label>
                                 <div>
@@ -288,7 +288,7 @@
                                     <label for="noANTI" class="label">No</label>
 				</div>
                                 <section id="MuestraANTI" style="display: none" class="seccion">
-                                    <input type="text" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <input type="text" id="Principal" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
                                 </section>
 			</div>
 
@@ -303,9 +303,9 @@
 				</div>
 	  			<section id="muestraA" style="display: none" class="seccion">
 	  				<label>¿A qué edad empezaste a ingerir alcohol?</label>
-					<input type="text" name="inicio1">	
+					<input type="text" id="Principal" name="inicio1">	
 					<label>¿Qué cantidad de bebida ingieres?</label>
-					<input type="text" name="cantidad1">			
+					<input type="text" id="Principal" name="cantidad1">			
 	  			</section> 
 			</div>
 
@@ -320,9 +320,9 @@
 				</div>
 				<section id="muestraC" style="display: none;" class="seccion">
 					<label>¿ A qué edad empezaste a fumar?</label>
-					<input type="text" name="inicio2">
+					<input type="text" id="Principal" name="inicio2">
 					<label>¿Cuántos cigarros fuma diario</label>
-					<input type="text" name="cantidad2">
+					<input type="text" id="Principal" name="cantidad2">
 				</section>
 			</div>
 
@@ -338,9 +338,9 @@
 	  			<section id="muestra" style="display: none" class="seccion"> 
 	  				<div id="text">
 	  				<label>¿A qué edad iniciaste?</label>
-                                        <input type="text" name="inicio3">		  			
+                                        <input type="text" id="Principal" name="inicio3">		  			
 		  			<label>¿Cuántas parejas has tenido?</label>
-                                        <input type="text" name="parejas"><br>
+                                        <input type="text" id="Principal" name="parejas"><br>
 		  			<label>¿Usas preservativo?</label>
                                         <input type="radio" id="siPre" name="proteccion" value="Si" onclick="mostrarProte()">
                                         <label for="siPre" class="label">Si</label>
@@ -353,7 +353,7 @@
                                         <label for="noMet" class="label">No</label>  
                                         <section id="MuestraAnti" style="display: none;" class="seccion">
                                             <label>¿Cual o Cuales?</label>
-                                            <input type="text" name="NombreAnticon">					
+                                            <input type="text" id="Principal" name="NombreAnticon">					
                                         </section>
                                     </div>
 	  			</section>
@@ -363,13 +363,13 @@
                     <section id="mujer">
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
 			<label>Menarca</label>
-			<input type="text" name="menarca">
+			<input type="text" id="number" name="menarca" onkeyUp="return ValNumero(this);">
 			<label>Duración</label>
-			<input type="text" name="duracion"><br>
+			<input type="text" id="Principal" name="duracion"><br>
 			<label>Dismenorrea</label>
-			<input type="text" name="dolorM">
+			<input type="text" id="number" name="dolorM">
 			<label>¿Te obliga a tomar medicamentos?</label>
-			<input type="text" name="MedicaM"><br>
+			<input type="text"id="Principal" name="MedicaM"><br>
 			<label>Embarazos</label>
 			<div>
                             <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()">
@@ -388,9 +388,9 @@
   				&emsp;&emsp;<label>Cesáreas</label>
   				<input type="text" name="Cesareas" id="number" onkeyUp="return ValNumero(this);">
                                 &emsp;&emsp;<br><label>Complicaciones</label>
-  				<input type="text" name="CompliEmba"><br>
+  				<input type="text" id="Principal" name="CompliEmba"><br>
   				<label>Fecha de ultima regla</label>
-  				<input type="text" name="UltimaRe" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">
+  				<input type="text" id="Principal" name="UltimaRe" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AA" class="fecha">
                                 </div>
                             </section>
                     </section>
@@ -425,7 +425,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <input type="text" name="Valor1" id="Valor" style="display: none;">
+                                <input type="text" name="Valor1" id="Valor1" style="display: none;">
   			</section>
   			<div style="margin: 15px;">
   				<label>Alergias</label>
@@ -460,11 +460,11 @@
   			<label for="no6" class="label">No</label>
   			<section id="diabetes" style="display: none;" class="seccion">
   				<label>¿Desde cuando?</label>
-  				<input type="text" name="cuandoDA">
+  				<input type="text" id="Principal" name="cuandoDA">
   				<label>¿Con qué medicamento te controlas?</label>
-  				<input type="text" name="medicDA"><br>
+  				<input type="text" id="Principal" name="medicDA"><br>
   				<label>¿Has presentado alguna complicación?</label>
-  				<input type="text" name="compliDA">
+  				<input type="text" id="Principal" name="compliDA">
   			</section><br>
   			<div style="margin: 10px">
   				<label>¿Eres hipertenso?</label>
@@ -475,11 +475,11 @@
   			</div>
   			<section id="hiper" style="display: none;" class="seccion">
   				<label>¿Desde cuando?</label>
-	  			<input type="text" name="cuandoHI">
+	  			<input type="text" id="Principal" name="cuandoHI">
 	  			<label>¿Con qué medicamento te controlas?</label>
-                                <input type="text" name="medicHI"><br>
+                                <input type="text" id="Principal" name="medicHI"><br>
 		  		<label>¿Has presentado alguna complicación?</label>
-		  		<input type="text" name="compliHI">		  		
+		  		<input type="text" id="Principal" name="compliHI">		  		
   			</section>  			
                         <br><label>Otros</label>
 		  	<input type="radio" id="siOtros" name="otrosP" value="Si" onclick="mostrarOtros()">
@@ -510,7 +510,7 @@
 	  		<label for="no10" class="label">No</label><br>
   			<section id="estreni" style="display: none; margin-left: 15px;">
   				<label>¿Con qué frecuencia?</label>
-  				<input type="text" name="freEs">
+  				<input type="text" id="Principal" name="freEs">
   			</section>
   			<br><label>¿Tienes dirrea?</label>
   			<input type="radio" id="si11" name="diarrea" value="Si" onclick="mostrarDia()">
@@ -519,7 +519,7 @@
 	  		<label for="no11" class="label">No</label><br>
   			<section id="diarrea" style="display: none; margin-left: 15px;">
   				<label>¿Con qué frecuencia?</label>
-  				<input type="text" name="freDea">
+  				<input type="text" id="Principal" name="freDea">
   			</section>
   			<br><label>¿Tienes náuseas y/o vómito?</label>
   			<input type="radio" id="si12" name="vomito" value="Si">
@@ -585,10 +585,10 @@
                 </div>
 		<div id="medico">
 			<label>Medico Tratante</label>
-                        <input type="text" name="medico" value="<%=NOMBRE%>" disabled style="color:#063452">
+                        <input type="text" id="Principal" name="medico" value="<%=NOMBRE%>" disabled style="color:#063452">
                         <input type="text" name="Doctor" value="<%=NOMBRE%>" style="display: none">
                         <label>Cédula</label>
-                        <input type="text" name="medico" value="<% out.println(cedula);%>" disabled style="color:#063452">
+                        <input type="text" id="Principal" name="medico" value="<% out.println(cedula);%>" disabled style="color:#063452">
 		</div>
                 <div style="margin: 25px;" >
                      <a id="boton" href="inicio.jsp">Regresar</a>

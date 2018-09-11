@@ -122,6 +122,18 @@ td,th{
     padding:1px;
 }
 
+.BotonTa{
+    width: 85%;
+                height: 10%;
+                padding:5px;
+                margin: 0px;
+                display: inline-block;
+                border: none;
+                border-bottom: 2px solid ;
+                border-color: rgba(0,0,255,0.3);
+                background-color:white;
+}
+/*
 input[type=text]{
 	width: 20%;
 	height: 10%;
@@ -132,9 +144,20 @@ input[type=text]{
         border-bottom: 2px solid ;
 	border-color: rgba(0,0,255,0.3);
 	background-color:white;
+}*/
+#Principal{
+    width: 20%;
+	height: 10%;
+	padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: none;
+        border-bottom: 2px solid ;
+	border-color: rgba(0,0,255,0.3);
+	background-color:white;
 }
 
-input:focus {
+#Principal:focus {
     border-bottom:2px solid  #236087 ;
     background-color: white ;
     transition:0.5s; 
@@ -154,9 +177,11 @@ input:focus {
     background-color: white ;
     transition:0.5s;
 }
+
 #number{
-	width: 2%;
-	margin: 8px;
+	width:2%;
+        padding: 12px 20px;
+	margin: 8px 0;
 	border: none;
         border-bottom: 2px solid ;
 	border-color: rgba(0,0,255,0.3);
@@ -165,6 +190,7 @@ input:focus {
 
 #Mediano{
 	width: 5%;
+        padding: 12px 20px;
 	margin: 8px;
 	border: none;
         border-bottom: 2px solid ;
@@ -174,6 +200,7 @@ input:focus {
 
 #Large{
 	width: 25%;
+        padding: 12px 20px;
 	margin: 8px;
 	border: none;
         border-bottom: 2px solid ;

@@ -213,6 +213,7 @@ public class Consulta extends Conexion{
         }
         return false;
     }
+    
     public boolean Acutaliza_estatus(String id){
         PreparedStatement pst=null;
         String x="1";
@@ -220,6 +221,36 @@ public class Consulta extends Conexion{
              String consulta="update Pacientes set Historial=? where idPacientes=?";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, x);
+            pst.setString(2, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            } 
+        }catch(Exception e){
+             System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean Acutaliza_Fecha(String id){
+        Calendar calender = Calendar.getInstance();
+        String fecha;
+        int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fecha=anio+"-"+mes+"-"+dia;
+        PreparedStatement pst=null;
+        try{
+             String consulta="update Pacientes set fecha=? where idPacientes=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, fecha);
             pst.setString(2, id);
             if(pst.executeUpdate()==1){
                 return true;
@@ -1221,6 +1252,32 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean Cirujia2(String fecha,String Motivo,String Causa,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update Cirujias set Fecha=?,Motivo=?,Tipo=? where idCirujias=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, fecha);
+            pst.setString(2, Motivo);
+            pst.setString(3, Causa);
+            pst.setString(4, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /***************************************************************************/
     public boolean Alergia(String fecha,String Motivo,String id){
         PreparedStatement pst=null;
         try{
@@ -1246,6 +1303,31 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean Alergia2(String fecha,String Motivo,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update Alergias set Fecha=?,Causa=? where idAlergias?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, fecha);
+            pst.setString(2, Motivo);           
+            pst.setString(3, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /****************************************************************/
     public boolean Receta(String nombre,String farmacia,String unidad,String dosis,String via,
             String presenta,String pieza,String cada,String dias,String IdMedico,String id){
         Calendar calender = Calendar.getInstance();

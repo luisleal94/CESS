@@ -95,7 +95,7 @@
                 String Nombre=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M");     
                 IDPac=rs.getString("idPacientes");
             %>
-            <div class="h2"><h2>Paciente 2</h2> </div>
+            <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post">
                     <label id="titulos">ID</label>
                     <input type="text" class="texto" id="id" name="id" value="<%=rs.getString("idPacientes")%>">                  

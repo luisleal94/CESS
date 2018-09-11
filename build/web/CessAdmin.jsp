@@ -60,7 +60,7 @@
             
         <div class="container3">
             <img src="img/historial.png" width="268" height="289" alt="Avatar" class="image3">
-            <a href="Receta.jsp"><div class="overlay3">
+            <a href="PreReceta.jsp"><div class="overlay3">
               <div class="text3">Receta Médica</div>
             </div></a>
         </div>
