@@ -104,6 +104,22 @@
         <servlet-name>ImportarCIE10</servlet-name>
         <servlet-class>servlet.ImportarCIE10</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Genera</servlet-name>
+        <servlet-class>servlet.Genera</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ImprimeCert</servlet-name>
+        <servlet-class>servlet.ImprimeCert</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Blanco</servlet-name>
+        <servlet-class>servlet.Blanco</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ImprimeBlanco</servlet-name>
+        <servlet-class>servlet.ImprimeBlanco</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -207,6 +223,22 @@
     <servlet-mapping>
         <servlet-name>ImportarCIE10</servlet-name>
         <url-pattern>/ImportarCIE10</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Genera</servlet-name>
+        <url-pattern>/Genera</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImprimeCert</servlet-name>
+        <url-pattern>/ImprimeCert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Blanco</servlet-name>
+        <url-pattern>/Blanco</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImprimeBlanco</servlet-name>
+        <url-pattern>/ImprimeBlanco</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -15,6 +15,23 @@ function Numerico(variable){
        	}
 }
 
+function MenarcaCorrecta(variable){
+        Numer=variable;
+        if(Numer[0]=='-'){
+            return "";
+        }
+        Numer=parseInt(variable);
+        if (isNaN(Numer)){
+            return "";
+        }
+        if(Numer<50){
+        	return Numer;	
+        }
+       	else{
+            return "";	
+       	}
+}
+
 function Numerico2(variable){
         Numer=variable;
         if(Numer[0]=='-'){
@@ -58,7 +75,41 @@ function EdadCorrecta(variable){
         if (isNaN(Numer)){
             return "";
         }
-        if(Numer>0){
+        if(Numer<32){
+        	return Numer;	
+        }
+       	else{
+            return "";	
+       	}
+}
+
+function AnioCorrecto(variable){
+        Numer=variable;
+        if(Numer[0]=='-'){
+            return "";
+        }
+        Numer=parseInt(variable);
+        if (isNaN(Numer)){
+            return "";
+        }
+        if(Numer<2050){
+        	return Numer;	
+        }
+       	else{
+            return "";	
+       	}
+}
+
+function Mescorrecto(variable){
+        Numer=variable;
+        if(Numer[0]=='-'){
+            return "";
+        }
+        Numer=parseInt(variable);
+        if (isNaN(Numer)){
+            return "";
+        }
+        if(Numer<13){
         	return Numer;	
         }
        	else{
@@ -68,6 +119,10 @@ function EdadCorrecta(variable){
 
 function ValNumero(Control){
 	Control.value=Numerico(Control.value);
+}
+
+function Menarca(Control){
+	Control.value=MenarcaCorrecta(Control.value);
 }
 
 function ValNumero2(Control){
@@ -82,6 +137,13 @@ function Edad(Control){
 	Control.value=EdadCorrecta(Control.value);
 }
 
+function AnioCorrec(Control){
+	Control.value=AnioCorrecto(Control.value);
+}
+
+function Mes(Control){
+	Control.value=Mescorrecto(Control.value);
+}
 
 function decimal(dato){
         Numer=dato;

@@ -27,6 +27,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/Personal.css">
         <script type="text/javascript" src="js/Validacion.js"></script>
+        <script type="text/javascript" src="js/ValidaForm.js"></script>
         <title>CESS</title>
         <style>
             head,body{
@@ -51,15 +52,15 @@
             rs=pst.executeQuery();
             while(rs.next()){
                 %>
-                <form id="formulario" action="ActualizaPac" method="post">      
+                <form id="formulario" action="ActualizaPac" method="post" onsubmit="return AnioUsuarios()">      
                     <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
                     <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("Nombre")%>" required>
                     <label>Apellido Paterno</label><input class="input1" type="text" name="apellidoP" value="<%=rs.getString("Apellido_P")%>" required>
                     <label>Apellido Materno</label><input class="input1" type="text" name="apellidoM" value="<%=rs.getString("Apellido_M")%>" required>
                     <label>Fecha de nacimiento</label>
                     <section class="Numero">
-                        <input class="Inputfecha" type="text" name="Anio" value="<%=rs.getString("Anio")%>" onkeyUp="return Edad(this)" required>
-                        <input class="Inputfecha" type="text" name="mes" value="<%=rs.getString("Mes")%>" onkeyUp="return Edad(this)" required>
+                        <input class="Inputfecha" type="text" id="Anio" name="Anio" value="<%=rs.getString("Anio")%>" onkeyUp="return AnioCorrec(this)" required>
+                        <input class="Inputfecha" type="text" name="mes" value="<%=rs.getString("Mes")%>" onkeyUp="return Mes(this)" required>
                         <input class="Inputfecha" type="text" name="dia" value="<%=rs.getString("Dia")%>" onkeyUp="return Edad(this)" required><br>
                     </section>
                     <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>" required>

@@ -105,7 +105,7 @@ public class ImportarCIE10 extends HttpServlet {
                         item.write(storeFile);
                         request.setAttribute("message","Cargado");
                         try {
-                            Process P=Runtime.getRuntime().exec("mysql -u root -p1234 prueba");
+                            Process P=Runtime.getRuntime().exec("mysql -u root -p1234 db29179_cie10");
                             OutputStream os = P.getOutputStream();
                             FileInputStream fis = new FileInputStream(storeFile);
                             byte[] buffer = new byte[1000];

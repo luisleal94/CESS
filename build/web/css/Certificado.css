@@ -1,0 +1,96 @@
+head, body {
+    background-image: url(img/jj.png);
+    font-family: 'Roboto', sans-serif;
+}
+.Marco{
+   margin-left: 2%;
+   width:15%;
+   position: absolute;
+}
+.Marco2{
+   width: 15%;
+   margin-left: 80%;
+   position: absolute;
+}
+.Titulo{
+    margin-left:23%;
+    position: absolute;
+    text-align: center;
+}
+.Cuerpo{
+    margin-top:15%; 
+}
+
+.area{
+    max-width: 95%;
+    resize: none;
+    font-family: 'roboto';
+}
+
+.area:focus{
+    border:2px solid #58ade5;
+    transition:0.5s; 
+}
+.areatexto{
+    margin-top: 15px; 
+    padding: 10px;
+    text-align: left;
+    font-weight: 400;
+    color: #203942;
+    font-size: 18px;
+}
+
+h4{
+    margin-left: 5%;
+}
+
+.encabezado{
+    margin-left:5%;
+    text-align: center;
+}
+.Cuerpo2{
+    margin-left:5%;
+    padding: 3%;
+}
+
+input[type=text]{
+    width: 20%;
+    height: 10%;
+    padding: 10px 18px;
+    margin: 0px 0;
+    display: inline-block;
+    border: none;               
+    background:none;
+    color: #294c4f;
+    border-bottom: 2px solid ;
+    border-color: rgba(0,0,255,0.3);
+}
+
+.Boton1{
+    border: none;
+    background:  #17767e;
+    color: white;
+    width:15%;
+    height:25px; 
+    border-radius: 5px;
+    margin-left:40%;
+    font-weight:700;
+    font-size:17px; 
+}
+.Boton1:hover{
+    background: #135257;
+    transition:1s; 
+}
+
+#Temperatura{
+    width: 5%;
+    height: 10%;
+    padding: 10px 18px;
+    margin: 0px 0;
+    display: inline-block;
+    border: none;               
+    background:none;
+    color: #294c4f;
+    border-bottom: 2px solid ;
+    border-color: rgba(0,0,255,0.3);
+}

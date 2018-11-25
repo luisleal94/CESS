@@ -14,7 +14,7 @@ public class Conexion {
     
     public Conexion(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver"); 
             conectar=DriverManager.getConnection("jdbc:mysql://localhost/CESS","root","1234");
         }catch (ClassNotFoundException ex) {
             System.err.print(ex); 

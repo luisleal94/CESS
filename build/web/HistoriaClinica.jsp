@@ -363,7 +363,7 @@
                     <section id="mujer">
 			<label id="titulo1">Antecedentes Gineco-Obstrecticos</label>
 			<label>Menarca</label>
-			<input type="text" id="number" name="menarca" onkeyUp="return ValNumero(this);">
+			<input type="text" id="number" name="menarca" onkeyUp="return Menarca(this);">
 			<label>Duración</label>
 			<input type="text" id="Principal" name="duracion"><br>
 			<label>Dismenorrea</label>
@@ -380,13 +380,13 @@
                             <section id="muestra2" style="display: none;" class="seccion">
   				<div>
   				<label>Gestas</label>
-  				<input type="text" name="gestas" id="number" onkeyUp="return ValNumero(this);"><!--Nuevo-->
+  				<input type="text" name="gestas" id="number" onkeyUp="return Menarca(this);"><!--Nuevo-->
   				&emsp;&emsp;<label>Partos</label>
-  				<input type="text" name="Partos" id="number" onkeyUp="return ValNumero(this);"><!--Nuevo-->
+  				<input type="text" name="Partos" id="number" onkeyUp="return Menarca(this);"><!--Nuevo-->
                                 &emsp;&emsp;<label>Abortos</label>
-  				<input type="text" name="abortos" id="number" onkeyUp="return ValNumero(this);">
+  				<input type="text" name="abortos" id="number" onkeyUp="return Menarca(this);">
   				&emsp;&emsp;<label>Cesáreas</label>
-  				<input type="text" name="Cesareas" id="number" onkeyUp="return ValNumero(this);">
+  				<input type="text" name="Cesareas" id="number" onkeyUp="return Menarca(this);">
                                 &emsp;&emsp;<br><label>Complicaciones</label>
   				<input type="text" id="Principal" name="CompliEmba"><br>
   				<label>Fecha de ultima regla</label>

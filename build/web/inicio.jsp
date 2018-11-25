@@ -34,7 +34,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" href="css/estilo2.css">         
+         <link rel="stylesheet" href="css/estilo2.css">   
+         <script type="text/javascript" src="js/ValidaForm.js"></script>
          <script type="text/javascript" src="js/Validacion.js"></script>
          <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
         <title>JSP Page</title>
@@ -53,6 +54,10 @@
             <label><% out.println(usuario);%> </label><br>
             <a class="link" href="out">Cerrar sesión</a> 
         </div>
+<div id="respaldo">
+    <a href="Certificado.jsp" id="respal">Certificado médico</a>
+    </form>
+</div>
 <div class="container">
   <img src="img/agregarpaciente.png" width="268" height="289" alt="Avatar" class="image">
   <div class="overlay">  
@@ -66,27 +71,27 @@
     </div></a>
 </div>
 <div class="container3">
-  <img src="img/historial.png" width="268" height="289"; alt="Avatar" class="image3">
+  <img src="img/historial.png" width="268" height="289" alt="Avatar" class="image3">
   <a href="PreReceta.jsp"><div class="overlay3">
     <div class="text3">Receta Médica</div>
   </div></a>
 </div>
 <div class="container4">
-  <img src="img/consulta.png" width="268" height="289"; alt="Avatar" class="image4">
+  <img src="img/consulta.png" width="268" height="289" alt="Avatar" class="image4">
   <a href="PreConsulta.jsp"> <div class="overlay4">
     <div class="text4">Consulta</div>
   </div></a>
 </div>        
     <div class="modal-wrapper" id="popup">
        <div id="contenido">
-		<form id="formulario" action="registrarP" method="post">
+		<form id="formulario" action="registrarP" method="post" onsubmit="return AnioUsuarios()">
 		    <input class="input1" type="text" name="nombre" placeholder="Nombre" required>
 		    <input class="input1" type="text" name="apellido1" placeholder="Apellido Paterno" required><br>
 		    <input class="input1" type="text" name="apellido2" placeholder="Apelllido Materno" required>
                     <label>Fecha de nacimiento</label>
                     <section class="Numero">
-                        <input class="Inputfecha" type="text" name="Anio" placeholder="Año" onkeyUp="return Edad(this)" required>
-                        <input class="Inputfecha" type="text" name="mes" placeholder="Mes" onkeyUp="return Edad(this)" required>
+                        <input class="Inputfecha" type="text" name="Anio" id="Anio" placeholder="Año" onkeyUp="return AnioCorrec(this)" required>
+                        <input class="Inputfecha" type="text" name="mes" placeholder="Mes" onkeyUp="return Mes(this)" required>
                         <input class="Inputfecha" type="text" name="dia" placeholder="Dia" onkeyUp="return Edad(this)" required><br>
                     </section>
                     <input class="input1" type="text" name="telefono" placeholder="Telefono"  onkeyUp="return Telefono(this)" required>

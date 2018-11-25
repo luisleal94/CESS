@@ -229,7 +229,58 @@ public class HistorialNuevo extends HttpServlet {
         
         String Cirujias=request.getParameter("CantidadC");
         String Alergias=request.getParameter("CantidadA");
+        //Obtengo el total de los inputs nuevos
+        String Valor1=request.getParameter("Valor1");
+        String Valor2=request.getParameter("Valor2");
         System.out.println("Cantidad: "+Cirujias+" Alergias:"+Alergias);
+        System.out.println("Valor1: "+Valor1+" Valor2:"+Valor2);
+        
+        if(Valor1!=""){
+            System.out.println("Se agregaon nuevas cirujias");
+            int Q=Integer.parseInt(Valor1);
+            int res=Q*3;
+            int a=0;
+            String [] inputQ=new String[res];
+            for(int i=1;i<Q+1;i++){
+                for(int j=0;j<3;j++){
+                    inputQ[a]=request.getParameter("idQ"+i+(j+1));
+                    a+=1;
+                }
+            }
+            int ContarQ=Integer.parseInt(Cirujias)*3;
+            a=ContarQ;            
+            for(int j=ContarQ;j<(Q*3);j+=3){
+                System.out.println("Entro");
+                System.out.println(inputQ[j]+" " +inputQ[j+1]+" "+inputQ[j+2]);
+                new Consulta().Cirujia(inputQ[a],inputQ[a+1],inputQ[a+2],id);
+                a+=3;
+            }
+            //System.out.println(a); 
+        } 
+        if(Valor2!=""){
+            System.out.println("Se agregaon nuevas alergias");
+            int A=Integer.parseInt(Valor2);
+            int res=A*2;
+            int a=0;
+            String [] inputA=new String[res];
+            for(int i=1;i<A+1;i++){
+                for(int j=0;j<2;j++){
+                    inputA[a]=request.getParameter("idA"+i+(j+1));
+                    a+=1;
+                }               
+            }        
+                
+            int contarA=Integer.parseInt(Alergias)*2;
+            a=contarA;    
+            for(int j=contarA;j<(A*2);j+=2){
+                System.out.println(inputA[j]+" " +inputA[j+1]);              
+                new Consulta().Alergia(inputA[a],inputA[a+1], id);
+                a+=2;
+            }
+            //System.out.println(a);
+        }
+        
+        System.out.println("Cirujias editadas");
         if(Cirujias!=""){
             int Q=Integer.parseInt(Cirujias);
             int res=Q*3;
@@ -247,13 +298,19 @@ public class HistorialNuevo extends HttpServlet {
             }
             a=0; 
             for(int i=0;i<Q;i++){
-                System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]+" "+Tipo[i]);
-                new Consulta().Cirujia2(Fechas[i],Motivos[i],Tipo[i],IdC[i]);
+                if(Fechas[i]==null){
+                    System.out.println("Se elimino");
+                    System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]+" "+Tipo[i]);
+                    new Consulta().Cirujia3(IdC[i]);
+                }else{
+                    System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]+" "+Tipo[i]);
+                    new Consulta().Cirujia2(Fechas[i],Motivos[i],Tipo[i],IdC[i]);
+                }
             }            
             //System.out.println(a);  
         }
-        
-        if(Alergias!=null){
+        System.out.println("Alergias editadas");
+        if(Alergias!=""){
             int A=Integer.parseInt(Alergias);
             int res=A*3;
             String [] IdC=new String[res];
@@ -266,22 +323,19 @@ public class HistorialNuevo extends HttpServlet {
                     Motivos[i]=request.getParameter("ACausa"+i);
             }
             for(int i=0;i<A;i++){
-                System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
-                new Consulta().Alergia2(Fechas[i],Motivos[i],IdC[i]);
+                if(Fechas[i]==null){
+                    System.out.println("Se elimino");
+                    System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
+                    new Consulta().Alergia3(IdC[i]);
+                }else{
+                    System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
+                    new Consulta().Alergia2(Fechas[i],Motivos[i],IdC[i]);
+                }
             }            
             //System.out.println(a);  
         }
         
-        //String Valor1=request.getParameter("Valor1");
-        //String Valor2=request.getParameter("Valor2");
-        
-        //if(ResTetano.equals("No")){ tetano="No"; }
-        //if(ResSaram.equals("No")){ sarampion="No"; }
-        //if(ResRubeo.equals("No")){ rubeola="No";}
-        //if(ResANTI.equals("No")){ hepatitis="No"; } 
-        /*if(NombreAnticon.equals("")){
-            NombreAnticon="Ninguno";
-        }*/
+       
         if(estre.equals("No")){
             freEs="No";
         }
@@ -300,53 +354,9 @@ public class HistorialNuevo extends HttpServlet {
         if(otros2.equals("No")){
             texto2="No";
         }
-        //System.out.println("Valor1: "+Valor1);
-        //System.out.println("Valor2: "+Valor2);        
-        
-        /*if(Valor1!=""){
-            int Q=Integer.parseInt(Valor1);
-            int res=Q*3;
-            int a=0;
-            String [] inputQ=new String[res];
-            for(int i=1;i<Q+1;i++){
-                for(int j=0;j<3;j++){
-                    inputQ[a]=request.getParameter("idQ"+i+(j+1));
-                    a+=1;
-                }
-            }
-            a=0;            
-            for(int j=0;j<Q;j++){
-                System.out.println(inputQ[a]+" " +inputQ[a+1]+" "+inputQ[a+2]);
-                //new Consulta().Cirujia(inputQ[a],inputQ[a+1],inputQ[a+2],id);
-                System.out.println();   
-                a+=3;
-            }
-            //System.out.println(a);  
-        }
-        /*
-        if(Valor2!=""){            
-            int A=Integer.parseInt(Valor2);
-            int res=A*2;
-            int a=0;
-            String [] inputA=new String[res];
-            for(int i=1;i<A+1;i++){
-                for(int j=0;j<2;j++){
-                    inputA[a]=request.getParameter("idA"+i+(j+1));
-                    a+=1;
-                }               
-            }        
-            a=0;          
-            for(int j=0;j<A;j++){
-                //System.out.println(inputA[a]+" " +inputA[a+1]);              
-                new Consulta().Alergia(inputA[a],inputA[a+1], id);
-                //System.out.println();
-                a+=2;
-            }
-            //System.out.println(a);            
-        }*/
         
         
-        new Consulta().Acutaliza_Fecha(id);
+       new Consulta().Acutaliza_Fecha(id);
         if(sexo.equals("Femenino")){ 
             if(embara.equals("Si")){    
                 if(toma.equals("No")&&fuma.equals("No")&&relacion.equals("No")){

@@ -90,3 +90,13 @@ function ValidaForm(){
             }
 	}
 }
+
+function AnioUsuarios(){
+    var Anio=document.getElementById('Anio').value;
+    if(Anio.length!=4){
+        alert('El campo Año de nacimiento incorrecto');
+        return false;
+    }else{
+        return true;
+    }
+}

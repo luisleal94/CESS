@@ -34,7 +34,9 @@
         
     </head>
     <body>
-       
+        <div id="contien_link">
+            <a id="link" href="inicio.jsp">Menú principal</a>
+        </div>
         <div class="titulo"><h1>Notas Médicas</h1></div>
         <div class="contenedor" >
             <% //Busqueda por ID del usuario a buscar

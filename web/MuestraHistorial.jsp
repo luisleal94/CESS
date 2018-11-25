@@ -616,7 +616,7 @@
                         <input type="text" name="inicio1" value="<%=Nauseas%>" id="number" disabled>
                         <br><label>Otros padecimientos</label>&emsp;&emsp;
                         <%if(otros3.equals("No")){  %> <label>Ninguno</label> <%  }else{ %> 
-                            <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros3%></textarea>
+                            <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros4%></textarea>
                         <% } %>
                         <div style="margin: 10px;">
                             <br><label>Sistema respiratorio</label>
@@ -627,7 +627,7 @@
                         <input type="text" name="inicio1" value="<%=Dolorpecho%>" id="number" disabled>
                         <br><label>Otros padecimientos</label>
                         <%if(otros4.equals("No")){  %>&emsp;&emsp;<label>Ninguno</label>  <%  }else{ %> 
-                            <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros4%></textarea>
+                            <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros2%></textarea>
                         <% }%>
                         <div style="margin: 10px;">
                             <br><label>Sistema circulatorio</label>
@@ -638,7 +638,7 @@
                         <input type="text" name="inicio1" value="<%=dolorcabe%>" id="number" disabled>
                         <br><label>Otros padecimientos</label>
                         <%if(otros2.equals("Ninguno")){  %>&emsp;&emsp;<label>Ninguno</label>  <%  }else{ %> 
-                            <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros2%></textarea>
+                            <textarea class="area" name="texto3" cols="150" rows="5" disabled><%=otros3%></textarea>
                         <% }%>
                     </div>
                 </div>

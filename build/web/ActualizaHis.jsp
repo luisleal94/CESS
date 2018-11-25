@@ -35,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="css/estiloH.css">
 	<script type="text/javascript" src="js/radios.js"></script>
 	<script type="text/javascript" src="js/Validacion.js"></script>
-        <script type="text/javascript" src="js/Tabla.js"></script>
+        <script type="text/javascript" src="js/TablaActualiza.js"></script>
         <script type="text/javascript" src="js/Confirmacion.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
     </head>
@@ -634,12 +634,13 @@
                         <%if(cirujia.equals("Si")){ %>
                         <input type="text" name="ciru" id="number" value="Si">
   			<section id="muestra3" class="seccion">  			
-                                <!--<div class="boton">
+                                <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Cirugía" onclick="Javascript:addRow()">
-                                </div>-->
+                                </div>
                                 <div class="contiene_tabla" align="center">
-                                    <table  id="tabla">
+                                    <table  id="tabla1">
                                         <tr>
+                                            <td style="width:10%">Borrar</td>
                                             <td style="width:30%">Fecha</td>
                                             <td style="width:30%">Motivo</td>
                                             <td style="width:30%">Tipo</td>
@@ -651,18 +652,39 @@
                                                 while(rs.next()){ %>
                                         <tr>
                                             <input  name="<%="Id"+i%>" value="<%=rs.getInt("idCirujias")%>" style="display: none;">
+                                            <td><input type="button" value = " X " onClick="Javacsript:deleteRow(this)"></td>
                                             <td><input type="text" name="<%="Fechas"+i%>" class="texto2" value="<%=rs.getString("Fecha")%>"></td>
                                             <td><input type="text" name="<%="Motivo"+i%>"  class="texto2" value="<%=rs.getString("Motivo")%>"></td>
                                             <td><input type="text" name="<%="Tipo"+i%>"  class="texto2" value="<%=rs.getString("Tipo")%>"></td>                                           
                                         </tr>
                                         <% i=i+1;  }   %>
                                     </table>
-                                    <input  name="CantidadC" value="<%=i%>" style="display: none;">
+                                    <input  name="CantidadC" value="<%=i%>" >
                                 </div>
-                                <!--<input type="text" name="Valor1" id="Valor" style="display: none;">-->
+                                <input type="text" name="Valor1" id="Valor1">
   			</section>
                         <% }else{%>  
-                             <input type="text" name="ciru" id="number" value="No">
+                            <!--<input type="text" name="ciru" id="number" value="No">-->
+                            <input type="radio" id="si4" name="ciru" value="Si" onclick="mostrar3()">
+                            <label for="si4" class="label">Si</label>
+                            <input type="radio" id="no4" name="ciru" value="No" onclick="ocultar3()" checked> 
+                            <label for="no4" class="label">No</label>
+                            <section id="muestra3" style="display: none;" class="seccion">  			
+                                    <div class="boton">
+                                        <input type="button" id="add" class="input" value="Agregar Cirugía" onclick="Javascript:addRow()">
+                                    </div>
+                                    <div class="contiene_tabla" align="center">
+                                        <table class="table" id="myTableData">
+                                            <tr>
+                                                <td style="width:5%">Borrar</td>
+                                                <td style="width:30%">Fecha</td>
+                                                <td style="width:30%">Motivo</td>
+                                                <td style="width:30%">Tipo</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <input type="text" name="Valor1" id="Valor1" style="display: none;">
+                            </section>
                         <% } %>
   			<div style="margin: 15px;">
   				<label>Alergias</label>
@@ -671,11 +693,11 @@
                         <%if(alergia.equals("Si")){ %> 
                              <input type="text" name="alergia" id="number" value="Si">
                             <section id="ciru" class="">
-                                <!--<div class="boton">
+                                <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow2()">
-                                </div>    -->                            
+                                </div>                       
                                 <div class="contiene_tabla" align="center">
-                                    <table  id="tabla">
+                                    <table  id="tabla2">
                                         <tr>
                                             <td style="width:10%">Borrar</td>
                                             <td style="width:45%">Fecha</td>
@@ -687,15 +709,16 @@
                                           rs=pst.executeQuery();  
                                           while(rs.next()){  %>
                                         <tr>
+                                            <td><input type="button" value = " X " onClick="Javacsript:deleteRow2(this)"></td>
                                             <input type="text" name="<%="AID"+j%>" value="<%=rs.getString("idAlergias")%>" style="display: none;">
                                             <td><input type="text" name="<%="AFecha"+j%>" value="<%=rs.getString("Fecha")%>"></td>
                                             <td><input type="text" name="<%="ACausa"+j%>" value="<%=rs.getString("Causa")%>"></td>                                                                              
                                         </tr>
                                         <% j=j+1; }   %>
                                     </table>
-                                    <input  name="CantidadA" value="<%=j%>" style="display: none;">
+                                    <input  name="CantidadA" value="<%=j%>">
                                 </div>
-                                <!--<input type="text" name="Valor2" id="Valor2" >-->
+                                <input type="text" name="Valor2" id="Valor2" >
 	  		</section>
                         <% }else{  %>
                              <input type="text" name="alergia" id="number" value="No">

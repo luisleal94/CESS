@@ -58,6 +58,7 @@
             </form>
         </div>
         <% //Busqueda por nombre del usuario a buscar
+        request.setCharacterEncoding("UTF-8");    
         String Nombre="";
         String Tipo=request.getParameter("Tipo");
         String Valor=request.getParameter("dato");

@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="java.util.Calendar"%>
-<%@page import="org.jfree.chart.JFreeChart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Conexion"%>
 <%@page import="java.sql.PreparedStatement"%>

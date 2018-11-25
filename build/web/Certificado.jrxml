@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9819d4a-794c-4663-b1c6-5f1738f73265">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Paciente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Medico" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Toxico" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Talla" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMC" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Estado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FC" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Visual" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Edad" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Peso" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     PERSONAL.`ID_USER` AS PERSONAL_ID_USER,
+     PERSONAL.`NOMBRE` AS PERSONAL_NOMBRE,
+     PERSONAL.`APELLIDO` AS PERSONAL_APELLIDO,     
+     PERSONAL.`Cedula` AS PERSONAL_Cedula,
+     PERSONAL.`Especialidad` AS PERSONAL_Especialidad,
+     Pacientes.`idPacientes` AS Pacientes_idPacientes,
+     Pacientes.`Nombre` AS Pacientes_Nombre,
+     Pacientes.`Apellido_P` AS Pacientes_Apellido_P,
+     Pacientes.`Apellido_M` AS Pacientes_Apellido_M
+FROM
+     `PERSONAL` PERSONAL,
+     `Pacientes` Pacientes
+where 
+PERSONAL.`ID_USER`=$P{Medico} and
+Pacientes.`idPacientes`=$P{Paciente}]]>
+	</queryString>
+	<field name="PERSONAL_ID_USER" class="java.lang.Integer"/>
+	<field name="PERSONAL_NOMBRE" class="java.lang.String"/>
+	<field name="PERSONAL_APELLIDO" class="java.lang.String"/>
+	<field name="PERSONAL_Cedula" class="java.lang.String"/>
+	<field name="PERSONAL_Especialidad" class="java.lang.String"/>
+	<field name="Pacientes_idPacientes" class="java.lang.Integer"/>
+	<field name="Pacientes_Nombre" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_P" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_M" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="12" width="63" height="67" uuid="ad0cb3f9-b0bf-4707-aea5-35b7c5df3d15"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="149" y="0" width="255" height="27" uuid="7d52293a-3b73-4821-83c4-721ad3e5d600"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD VERACRUZANA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="27" width="250" height="15" uuid="b16f052e-d037-4847-bce1-47668cdefd99"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE ESTUDIOS Y SERVICIOS EN SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="49" width="357" height="30" uuid="31bd4dc3-97f8-48de-a947-316ec146f11f"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARMEN SERDAN N° 147 CASI ESQ. MINA, C.P 91700 TEL:932-49-78 VERACEUZ, VER.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="480" y="12" width="75" height="57" uuid="d2d2d835-fcc0-4aa8-a704-76bfdaa49544"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="405" splitType="Stretch">
+			<staticText>
+				<reportElement x="378" y="0" width="177" height="15" uuid="0d245eb6-16e2-4f25-b906-a04555d596b0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ASUNTO: CERTIFICADO MÉDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="15" width="102" height="14" uuid="5cf99569-e95b-46ea-aa7a-07ca7ab11226"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Veracruz. Ver. a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="29" width="135" height="14" uuid="aa753dc2-5fb2-4ed8-91c2-6c63a22e7e36"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[A QUIEN CORRESPONDA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="54" width="233" height="15" uuid="5bb51c87-3ff3-472c-b13c-7fabe5b6bd91"/>
+				<text><![CDATA[Por medio de la presente, la que suscribe Dr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="54" width="111" height="15" uuid="5be0bbb5-2f63-481d-916e-cee740005288"/>
+				<text><![CDATA[médico adscrito al]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="69" width="471" height="15" uuid="a548ca02-8239-4461-b9ea-c1ca1cf60c3c"/>
+				<text><![CDATA[Centro de Estudios y Servicios en Salud, perteneciente a la Universidad Veracruzana.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="102" width="126" height="15" uuid="32f5b7fb-6f14-4d07-b377-e6a1c0d97f35"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="117" width="53" height="15" uuid="1699fe8b-1ec0-4d94-909c-141f8551e39f"/>
+				<text><![CDATA[Que la C.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="117" width="306" height="15" uuid="33fcea2c-dd07-4c45-baa6-bc6acbc4338f"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[años de edad, despues de haber realizado historia clínica y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="117" width="16" height="15" uuid="49190d14-c6ff-4df6-ae16-91a5bbc64355"/>
+				<text><![CDATA[de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="132" width="497" height="15" uuid="99bc3291-14be-4593-8c66-bad129fba293"/>
+				<text><![CDATA[examen médico detallado y minucioso, cuenta con los siguientes ANTECEDENTES PERSONALES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="147" width="326" height="15" uuid="4910e234-98f0-44f2-b679-8bfd36e027cb"/>
+				<text><![CDATA[Toxicomanías y empleo de algún tipo de droga o estupefaciente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="147" width="85" height="15" uuid="0b63ce22-90b8-4fd9-aaa9-51863e5a9aae"/>
+				<text><![CDATA[. Enfermedades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="162" width="497" height="15" uuid="439b1db8-fd98-405b-985d-fa61f0e9e13a"/>
+				<text><![CDATA[cronicodegenerativas NEGADAS. Antecedentes quirúrgicos: NEGADOS, transfuciones: NEGADOS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="177" width="444" height="15" uuid="2e364d12-5a8c-483f-8eaa-274083b881cb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Alergias: Rinitis alergica. A la exploración física se encontró con los siguientes datos: Peso:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="177" width="32" height="15" uuid="506ab706-4050-4686-b699-8995cfbdd145"/>
+				<text><![CDATA[Kg.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="192" width="32" height="15" uuid="e27f3a7d-c063-4e2c-9101-21f37ba496dc"/>
+				<text><![CDATA[Talla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="192" width="137" height="15" uuid="d6abd58f-ae5c-47b5-aa36-7cd577f2c937"/>
+				<text><![CDATA[m. Indice de Masa Corporal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="207" width="512" height="15" uuid="7c83c3b5-a5ed-405c-bc89-f9ea4869309e"/>
+				<text><![CDATA[A la exploración física se encuentra paciente cooperador, consciente, orientado en sus tres esferas neurologicas,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="222" width="529" height="15" uuid="e7403916-3677-40b5-9d1a-5c1480b04092"/>
+				<text><![CDATA[buen estado de hidratación, con adecuada coloración de tegumentos, pares craneales integros, campos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="237" width="568" height="15" uuid="f56c2152-0be5-42fb-8771-3c67f8984b0c"/>
+				<text><![CDATA[pulmonares bien ventilados, sin datos de dificultad respiratoria, ruidos cardiacos ritmicos, sin ruidos agregados,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="252" width="529" height="15" uuid="5dee67ed-fc99-480a-8488-a78ea386b928"/>
+				<text><![CDATA[abdomen globoso a expensas de panículo adiposo, blando depresible, sin datos de irritación peritoneal,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="267" width="544" height="15" uuid="410a57a3-72c7-48da-a1cb-faeb972ef018"/>
+				<text><![CDATA[peristalsis audible, sin megalias palpables, extremidades integras, fuerza y sensible concervadas, escala de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="282" width="177" height="15" uuid="a009f6bf-917e-4594-84f0-df1931e3df5c"/>
+				<text><![CDATA[Daniels 5/5 Frecuencia Cardiaca:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="282" width="177" height="15" uuid="281f4182-73e7-4076-8c6d-1944ea83911b"/>
+				<text><![CDATA[latidos por minuto(NORMAL). FR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="282" width="133" height="15" uuid="1a52136c-cb22-44e4-b640-6c0360cb33e3"/>
+				<text><![CDATA[respiraciones por minuto.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="297" width="120" height="15" uuid="5c9d375f-6604-445f-af38-83781a4418eb"/>
+				<text><![CDATA[Agudeza visual Normal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="297" width="406" height="15" uuid="6209fdf3-4143-4ae9-bc0b-2d8d0a24ba9f"/>
+				<text><![CDATA[(bilateral), Conducto auditivo permeable, audición se encuentra conservada Rinné positivo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="312" width="406" height="15" uuid="768b28d4-54cf-40ef-90e0-b2f8214092a3"/>
+				<text><![CDATA[Rinné positivo (normal) y Webber indiferente (normal), Por lo que se reporta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="340" width="232" height="15" uuid="1c1d6f1a-6f9f-45bc-8b31-f0a3b9decb35"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLINICAMENTE ASINTOMÁTICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="367" width="544" height="15" uuid="c40662cf-a3a9-4b45-ac79-b83b348987f8"/>
+				<text><![CDATA[Para los fines que a este convenga, se expide el presente documento, el cual se invalidará, alos 15 días de la fecha de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="382" width="568" height="15" uuid="0437142b-8772-49cf-b83b-f9eb0de60a34"/>
+				<text><![CDATA[expedición. Se sugiere modificar habitos alimienticios y realizar actividad física regular para el control de peso.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="233" y="54" width="58" height="15" uuid="7304324c-473b-437e-afb7-eb2b2951ac97"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="54" width="87" height="15" uuid="91332275-d76a-44c3-a1af-917a02130629"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="117" width="58" height="15" uuid="dd9f46d0-9634-44a3-bf55-718b0f15ac09"/>
+				<textFieldExpression><![CDATA[$F{Pacientes_Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="117" width="45" height="15" uuid="0b8684da-5685-4fa1-9bd8-d0e3c2f6173d"/>
+				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_P}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="117" width="53" height="15" uuid="657e6834-9ff4-4d0c-a060-f2e6733c06e7"/>
+				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_M}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="117" width="26" height="15" uuid="932306ba-25d4-49ef-8035-eeaa689e0adc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{Edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="147" width="117" height="15" uuid="95e37995-2579-443b-bc87-3a2fd10a7cb1"/>
+				<textFieldExpression><![CDATA[$P{Toxico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="177" width="38" height="15" uuid="9e36b3d3-6d13-468b-823a-745e7a2affa4"/>
+				<textFieldExpression><![CDATA[$P{Peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="192" width="21" height="15" uuid="f0e22d95-bddf-45fc-9109-6ca102a87a14"/>
+				<textFieldExpression><![CDATA[$P{Talla}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="192" width="57" height="15" uuid="ba37252d-4b23-4aa6-9fba-1d4eb885a4a5"/>
+				<textFieldExpression><![CDATA[$P{IMC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="282" width="22" height="15" uuid="0bd796c5-2e04-4ff9-9e6a-4bd8dcbe816c"/>
+				<textFieldExpression><![CDATA[$P{FR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="282" width="27" height="15" uuid="eb1d0cea-3da6-4241-b36d-017d4cca4eef"/>
+				<textFieldExpression><![CDATA[$P{FC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="297" width="28" height="15" uuid="aeb5ed42-da35-4514-a980-fe35584aaa71"/>
+				<textFieldExpression><![CDATA[$P{Visual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="16" width="75" height="13" uuid="67522ffa-75e3-404e-9182-3cddc69f61a7"/>
+				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="233" y="0" width="94" height="15" uuid="fc215a14-3774-4d71-8c5f-0b624c9411e3"/>
+				<text><![CDATA[ATENTAMENTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="200" y="29" width="151" height="1" uuid="16f5bb27-1f47-428a-8c8e-5e84592972dc"/>
+			</line>
+			<staticText>
+				<reportElement x="200" y="30" width="23" height="15" uuid="1306bc92-5204-4837-af9d-4e4c9b9cf6c5"/>
+				<text><![CDATA[Dr.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="45" width="62" height="15" uuid="3c944933-8d93-49d6-96ba-7bcad42d1872"/>
+				<text><![CDATA[CED. PROF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="226" y="30" width="65" height="15" uuid="bb56df52-5c09-44b4-b2b6-ed1c9baecad2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="30" width="100" height="15" uuid="aeadfc76-7849-435f-824e-475eddd9b55c"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="45" width="100" height="15" uuid="dec4f372-f6b5-4515-8522-38be8f9cd692"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

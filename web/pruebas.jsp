@@ -71,6 +71,7 @@
         
       <% //Busqueda por nombre del usuario a buscar
         //String Nombre=request.getParameter("nombre");
+        request.setCharacterEncoding("UTF-8");
         String Tipo=request.getParameter("Tipo");
         String Valor=request.getParameter("dato");
         Conexion con= new Conexion();

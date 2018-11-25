@@ -1277,6 +1277,29 @@ public class Consulta extends Conexion{
         }
         return false;
     }
+    
+    public boolean Cirujia3(String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="Delete from Cirujias where idCirujias=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
     /***************************************************************************/
     public boolean Alergia(String fecha,String Motivo,String id){
         PreparedStatement pst=null;
@@ -1311,6 +1334,29 @@ public class Consulta extends Conexion{
             pst.setString(1, fecha);
             pst.setString(2, Motivo);           
             pst.setString(3, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean Alergia3(String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="delete from Alergias where idAlergias?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
