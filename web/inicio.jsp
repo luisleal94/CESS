@@ -56,7 +56,6 @@
         </div>
 <div id="respaldo">
     <a href="Certificado.jsp" id="respal">Certificado médico</a>
-    </form>
 </div>
 <div class="container">
   <img src="img/agregarpaciente.png" width="268" height="289" alt="Avatar" class="image">

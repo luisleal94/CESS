@@ -35,6 +35,7 @@
         <link rel="stylesheet" type="text/css" href="css/estiloH.css">
 	<script type="text/javascript" src="js/radios.js"></script>
 	<script type="text/javascript" src="js/Validacion.js"></script>
+        <script type="text/javascript" src="js/Tabla.js"></script>
         <script type="text/javascript" src="js/TablaActualiza.js"></script>
         <script type="text/javascript" src="js/Confirmacion.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet"> 
@@ -59,7 +60,7 @@
                      while(rs.next()){
                 %>
 		<label >Nombre</label>
-                <input type="text"  id="Principal" name="Nombre" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
+                <input type="text"  id="Principal" name="Nombre" value="<%=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M")%>" style="color:#063452" disabled >
 		&emsp;<label>Estado Civil</label>
                 <input type="text" name="estado" id="Mediano" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled>
                 &emsp;<label>Ocupacion</label>
@@ -381,27 +382,95 @@
                             <label id="titulo2">INMUNIZACIONES (FECHAS)</label><br>
 				<label>ANTITETÁNICA</label>&emsp; 
                                 <%if(rs.getString("Tetano").equals("No")){  %>
-                                    <input type="text" name="tetano"  id="Principal"  value="<%=rs.getString("Tetano")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
-                                <% }else{ %>
-                                    <input type="text" name="tetano"  id="Principal"  value="<%=rs.getString("Tetano")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <div>
+                                        <input type="radio" id="siTeta" name="ResTetano" value="Si" onclick="mostrarTetano()">
+                                        <label for="siTeta" class="label">Si</label>
+                                        <input type="radio" id="noTeta" name="ResTetano" value="No" onclick="ocultarTetano()" checked>
+                                        <label for="noTeta" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraTetano" style="display: none" class="seccion">
+                                        <input type="text" id="Principal" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section>     
+                                    <% }else{ %>
+                                    <div>
+                                        <input type="radio" id="siTeta" name="ResTetano" value="Si" onclick="mostrarTetano()" checked>
+                                        <label for="siTeta" class="label">Si</label>
+                                        <input type="radio" id="noTeta" name="ResTetano" value="No" onclick="ocultarTetano()">
+                                        <label for="noTeta" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraTetano" class="seccion">
+                                        <!--<input type="text" id="Principal" name="tetano" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >-->
+                                        <input type="text" name="tetano"  id="Principal"  value="<%=rs.getString("Tetano")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section> 
                                 <% }%>                                                                                               
                                 <br><label>ANTISARAMPIÓN</label>&emsp;&emsp;
                                 <%if(rs.getString("Sarampion").equals("No")){  %>
-                                    <input type="text" name="sarampion"  id="Principal"  value="<%=rs.getString("Sarampion")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
-                                <% }else{ %>
-                                    <input type="text" name="sarampion"  id="Principal"  value="<%=rs.getString("Sarampion")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
-                                 <% }%>                      				
+                                    <div>
+                                        <input type="radio" id="siSaram" name="ResSaram" value="Si" onclick="mostrarSaram()">
+                                        <label for="siSaram" class="label">Si</label>
+                                        <input type="radio" id="noSaram" name="ResSaram" value="No" onclick="ocultarSaram()" checked>
+                                        <label for="noSaram" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraSaram" style="display: none" class="seccion">
+                                        <input type="text" id="Principal" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section>  
+                                    <% }else{ %>
+                                    <div>
+                                        <input type="radio" id="siSaram" name="ResSaram" value="Si" onclick="mostrarSaram()" checked>
+                                        <label for="siSaram" class="label">Si</label>
+                                        <input type="radio" id="noSaram" name="ResSaram" value="No" onclick="ocultarSaram()">
+                                        <label for="noSaram" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraSaram"  class="seccion">
+                                        <!--<input type="text" id="Principal" name="sarampion" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >-->
+                                        <input type="text" name="sarampion"  id="Principal"  value="<%=rs.getString("Sarampion")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section>  
+                                    <% }%>                      				
                                  <br><label>RUBÉOLA</label>&emsp;&emsp;
                                 <%if(rs.getString("Rubeola").equals("No")){  %>
-                                    <input type="text" name="rubeola"  id="Principal"  value="<%=rs.getString("Rubeola")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
-                                 <% }else{ %>
-                                    <input type="text" name="rubeola"  id="Principal"  value="<%=rs.getString("Rubeola")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
-                                  <% }%>
+                                    <div>
+                                        <input type="radio" id="siRubeo" name="ResRubeo" value="Si" onclick="mostrarRubeo()">
+                                        <label for="siRubeo" class="label">Si</label>
+                                        <input type="radio" id="noRubeo" name="ResRubeo" value="No" onclick="ocultarRubeo()" checked>
+                                        <label for="noRubeo" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraRubeo" style="display: none" class="seccion">
+                                        <input type="text" id="Principal" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section> 
+                                <% }else{ %>
+                                    <div>
+                                        <input type="radio" id="siRubeo" name="ResRubeo" value="Si" onclick="mostrarRubeo()" checked>
+                                        <label for="siRubeo" class="label">Si</label>
+                                        <input type="radio" id="noRubeo" name="ResRubeo" value="No" onclick="ocultarRubeo()">
+                                        <label for="noRubeo" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraRubeo"  class="seccion">
+                                        <!--<input type="text" id="Principal" name="rubeola" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >-->
+                                        <input type="text" name="rubeola"  id="Principal"  value="<%=rs.getString("Rubeola")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section>
+                                    <% }%>
                                 <br><label>ANTI HBS</label>
                                 <%if(rs.getString("hepatitis").equals("No")){  %>
-                                    <input type="text" name="hepatitis"  id="Principal" value="<%=rs.getString("hepatitis")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <div>
+                                        <input type="radio" id="siANTI" name="ResANTI" value="Si" onclick="mostrarAnti()">
+                                        <label for="siANTI" class="label">Si</label>
+                                        <input type="radio" id="noANTI" name="ResANTI" value="No" onclick="ocultarAnti()" checked>
+                                        <label for="noANTI" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraANTI" style="display: none" class="seccion">
+                                        <input type="text" id="Principal" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section>
                                 <% }else{ %>
-                                    <input type="text" name="hepatitis"  id="Principal" value="<%=rs.getString("hepatitis")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    <div>
+                                        <input type="radio" id="siANTI" name="ResANTI" value="Si" onclick="mostrarAnti()" checked>
+                                        <label for="siANTI" class="label">Si</label>
+                                        <input type="radio" id="noANTI" name="ResANTI" value="No" onclick="ocultarAnti()">
+                                        <label for="noANTI" class="label">No</label>
+                                    </div>
+                                    <section id="MuestraANTI" class="seccion">
+                                        <!--<input type="text" id="Principal" name="hepatitis" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >-->
+                                        <input type="text" name="hepatitis"  id="Principal" value="<%=rs.getString("hepatitis")%>" size="10" maxlength="10" onKeyUp = "this.value=formateafecha(this.value);" placeholder="DD/MM/AAAA" class="fecha" >
+                                    </section>
                                 <% }%>
                         <% } %>
                     <div class="bloque">                          
@@ -428,7 +497,12 @@
                                    <input type="text" name="Relaciones" value="<%=rs.getString("Relaciones")%>" style="display: none">
                                     <label>Bebidas alcohólicas</label>
                                     <%if(rs.getString("Toma").equals("Si")){%>
-                                    <input type="text" name="alcol" value="<%=rs.getString("Toma")%>" id="number"> 
+                                        <div>
+                                            <input type="radio" id="si" name="alcol" value="Si" onclick="mostrarA()" checked>
+                                            <label for="si" class="label">Si</label>
+                                            <input type="radio" id="no" name="alcol" value="No" onclick="ocultarA()">
+                                            <label for="no" class="label">No</label>
+                                        </div>
                                         <section id="muestraA" class="seccion">
                                             <label>¿A qué edad empezaste a ingerir alcohol?</label>
                                             <input type="text"  id="Principal" name="inicio1" value="<%=res1%>">	
@@ -452,8 +526,13 @@
                                     <% } %>
                                     <br><label>Fuma</label> 
                                     <% if(rs.getString("Fuma").equals("Si")){  %>
-                                    <input type="text" name="fuma" value="<%=rs.getString("Fuma")%>" id="number">
-                                        <section id="muestraA" class="seccion">
+                                        <div>
+                                            <input type="radio" id="si1" name="fuma" value="Si" onclick="mostrarCiga()" checked>
+                                            <label for="si1" class="label">Si</label>
+                                            <input type="radio" id="no1" name="fuma" value="No" onclick="ocultarCiga()">
+                                            <label for="no1" class="label">No</label>
+                                        </div>
+                                        <section id="muestraC" class="seccion">
                                             <label>Edad de inicio</label>
                                             <input type="text"  id="Principal"  name="inicio2" value="<%=res3%>" id="number">	
                                             &emsp;&emsp;&emsp;<label>¿Cuántos cigarros al día?</label>
@@ -461,10 +540,10 @@
                                         </section>  
                                     <% } else{  %>
                                         <div>
-					<input type="radio" id="si1" name="fuma" value="Si" onclick="mostrarCiga()">
-					<label for="si1" class="label">Si</label>
-	  				<input type="radio" id="no1" name="fuma" value="No" onclick="ocultarCiga()" checked>
-	  				<label for="no1" class="label">No</label>
+                                            <input type="radio" id="si1" name="fuma" value="Si" onclick="mostrarCiga()">
+                                            <label for="si1" class="label">Si</label>
+                                            <input type="radio" id="no1" name="fuma" value="No" onclick="ocultarCiga()" checked>
+                                            <label for="no1" class="label">No</label>
                                         </div>
                                         <section id="muestraC" style="display: none;" class="seccion">
                                             <label>¿ A qué edad empezaste a fumar?</label>
@@ -475,8 +554,13 @@
                                     <% } %>
                                     <br><label>Relaciones Sexuales</label>                                     
                                     <%if(rs.getString("Relaciones").equals("Si")){ %>
-                                    <input type="text" name="rela" value="<%=rs.getString("Relaciones")%>" id="number">
-                                        <section id="muestraA" class="seccion">
+                                        <div>
+                                            <input type="radio" id="si2" name="rela" value="Si" onclick="mostrar()" checked>
+                                            <label for="si2" class="label">Si</label>
+                                            <input type="radio" id="no2" name="rela" value="No" onclick="ocultar()">
+                                            <label for="no2" class="label">No</label>
+                                        </div>
+                                        <section id="muestra" class="seccion">
                                             <label>Edad de inicio</label>
                                             <input type="text" name="inicio3" value="<%=res5%>" id="number">	
                                             &emsp;<label>Número de parejas</label>
@@ -497,9 +581,9 @@
                                     <section id="muestra" style="display: none" class="seccion"> 
                                             <div id="text">
                                             <label>¿A qué edad iniciaste?</label>
-                                            <input type="text" name="inicio3">		  			
+                                            <input type="text" name="inicio3" id="number">		  			
                                             <label>¿Cuántas parejas has tenido?</label>
-                                            <input type="text" name="parejas"><br>
+                                            <input type="text" name="parejas" id="number"><br>
                                             <label>¿Usas preservativo?</label>
                                             <input type="radio" id="siPre" name="proteccion" value="Si" onclick="mostrarProte()">
                                             <label for="siPre" class="label">Si</label>
@@ -566,8 +650,13 @@
                                 </div>
                         </section>
                         <% } else{ %>
-                            <input type="text" name="embara" value="<%=embarazo%>" id="number" style="display: none">
-                            <section id="muestraA" class="seccion">
+                            <div>
+                                <input type="radio" id="si3" name="embara" value="Si" onclick="mostrar2()" checked>
+                                <label for="si3" class="label">Si</label>
+                                <input type="radio" id="no3" name="embara" value="No" onclick="ocultar2()">
+                                <label for="no3" class="label">No</label> 
+                            </div> 
+                            <section id="muestra2" class="seccion">
                                     <%  pst = con.getConexion().prepareStatement("select *from ResGineco where IdPaciente='"+ID+"'");
                                         rs=pst.executeQuery(); 
                                          while(rs.next()){ %> 
@@ -632,7 +721,10 @@
   			</div>
 			<label>¿Te han intervenido quirúrgicamente?</label>
                         <%if(cirujia.equals("Si")){ %>
-                        <input type="text" name="ciru" id="number" value="Si">
+                        <input type="radio" id="si4" name="ciru" value="Si" onclick="mostrar3()" checked>
+                        <label for="si4" class="label">Si</label>
+                        <input type="radio" id="no4" name="ciru" value="No" onclick="ocultar3()"> 
+                        <label for="no4" class="label">No</label>
   			<section id="muestra3" class="seccion">  			
                                 <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Cirugía" onclick="Javascript:addRow()">
@@ -674,7 +766,7 @@
                                         <input type="button" id="add" class="input" value="Agregar Cirugía" onclick="Javascript:addRow()">
                                     </div>
                                     <div class="contiene_tabla" align="center">
-                                        <table class="table" id="myTableData">
+                                        <table class="table" id="tabla1">
                                             <tr>
                                                 <td style="width:5%">Borrar</td>
                                                 <td style="width:30%">Fecha</td>
@@ -683,15 +775,19 @@
                                             </tr>
                                         </table>
                                     </div>
-                                    <input type="text" name="Valor1" id="Valor1" style="display: none;">
+                                    <!--<input type="text" name="Valor1" id="Valor1" style="display: none;">-->
+                                    <input type="text" name="Valor1" id="Valor1">
                             </section>
                         <% } %>
   			<div style="margin: 15px;">
   				<label>Alergias</label>
   			</div>
   			<label>¿Has presentado alguna reacción alérgica?</label>
-                        <%if(alergia.equals("Si")){ %> 
-                             <input type="text" name="alergia" id="number" value="Si">
+                        <%if(alergia.equals("Si")){ %>
+                            <input type="radio" id="si5" name="alergia" value="Si" onclick="cirujia()" checked>
+                            <label for="si5" class="label">Si</label>
+                            <input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()">
+                            <label for="no5" class="label">No</label>
                             <section id="ciru" class="">
                                 <div class="boton">
                                     <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow2()">
@@ -721,7 +817,26 @@
                                 <input type="text" name="Valor2" id="Valor2" >
 	  		</section>
                         <% }else{  %>
-                             <input type="text" name="alergia" id="number" value="No">
+                            <input type="radio" id="si5" name="alergia" value="Si" onclick="cirujia()">
+                            <label for="si5" class="label">Si</label>
+                            <input type="radio" id="no5" name="alergia" value="No" onclick="Oculcirujia()" checked>
+                            <label for="no5" class="label">No</label>
+                                <section id="ciru" style="display: none;" class="">
+                                    <div class="boton">
+                                        <input type="button" id="add" class="input" value="Agregar Alergia" onclick="Javascript:addRow2()">
+                                    </div>                                
+                                    <div class="contiene_tabla" align="center">
+                                        <table class="table" id="tabla2">
+                                            <tr>
+                                                <td style="width:10%">Borrar</td>
+                                                <td style="width:45%">Fecha</td>
+                                                <td style="width:45%">A que</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--<input type="text" name="Valor2" id="Valor2" style="display: none">-->
+                                    <input type="text" name="Valor2" id="Valor2" >
+                            </section> 
                         <%    } %>
   			<div style="margin: 15px;">
   				<label>Enfermedades</label>
@@ -740,22 +855,25 @@
   				<label>¿Has presentado alguna complicación?</label>
   				<input type="text"  id="Principal" name="compliDA">
   			</section><%  }else{ %>
-                        <input type="text" name="diabe" value="Si" id="number" style="display: none;">
-                        &emsp;<label>Desde cuando</label>
-                        <input type="text"  id="Principal" name="cuandoDA" value="<%=fechadia%>">
-                        &emsp;&emsp;<label>Medicamento para controlarse</label>
-                        <input type="text"  id="Principal" name="medicDA" value="<%=medicDia%>">
-                        <br><label>Complicaciones</label>
-                        <input type="text"  id="Principal" name="compliDA" value="<%=CompliDia%>">   
+                        <input type="radio" id="si6" name="diabe" value="Si" onclick="mostrarDiabe()" checked>
+  			<label for="si6" class="label">Si</label>
+  			<input type="radio" id="no6" name="diabe" value="No" onclick="ocultarDiabe()">
+  			<label for="no6" class="label">No</label>
+                        <section id="diabetes" class="seccion">
+                            &emsp;<label>Desde cuando</label>
+                            <input type="text"  id="Principal" name="cuandoDA" value="<%=fechadia%>">
+                            &emsp;&emsp;<label>Medicamento para controlarse</label>
+                            <input type="text"  id="Principal" name="medicDA" value="<%=medicDia%>">
+                            <br><label>Complicaciones</label>
+                            <input type="text"  id="Principal" name="compliDA" value="<%=CompliDia%>">
+                        </section>
                        <% } %> <br>
                        <label>Hipertenso</label><br>
-                       <%if(hipertenso.equals("No")){ %>
-                        
+                       <%if(hipertenso.equals("No")){ %>                        
 	  		<input type="radio" id="si7" name="hiper" value="Si" onclick="mostrarH()">
 	  		<label for="si7" class="label">Si</label>
 	  		<input type="radio" id="no7"  name="hiper" value="No" onclick="ocultarH()" checked>
 	  		<label for="no7" class="label">No</label> 
-  			
   			<section id="hiper" style="display: none;" class="seccion">
   				<label>¿Desde cuando?</label>
 	  			<input  id="Principal" type="text" name="cuandoHI">
@@ -765,15 +883,18 @@
 		  		<input  id="Principal" type="text" name="compliHI">		  		
   			</section>  
                         <% }else {  %>  
-                            <input type="text" id="number" name="hiper" value="Si"  >
-                            <label>Desde cuando</label>
-                            <input  id="Principal" type="text" name="cuandoHI" value="<%=CuandoHi%>">
-                            &emsp;&emsp;<label>Medicamento</label>
-                            <input  id="Principal" type="text" name="medicHI" value="<%=Medica%>">
-                            <br><label>Complicaciones</label>
-                            <input  id="Principal" type="text" name="compliHI" value="<%=CompliHi%>"> 
-                       
-                       <% } %>
+                            <input type="radio" id="si7" name="hiper" value="Si" onclick="mostrarH()" checked>
+                            <label for="si7" class="label">Si</label>
+                            <input type="radio" id="no7"  name="hiper" value="No" onclick="ocultarH()">
+                            <label for="no7" class="label">No</label>
+                            <section id="hiper" class="seccion">
+                                <label>Desde cuando</label>
+                                <input  id="Principal" type="text" name="cuandoHI" value="<%=CuandoHi%>">
+                                &emsp;&emsp;<label>Medicamento</label>
+                                <input  id="Principal" type="text" name="medicHI" value="<%=Medica%>">
+                                <br><label>Complicaciones</label>
+                                <input  id="Principal" type="text" name="compliHI" value="<%=CompliHi%>"> 
+                            </section>  <% } %>
                        <br><label>Otros</label><br>
                         <%if(otros.equals("Ninguno")){ %>   
 		  	<input type="radio" id="siOtros" name="otrosP" value="Si" onclick="mostrarOtros()">
@@ -786,8 +907,13 @@
                             </div>
                         </section>
                         <% }else{ %>
-                            <input type="text" id="number" name="otrosP" value="Si" style="display: none;">
-                            <textarea class="area" name="texto" cols="150" rows="5"><%=otros%></textarea>
+                            <input type="radio" id="siOtros" name="otrosP" value="Si" onclick="mostrarOtros()" checked>
+                            <label for="siOtros" class="label">Si</label>
+                            <input type="radio" id="noOtros" name="otrosP" value="No" onclick="ocultarOtros()"> 
+                            <label for="noOtros" class="label">No</label>
+                            <section id="otros" class="seccion">
+                                <textarea class="area" name="texto" cols="150" rows="5"><%=otros%></textarea>
+                            </section>
                         <% } %>
 
                 </div>
@@ -838,8 +964,15 @@
   				<label>¿Con qué frecuencia?</label>
   				<input  id="Principal" type="text" name="freEs">
   			</section>
-                        <% }else{ %><input type="text" name="estre" value="Si" id="number"> 
-                            <label>¿Con qué frecuencia?</label><input  id="Principal" type="text" name="freEs" value="<%=Estre%>"> <% } %>
+                        <% }else{ %>
+                                <input type="radio" id="si10" name="estre" value="Si" onclick="mostrarEs()" checked>
+                                <label for="si10" class="label">Si</label>
+                                <input type="radio" id="no10" name="estre" value="No" onclick="ocultarEs()"> 
+                                <label for="no10" class="label">No</label><br>
+                                <section id="estreni" margin-left: 15px;">
+                                    <label>¿Con qué frecuencia?</label>
+                                    <input  id="Principal" type="text" name="freEs" value="<%=Estre%>"> 
+                                </section><% } %>
   			<br><label>¿Tienes dirrea?</label>
                         <%if(Diarrea.equals("No")||Diarrea.equals("")){  %> 
   			<input type="radio" id="si11" name="diarrea" value="Si" onclick="mostrarDia()">
@@ -850,8 +983,15 @@
   				<label>¿Con qué frecuencia?</label>
   				<input  id="Principal" type="text" name="freDea">
   			</section>
-                        <% }else{ %><input type="text" name="diarrea" value="Si" id="number">
-                            <label>¿Con qué frecuencia?</label><input  id="Principal" type="text" name="freDea" value="<%=Diarrea%>"><%} %>
+                        <% }else{ %>
+                            <input type="radio" id="si11" name="diarrea" value="Si" onclick="mostrarDia()" checked>
+                            <label for="si11" class="label">Si</label>
+                            <input type="radio" id="no11" name="diarrea" value="No" onclick="ocultarDia()"> 
+                            <label for="no11" class="label">No</label><br>
+                            <section id="diarrea" margin-left: 15px;">
+  				<label>¿Con qué frecuencia?</label>
+                                <input  id="Principal" type="text" name="freDea" value="<%=Diarrea%>">
+                            </section>  <%} %>
   			<br><label>¿Tienes náuseas y/o vómito?</label>
                         <%if(Nauseas.equals("No")){%>
   			<input type="radio" id="si12" name="vomito" value="Si">
@@ -874,9 +1014,16 @@
                             <textarea class="area" name="texto3" cols="150" rows="5" autofocus></textarea>
                             </div>
                         </section>                  
-                        <% }else{ %> 
-                            <input type="text" id="number" name="otros3" value="Si" style="display: none;">
-                            <textarea class="area" name="texto3" cols="150" rows="5"><%=otros3%></textarea>
+                        <% }else{ %>
+                            <input type="radio" id="siOtros3" name="otros3" value="Si" onclick="mostrarOtros3()">
+                            <label for="siOtros3" class="label">Si</label>
+                            <input type="radio" id="noOtros3" name="otros3" value="No" onclick="ocultarOtros3()" checked> 
+                            <label for="noOtros3" class="label">No</label>
+                            <section id="otros3" class="seccion">
+                                <div class="areatexto">
+                                <textarea class="area" name="texto3" cols="150" rows="5"><%=otros3%></textarea>
+                                </div>
+                            </section> 
                         <% } %>
 	  		<div style="margin: 15px;">
   				<label>Sistema respiratorio</label>
@@ -913,8 +1060,15 @@
                             </div>
                         </section>
                         <% }else{ %>
-                                <input type="text" id="number" name="otros4" value="Si" style="display: none;">
-                                <textarea class="area" name="texto4" cols="150" rows="5"><%=otros4%></textarea><% } %>
+                            <input type="radio" id="siOtros4" name="otros4" value="Si" onclick="mostrarOtros4()" checked>
+                            <label for="siOtros4" class="label">Si</label>
+                            <input type="radio" id="noOtros4" name="otros4" value="No" onclick="ocultarOtros4()"> 
+                            <label for="noOtros4" class="label">No</label>
+                            <section id="otros4" class="seccion">
+                                <div class="areatexto">
+                                    <textarea class="area" name="texto4" cols="150" rows="5"><%=otros4%></textarea><% } %>
+                                </div>
+                            </section>
 	  		<div style="margin: 15px;">
   				<label>Sistema circulatorio</label>
   			</div>  			
@@ -953,8 +1107,15 @@
                             </div>
                         </section>
                         <% }else{ %>
-                            <input type="text" id="number" name="otros2" value="Si" style="display: none;">
-                            <textarea class="area"  name="texto2" cols="150" rows="5" autofocus><%=otros2%></textarea><% } %>
+                            <input type="radio" id="siOtros2" name="otros2" value="Si" onclick="mostrarOtros2()" checked>
+                            <label for="siOtros2" class="label">Si</label>
+                            <input type="radio" id="noOtros2" name="otros2" value="No" onclick="ocultarOtros2()"> 
+                            <label for="noOtros2" class="label">No</label>
+                            <section id="otros2" class="seccion">
+                                <div class="areatexto">
+                                    <textarea class="area"  name="texto2" cols="150" rows="5" autofocus><%=otros2%></textarea><% } %>
+                                </div>
+                            </section>
                 </div>
                 
                 <div style="margin: 25px;" >

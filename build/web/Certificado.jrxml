@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9819d4a-794c-4663-b1c6-5f1738f73265">
 	<property name="ireport.zoom" value="1.6105100000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="354"/>
 	<parameter name="Paciente" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -120,11 +120,11 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[A QUIEN CORRESPONDA:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="54" width="233" height="15" uuid="5bb51c87-3ff3-472c-b13c-7fabe5b6bd91"/>
-				<text><![CDATA[Por medio de la presente, la que suscribe Dr.]]></text>
+				<reportElement x="0" y="54" width="268" height="15" uuid="5bb51c87-3ff3-472c-b13c-7fabe5b6bd91"/>
+				<text><![CDATA[Por medio de la presente, la que suscribe Dr (a).]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="378" y="54" width="111" height="15" uuid="5be0bbb5-2f63-481d-916e-cee740005288"/>
+				<reportElement x="418" y="54" width="111" height="15" uuid="5be0bbb5-2f63-481d-916e-cee740005288"/>
 				<text><![CDATA[médico adscrito al]]></text>
 			</staticText>
 			<staticText>
@@ -173,7 +173,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Alergias: Rinitis alergica. A la exploración física se encontró con los siguientes datos: Peso:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="444" y="177" width="32" height="15" uuid="506ab706-4050-4686-b699-8995cfbdd145"/>
+				<reportElement x="471" y="177" width="32" height="15" uuid="506ab706-4050-4686-b699-8995cfbdd145"/>
 				<text><![CDATA[Kg.]]></text>
 			</staticText>
 			<staticText>
@@ -181,7 +181,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Talla]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="53" y="192" width="137" height="15" uuid="d6abd58f-ae5c-47b5-aa36-7cd577f2c937"/>
+				<reportElement x="75" y="192" width="137" height="15" uuid="d6abd58f-ae5c-47b5-aa36-7cd577f2c937"/>
 				<text><![CDATA[m. Indice de Masa Corporal]]></text>
 			</staticText>
 			<staticText>
@@ -213,7 +213,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[latidos por minuto(NORMAL). FR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="379" y="282" width="133" height="15" uuid="1a52136c-cb22-44e4-b640-6c0360cb33e3"/>
+				<reportElement x="389" y="282" width="133" height="15" uuid="1a52136c-cb22-44e4-b640-6c0360cb33e3"/>
 				<text><![CDATA[respiraciones por minuto.]]></text>
 			</staticText>
 			<staticText>
@@ -221,7 +221,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Agudeza visual Normal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="149" y="297" width="406" height="15" uuid="6209fdf3-4143-4ae9-bc0b-2d8d0a24ba9f"/>
+				<reportElement x="173" y="297" width="395" height="15" uuid="6209fdf3-4143-4ae9-bc0b-2d8d0a24ba9f"/>
 				<text><![CDATA[(bilateral), Conducto auditivo permeable, audición se encuentra conservada Rinné positivo]]></text>
 			</staticText>
 			<staticText>
@@ -244,12 +244,12 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[expedición. Se sugiere modificar habitos alimienticios y realizar actividad física regular para el control de peso.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="233" y="54" width="58" height="15" uuid="7304324c-473b-437e-afb7-eb2b2951ac97"/>
+				<reportElement x="268" y="54" width="58" height="15" uuid="7304324c-473b-437e-afb7-eb2b2951ac97"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="291" y="54" width="87" height="15" uuid="91332275-d76a-44c3-a1af-917a02130629"/>
+				<reportElement x="331" y="54" width="87" height="15" uuid="91332275-d76a-44c3-a1af-917a02130629"/>
 				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -274,27 +274,32 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<textFieldExpression><![CDATA[$P{Toxico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="422" y="177" width="38" height="15" uuid="9e36b3d3-6d13-468b-823a-745e7a2affa4"/>
+				<reportElement x="433" y="177" width="38" height="15" uuid="9e36b3d3-6d13-468b-823a-745e7a2affa4"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{Peso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="192" width="21" height="15" uuid="f0e22d95-bddf-45fc-9109-6ca102a87a14"/>
+				<reportElement x="32" y="192" width="43" height="15" uuid="f0e22d95-bddf-45fc-9109-6ca102a87a14"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{Talla}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="190" y="192" width="57" height="15" uuid="ba37252d-4b23-4aa6-9fba-1d4eb885a4a5"/>
+				<reportElement x="211" y="192" width="57" height="15" uuid="ba37252d-4b23-4aa6-9fba-1d4eb885a4a5"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{IMC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="356" y="282" width="22" height="15" uuid="0bd796c5-2e04-4ff9-9e6a-4bd8dcbe816c"/>
+				<reportElement x="356" y="282" width="33" height="15" uuid="0bd796c5-2e04-4ff9-9e6a-4bd8dcbe816c"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{FR}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="163" y="282" width="27" height="15" uuid="eb1d0cea-3da6-4241-b36d-017d4cca4eef"/>
+				<reportElement x="157" y="282" width="33" height="15" uuid="eb1d0cea-3da6-4241-b36d-017d4cca4eef"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{FC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="297" width="28" height="15" uuid="aeb5ed42-da35-4514-a980-fe35584aaa71"/>
+				<reportElement x="120" y="297" width="53" height="15" uuid="aeb5ed42-da35-4514-a980-fe35584aaa71"/>
 				<textFieldExpression><![CDATA[$P{Visual}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -313,8 +318,8 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<reportElement x="200" y="29" width="151" height="1" uuid="16f5bb27-1f47-428a-8c8e-5e84592972dc"/>
 			</line>
 			<staticText>
-				<reportElement x="200" y="30" width="23" height="15" uuid="1306bc92-5204-4837-af9d-4e4c9b9cf6c5"/>
-				<text><![CDATA[Dr.]]></text>
+				<reportElement x="193" y="30" width="33" height="15" uuid="1306bc92-5204-4837-af9d-4e4c9b9cf6c5"/>
+				<text><![CDATA[Dr(a).]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="212" y="45" width="62" height="15" uuid="3c944933-8d93-49d6-96ba-7bcad42d1872"/>

@@ -53,7 +53,7 @@
             while(rs.next()){
                 %>
                 <form id="formulario" action="ActualizaPer" method="post">                    
-                    <input class="input1" type="text" name="Id" value="<%=rs.getString("ID_USER")%>">
+                    <input class="input1" type="text" name="Id" value="<%=rs.getString("ID_USER")%>" style="display: none;">
                     <label>Nombre</label> <input class="input1" type="text" name="nombre" value="<%=rs.getString("NOMBRE")%>">
 		    <label>Apellidos</label><input class="input1" type="text" name="apellido" value="<%=rs.getString("APELLIDO")%>">
                     <label>Teléfono</label><input class="input1" type="text" name="tele" value="<%=rs.getString("telefono")%>">

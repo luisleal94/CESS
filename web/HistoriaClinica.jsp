@@ -60,7 +60,7 @@
                      while(rs.next()){
                 %>
 		<label >Nombre</label>
-                &emsp;<input type="text" name="Nombre" id="Principal" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
+                &emsp;<input type="text" name="Nombre" id="Principal" value="<%=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M")%>" style="color:#063452" disabled >
                 <% 
                 Calendar calender = Calendar.getInstance();
                 String fecha;

@@ -57,7 +57,7 @@
                      while(rs.next()){
                 %>
 		<label >Nombre</label>
-                <input type="text" name="Nombre" id="Principal" value="<%=rs.getString("Nombre")%>" style="color:#063452" disabled >
+                <input type="text" name="Nombre" id="Principal" value="<%=rs.getString("Nombre")+" "+rs.getString("Apellido_P")+" "+rs.getString("Apellido_M")%>" style="color:#063452" disabled >
 		&emsp;<label>Estado Civil</label>
                 <input type="text" name="estado" id="Mediano" value="<%=rs.getString("EstadoC")%>" style="color:#063452" disabled>
 		&emsp;<label>Ocupacion</label>

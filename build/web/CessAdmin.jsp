@@ -40,7 +40,10 @@
     <body onload="nobackbutton();">
         <div id="titulo">
             <p style="font-weight: 700; font-size: 25px; position: absolute; z-index: 1px; left: 30%; color: #00A99D;">CENTRO DE ESTUDIOS Y SERVICIOS DE SALUD</p>
-        </div>       
+        </div>
+        <div id="respaldo">
+            <a href="Certificado.jsp" id="respal">Certificado médico</a>
+        </div>
         <div class="salir">
             <label><% out.println(usuario);%> </label><br>
             <a class="link" href="out">Cerrar sesión</a> 

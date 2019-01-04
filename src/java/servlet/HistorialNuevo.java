@@ -146,14 +146,26 @@ public class HistorialNuevo extends HttpServlet {
         String legumbre=request.getParameter("legum");
         
         /*Imnunizacion*/
-        //String ResTetano=request.getParameter("ResTetano");
+        String ResTetano=request.getParameter("ResTetano");
         String tetano=request.getParameter("tetano");
-        //String ResSaram=request.getParameter("ResSaram");
+        if(ResTetano.equals("No")){
+            tetano="No";
+        }
+        String ResSaram=request.getParameter("ResSaram");
         String sarampion=request.getParameter("sarampion");
+        if(ResSaram.equals("No")){
+            sarampion="No";
+        }
         String ResRubeo=request.getParameter("ResRubeo");
         String rubeola=request.getParameter("rubeola");
+        if(ResRubeo.equals("No")){
+            rubeola="No";
+        }
         String ResANTI=request.getParameter("ResANTI");
         String hepatitis=request.getParameter("hepatitis");
+        if(ResANTI.equals("No")){
+            hepatitis="No";
+        }
         
         /*Vicios*/
         String toma=request.getParameter("alcol");

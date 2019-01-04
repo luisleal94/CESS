@@ -18,9 +18,6 @@
         response.sendRedirect("index.jsp"); 
     }
     else{
-        if(gerarquia.equals("Admin")){
-            response.sendRedirect("CessAdmin.jsp"); 
-        }
         if(gerarquia.equals("Super")){
             response.sendRedirect("CessSuper.jsp"); 
         }

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ea1d41a5-acaa-46fb-9943-af907910d70e">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Paciente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Medico" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     PERSONAL.`ID_USER` AS PERSONAL_ID_USER,
+     PERSONAL.`NOMBRE` AS PERSONAL_NOMBRE,
+     PERSONAL.`APELLIDO` AS PERSONAL_APELLIDO,
+     PERSONAL.`PASSWORD` AS PERSONAL_PASSWORD,
+     PERSONAL.`telefono` AS PERSONAL_telefono,
+     PERSONAL.`Gerarquia` AS PERSONAL_Gerarquia,
+     PERSONAL.`Cedula` AS PERSONAL_Cedula,
+     PERSONAL.`Username` AS PERSONAL_Username,
+     PERSONAL.`Especialidad` AS PERSONAL_Especialidad,
+     Pacientes.`idPacientes` AS Pacientes_idPacientes,
+     Pacientes.`fecha` AS Pacientes_fecha,
+     Pacientes.`Nombre` AS Pacientes_Nombre,
+     Pacientes.`Apellido_P` AS Pacientes_Apellido_P,
+     Pacientes.`Apellido_M` AS Pacientes_Apellido_M,
+     Pacientes.`Anio` AS Pacientes_Anio,
+     Pacientes.`Mes` AS Pacientes_Mes,
+     Pacientes.`Dia` AS Pacientes_Dia,
+     Pacientes.`telefono` AS Pacientes_telefono,
+     Pacientes.`Ocupacion` AS Pacientes_Ocupacion,
+     Pacientes.`EstadoC` AS Pacientes_EstadoC,
+     Pacientes.`Domicilio` AS Pacientes_Domicilio,
+     Pacientes.`Curp` AS Pacientes_Curp,
+     Pacientes.`Genero` AS Pacientes_Genero,
+     Pacientes.`Historial` AS Pacientes_Historial
+FROM
+     `PERSONAL` PERSONAL,
+     `Pacientes` Pacientes
+where 
+PERSONAL.`ID_USER`=$P{Medico} and
+Pacientes.`idPacientes`=$P{Paciente}]]>
+	</queryString>
+	<field name="PERSONAL_ID_USER" class="java.lang.Integer"/>
+	<field name="PERSONAL_NOMBRE" class="java.lang.String"/>
+	<field name="PERSONAL_APELLIDO" class="java.lang.String"/>
+	<field name="PERSONAL_PASSWORD" class="java.lang.String"/>
+	<field name="PERSONAL_telefono" class="java.lang.String"/>
+	<field name="PERSONAL_Gerarquia" class="java.lang.String"/>
+	<field name="PERSONAL_Cedula" class="java.lang.String"/>
+	<field name="PERSONAL_Username" class="java.lang.String"/>
+	<field name="PERSONAL_Especialidad" class="java.lang.String"/>
+	<field name="Pacientes_idPacientes" class="java.lang.Integer"/>
+	<field name="Pacientes_fecha" class="java.lang.String"/>
+	<field name="Pacientes_Nombre" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_P" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_M" class="java.lang.String"/>
+	<field name="Pacientes_Anio" class="java.lang.Integer"/>
+	<field name="Pacientes_Mes" class="java.lang.String"/>
+	<field name="Pacientes_Dia" class="java.lang.String"/>
+	<field name="Pacientes_telefono" class="java.lang.String"/>
+	<field name="Pacientes_Ocupacion" class="java.lang.String"/>
+	<field name="Pacientes_EstadoC" class="java.lang.String"/>
+	<field name="Pacientes_Domicilio" class="java.lang.String"/>
+	<field name="Pacientes_Curp" class="java.lang.String"/>
+	<field name="Pacientes_Genero" class="java.lang.String"/>
+	<field name="Pacientes_Historial" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="10" width="255" height="27" uuid="e9f944d8-eed9-46a6-aa46-405f4270231b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD VERACRUZANA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="59" width="357" height="30" uuid="178a5982-bb81-4bde-8f75-212684c2e6a2"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARMEN SERDAN N° 147 CASI ESQ. MINA, C.P 91700 TEL:932-49-78 VERACEUZ, VER.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="22" width="63" height="67" uuid="d8aa3669-8222-427d-8b58-149dc2ec4f5f"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="159" y="37" width="250" height="15" uuid="e603dff1-3e1e-49a2-9515-c1cc59452475"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE ESTUDIOS Y SERVICIOS EN SALUD]]></text>
+			</staticText>
+			<image>
+				<reportElement x="480" y="22" width="75" height="57" uuid="04cc98f2-6a9f-4e4f-8f7d-3327fb47019e"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="165" splitType="Stretch">
+			<staticText>
+				<reportElement x="378" y="0" width="177" height="15" uuid="9ac49c66-7b0c-4524-b24a-760d10905e59"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ASUNTO: CERTIFICADO MÉDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="15" width="102" height="14" uuid="6d4d42c5-8c2f-4c6c-877b-f9a5e21c2eca"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Veracruz. Ver. a ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="463" y="15" width="92" height="14" uuid="78886098-e166-4d35-9d11-de113e1cc399"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="29" width="135" height="14" uuid="61071cd5-54fe-4247-b608-b720c039a4c6"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[A QUIEN CORRESPONDA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="54" width="261" height="15" uuid="2d1b271a-91c5-42a0-9dc2-ed98cc4961f7"/>
+				<text><![CDATA[Por medio de la presente, la que suscribe Dr (a).]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="246" y="54" width="104" height="15" uuid="45374a5b-39d2-4aec-8672-c350c3be78e1"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="54" width="94" height="15" uuid="6b28faa9-a16e-439e-b943-9cc9618643e2"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="444" y="54" width="111" height="15" uuid="1b19c92d-3ef9-4dc8-8e63-476556b310ee"/>
+				<text><![CDATA[médico adscrito al]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="69" width="471" height="15" uuid="ded8d979-5400-4e9c-bbe2-2ac9bbe05d49"/>
+				<text><![CDATA[Centro de Estudios y Servicios en Salud, perteneciente a la Universidad Veracruzana.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="102" width="126" height="15" uuid="43568d56-4f13-4afe-8691-617e08668653"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICA:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

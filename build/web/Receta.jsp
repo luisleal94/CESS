@@ -75,12 +75,11 @@
                 IDPac=rs.getString("idPacientes");
                 %> 
                 <form action="" method="post">
-                    <label id="titulos">ID</label>
-                    <input type="text" class="texto" id="id" name="id" value="<%=rs.getString("idPacientes")%>" disabled style="color: #273746">                  
+                    <input type="text" class="texto" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">                  
                     &emsp;&emsp;<label id="titulos">Nombre</label>
                     <input type="text" class="texto" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label  id="titulos">Edad</label>
-                    <input type="text" class="texto" id="cortos" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746" ><br>                    
+                    <input type="text" class="texto" id="cortos" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746" >                    
                     <label id="titulos">Genero</label>
                     <input type="text" class="texto" id="cortos" name="sexo" value="<%=rs.getString("Genero")%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Fecha</label>
@@ -97,8 +96,7 @@
             %>
             <div class="h2"><h2>Paciente</h2> </div>
                 <form action="" method="post">
-                    <label id="titulos">ID</label>
-                    <input type="text" class="texto" id="id" name="id" value="<%=rs.getString("idPacientes")%>">                  
+                    <input type="text" class="texto" id="id" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none;">                  
                     &emsp;&emsp;<label id="titulos">Nombre</label>
                     <input type="text" class="texto" name="nombre" value="<%=Nombre%>" disabled style="color: #273746" >
                     &emsp;&emsp;<label id="titulos">Edad</label>
