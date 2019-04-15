@@ -259,3 +259,7 @@ function mostrarEspe(){
 function ocultarEspe(){
     document.getElementById("MuestraEspecialista").style.display="none";
 }
+
+function mostrarGra(){
+    document.getElementById("OcularGraf").disabled=false;
+}

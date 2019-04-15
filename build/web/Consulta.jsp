@@ -242,6 +242,7 @@
             <% } %>
             <button type="button" id="botonP" onclick="getFormData(),this.disabled=true">Estadístico de Peso corporal"</button>
             <button type="button" id="botonP" onclick="PresionArterial(),this.disabled=true">Estadístico de Presión Arterial"</button>
+            
             </form>
         <% }else{
             pst = con.getConexion().prepareStatement("Select * from Pacientes where idPacientes='"+id+"'");
@@ -263,10 +264,11 @@
             </div>
        <% } }//Busqueda por nombre del usuario a buscar %>
         <!--Mando el parametro ID del paciente que encontre--> 
-        <div id="grafica">
+        <div id="grafica">            
         </div>
-        <div id="PresionArte">
+        <div id="PresionArte">            
         </div>
+       
     <div class="datos2">
         <form name="formulario" action="registrarCon" method="post">
            

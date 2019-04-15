@@ -1328,8 +1328,9 @@ public class Consulta extends Conexion{
     
     public boolean Alergia2(String fecha,String Motivo,String id){
         PreparedStatement pst=null;
+        System.out.println("ID optenido: "+id);
         try{
-            String consulta="update Alergias set Fecha=?,Causa=? where idAlergias?";
+            String consulta="update Alergias set Fecha=?,Causa=? where idAlergias=?";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, fecha);
             pst.setString(2, Motivo);           
@@ -1352,9 +1353,10 @@ public class Consulta extends Conexion{
     }
     
     public boolean Alergia3(String id){
+        System.out.println("ID eliminado: "+id);
         PreparedStatement pst=null;
         try{
-            String consulta="delete from Alergias where idAlergias?";
+            String consulta="delete from Alergias where idAlergias=?";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, id);
             if(pst.executeUpdate()==1){
