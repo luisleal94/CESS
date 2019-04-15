@@ -279,23 +279,17 @@ public class HistorialNuevo extends HttpServlet {
                 for(int j=0;j<2;j++){
                     inputA[a]=request.getParameter("idA"+i+(j+1));
                     a+=1;
-                }               
-            }        
-            System.out.println("Dato optenido: "+Valor2);    
-            //int contarA=Integer.parseInt(Valor2);
-            //a=contarA*2;    
-            a=0;
-            //for(int j=contarA;j<(A*2);j+=2){
-            //    System.out.println(inputA[j]+" " +inputA[j+1]);              
-            //    new Consulta().Alergia(inputA[a],inputA[a+1], id);
-            //    a+=2;
-            //}
-            for(int j=0;j<A;j++){
-                //System.out.println(inputA[a]+" " +inputA[a+1]);              
-                new Consulta().Alergia(inputA[a],inputA[a+1], id);
-                //System.out.println();
-                a+=2;
+                }
             }
+            int ContarA=Integer.parseInt(Alergias)*2;
+            a=ContarA;            
+            for(int j=ContarA;j<(A*2);j+=2){
+                System.out.println("Entro");
+                System.out.println(inputA[j]+" " +inputA[j+1]);
+                new Consulta().Alergia(inputA[a],inputA[a+1],id);
+                a+=3;
+            }
+            //System.out.println(a); 
         }
         
         System.out.println("Cirujias editadas");
@@ -327,31 +321,32 @@ public class HistorialNuevo extends HttpServlet {
             }            
             //System.out.println(a);  
         }
+        
         System.out.println("Alergias editadas");
         if(Alergias!=""){
-            System.out.println("Entro en edicion de alergias: "+Alergias);
-            int A=Integer.parseInt(Alergias);
-            int res=A*3;
-            String [] IdC=new String[A];
-            String [] Fechas=new String[A];
-            String [] Motivos=new String[A];
-            for(int i=0;i<A;i++){
+            int Q=Integer.parseInt(Alergias);
+            int res=Q*2;
+            int a=0;
+            String [] IdC=new String[res];
+            String [] Fechas=new String[res];
+            String [] Motivos=new String[res];
+            for(int i=0;i<Q;i++){
                 //for(int j=0;j<3;j++){
                     IdC[i]=request.getParameter("AID"+i);
                     Fechas[i]=request.getParameter("AFecha"+i);
                     Motivos[i]=request.getParameter("ACausa"+i);
             }
-            System.out.println("Cantidad de fechas: "+Fechas.length);
-            for(int i=0;i<A;i++){
+            a=0; 
+            for(int i=0;i<Q;i++){
                 if(Fechas[i]==null){
-                    System.out.println("Se elimino: "+IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
+                    System.out.println("Se elimino");
+                    System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
                     new Consulta().Alergia3(IdC[i]);
                 }else{
-                    System.out.println("Se actualizo: "+IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
+                    System.out.println(IdC[i]+" "+Fechas[i]+" "+Motivos[i]);
                     new Consulta().Alergia2(Fechas[i],Motivos[i],IdC[i]);
                 }
-            }            
-            //System.out.println(a);  
+            }   
         }
         
        
