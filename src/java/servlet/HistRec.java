@@ -11,16 +11,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author luis
  */
-public class ReceHis extends HttpServlet {
+public class HistRec extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String id=request.getParameter("id");  
-        //out.println(id);
-        request.setAttribute("id",id);
-        request.getRequestDispatcher("HistorialR.jsp").forward(request, response);
+        String Paciente=request.getParameter("Paciente");  
+        String Doctor=request.getParameter("Doctor");
+        String Fecha=request.getParameter("Fecha");
+        //out.println(Paciente);
+        //out.println(Doctor);
+        //out.println(Fecha);
+        request.setAttribute("Paciente",Paciente);
+        request.setAttribute("Doctor",Doctor);
+        request.setAttribute("Fecha",Fecha);
+        request.getRequestDispatcher("HistorialReceta.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

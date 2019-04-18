@@ -124,6 +124,10 @@
         <servlet-name>ReceHis</servlet-name>
         <servlet-class>servlet.ReceHis</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistRec</servlet-name>
+        <servlet-class>servlet.HistRec</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>ReceHis</servlet-name>
         <url-pattern>/ReceHis</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistRec</servlet-name>
+        <url-pattern>/HistRec</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

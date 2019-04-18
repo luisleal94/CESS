@@ -32,10 +32,10 @@
                 font-family: 'Roboto', sans-serif;
             }
         </style>
-        <title>Recetas</title>
+        <title>CESS</title>
     </head>
     <body>
-        <%  String sql="select Receta.Fecha, PERSONAL.NOMBRE, PERSONAL.APELLIDO from Receta"+
+        <%  String sql="select Receta.Fecha,PERSONAL.ID_USER,PERSONAL.NOMBRE, PERSONAL.APELLIDO from Receta"+
                         " inner join PERSONAL on Receta.IdMedico=PERSONAL.ID_USER where IdPaciente='"+id+
                         "' GROUP BY  Fecha,IdMedico";
             pst = con.getConexion().prepareStatement(sql);
@@ -49,9 +49,14 @@
                     </tr>
                     <% while(rs.next()){  %>
                     <tr>
-                        <td><%=rs.getString("Nombre")+" "+rs.getString("Apellido")%></td>
-                        <td><%=rs.getString("Fecha")%></td>
-                        <td><input type="submit" id="boton" value="Mostrar" onclick=this.form.action=""> </td>
+                        <form action="" method="post">
+                            <input type="text" name="Paciente" value="<%=id%>" style="display: none">
+                            <input type="text" name="Doctor" value="<%=rs.getString("ID_USER")%>" style="display: none">
+                            <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
+                            <td><%=rs.getString("Nombre")+" "+rs.getString("Apellido")%></td>
+                            <td><%=rs.getString("Fecha")%></td>
+                            <td><input type="submit" id="boton" value="Mostrar" onclick=this.form.action="HistRec"> </td>
+                        </form>
                     </tr>
                     <% } %>
                 </table>                

@@ -159,22 +159,4 @@
                 <input type="text" class="texto" name="cedula" value="<% out.println(cedula);%>" disabled style="color:#063452">
         </div>  
     </body>
-    <script>
-        //alert(document.getElementById("Bandera").value);
-        if(document.getElementById("Bandera").value=="Si"){
-            //alert("Entro");
-            document.getElementById("bandera").style.display="block";
-        }else{
-            //alert("Entro2");
-            document.getElementById("bandera").style.display="none";
-        }
-        if(document.getElementById("Bandera2").value=="Si"){
-            document.getElementById("bandera2").style.display="block";
-        }else{
-            document.getElementById("bandera2").style.display="none";
-        }
-        var x = document.getElementById("id").value;
-        document.getElementById("IdPaciente").value=x;
-        var a="Si";      
-    </script>
 </html>
