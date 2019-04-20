@@ -1377,13 +1377,8 @@ public class Consulta extends Conexion{
     }
     /****************************************************************/
     public boolean Receta(String nombre,String farmacia,String unidad,String dosis,String via,
-            String presenta,String pieza,String cada,String dias,String IdMedico,String id){
-        Calendar calender = Calendar.getInstance();
-        String fecha;
-        int dia=calender.get(Calendar.DAY_OF_MONTH);
-        int mes=(calender.get(Calendar.MONTH))+1;
-        int anio=calender.get(Calendar.YEAR);
-        fecha=anio+"-"+mes+"-"+dia;
+            String presenta,String pieza,String cada,String dias,String IdMedico,String id,String fecha){
+        
         PreparedStatement pst=null;
         try{
             String consulta="insert into Receta(Medicamento,Farmacia,Unidades,Administracion,Presentacion,"
@@ -1401,6 +1396,63 @@ public class Consulta extends Conexion{
             pst.setString(10, fecha);
             pst.setString(11, id);
             pst.setString(12,IdMedico);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean Receta2(String nombre,String farmacia,String unidad,String dosis,String via,
+            String presenta,String pieza,String cada,String dias,String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="update Receta set Medicamento=?,Farmacia=?,Unidades=?,Administracion=?,Presentacion=?,"
+                    + "Piezas=?,Dosis=?,Cada=?,Dias=? where IdReceta=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, nombre);
+            pst.setString(2, farmacia);
+            pst.setString(3, unidad);
+            pst.setString(4, dosis);
+            pst.setString(5, via);
+            pst.setString(6, presenta);
+            pst.setString(7, pieza);
+            pst.setString(8, cada);
+            pst.setString(9, dias);
+            pst.setString(10, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
+    public boolean Receta3(String id){
+        PreparedStatement pst=null;
+        try{
+            String consulta="delete from Receta where idReceta=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             

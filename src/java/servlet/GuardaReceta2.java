@@ -47,6 +47,13 @@ public class GuardaReceta2 extends HttpServlet {
        request.setCharacterEncoding("UTF-8");
         Conexion con= new Conexion();
         
+        Calendar calender = Calendar.getInstance();
+        String fechas;
+        int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fechas=anio+"-"+mes+"-"+dia;
+        
         String valor=request.getParameter("Valor");
         System.out.println("Valor:"+valor);
         String id=request.getParameter("ID");
@@ -70,7 +77,7 @@ public class GuardaReceta2 extends HttpServlet {
                 System.out.println(inputQ[a+3]+" " +inputQ[a+4]+" "+inputQ[a+5]);
                 System.out.println(inputQ[a+6]+" " +inputQ[a+7]+" "+inputQ[a+8]);
                 new Consulta().Receta(inputQ[a],inputQ[a+1],inputQ[a+2],inputQ[a+3], 
-                        inputQ[a+4], inputQ[a+5],inputQ[a+6],inputQ[a+7],inputQ[a+8],IdMedico,id);
+                        inputQ[a+4], inputQ[a+5],inputQ[a+6],inputQ[a+7],inputQ[a+8],IdMedico,id,fechas);
                 System.out.println();   
                 a+=9;
             }

@@ -128,6 +128,10 @@
         <servlet-name>HistRec</servlet-name>
         <servlet-class>servlet.HistRec</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditaRec</servlet-name>
+        <servlet-class>servlet.EditaRec</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>sesion</servlet-name>
         <url-pattern>/sesion</url-pattern>
@@ -255,6 +259,10 @@
     <servlet-mapping>
         <servlet-name>HistRec</servlet-name>
         <url-pattern>/HistRec</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditaRec</servlet-name>
+        <url-pattern>/EditaRec</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

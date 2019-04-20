@@ -79,27 +79,28 @@
                                 </tr
                                 <% while(rs.next()){  %>
                                 <tr>
+                                    <input  name="<%="Id"+j%>" value="<%=rs.getInt("idReceta")%>" style="display: none;">
                                     <td><input type="button" class="boton2" value = " X " onClick="Javacsript:EliminaMed(this)"></td>
                                     <th><input type="text" name="<%="Medic"+j%>" size="7" value="<%=rs.getString("Medicamento")%>"></th>
                                     <th><input type="text" name="<%="Farm"+j%>" size="7" value="<%=rs.getString("Farmacia")%>"></th>
                                     <th><input type="text" name="<%="Unid"+j%>" size="7" value="<%=rs.getString("Unidades")%>"></th>
                                     <th><input type="text" name="<%="Admin"+j%>" size="4" value="<%=rs.getString("Administracion")%>"> </th>
                                     <th><input type="text" name="<%="Pres"+j%>" size="5" value="<%=rs.getString("Presentacion")%>"></th>
-                                    <th><input type="text" name="<%="Piez"%>" size="5" value="<%=rs.getString("Piezas")%>"></th>
-                                    <th><input type="text" name="<%="Dos"%>" size="5" value="<%=rs.getString("Dosis")%>"></th>
-                                    <th><input type="text" name="<%="Cad"%>" size="5" value="<%=rs.getString("Cada")%>"></th>
-                                    <th><input type="text" name="<%="Dia"%>" size="5" value="<%=rs.getString("Dias")%>"></th>
+                                    <th><input type="text" name="<%="Piez"+j%>" size="5" value="<%=rs.getString("Piezas")%>"></th>
+                                    <th><input type="text" name="<%="Dos"+j%>" size="5" value="<%=rs.getString("Dosis")%>"></th>
+                                    <th><input type="text" name="<%="Cad"+j%>" size="5" value="<%=rs.getString("Cada")%>"></th>
+                                    <th><input type="text" name="<%="Dia"+j%>" size="5" value="<%=rs.getString("Dias")%>"></th>
                                 </tr>
                                 <% j=j+1; } %>
                             </table>
-                            <input  name="CantidadA" value="<%= j %>">
+                            <input  name="CantR" value="<%= j %>">
                         </div>
-                        <input type="text" name="Valor2" id="CantidadMedic" >
+                        <input type="text" name="Valor" id="CantidadMedic" >
                         &nbsp;<br/>
                     </div>
                     <div class="boton">
                         <input type="text" id="Valor" name="Valor" style="display: none;">
-                        <input type="submit" class="input1"  value="Imprimir" onclick="this.form.action='',this.disabled=true">
+                        <input type="submit" class="input1"  value="Imprimir" onclick="this.form.action='EditaRec',this.disabled=true">
                     </div>  
                 </form>                   
             </div>
