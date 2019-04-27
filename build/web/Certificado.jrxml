@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9819d4a-794c-4663-b1c6-5f1738f73265">
 	<property name="ireport.zoom" value="1.6105100000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="354"/>
+	<property name="ireport.y" value="402"/>
 	<parameter name="Paciente" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -144,7 +144,6 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 			</staticText>
 			<staticText>
 				<reportElement x="249" y="117" width="306" height="15" uuid="33fcea2c-dd07-4c45-baa6-bc6acbc4338f"/>
-				<textElement textAlignment="Right"/>
 				<text><![CDATA[años de edad, despues de haber realizado historia clínica y]]></text>
 			</staticText>
 			<staticText>
@@ -160,7 +159,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Toxicomanías y empleo de algún tipo de droga o estupefaciente:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="444" y="147" width="85" height="15" uuid="0b63ce22-90b8-4fd9-aaa9-51863e5a9aae"/>
+				<reportElement x="391" y="147" width="85" height="15" uuid="0b63ce22-90b8-4fd9-aaa9-51863e5a9aae"/>
 				<text><![CDATA[. Enfermedades]]></text>
 			</staticText>
 			<staticText>
@@ -173,7 +172,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Alergias: Rinitis alergica. A la exploración física se encontró con los siguientes datos: Peso:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="471" y="177" width="32" height="15" uuid="506ab706-4050-4686-b699-8995cfbdd145"/>
+				<reportElement x="453" y="177" width="32" height="15" uuid="506ab706-4050-4686-b699-8995cfbdd145"/>
 				<text><![CDATA[Kg.]]></text>
 			</staticText>
 			<staticText>
@@ -181,7 +180,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Talla]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="75" y="192" width="137" height="15" uuid="d6abd58f-ae5c-47b5-aa36-7cd577f2c937"/>
+				<reportElement x="43" y="192" width="137" height="15" uuid="d6abd58f-ae5c-47b5-aa36-7cd577f2c937"/>
 				<text><![CDATA[m. Indice de Masa Corporal]]></text>
 			</staticText>
 			<staticText>
@@ -209,11 +208,11 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Daniels 5/5 Frecuencia Cardiaca:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="190" y="282" width="177" height="15" uuid="281f4182-73e7-4076-8c6d-1944ea83911b"/>
+				<reportElement x="179" y="282" width="177" height="15" uuid="281f4182-73e7-4076-8c6d-1944ea83911b"/>
 				<text><![CDATA[latidos por minuto(NORMAL). FR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="389" y="282" width="133" height="15" uuid="1a52136c-cb22-44e4-b640-6c0360cb33e3"/>
+				<reportElement x="374" y="282" width="133" height="15" uuid="1a52136c-cb22-44e4-b640-6c0360cb33e3"/>
 				<text><![CDATA[respiraciones por minuto.]]></text>
 			</staticText>
 			<staticText>
@@ -221,7 +220,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<text><![CDATA[Agudeza visual Normal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="173" y="297" width="395" height="15" uuid="6209fdf3-4143-4ae9-bc0b-2d8d0a24ba9f"/>
+				<reportElement x="156" y="297" width="395" height="15" uuid="6209fdf3-4143-4ae9-bc0b-2d8d0a24ba9f"/>
 				<text><![CDATA[(bilateral), Conducto auditivo permeable, audición se encuentra conservada Rinné positivo]]></text>
 			</staticText>
 			<staticText>
@@ -270,42 +269,41 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				<textFieldExpression><![CDATA[$P{Edad}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="327" y="147" width="117" height="15" uuid="95e37995-2579-443b-bc87-3a2fd10a7cb1"/>
+				<reportElement x="312" y="147" width="79" height="15" uuid="95e37995-2579-443b-bc87-3a2fd10a7cb1"/>
 				<textFieldExpression><![CDATA[$P{Toxico}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="433" y="177" width="38" height="15" uuid="9e36b3d3-6d13-468b-823a-745e7a2affa4"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="427" y="177" width="38" height="15" uuid="9e36b3d3-6d13-468b-823a-745e7a2affa4"/>
 				<textFieldExpression><![CDATA[$P{Peso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="192" width="43" height="15" uuid="f0e22d95-bddf-45fc-9109-6ca102a87a14"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="22" y="192" width="21" height="15" uuid="f0e22d95-bddf-45fc-9109-6ca102a87a14"/>
 				<textFieldExpression><![CDATA[$P{Talla}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="211" y="192" width="57" height="15" uuid="ba37252d-4b23-4aa6-9fba-1d4eb885a4a5"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="180" y="192" width="33" height="15" uuid="ba37252d-4b23-4aa6-9fba-1d4eb885a4a5"/>
 				<textFieldExpression><![CDATA[$P{IMC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="356" y="282" width="33" height="15" uuid="0bd796c5-2e04-4ff9-9e6a-4bd8dcbe816c"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="345" y="282" width="33" height="15" uuid="0bd796c5-2e04-4ff9-9e6a-4bd8dcbe816c"/>
 				<textFieldExpression><![CDATA[$P{FR}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="157" y="282" width="33" height="15" uuid="eb1d0cea-3da6-4241-b36d-017d4cca4eef"/>
-				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$P{FC}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="297" width="53" height="15" uuid="aeb5ed42-da35-4514-a980-fe35584aaa71"/>
+				<reportElement x="120" y="297" width="37" height="15" uuid="aeb5ed42-da35-4514-a980-fe35584aaa71"/>
 				<textFieldExpression><![CDATA[$P{Visual}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="480" y="16" width="75" height="13" uuid="67522ffa-75e3-404e-9182-3cddc69f61a7"/>
 				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="213" y="192" width="23" height="15" uuid="e6a47f52-5aad-4186-ae2a-02230d6d7142"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>

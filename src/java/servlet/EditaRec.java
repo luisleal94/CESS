@@ -1,12 +1,20 @@
 package servlet;
 
 import Controlador.Consulta;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
  *
@@ -17,7 +25,7 @@ public class EditaRec extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
-        
+        Consulta con =new Consulta();
         String id=request.getParameter("ID");
         String IdMedico=request.getParameter("Doctor");
         String fecha=request.getParameter("Fecha");
@@ -91,6 +99,27 @@ public class EditaRec extends HttpServlet {
                 }
             }            
             //System.out.println(a);  
+        }
+        
+        String path = getServletContext().getRealPath("/Recet_1.jasper");
+        Map parameter =new HashMap();  
+        File reporfile=new File(getServletContext().getRealPath("/Recet_1.jasper"));
+        parameter.put("Paciente",new String(id));        
+        parameter.put("Medico",new String(IdMedico));      
+        parameter.put("Fecha",new String(fecha));
+        System.out.println(path);
+        byte[] bytes;
+        try {
+            bytes = JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
+            response.setContentType("application/pdf");
+            response.setContentLength(bytes.length);
+            ServletOutputStream outputstream=response.getOutputStream();
+            outputstream.write(bytes,0,bytes.length);
+            outputstream.flush();
+            outputstream.close();
+        } catch (JRException ex) {
+            Logger.getLogger(GuardaReceta2.class.getName()).log(Level.SEVERE, null, ex);
+             System.out.println("Error: "+ex);
         }
     }
 
