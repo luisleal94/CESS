@@ -63,7 +63,7 @@
                     <input type="text" name="IdMedico" value="<%=rs.getString("IdMedico")%>" style="display: none">
                     <input type="text" name="id" value="<%=rs.getString("IdPaciente")%>" style="display: none">
                     <input type="text" name="Fecha" value="<%=rs.getString("Fecha")%>" style="display: none">
-                    <input type="submit" id="link" value="Ver" onclick=this.form.action="Inspecciona">
+                    <input type="submit" id="link" value="Mostrar" onclick=this.form.action="Inspecciona">
                     <input type="submit" id="link3" value="Eliminar" onclick=this.form.action="EliminaCon">
                     </form>
                 </td>

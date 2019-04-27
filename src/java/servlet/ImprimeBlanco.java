@@ -53,9 +53,9 @@ public class ImprimeBlanco extends HttpServlet {
         fecha=anio+"-"+mes+"-"+dia;
         System.out.println(Texto);
         
-        String path = getServletContext().getRealPath("/CertifBlanco.jasper");
+        String path = getServletContext().getRealPath("/CertBlanco.jasper");
         Map parameter =new HashMap();  
-        File reporfile=new File(getServletContext().getRealPath("/CertifBlanco.jasper"));
+        File reporfile=new File(getServletContext().getRealPath("/CertBlanco.jasper"));
         parameter.put("Paciente",new String(Paciente));        
         parameter.put("Medico",new String(Medico));   
         parameter.put("Fecha",new String(fecha));

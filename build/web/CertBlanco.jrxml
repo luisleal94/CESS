@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ea1d41a5-acaa-46fb-9943-af907910d70e">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="138"/>
 	<parameter name="Paciente" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -10,6 +10,9 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="Fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Texto" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -106,7 +109,7 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 		</band>
 	</title>
 	<detail>
-		<band height="165" splitType="Stretch">
+		<band height="278" splitType="Stretch">
 			<staticText>
 				<reportElement x="378" y="0" width="177" height="15" uuid="9ac49c66-7b0c-4524-b24a-760d10905e59"/>
 				<textElement textAlignment="Center"/>
@@ -154,9 +157,57 @@ Pacientes.`idPacientes`=$P{Paciente}]]>
 				</textElement>
 				<text><![CDATA[CERTIFICA:]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="0" y="117" width="555" height="106" uuid="e2a13b1b-c762-457f-807c-e903c8fc719a"/>
+				<textFieldExpression><![CDATA[$P{Texto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="238" width="544" height="15" uuid="e9261380-733e-4a92-abe9-55103f215ec4"/>
+				<text><![CDATA[Para los fines que a este convenga, se expide el presente documento, el cual se invalidará, alos 15 días de la fecha de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="253" width="568" height="15" uuid="9de606cb-da2c-46c7-af77-017fc9a686b1"/>
+				<text><![CDATA[expedición. Se sugiere modificar habitos alimienticios y realizar actividad física regular para el control de peso.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="223" width="232" height="15" uuid="9706fd6b-9e97-46bf-867e-19311d7f3b62"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLINICAMENTE ASINTOMÁTICO]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="67" splitType="Stretch">
+			<line>
+				<reportElement x="176" y="29" width="151" height="1" uuid="42bc8d22-2790-4bf9-8f09-daa0f21d8921"/>
+			</line>
+			<textField>
+				<reportElement x="202" y="30" width="65" height="15" uuid="44733be6-d8ea-4841-99d6-d223b34a0c28"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="30" width="100" height="15" uuid="baf209b9-3441-4534-96f8-3800a09f740c"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="45" width="100" height="15" uuid="1cac67e6-3b8d-4e26-97c5-ebedbb84292d"/>
+				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="169" y="30" width="33" height="15" uuid="19b89814-3c1b-48da-8cfe-e5c38a87add4"/>
+				<text><![CDATA[Dr(a).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="45" width="62" height="15" uuid="3263e4d1-a6e1-4503-a2a1-033980f549bc"/>
+				<text><![CDATA[CED. PROF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="0" width="94" height="15" uuid="af4b1ebd-d567-4e5a-8f6e-b2fb69a49db6"/>
+				<text><![CDATA[ATENTAMENTE]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 </jasperReport>
