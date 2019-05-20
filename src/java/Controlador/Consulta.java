@@ -1413,7 +1413,43 @@ public class Consulta extends Conexion{
         return false;
     }
     
-    public boolean Receta2(String nombre,String farmacia,String unidad,String dosis,String via,
+    public boolean RecetaAdmin(String nombre,String farmacia,String unidad,String dosis,String via,
+            String presenta,String pieza,String cada,String dias,String IdMedico,String id,String fecha){
+        
+        PreparedStatement pst=null;
+        try{
+            String consulta="insert into RecetaActualizada(Medicamento,Farmacia,Unidades,Administracion,Presentacion,"
+                    + "Piezas,Dosis,Cada,Dias,Fecha,IdPaciente,IdMedico) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, nombre);
+            pst.setString(2, farmacia);
+            pst.setString(3, unidad);
+            pst.setString(4, dosis);
+            pst.setString(5, via);
+            pst.setString(6, presenta);
+            pst.setString(7, pieza);
+            pst.setString(8, cada);
+            pst.setString(9, dias);
+            pst.setString(10, fecha);
+            pst.setString(11, id);
+            pst.setString(12,IdMedico);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    /*public boolean Receta2(String nombre,String farmacia,String unidad,String dosis,String via,
             String presenta,String pieza,String cada,String dias,String id){
         PreparedStatement pst=null;
         try{
@@ -1469,7 +1505,7 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-    
+    */
     public boolean referencias(String pediatra,String Ginecologia,String Gastro,String Neuro,String Trauma,
             String Endocri,String Geriatria,String Urolo,String Otorri,String Gene,String Psiqui,String Cardio,
             String Olfta,String Neomo,String Nefro,String Hemato,String Vascular,String inmuno,String id,String Medico,String Otra){

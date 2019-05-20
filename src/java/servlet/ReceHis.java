@@ -17,9 +17,11 @@ public class ReceHis extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String id=request.getParameter("id");  
-        //out.println(id);
+        String id=request.getParameter("id");
+        String IDUSER=request.getParameter("IDUSER");
+        out.println(IDUSER);
         request.setAttribute("id",id);
+        request.setAttribute("IDUSER",IDUSER);
         request.getRequestDispatcher("HistorialR.jsp").forward(request, response);
     }
 

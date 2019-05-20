@@ -20,6 +20,7 @@
     String Paciente=(String)request.getAttribute("Paciente");//El que obtengo del serlevt
     String Doctor=(String)request.getAttribute("Doctor");
     String Fecha=(String)request.getAttribute("Fecha");
+    String IDUSER=(String)request.getAttribute("IDUSER");
 %>
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,10 @@
         <a id="link" href="inicio.jsp">Menú principal</a>
         <%
             String sql="select *from Receta WHERE Fecha='"+ Fecha +"'"+
-                    " and IdMedico='"+ Doctor +"' and  IdPaciente='"+ Paciente +"';";
+                    " and IdMedico='"+ Doctor +"' and  IdPaciente='"+ Paciente +"'"
+                    + " union all "
+                    + "select *from RecetaActualizada where IdPaciente2='"+Paciente+"' "
+                    + "and IdMedico2='"+Doctor+"' and Fecha2='"+Fecha+"';";
             pst = con.getConexion().prepareStatement(sql);
             rs=pst.executeQuery();
             int j=0;
@@ -62,6 +66,7 @@
                         <input type="text" name="Fecha" value="<%=Fecha%>" style="display: none;">
                         <input type="text" name="ID" value="<%=Paciente%>" style="display: none;">
                         <input type="text" name="Doctor" value="<%=Doctor%>" style="display: none;">
+                        <input type="text" name="IDUSER" value="<%=IDUSER%>" style="display: none;">
                         <div id="mydata">
                         <div class="tabla2">
                             <table id="Medicamentos"  border="1" cellpadding="3">
@@ -100,7 +105,7 @@
                     </div>
                     <div class="boton">
                         <input type="text" id="Valor" name="Valor" style="display: none;">
-                        <input type="submit" class="input1"  value="Imprimir" onclick="this.form.action='EditaRec',this.disabled=true">
+                        <input type="submit" class="input1"  value="Imprimir" onclick="this.form.action='EditaRec',this.disabled=false">
                     </div>  
                 </form>                   
             </div>

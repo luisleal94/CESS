@@ -4,6 +4,7 @@ import Controlador.Consulta;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -25,10 +26,16 @@ public class EditaRec extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
+        Calendar calender = Calendar.getInstance();
+        String fecha;
+        int dia=calender.get(Calendar.DAY_OF_MONTH);
+        int mes=(calender.get(Calendar.MONTH))+1;
+        int anio=calender.get(Calendar.YEAR);
+        fecha=anio+"-"+mes+"-"+dia;
         Consulta con =new Consulta();
         String id=request.getParameter("ID");
         String IdMedico=request.getParameter("Doctor");
-        String fecha=request.getParameter("Fecha");
+        String IDUSER=request.getParameter("IDUSER");
         String Cantidad=request.getParameter("CantR");
         String Valor2=request.getParameter("Valor");
         
@@ -49,8 +56,8 @@ public class EditaRec extends HttpServlet {
             for(int j=ContarM;j<(Q*9);j+=9){
                 System.out.println(inputQ[j]+" " +inputQ[j+1]+" "+inputQ[j+2]+" "+inputQ[j+3]+" "+inputQ[j+4]+" "+inputQ[j+5]
                             +" "+inputQ[j+6]+" "+inputQ[j+7]+" "+inputQ[j+8]);
-                new Consulta().Receta(inputQ[j],inputQ[j+1],inputQ[j+2],inputQ[j+3], 
-                        inputQ[j+4], inputQ[j+5],inputQ[j+6],inputQ[j+7],inputQ[j+8],IdMedico,id,fecha);
+                new Consulta().RecetaAdmin(inputQ[j],inputQ[j+1],inputQ[j+2],inputQ[j+3], 
+                        inputQ[j+4], inputQ[j+5],inputQ[j+6],inputQ[j+7],inputQ[j+8],IDUSER,id,fecha);
                 a+=3;
             }
             //System.out.println(a); 
@@ -89,23 +96,23 @@ public class EditaRec extends HttpServlet {
                     System.out.println("Se elimino");
                     System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
                             Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
-                    new Consulta().Receta3(IdMe[i]);
+                    //new Consulta().Receta3(IdMe[i]);
                 }else{
                     System.out.println("Se edito");
                     System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
                             Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
-                    new Consulta().Receta2(Medi[i],Farma[i],Uni[i],Admin[i],Pres[i],Piez[i],Dos[i],
-                            Cad[i],Dia[i],IdMe[i]);
+                    new Consulta().RecetaAdmin(Medi[i],Farma[i],Uni[i],Admin[i],Pres[i],Piez[i],Dos[i],Cad[i],Dia[i],
+                            IDUSER,id,fecha);
                 }
             }            
             //System.out.println(a);  
         }
         
-        String path = getServletContext().getRealPath("/Recet_1.jasper");
+        String path = getServletContext().getRealPath("/RecetaAdmin.jasper");
         Map parameter =new HashMap();  
-        File reporfile=new File(getServletContext().getRealPath("/Recet_1.jasper"));
+        File reporfile=new File(getServletContext().getRealPath("/RecetaAdmin.jasper"));
         parameter.put("Paciente",new String(id));        
-        parameter.put("Medico",new String(IdMedico));      
+        parameter.put("Medico",new String(IDUSER));      
         parameter.put("Fecha",new String(fecha));
         System.out.println(path);
         byte[] bytes;

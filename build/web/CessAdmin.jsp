@@ -8,6 +8,7 @@
 <%
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
+    String IDUSER=(String)sesion.getAttribute("IDUSER");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
     }

@@ -97,8 +97,8 @@
             <input type="text" name="edad" value="<%=anio-Integer.parseInt(rs.getString("Anio"))%>" disabled style="color: #273746"><br>
             <label id="titulos">CURP</label>
             <input type="text" name="tele" value="<%=rs.getString("Curp")%>" disabled style="color: #273746"><br>
-            <input type="submit" id="boton1" value="Estandar" target="_blanck" onclick=this.form.action="Genera">
-            <input type="submit" id="boton1" value="Formato en blanco" target="_blanck" onclick=this.form.action="Blanco">
+            <input type="submit" id="boton1" value="Estandar" onclick=this.form.action="Genera">
+            <input type="submit" id="boton1" value="Formato en blanco" onclick=this.form.action="Blanco">
          </form>
         </div>
         <!--Mando el parametro ID del paciente que encontre-->            

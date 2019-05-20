@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c336526c-5621-4bfa-b3d4-16a76067cd80">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     PERSONAL.`ID_USER` AS PERSONAL_ID_USER,
+     PERSONAL.`NOMBRE` AS PERSONAL_NOMBRE,
+     PERSONAL.`APELLIDO` AS PERSONAL_APELLIDO,
+     PERSONAL.`PASSWORD` AS PERSONAL_PASSWORD,
+     PERSONAL.`telefono` AS PERSONAL_telefono,
+     PERSONAL.`Gerarquia` AS PERSONAL_Gerarquia,
+     PERSONAL.`Cedula` AS PERSONAL_Cedula,
+     PERSONAL.`Username` AS PERSONAL_Username,
+     PERSONAL.`Especialidad` AS PERSONAL_Especialidad,
+     Pacientes.`idPacientes` AS Pacientes_idPacientes,
+     Pacientes.`fecha` AS Pacientes_fecha,
+     Pacientes.`Nombre` AS Pacientes_Nombre,
+     Pacientes.`Apellido_P` AS Pacientes_Apellido_P,
+     Pacientes.`Apellido_M` AS Pacientes_Apellido_M,
+     Pacientes.`Anio` AS Pacientes_Anio,
+     Pacientes.`Mes` AS Pacientes_Mes,
+     Pacientes.`Dia` AS Pacientes_Dia,
+     Pacientes.`telefono` AS Pacientes_telefono,
+     Pacientes.`Ocupacion` AS Pacientes_Ocupacion,
+     Pacientes.`EstadoC` AS Pacientes_EstadoC,
+     Pacientes.`Domicilio` AS Pacientes_Domicilio,
+     Pacientes.`Curp` AS Pacientes_Curp,
+     Pacientes.`Genero` AS Pacientes_Genero,
+     Pacientes.`Historial` AS Pacientes_Historial,
+     RecetaActualizada.`idRecetaAct` AS RecetaActualizada_idRecetaAct,
+     RecetaActualizada.`Medicamento` AS RecetaActualizada_Medicamento,
+     RecetaActualizada.`Farmacia` AS RecetaActualizada_Farmacia,
+     RecetaActualizada.`Unidades` AS RecetaActualizada_Unidades,
+     RecetaActualizada.`Administracion` AS RecetaActualizada_Administracion,
+     RecetaActualizada.`Presentacion` AS RecetaActualizada_Presentacion,
+     RecetaActualizada.`Piezas` AS RecetaActualizada_Piezas,
+     RecetaActualizada.`Dosis` AS RecetaActualizada_Dosis,
+     RecetaActualizada.`Cada` AS RecetaActualizada_Cada,
+     RecetaActualizada.`Dias` AS RecetaActualizada_Dias,
+     RecetaActualizada.`Fecha2` AS RecetaActualizada_Fecha2,
+     RecetaActualizada.`IdPaciente2` AS RecetaActualizada_IdPaciente2,
+     RecetaActualizada.`IdMedico2` AS RecetaActualizada_IdMedico2
+FROM
+     `Pacientes` Pacientes INNER JOIN `RecetaActualizada` RecetaActualizada ON Pacientes.`idPacientes` = RecetaActualizada.`IdPaciente2`,
+     `PERSONAL` PERSONAL]]>
+	</queryString>
+	<field name="PERSONAL_ID_USER" class="java.lang.Integer"/>
+	<field name="PERSONAL_NOMBRE" class="java.lang.String"/>
+	<field name="PERSONAL_APELLIDO" class="java.lang.String"/>
+	<field name="PERSONAL_PASSWORD" class="java.lang.String"/>
+	<field name="PERSONAL_telefono" class="java.lang.String"/>
+	<field name="PERSONAL_Gerarquia" class="java.lang.String"/>
+	<field name="PERSONAL_Cedula" class="java.lang.String"/>
+	<field name="PERSONAL_Username" class="java.lang.String"/>
+	<field name="PERSONAL_Especialidad" class="java.lang.String"/>
+	<field name="Pacientes_idPacientes" class="java.lang.Integer"/>
+	<field name="Pacientes_fecha" class="java.lang.String"/>
+	<field name="Pacientes_Nombre" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_P" class="java.lang.String"/>
+	<field name="Pacientes_Apellido_M" class="java.lang.String"/>
+	<field name="Pacientes_Anio" class="java.lang.Integer"/>
+	<field name="Pacientes_Mes" class="java.lang.String"/>
+	<field name="Pacientes_Dia" class="java.lang.String"/>
+	<field name="Pacientes_telefono" class="java.lang.String"/>
+	<field name="Pacientes_Ocupacion" class="java.lang.String"/>
+	<field name="Pacientes_EstadoC" class="java.lang.String"/>
+	<field name="Pacientes_Domicilio" class="java.lang.String"/>
+	<field name="Pacientes_Curp" class="java.lang.String"/>
+	<field name="Pacientes_Genero" class="java.lang.String"/>
+	<field name="Pacientes_Historial" class="java.lang.String"/>
+	<field name="RecetaActualizada_idRecetaAct" class="java.lang.Integer"/>
+	<field name="RecetaActualizada_Medicamento" class="java.lang.String"/>
+	<field name="RecetaActualizada_Farmacia" class="java.lang.String"/>
+	<field name="RecetaActualizada_Unidades" class="java.lang.String"/>
+	<field name="RecetaActualizada_Administracion" class="java.lang.String"/>
+	<field name="RecetaActualizada_Presentacion" class="java.lang.String"/>
+	<field name="RecetaActualizada_Piezas" class="java.lang.String"/>
+	<field name="RecetaActualizada_Dosis" class="java.lang.String"/>
+	<field name="RecetaActualizada_Cada" class="java.lang.String"/>
+	<field name="RecetaActualizada_Dias" class="java.lang.String"/>
+	<field name="RecetaActualizada_Fecha2" class="java.sql.Date"/>
+	<field name="RecetaActualizada_IdPaciente2" class="java.lang.Integer"/>
+	<field name="RecetaActualizada_IdMedico2" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

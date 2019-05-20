@@ -16,6 +16,7 @@
     int anio=calender.get(Calendar.YEAR);
     HttpSession sesion=request.getSession(false);
     String usuario=(String)sesion.getAttribute("Usuario");
+    String IDUSER=(String)sesion.getAttribute("IDUSER");
     String gerarquia=(String)sesion.getAttribute("Gerarquia");
     if(usuario==null){
         response.sendRedirect("index.jsp"); 
@@ -87,7 +88,8 @@
         <div id="datos"> 
         <h2>Paciente</h2>
          <form  action="" method="post">
-            <input type="text" name="Tipo" value="2" style="display: none">
+            <input type="text" name="Tipo" value="2" style="display: none">  
+            <input type="text" name="IDUSER" value="<%=IDUSER%>" style="display: none">
             <input type="text" name="Genero" value="<%=rs.getString("Genero")%>" style="display: none">
             <input type="text" name="id" value="<%=rs.getString("idPacientes")%>" style="display: none">
             <input type="text" name="Edad" value="<%=Edad%>" style="display: none">

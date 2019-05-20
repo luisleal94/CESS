@@ -20,12 +20,15 @@ public class HistRec extends HttpServlet {
         String Paciente=request.getParameter("Paciente");  
         String Doctor=request.getParameter("Doctor");
         String Fecha=request.getParameter("Fecha");
-        //out.println(Paciente);
-        //out.println(Doctor);
-        //out.println(Fecha);
+        String IDUSER=request.getParameter("IDUSER");
+        out.println(Paciente);
+        out.println("Doctor: "+Doctor);
+        out.println(Fecha);
+        out.println(" Admin:"+IDUSER);
         request.setAttribute("Paciente",Paciente);
         request.setAttribute("Doctor",Doctor);
         request.setAttribute("Fecha",Fecha);
+        request.setAttribute("IDUSER",IDUSER);
         request.getRequestDispatcher("HistorialReceta.jsp").forward(request, response);
     }
 
