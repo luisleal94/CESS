@@ -1419,7 +1419,7 @@ public class Consulta extends Conexion{
         PreparedStatement pst=null;
         try{
             String consulta="insert into RecetaActualizada(Medicamento,Farmacia,Unidades,Administracion,Presentacion,"
-                    + "Piezas,Dosis,Cada,Dias,Fecha,IdPaciente,IdMedico) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
+                    + "Piezas,Dosis,Cada,Dias,Fecha2,IdPaciente2,IdMedico2) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, nombre);
             pst.setString(2, farmacia);
@@ -1449,12 +1449,12 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-    /*public boolean Receta2(String nombre,String farmacia,String unidad,String dosis,String via,
-            String presenta,String pieza,String cada,String dias,String id){
+    public boolean RecetaAdmin2(String nombre,String farmacia,String unidad,String dosis,String via,
+            String presenta,String pieza,String cada,String dias,String Fecha,String id){
         PreparedStatement pst=null;
         try{
-            String consulta="update Receta set Medicamento=?,Farmacia=?,Unidades=?,Administracion=?,Presentacion=?,"
-                    + "Piezas=?,Dosis=?,Cada=?,Dias=? where IdReceta=?";
+            String consulta="update RecetaActualizada set Medicamento=?,Farmacia=?,Unidades=?,Administracion=?,Presentacion=?,"
+                    + "Piezas=?,Dosis=?,Cada=?,Dias=?,Fecha2=? where idRecetaAct=?";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, nombre);
             pst.setString(2, farmacia);
@@ -1465,7 +1465,8 @@ public class Consulta extends Conexion{
             pst.setString(7, pieza);
             pst.setString(8, cada);
             pst.setString(9, dias);
-            pst.setString(10, id);
+            pst.setString(10, Fecha);
+            pst.setString(11, id);
             if(pst.executeUpdate()==1){
                 return true;
             }             
@@ -1482,11 +1483,11 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-    
-    public boolean Receta3(String id){
+   
+    public boolean RecetaAdmin3(String id){
         PreparedStatement pst=null;
         try{
-            String consulta="delete from Receta where idReceta=?";
+            String consulta="delete from RecetaActualizada where idRecetaAct=?";
             pst=getConexion().prepareStatement(consulta);
             pst.setString(1, id);
             if(pst.executeUpdate()==1){
@@ -1505,7 +1506,7 @@ public class Consulta extends Conexion{
         }
         return false;
     }
-    */
+    
     public boolean referencias(String pediatra,String Ginecologia,String Gastro,String Neuro,String Trauma,
             String Endocri,String Geriatria,String Urolo,String Otorri,String Gene,String Psiqui,String Cardio,
             String Olfta,String Neomo,String Nefro,String Hemato,String Vascular,String inmuno,String id,String Medico,String Otra){

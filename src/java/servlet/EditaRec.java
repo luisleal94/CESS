@@ -96,13 +96,13 @@ public class EditaRec extends HttpServlet {
                     System.out.println("Se elimino");
                     System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
                             Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
-                    //new Consulta().Receta3(IdMe[i]);
+                    new Consulta().RecetaAdmin3(IdMe[i]);
                 }else{
+                    // 4 captopril bayer 100 mg oral tabletas 10 2 12hrs diario
                     System.out.println("Se edito");
                     System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
                             Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
-                    new Consulta().RecetaAdmin(Medi[i],Farma[i],Uni[i],Admin[i],Pres[i],Piez[i],Dos[i],Cad[i],Dia[i],
-                            IDUSER,id,fecha);
+                    new Consulta().RecetaAdmin2(Medi[i],Farma[i],Uni[i],Dos[i],Admin[i],Pres[i],Piez[i],Cad[i],Dia[i],fecha,IdMe[i]);
                 }
             }            
             //System.out.println(a);  

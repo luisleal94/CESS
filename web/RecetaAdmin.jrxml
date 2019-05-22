@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c336526c-5621-4bfa-b3d4-16a76067cd80">
-	<queryString language="SQL">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="396" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c336526c-5621-4bfa-b3d4-16a76067cd80">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Medico" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Paciente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT
      PERSONAL.`ID_USER` AS PERSONAL_ID_USER,
      PERSONAL.`NOMBRE` AS PERSONAL_NOMBRE,
@@ -41,7 +53,13 @@
      RecetaActualizada.`IdMedico2` AS RecetaActualizada_IdMedico2
 FROM
      `Pacientes` Pacientes INNER JOIN `RecetaActualizada` RecetaActualizada ON Pacientes.`idPacientes` = RecetaActualizada.`IdPaciente2`,
-     `PERSONAL` PERSONAL]]>
+     `PERSONAL` PERSONAL
+
+WHERE
+     RecetaActualizada.`IdPaciente2` = $P{Paciente}
+     and RecetaActualizada.`Fecha2` = $P{Fecha}
+     and RecetaActualizada.`IdMedico2` = $P{Medico}
+     and PERSONAL.`ID_USER` = $P{Medico}]]>
 	</queryString>
 	<field name="PERSONAL_ID_USER" class="java.lang.Integer"/>
 	<field name="PERSONAL_NOMBRE" class="java.lang.String"/>
@@ -84,24 +102,288 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="105" splitType="Stretch">
+			<image>
+				<reportElement x="23" y="11" width="62" height="68" uuid="4b7b0707-001f-45fa-a605-a5ec7167e1f0"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="442" y="0" width="91" height="79" uuid="ccba9eee-f63e-4575-95b3-9db7eba020b6"/>
+				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="125" y="28" width="284" height="51" uuid="c26bb91d-260d-453f-83b5-1d0d25c5532e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ Centro de Estudios y Servios de Salud Receta Médica]]></text>
+			</staticText>
+			<line>
+				<reportElement x="23" y="89" width="519" height="1" uuid="0ffe67df-2a3c-435c-84b8-01d01001e397"/>
+			</line>
+			<textField>
+				<reportElement x="257" y="90" width="100" height="12" uuid="513556d8-0b00-45c8-af25-dd980ada8faa"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_M}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="90" width="100" height="12" uuid="ecd42068-679d-4dd8-9ae9-6b5acfddddd7"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_P}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="409" y="90" width="68" height="14" uuid="b55b95ff-41a8-4832-8237-4fa31a5da0ce"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="81" y="90" width="76" height="12" uuid="0695b95b-74f7-45ad-a64a-0da3ceaaeded"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pacientes_Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="90" width="58" height="12" uuid="19e279ce-f9c3-4cd6-9a8b-199fcc554615"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paciente :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="477" y="90" width="62" height="14" uuid="252cd223-a8ea-4398-9cb0-d8c213345260"/>
+				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="352" y="0" width="122" height="12" uuid="62de129c-777b-4c1e-b1a2-7016139d0fed"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Presentación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="0" width="183" height="12" uuid="d89a7d86-377f-4c13-afc3-3b19f540ca63"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[F.Farmacéutica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="0" width="98" height="12" uuid="fd7c9037-25d7-49a1-bef5-0df77fc73161"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Vía. Admin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="168" height="12" uuid="434958b3-6a66-41c8-9a98-eb1c18e4b4b5"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Medicamento]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="20" width="35" height="13" uuid="da3effe4-a799-417d-89aa-9e07ebc79f06"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<text><![CDATA[Tomar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="75" height="13" uuid="1c816df2-745f-43f7-b370-9dba6b3cab17"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Indicaciones:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="20" width="32" height="13" uuid="908e0126-ce47-4c1c-bf6d-e170d6f23918"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="20" width="29" height="13" uuid="b824f697-cafd-4786-ba91-351a26b3ec48"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement rotation="None"/>
+				<text><![CDATA[Días]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="20" width="26" height="13" uuid="1647c296-8bff-4ec9-9e6d-884e628437bd"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Por]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="169" height="20" uuid="7c9e462c-b8c9-42a3-884f-f8a950d9e7cf"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Medicamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="0" width="183" height="20" uuid="6df6c407-b1e2-4213-b7b8-599059a8bd7e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Farmacia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="122" height="20" uuid="bfa5dcac-0809-4931-9339-5ace672ff104"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Presentacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="0" width="98" height="20" uuid="ed3cd68a-933e-40d0-b4d6-4f121f3e1305"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Administracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="20" width="26" height="13" uuid="c9873f90-4fc8-4398-ab19-3167c3fb3da9"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Dosis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="20" width="54" height="13" uuid="7183ff65-44a6-4428-8760-fd1d4a13ae1a"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Cada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="20" width="42" height="13" uuid="8523cda9-9e94-4569-94d6-c5bee54b5541"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+					<topPen lineWidth="1.0" lineStyle="Double"/>
+					<leftPen lineWidth="1.0" lineStyle="Double"/>
+					<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					<rightPen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{RecetaActualizada_Dias}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="95" splitType="Stretch">
+			<line>
+				<reportElement x="354" y="10" width="175" height="1" uuid="a751665c-b6e9-4d21-b095-666e22d4ece4"/>
+			</line>
+			<staticText>
+				<reportElement x="377" y="35" width="55" height="20" uuid="a8166176-e6f3-4835-b1af-5c4342e99ddf"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Cédula: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="63" width="272" height="30" uuid="d48082fd-e166-49b9-863c-4746ba5a6ab5"/>
+				<text><![CDATA[Carmen Serdan N° 147 Casi esq. Mina. Veracruz, Ver. C.P. 91700 Tel: 932-49-78]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="70" width="200" height="20" uuid="e7cf8e7f-eae9-4fa7-b896-11498dbb9bdd"/>
+				<text><![CDATA[Centro de Estudio y Servicios de Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="35" width="58" height="12" uuid="e0d9b5f8-49ae-4cd6-a6fe-1c197641eea4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referir a:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="377" y="15" width="63" height="20" uuid="8f0d13c6-fbb3-4bac-9207-6262fadd01a8"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="35" width="100" height="20" uuid="f54d5155-6471-422c-95f0-39c57a295146"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="15" width="84" height="20" uuid="58a72b34-5817-430d-895d-e26af6738053"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="12" y="63" width="535" height="1" uuid="b0bfa0eb-ed6f-4aac-9b70-ec59e97b4b2e"/>
+			</line>
+		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
