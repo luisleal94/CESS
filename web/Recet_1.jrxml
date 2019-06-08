@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="396" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="584708e5-729b-4af3-9df8-9bdbbdc45e2e">
-	<property name="ireport.zoom" value="1.6500000000000121"/>
-	<property name="ireport.x" value="25"/>
-	<property name="ireport.y" value="37"/>
+	<property name="ireport.zoom" value="1.5000000000000122"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="50"/>
 	<parameter name="Paciente" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -93,62 +93,62 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="118" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<image>
-				<reportElement x="434" y="7" width="91" height="79" uuid="139706b4-fedb-4bd4-95e9-ea2431d33d7f"/>
+				<reportElement x="464" y="7" width="91" height="79" uuid="139706b4-fedb-4bd4-95e9-ea2431d33d7f"/>
 				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/Logo.gif"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement x="15" y="18" width="62" height="68" uuid="e9ec8b66-bdac-4f2c-b10e-242ece53cbbf"/>
+				<reportElement x="15" y="7" width="62" height="68" uuid="e9ec8b66-bdac-4f2c-b10e-242ece53cbbf"/>
 				<imageExpression><![CDATA["/home/luis/netbeans/CESS/web/img/LIS UV COLOR.jpg"]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="15" y="93" width="519" height="1" uuid="84d3ee13-21c3-4a89-9976-bf03e807269a"/>
+				<reportElement x="15" y="93" width="541" height="1" uuid="84d3ee13-21c3-4a89-9976-bf03e807269a"/>
 			</line>
 			<staticText>
-				<reportElement x="117" y="35" width="284" height="51" uuid="d16ef149-d269-4abb-8f0e-27735a886810"/>
+				<reportElement x="145" y="7" width="284" height="51" uuid="d16ef149-d269-4abb-8f0e-27735a886810"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[ Centro de Estudios y Servios de Salud Receta Médica]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="74" y="97" width="76" height="12" uuid="04e6b1e5-874c-44cb-a4e7-15400c4ad6fd"/>
+				<reportElement x="69" y="97" width="76" height="12" uuid="04e6b1e5-874c-44cb-a4e7-15400c4ad6fd"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Pacientes_Nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="17" y="97" width="58" height="12" uuid="ec4d1c09-0e1a-4c42-9c17-f7a6df2fab1b"/>
+				<reportElement x="12" y="97" width="58" height="12" uuid="ec4d1c09-0e1a-4c42-9c17-f7a6df2fab1b"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Paciente :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="97" width="100" height="12" uuid="cd0b6e74-13d2-4e19-a673-98c9968924fa"/>
+				<reportElement x="145" y="97" width="100" height="12" uuid="cd0b6e74-13d2-4e19-a673-98c9968924fa"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_P}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="250" y="97" width="100" height="12" uuid="c8a90c60-8853-48a4-9eea-e87fc037c31c"/>
+				<reportElement x="245" y="97" width="100" height="12" uuid="c8a90c60-8853-48a4-9eea-e87fc037c31c"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Pacientes_Apellido_M}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="421" y="97" width="68" height="14" uuid="f4c4eded-818c-424f-a45d-957f5c2e45e0"/>
+				<reportElement x="420" y="97" width="68" height="14" uuid="f4c4eded-818c-424f-a45d-957f5c2e45e0"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="489" y="97" width="82" height="14" uuid="5a2357c8-2880-4041-b01a-bc0598478999"/>
+				<reportElement x="488" y="97" width="82" height="14" uuid="5a2357c8-2880-4041-b01a-bc0598478999"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Receta_Fecha}]]></textFieldExpression>
 			</textField>
@@ -207,9 +207,9 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="57" splitType="Stretch">
+		<band height="32" splitType="Stretch">
 			<textField>
-				<reportElement x="169" y="0" width="182" height="20" uuid="abd8ab34-fed6-4cb6-ba69-c2f574b84b35"/>
+				<reportElement x="169" y="0" width="182" height="14" uuid="abd8ab34-fed6-4cb6-ba69-c2f574b84b35"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
 					<topPen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
@@ -221,7 +221,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{Receta_Farmacia}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="77" y="21" width="35" height="13" uuid="67e40705-e271-428c-91ee-c333649fefec"/>
+				<reportElement x="76" y="15" width="35" height="13" uuid="67e40705-e271-428c-91ee-c333649fefec"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -232,7 +232,7 @@ WHERE
 				<text><![CDATA[Tomar]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="473" y="0" width="98" height="20" uuid="d41061b4-f6bd-4104-babb-2d352d0f6060"/>
+				<reportElement x="473" y="0" width="98" height="14" uuid="d41061b4-f6bd-4104-babb-2d352d0f6060"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
 					<topPen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
@@ -244,7 +244,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{Receta_Administracion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="138" y="21" width="32" height="13" uuid="c474aca9-cd20-4a87-a0ed-436fc05fe3d0"/>
+				<reportElement x="137" y="15" width="32" height="13" uuid="c474aca9-cd20-4a87-a0ed-436fc05fe3d0"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -256,7 +256,7 @@ WHERE
 				<text><![CDATA[Cada]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="170" y="21" width="54" height="13" uuid="11754b7e-6939-43a4-9571-40dec3b9b665"/>
+				<reportElement x="169" y="15" width="54" height="13" uuid="11754b7e-6939-43a4-9571-40dec3b9b665"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -268,7 +268,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{Receta_Cada}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="224" y="21" width="26" height="13" uuid="28dc4771-d29c-4a1c-b2d7-3b8d089f5ccd"/>
+				<reportElement x="223" y="15" width="26" height="13" uuid="28dc4771-d29c-4a1c-b2d7-3b8d089f5ccd"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -280,7 +280,7 @@ WHERE
 				<text><![CDATA[Por]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="292" y="21" width="29" height="13" uuid="76a2bde2-8236-4fcd-9bfd-d9a465446ea6"/>
+				<reportElement x="291" y="15" width="29" height="13" uuid="76a2bde2-8236-4fcd-9bfd-d9a465446ea6"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -292,7 +292,7 @@ WHERE
 				<text><![CDATA[Días]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="250" y="21" width="42" height="13" uuid="db58aaf0-c632-483a-acce-6501fea287dc"/>
+				<reportElement x="249" y="15" width="42" height="13" uuid="db58aaf0-c632-483a-acce-6501fea287dc"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -304,7 +304,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{Receta_Dias}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="351" y="0" width="122" height="20" uuid="400f29f7-7034-49ac-a8b0-1f85636c93ed"/>
+				<reportElement x="351" y="0" width="122" height="14" uuid="400f29f7-7034-49ac-a8b0-1f85636c93ed"/>
 				<box>
 					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#A399B2"/>
 					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#A399B2"/>
@@ -315,20 +315,8 @@ WHERE
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Receta_Unidades}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="1" y="0" width="168" height="20" uuid="f469f689-83dc-4dec-bd6a-a6f1295ad7bf"/>
-				<box>
-					<pen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
-					<topPen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
-					<leftPen lineStyle="Double" lineColor="#A399B2"/>
-					<bottomPen lineWidth="0.0" lineStyle="Double" lineColor="#A399B2"/>
-					<rightPen lineWidth="0.0" lineStyle="Double" lineColor="#A399B2"/>
-				</box>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{Receta_Medicamento}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="2" y="21" width="75" height="13" uuid="e4159626-f012-4ec4-abb7-09cec427ef52"/>
+				<reportElement x="1" y="15" width="75" height="13" uuid="e4159626-f012-4ec4-abb7-09cec427ef52"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -340,7 +328,7 @@ WHERE
 				<text><![CDATA[Indicaciones:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="20" width="29" height="13" uuid="3db9301b-d7b4-4aa9-b267-dde2cf4c4a48"/>
+				<reportElement x="321" y="14" width="29" height="13" uuid="3db9301b-d7b4-4aa9-b267-dde2cf4c4a48"/>
 				<box>
 					<pen lineColor="#A399B2"/>
 					<topPen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
@@ -351,7 +339,7 @@ WHERE
 				<text><![CDATA[]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="112" y="21" width="27" height="13" uuid="8acc8a66-21c8-4fca-94ea-030468c9bf5e"/>
+				<reportElement x="111" y="15" width="27" height="13" uuid="8acc8a66-21c8-4fca-94ea-030468c9bf5e"/>
 				<box>
 					<pen lineWidth="1.0" lineStyle="Double"/>
 					<topPen lineWidth="1.0" lineStyle="Double"/>
@@ -362,54 +350,69 @@ WHERE
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Receta_Dosis}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="168" height="14" uuid="f469f689-83dc-4dec-bd6a-a6f1295ad7bf"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
+					<topPen lineWidth="0.5" lineStyle="Double" lineColor="#A399B2"/>
+					<leftPen lineStyle="Double" lineColor="#A399B2"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double" lineColor="#A399B2"/>
+					<rightPen lineWidth="0.0" lineStyle="Double" lineColor="#A399B2"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Receta_Medicamento}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="112" splitType="Stretch">
+		<band height="56" splitType="Stretch">
 			<staticText>
-				<reportElement x="280" y="82" width="272" height="30" uuid="ecbaf594-32ad-4b7b-9448-ae4b5f8f5d42"/>
+				<reportElement x="245" y="32" width="311" height="24" uuid="ecbaf594-32ad-4b7b-9448-ae4b5f8f5d42"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<text><![CDATA[Carmen Serdan N° 147 Casi esq. Mina. Veracruz, Ver. C.P. 91700 Tel: 932-49-78]]></text>
 			</staticText>
 			<line>
-				<reportElement x="17" y="81" width="535" height="1" uuid="cd9e31ab-8c75-408b-82b8-b34bffc2d95a"/>
+				<reportElement x="21" y="31" width="535" height="1" uuid="cd9e31ab-8c75-408b-82b8-b34bffc2d95a"/>
 			</line>
 			<staticText>
-				<reportElement x="31" y="89" width="200" height="20" uuid="338e46d0-12e8-4527-8099-74123e282dc6"/>
+				<reportElement x="23" y="37" width="200" height="13" uuid="338e46d0-12e8-4527-8099-74123e282dc6"/>
 				<text><![CDATA[Centro de Estudio y Servicios de Salud]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="382" y="34" width="63" height="20" uuid="3ed9f280-43c8-4c7b-b625-332cf6ac7b3c"/>
+				<reportElement x="371" y="4" width="55" height="12" uuid="3ed9f280-43c8-4c7b-b625-332cf6ac7b3c"/>
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PERSONAL_NOMBRE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="447" y="34" width="84" height="20" uuid="2b399972-a868-4231-a75c-c89eeb334183"/>
+				<reportElement x="429" y="4" width="100" height="12" uuid="2b399972-a868-4231-a75c-c89eeb334183"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PERSONAL_APELLIDO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="437" y="54" width="100" height="20" uuid="55c208a6-e2e2-4d9c-97c1-60704e0c00a8"/>
+				<reportElement x="426" y="16" width="100" height="12" uuid="55c208a6-e2e2-4d9c-97c1-60704e0c00a8"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PERSONAL_Cedula}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="382" y="54" width="55" height="20" uuid="ba428af4-eb4d-48a1-a016-e3db1a5b2b18"/>
+				<reportElement x="371" y="16" width="55" height="12" uuid="ba428af4-eb4d-48a1-a016-e3db1a5b2b18"/>
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Cédula: ]]></text>
 			</staticText>
 			<line>
-				<reportElement x="359" y="29" width="175" height="1" uuid="569c7f97-1bc2-4b30-a655-0d8eaf6765a9"/>
+				<reportElement x="359" y="0" width="175" height="1" uuid="569c7f97-1bc2-4b30-a655-0d8eaf6765a9"/>
 			</line>
 			<staticText>
-				<reportElement x="15" y="54" width="58" height="12" uuid="767a1dbc-5af1-4cf2-9bd7-25b5514340d9"/>
+				<reportElement x="12" y="4" width="58" height="12" uuid="767a1dbc-5af1-4cf2-9bd7-25b5514340d9"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
