@@ -39,31 +39,185 @@ public class EditaRec extends HttpServlet {
         String Cantidad=request.getParameter("CantR");
         String Valor2=request.getParameter("Valor");
         
-        if(Valor2!=""){
-            System.out.println("Se agregaon nuevos medicamentos");
-            int Q=Integer.parseInt(Valor2);
-            int res=Q*9;
-            int a=0;
-            String [] inputQ=new String[res];
-            for(int i=1;i<Q+1;i++){
-                for(int j=0;j<9;j++){
-                    inputQ[a]=request.getParameter("idM"+i+(j+1));
-                    a+=1;
+        if(IDUSER.equals(IdMedico)){   
+            if(Valor2!=""){
+                System.out.println("Se agregaon nuevos medicamentos");
+                int Q=Integer.parseInt(Valor2);
+                int res=Q*9;
+                int a=0;
+                String [] inputQ=new String[res];
+                for(int i=1;i<Q+1;i++){
+                    for(int j=0;j<9;j++){
+                        inputQ[a]=request.getParameter("idM"+i+(j+1));
+                        a+=1;
+                    }
+                }
+                int ContarM=Integer.parseInt(Cantidad)*9;
+                a=ContarM;            
+                for(int j=ContarM;j<(Q*9);j+=9){
+                    System.out.println(inputQ[j]+" " +inputQ[j+1]+" "+inputQ[j+2]+" "+inputQ[j+3]+" "+inputQ[j+4]+" "+inputQ[j+5]
+                                +" "+inputQ[j+6]+" "+inputQ[j+7]+" "+inputQ[j+8]);
+                    new Consulta().RecetaAdmin(inputQ[j],inputQ[j+1],inputQ[j+2],inputQ[j+3], 
+                            inputQ[j+4], inputQ[j+5],inputQ[j+6],inputQ[j+7],inputQ[j+8],IDUSER,id,fecha);
+                    a+=3;
                 }
             }
-            int ContarM=Integer.parseInt(Cantidad)*9;
-            a=ContarM;            
-            for(int j=ContarM;j<(Q*9);j+=9){
-                System.out.println(inputQ[j]+" " +inputQ[j+1]+" "+inputQ[j+2]+" "+inputQ[j+3]+" "+inputQ[j+4]+" "+inputQ[j+5]
-                            +" "+inputQ[j+6]+" "+inputQ[j+7]+" "+inputQ[j+8]);
-                new Consulta().RecetaAdmin(inputQ[j],inputQ[j+1],inputQ[j+2],inputQ[j+3], 
-                        inputQ[j+4], inputQ[j+5],inputQ[j+6],inputQ[j+7],inputQ[j+8],IDUSER,id,fecha);
-                a+=3;
+            if(Cantidad!=""){
+                int Q=Integer.parseInt(Cantidad);
+                int res=Q*9;
+                int a=0;
+                String [] IdMe=new String[res];
+                String [] Medi=new String[res];
+                String [] Farma=new String[res];
+                String [] Uni=new String[res];
+                String [] Admin=new String[res];
+                String [] Pres=new String[res];
+                String [] Piez=new String[res];
+                String [] Dos=new String[res];
+                String [] Cad=new String[res];
+                String [] Dia=new String[res];
+                for(int i=0;i<Q;i++){
+                    //for(int j=0;j<3;j++){
+                        IdMe[i]=request.getParameter("Id"+i);
+                        Medi[i]=request.getParameter("Medic"+i);
+                        Farma[i]=request.getParameter("Farm"+i);
+                        Uni[i]=request.getParameter("Unid"+i);
+                        Admin[i]=request.getParameter("Admin"+i);
+                        Pres[i]=request.getParameter("Pres"+i);
+                        Piez[i]=request.getParameter("Piez"+i);
+                        Dos[i]=request.getParameter("Dos"+i);
+                        Cad[i]=request.getParameter("Cad"+i);
+                        Dia[i]=request.getParameter("Dia"+i);
+                }
+                a=0; 
+                for(int i=0;i<Q;i++){
+                    if(Medi[i]==null){
+                        System.out.println("Se elimino");
+                        System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
+                                Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
+                        new Consulta().RecetaAdmin3(IdMe[i]);
+                    }else{
+                        // 4 captopril bayer 100 mg oral tabletas 10 2 12hrs diario
+                        System.out.println("Se edito");
+                        System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
+                                Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
+                        new Consulta().RecetaAdmin2(Medi[i],Farma[i],Uni[i],Dos[i],Admin[i],Pres[i],Piez[i],Cad[i],Dia[i],fecha,IdMe[i]);
+                    }
+                }            
+                //System.out.println(a);  
             }
-            //System.out.println(a); 
+
+            String path = getServletContext().getRealPath("/RecetaAdmin.jasper");
+            Map parameter =new HashMap();  
+            File reporfile=new File(getServletContext().getRealPath("/RecetaAdmin.jasper"));
+            parameter.put("Paciente",new String(id));        
+            parameter.put("Medico",new String(IDUSER));      
+            parameter.put("Fecha",new String(fecha));
+            System.out.println(path);
+            byte[] bytes;
+            try {
+                bytes = JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
+                response.setContentType("application/pdf");
+                response.setContentLength(bytes.length);
+                ServletOutputStream outputstream=response.getOutputStream();
+                outputstream.write(bytes,0,bytes.length);
+                outputstream.flush();
+                outputstream.close();
+            } catch (JRException ex) {
+                Logger.getLogger(GuardaReceta2.class.getName()).log(Level.SEVERE, null, ex);
+                 System.out.println("Error: "+ex);
+            }
+        }else{
+            //out.println("No es igual");
+            if(Valor2!=""){
+                System.out.println("Se agregaon nuevos medicamentos");
+                int Q=Integer.parseInt(Valor2);
+                int res=Q*9;
+                int a=0;
+                String [] inputQ=new String[res];
+                for(int i=1;i<Q+1;i++){
+                    for(int j=0;j<9;j++){
+                        inputQ[a]=request.getParameter("idM"+i+(j+1));
+                        a+=1;
+                    }
+                }
+                int ContarM=Integer.parseInt(Cantidad)*9;
+                a=ContarM;            
+                for(int j=ContarM;j<(Q*9);j+=9){
+                    System.out.println(inputQ[j]+" " +inputQ[j+1]+" "+inputQ[j+2]+" "+inputQ[j+3]+" "+inputQ[j+4]+" "+inputQ[j+5]
+                                +" "+inputQ[j+6]+" "+inputQ[j+7]+" "+inputQ[j+8]);
+                    new Consulta().RecetaAdmin(inputQ[j],inputQ[j+1],inputQ[j+2],inputQ[j+3], 
+                            inputQ[j+4], inputQ[j+5],inputQ[j+6],inputQ[j+7],inputQ[j+8],IDUSER,id,fecha);
+                    a+=3;
+                }
+            }
+            if(Cantidad!=""){
+            int Q=Integer.parseInt(Cantidad);
+            int res=Q*9;
+            int a=0;
+            String [] IdMe=new String[res];
+            String [] Medi=new String[res];
+            String [] Farma=new String[res];
+            String [] Uni=new String[res];
+            String [] Admin=new String[res];
+            String [] Pres=new String[res];
+            String [] Piez=new String[res];
+            String [] Dos=new String[res];
+            String [] Cad=new String[res];
+            String [] Dia=new String[res];
+            for(int i=0;i<Q;i++){
+                //for(int j=0;j<3;j++){
+                    IdMe[i]=request.getParameter("Id"+i);
+                    Medi[i]=request.getParameter("Medic"+i);
+                    Farma[i]=request.getParameter("Farm"+i);
+                    Uni[i]=request.getParameter("Unid"+i);
+                    Admin[i]=request.getParameter("Admin"+i);
+                    Pres[i]=request.getParameter("Pres"+i);
+                    Piez[i]=request.getParameter("Piez"+i);
+                    Dos[i]=request.getParameter("Dos"+i);
+                    Cad[i]=request.getParameter("Cad"+i);
+                    Dia[i]=request.getParameter("Dia"+i);
+            }
+            a=0; 
+            for(int i=0;i<Q;i++){
+                if(Medi[i]==null){
+                    System.out.println("Se elimino");
+                    System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
+                            Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
+                    new Consulta().RecetaAdmin3(IdMe[i]);
+                }else{
+                    System.out.println(IdMe[i]+" "+Medi[i]+" "+Farma[i]+" "+Uni[i]+" "+Admin[i]+" "+
+                            Pres[i]+" "+Piez[i]+" "+Dos[i]+" "+Cad[i]+" "+Dia[i]);
+                    new Consulta().RecetaAdmin(Medi[i],Farma[i],Uni[i],Dos[i],Admin[i],
+                            Pres[i],Piez[i],Cad[i],Dia[i],IDUSER,id,fecha);
+                }
+            }            
+            //System.out.println(a);  
         }
-        System.out.println("Medicamentos editados");
-        if(Cantidad!=""){
+        
+            String path = getServletContext().getRealPath("/RecetaAdmin.jasper");
+            Map parameter =new HashMap();  
+            File reporfile=new File(getServletContext().getRealPath("/RecetaAdmin.jasper"));
+            parameter.put("Paciente",new String(id));        
+            parameter.put("Medico",new String(IDUSER));      
+            parameter.put("Fecha",new String(fecha));
+            System.out.println(path);
+            byte[] bytes;
+            try {
+                bytes = JasperRunManager.runReportToPdf(reporfile.getPath(), parameter,con.getConexion());
+                response.setContentType("application/pdf");
+                response.setContentLength(bytes.length);
+                ServletOutputStream outputstream=response.getOutputStream();
+                outputstream.write(bytes,0,bytes.length);
+                outputstream.flush();
+                outputstream.close();
+            } catch (JRException ex) {
+                Logger.getLogger(GuardaReceta2.class.getName()).log(Level.SEVERE, null, ex);
+                 System.out.println("Error: "+ex);
+            }
+        }
+        
+        /*if(Cantidad!=""){
             int Q=Integer.parseInt(Cantidad);
             int res=Q*9;
             int a=0;
@@ -128,6 +282,7 @@ public class EditaRec extends HttpServlet {
             Logger.getLogger(GuardaReceta2.class.getName()).log(Level.SEVERE, null, ex);
              System.out.println("Error: "+ex);
         }
+        */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
