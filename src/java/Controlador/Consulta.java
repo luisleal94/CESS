@@ -1507,6 +1507,31 @@ public class Consulta extends Conexion{
         return false;
     }
     
+    public boolean RecetaAdmin4(String id,String Medico, String Fecha){
+        PreparedStatement pst=null;
+        try{
+            String consulta="delete from RecetaActualizada where IdMedico2=? and Fecha2=? and IdPaciente2=?";
+            pst=getConexion().prepareStatement(consulta);
+            pst.setString(1, Medico);
+            pst.setString(1, Fecha);
+            pst.setString(1, id);
+            if(pst.executeUpdate()==1){
+                return true;
+            }             
+        }catch(Exception e){
+            System.out.println("Error "+e);
+        }
+        finally{
+            try{
+                if(getConexion()!=null) getConexion().close();
+                if(pst!=null) pst.close();
+            }catch(Exception e){
+                System.out.println("Error "+e);
+            }
+        }
+        return false;
+    }
+    
     public boolean referencias(String pediatra,String Ginecologia,String Gastro,String Neuro,String Trauma,
             String Endocri,String Geriatria,String Urolo,String Otorri,String Gene,String Psiqui,String Cardio,
             String Olfta,String Neomo,String Nefro,String Hemato,String Vascular,String inmuno,String id,String Medico,String Otra){

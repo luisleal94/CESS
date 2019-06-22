@@ -48,11 +48,8 @@
         </div>
         <a id="link" href="inicio.jsp">Menú principal</a>
         <%
-            String sql="select *from Receta WHERE Fecha='"+ Fecha +"'"+
-                    " and IdMedico='"+ Doctor +"' and  IdPaciente='"+ Paciente +"'"
-                    + " union all "
-                    + "select *from RecetaActualizada where IdPaciente2='"+Paciente+"' "
-                    + "and IdMedico2='"+Doctor+"' and Fecha2='"+Fecha+"';";
+            String sql="select *from RecetaActualizada where IdPaciente2='"+Paciente+"' "
+                    + "and IdMedico2='"+IDUSER+"' and Fecha2='"+Fecha+"';";
             pst = con.getConexion().prepareStatement(sql);
             rs=pst.executeQuery();
             int j=0;
@@ -84,7 +81,7 @@
                                 </tr
                                 <% while(rs.next()){  %>
                                 <tr>
-                                    <input  name="<%="Id"+j%>" value="<%=rs.getInt("idReceta")%>" style="display: none;">
+                                    <input  name="<%="Id"+j%>" value="<%=rs.getInt("idRecetaAct")%>" style="display: none;">
                                     <td><input type="button" class="boton2" value = " X " onClick="Javacsript:EliminaMed(this)"></td>
                                     <th><input type="text" name="<%="Medic"+j%>" size="7" value="<%=rs.getString("Medicamento")%>"></th>
                                     <th><input type="text" name="<%="Farm"+j%>" size="7" value="<%=rs.getString("Farmacia")%>"></th>
